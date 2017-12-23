@@ -8,11 +8,17 @@
 	      $this->load->helper('url');
 	      $this->load->database(); // load database
 	      $this->load->model('MProduct');
+	      $this->load->helper('url');
 	  	}
 
 		public function index()
 		{
 			
+		}
+
+		function viewProduct(){
+			$this->load->view('imports/vHeader');
+			$this->load->view('vProducts');
 		}
 
 	}

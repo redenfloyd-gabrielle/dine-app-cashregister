@@ -2,7 +2,7 @@
 	defined('BASEPATH') OR exit('No direct script access allowed');
 
 	class CInitialize extends CI_Controller {
-
+        
 		/**
 		 * Index Page for this controller.
 		 *
@@ -21,12 +21,12 @@
 
 		public function __Construct(){
 	      parent::__Construct ();
-	      $this->load->helper('url');
-	  	}
-	  	
+	 	    $this->load->helper('url');
+	  }
+
 		public function index()
 		{
-			$this->load->view('welcome_message');
+			$this->load->view('vLogin');
 		}
 	}
 
