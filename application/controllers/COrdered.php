@@ -7,11 +7,21 @@
 	      parent::__Construct ();
 	      $this->load->database(); // load database
 	      $this->load->model('MOrdered');
+	      $this->load->helper('url');
 	  	}
 
 		public function index()
 		{
 			
+		}
+
+		function viewMDashboard(){
+			$this->load->view('imports/vHeader');
+			$this->load->view('vMDashboard');
+		}
+		function viewQDashboard(){
+			$this->load->view('imports/vHeader');
+			$this->load->view('vQDashboard');
 		}
 
 	}
