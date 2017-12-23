@@ -21,8 +21,9 @@
 
 		public function __Construct(){
 	      parent::__Construct ();
-	 	  $this->load->helper('url');
-	  	}
+	 	    $this->load->helper('url');
+	  }
+
 		public function index()
 		{
 			$this->load->view('vLogin');
