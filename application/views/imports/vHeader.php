@@ -5,6 +5,7 @@
 	<link type="text/css" rel="stylesheet" href="<?php echo base_url('assets/css/style.css')?>" />
     <link type="text/css" rel="stylesheet" href="<?php echo base_url('assets/semantic/dist/semantic.min.css')?>" />
     <script type="text/javascript" src="<?php echo base_url('assets/jquery/jquery.min.js')?>"></script>
+    <script type="text/javascript" src="<?php echo base_url('assets/jquery/instascan.min.js')?>"></script>
 </head>
 <body>
 	<div class="ui top attached borderless menu head">
