@@ -1,5 +1,5 @@
 <div class="right floated left aligned seven wide column"><br>
-  <a routerLink="/editOrder"><i class="eicon huge edit icon"></i></a>
+  <a href="<?php echo site_url()?>/COrderItem/viewEditOrder?>"><i class="eicon huge edit icon"></i></a>
   <h1 class="ui header">
     <i class="circular cart icon"></i>
     <div class="content">
@@ -45,10 +45,10 @@
     
     <div class="ui divider"></div>
     <h2 class="sub">Total<div class="rf">P1150.00</div></h2>
-    <a href="<?php echo site_url();?>/CReceiptItem/viewCheckout" class="btn" align="center" >Checkout</a>
+    <a href="<?php echo site_url();?>/CReceiptItem/viewCheckout" class="rbtn" align="center"><h4 class="lbtnlabel">Checkout</h4></a>
     <div class="lft">
-       <button type="submit" class="lbtn"><i class="repeat icon"></i>Clear</button>
-       <button type="submit" class="lbtn">Quick Return</button>
+       <a href="<?php echo site_url();?>/CLogin/viewIndex" class="rght lbtn" align="center" ><h4 class="lbtnlabel">Clear</h4></a>
+       <a href="<?php echo site_url();?>/CLogin/viewIndex" class="rght lbtn" align="center" ><h4 class="lbtnlabel">Return</h4></a>
     </div> 
   </form>
 </div>

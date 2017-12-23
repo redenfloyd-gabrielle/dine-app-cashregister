@@ -16,6 +16,12 @@
 			$this->load->view('vLogin');
 		}
 
+		function viewIndex()
+		{
+			$this->load->view('imports/vHeader');
+			$this->load->view('index');
+		}
+
 		function login(){
 			$this->load->library('form_validation');
 			$this->form_validation->set_rules('userID','Username','required');
@@ -26,8 +32,7 @@
 				$password = $this->input->post('password');
 
 				if($userID == '123' && $password == 'user'){
-					$this->load->view('imports/vHeader');
-					$this->load->view('index');
+					$this->viewIndex();
 				}else{
 					$this->index();
 				}

@@ -18,7 +18,7 @@
 <div class="row">
   <div class="ui two column center aligned grid">
     <div class="column">
-     <a class="manual" href="<?php echo site_url()?>/COrdered/viewQDashboard?>">QR CODE</a>
+     <a class="qr" href="<?php echo site_url()?>/COrdered/viewQDashboard?>">QR CODE</a>
     </div>
     <div class="column">
         <a class="manual" href="<?php echo site_url()?>/COrdered/viewMDashboard?>">MANUAL INPUT</a>

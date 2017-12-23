@@ -50,7 +50,9 @@ body{
 .headlogo{
     height: 40px;
     width: 50px;
-    margin: 10px 20px;
+ /*   margin: 10px 20px;*/
+ margin-top:10px;
+ margin-left: 10px;
 }
 .username{
     color: white;
@@ -60,7 +62,8 @@ body{
 .headname{
     color: white;
     text-transform: uppercase;
-    margin: 10px;
+    margin-bottom:10px;
+    margin-left: 10px;
 }
 .rght{
     float:right;
@@ -91,7 +94,7 @@ body{
     left: 55%;
     top: 60px;
 }
-.image{
+.cardbox{
     margin:25px 35px 0px 25px;
     height: 70px;
     width: 70px;
@@ -104,10 +107,12 @@ body{
     float: right;
     margin-right: 100px;
 }
+.ilabel{
+    margin-left: 180px !important;
+}
 
-.divider{
-    margin-left: 210px;
-    width: 380px;
+.divide{
+margin-right: 40px !important;
 }
 .eicon{
     float: right;
@@ -115,74 +120,16 @@ body{
     height: 150px;
     width: 50px;
 }
-.lbtn{
-    width: 100px;
-    padding: 10px 0px;
-    float: right;
-    margin:30px 10px 0px 0px;
-    height: 50px;
-    background-color: #78D5E3 !important;
-    border: 1px solid #78D5E3;
-    color: white;
-    font-size: 17px;
-}
-.btn{
-    width: 100px;
-    padding: 8px 0px;
-    float: right;
-    margin:30px 30px 30px 0px;
-    height: 50px;
-    background-color: #3886c9;
-    border: 1px solid #3886c9;
-    color: white;
-    font-size: 17px;
-}
-.btn:hover, .lbtn:hover{
-    background-color:#44749D;
-    border: 1px solid #44749D;
-}
-.btn:hover, .lbtn:hover{
-    background-color:#44749D;
-    border: 1px solid #44749D;
-}
-.subBtn{
-    float: right;
-    margin: 50px;
-}
 .sub{ 
     margin: 5px;
     margin-left: 220px;
 }
-
-
-
-
-
-
-
-
-
 
 .hbox{
     background-color: #C6D4E1;
     text-align: center;
     padding: 5px;
     margin-right: 25px;
-}
-.vdivide{
-    border-left: 2px solid #303030;;
-    height: 110vh;
-    position: absolute;
-    left: 55%;
-    top: 60px;
-}
-
-.kbtn{
-    width: 150px;
-    height: 40px;
-    background-color: white;
-    border: 1px solid gray;
-    margin: 0px;
 }
 
 .mid{
@@ -201,48 +148,64 @@ body{
     margin-bottom: 10px;
 }
 
+/*BUTTON STYLING HERE*/
 .cbtn{
     margin-top: 50px;
 }
-
-.bbtn{
+.rbtn{
     width: 100px;
-    padding: 8px 0px;
-    margin:30px 10px 0px 10px;
-    height: 55px;
-    background-color: #78D5E3;
-    border: 1px solid #78D5E3;
-    color: white;
-    font-size: 20px;
-}
-
-.sbtn{
-    width: 100px;
-    padding: 8px 0px;
     float: right;
-    margin:30px 10px 0px 0px;
+    margin:50px 30px 0px 0px;
     height: 55px;
     background-color: #3886c9;
     border: 1px solid #3886c9;
     color: white;
     font-size: 20px;
 }
-.sbtn:hover, .bbtn:hover{
+.lbtn{
+    width: 100px;
+    margin:50px 10px 0px 10px;
+    height: 55px;
+    background-color: #336699;
+    border: 1px solid #336699;
+}
+
+.lbtnlabel{
+    color: white;
+    font-size: 15px;
+    padding:15px;
+    margin: 0px;
+}
+
+.rbtnlabel{
+    color: white;
+    font-size: 15px;
+    padding-bottom: :15px;
+    margin: 0px;
+}
+.rtn:hover, .lbtn:hover{
     background-color:#44749D;
     border: 1px solid #44749D;
 }
 
-.menubox{
-    padding: 20px 45px;
+.pbtn{
+    border: none;
+    background-color:white;
 }
 
-.menuimg{
-    margin:5px 3px;
-    height: 70px;
-    width: 70px;
+.kbtn{
+    width: 150px;
+    height: 40px;
+    background-color: white;
+    border: 1px solid gray;
+    margin: 0px;
 }
 
 
+.subBtn{
+    float: right;
+    margin: 50px;
+}
 
 
 
