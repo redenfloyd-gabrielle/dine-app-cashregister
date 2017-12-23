@@ -1,7 +1,7 @@
 body>.grid {
     height: 100%;
 }
-
+/*
 .page-bg {
     background: url(../images/bg.jpg);
     background-repeat: no-repeat;
@@ -18,7 +18,7 @@ body>.grid {
     top: 0;
     left: 0;
     z-index: -1;
-}
+}*/
 
 .column {
     max-width: 350px;

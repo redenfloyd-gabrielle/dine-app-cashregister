@@ -17,8 +17,8 @@
 		}
 
 		function viewEditOrder(){
-			$this->load->view('imports/vHeader');
-			$this->load->view('vEditOrder');
+			$this->load->view('imports/vPosHeader');
+			$this->load->view('pos/vEditOrder');
 		}
 
 	}
