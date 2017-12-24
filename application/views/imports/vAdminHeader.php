@@ -42,7 +42,7 @@
     </form>
     <p></p>
   </div>
-  <div class="actions">
+  <div class="actions"> 
     <div class="ui cancel negative button">Cancel</div>
     <a><div class="ui approve positive button">Update</div></a>
   </div>
