@@ -5,6 +5,7 @@
 
 		public function __Construct(){
 	      parent::__Construct ();
+	      $this->load->helper('url');
 	      $this->load->database(); // load database
 	      $this->load->model('MOrdered');
 	      $this->load->helper('url');
@@ -14,14 +15,14 @@
 		{
 			
 		}
-
+ 
 		function viewMDashboard(){
-			$this->load->view('imports/vHeader');
-			$this->load->view('vMDashboard');
+			$this->load->view('imports/vPosHeader');
+			$this->load->view('pos/vMDashboard');
 		}
 		function viewQDashboard(){
-			$this->load->view('imports/vHeader');
-			$this->load->view('vQDashboard');
+			$this->load->view('imports/vPosHeader');
+			$this->load->view('pos/vQDashboard');
 		}
 
 	}
