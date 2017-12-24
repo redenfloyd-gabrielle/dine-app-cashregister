@@ -19,7 +19,13 @@
 		public function __construct(){
 
 		}
+<<<<<<< HEAD
+
+
+		public function getUsers()
+=======
     public function getUsers()
+>>>>>>> 35a154b0f41dd78a8a4e60f5fc368253cd849ff2
 		{
 			$this->db->select("*");
 			$this->db->from($this::DB_TABLE);
@@ -28,8 +34,12 @@
 			
 			return $query->result();
 		}
+<<<<<<< HEAD
+		public function attemptLogin(){
+=======
     
     public function attemptLogin(){
+>>>>>>> 35a154b0f41dd78a8a4e60f5fc368253cd849ff2
 			//$hashPass=hash('sha512',$this->agentPassword);
 			$query= $this->db->get_where($this::DB_TABLE,array('user_id'=>$this->user_id,'password'=>$this->user_password));
 			if($query -> num_rows() == 1){
