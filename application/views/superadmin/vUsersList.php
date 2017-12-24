@@ -50,7 +50,7 @@
                 <?php if (isset($users)) {?>
                     <div class='ui stackable three cards'>
                         <?php foreach ($users as $u) {?>
-                            <a class='ui card' href='<?php echo site_url()?>/CUser/viewUserInfo?>'>
+                            <a class='ui card' href='<?php echo site_url()?>/CUser/viewUserInfo/<?php echo $u->user_id; ?> '>
                                 <div class='image'></div>
                                 <div class='content' id='superadmin-card'>
                                     <div class='header' id='userHeader'>

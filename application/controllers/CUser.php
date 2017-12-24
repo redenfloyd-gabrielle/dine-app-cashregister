@@ -54,14 +54,18 @@
 		function viewUsersList()
 		{
 			$data['users'] = $this->MUser->getUsers();
+
 			$this->load->view('imports/vSuperadminHeader');
 			$this->load->view('superadmin/vUsersList',$data);
 		}
 
-		function viewUserInfo()
+		function viewUserInfo($user_id)
 		{
+			// print_r($user_id);
+			$data['user'] = $this->MUser->getUser($user_id);
+
 			$this->load->view('imports/vSuperadminHeader');
-			$this->load->view('superadmin/vUserInfo');
+			$this->load->view('superadmin/vUserInfo',$data);
 		}
 
 		function vAddUser()
