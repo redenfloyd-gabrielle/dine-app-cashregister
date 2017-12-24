@@ -23,16 +23,6 @@
     </div>
 </div>
 
-<<<<<<< HEAD
-<?php } else if ($this->session->userdata['userSession']->user_type == 'REGULAR') {
-    redirect('CLogin/viewPos');
-} else if ($this->session->userdata['userSession']->user_type == 'SUPERADMIN') {
-    redirect('CLogin/viewSuperadminDashboard');
-} else {
-    redirect('CInitialize');
-}
-?>
-=======
 
 <div class="ui mini modal" id="confirmUpdate">
   <div class="header">Update user credentials</div>
@@ -58,4 +48,11 @@
     <a><div class="ui approve positive button">Update</div></a>
   </div>
 </div>
->>>>>>> 7b0b306a45819047994a9bdb8f14b46db9ef2ec3
+<?php } else if ($this->session->userdata['userSession']->user_type == 'REGULAR') {
+    redirect('CLogin/viewPos');
+} else if ($this->session->userdata['userSession']->user_type == 'SUPERADMIN') {
+    redirect('CLogin/viewSuperadminDashboard');
+} else {
+    redirect('CInitialize');
+}
+?>
