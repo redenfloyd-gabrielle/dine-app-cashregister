@@ -19,8 +19,17 @@
 		public function __construct(){
 
 		}
-
-		public function attemptLogin(){
+    public function getUsers()
+		{
+			$this->db->select("*");
+			$this->db->from($this::DB_TABLE);
+			// $this->db->where('user_id !=' , $this->session->userdata['empSession']['userID']);
+			$query = $this->db->get();
+			
+			return $query->result();
+		}
+    
+    public function attemptLogin(){
 			//$hashPass=hash('sha512',$this->agentPassword);
 			$query= $this->db->get_where($this::DB_TABLE,array('user_id'=>$this->user_id,'password'=>$this->user_password));
 			if($query -> num_rows() == 1){
@@ -33,6 +42,7 @@
 		public function getUser_id(){
 			return $this->user_id;
 		}
+  }
 
 		public function setUser_id($user_id){
 			$this->user_id = $user_id;
@@ -117,5 +127,4 @@
 		public function setUser_modified_on($user_modified_on){
 			$this->user_modified_on = $user_modified_on;
 		}
-	}
 ?>
