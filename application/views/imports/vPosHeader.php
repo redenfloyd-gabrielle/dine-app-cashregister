@@ -1,4 +1,4 @@
-<?php if ($this->session->userdata('userSession') && $this->session->userdata['userSession']->user_type != 'SUPERADMIN') { ?>
+<?php if ($this->session->userdata('userSession') && $this->session->userdata['userSession']['user_type'] != 'SUPERADMIN') { ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,11 +16,11 @@
 		<div class="right menu">
 			<h3 class="ui header item " id="rightTopItem">EMPLOYEE 1 &nbsp &nbsp | &nbsp &nbsp NOV 18 &nbsp &nbsp | &nbsp &nbsp 10:45 AM &nbsp &nbsp</h3>
 			<div class="hidden item"></div>
-			<a class="item" href=""><i class="very large white sign out icon"></i></a>
+			<a class="item" href="<?php echo site_url()?>/CLogin/userLogout?>"><i class="very large white sign out icon"></i></a>
 		</div>
 	</div>
 
-<?php } else if ($this->session->userdata['userSession']->user_type == 'SUPERADMIN') {
+<?php } else if ($this->session->userdata['userSession']['user_type'] == 'SUPERADMIN') {
 	 redirect('CLogin/viewSuperadminDashboard');
 } else {
     redirect('CInitialize');

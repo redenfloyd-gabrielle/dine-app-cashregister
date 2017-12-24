@@ -52,6 +52,7 @@
 				if ($result) {
 					// print_r($result);
 					$this->createSession($result);
+					// print_r($this->session->userdata['userSession']['user_type']);
 					if ($result[0]->user_type == 'ADMIN') {
 						redirect('CLogin/viewAdminDashboard');
 					} elseif ($result[0]->user_type == 'SUPERADMIN') {
