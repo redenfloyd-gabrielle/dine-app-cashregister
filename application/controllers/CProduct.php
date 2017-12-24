@@ -26,6 +26,7 @@
 		{
 			$this->load->view('imports/vAdminHeader');
 			$this->load->view('admin/vMenuList');
+			$this->load->view('imports/vAdminFooter');
 		}
 
 		function addMenu()
@@ -39,6 +40,7 @@
 		{
 			$this->load->view('imports/vAdminHeader');
 			$this->load->view('admin/vMenuInfo');
+			$this->load->view('imports/vAdminFooter');
 		}
 
 		function editMenuInfo()
