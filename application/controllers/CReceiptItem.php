@@ -5,15 +5,22 @@
 
 		public function __Construct(){
 	      parent::__Construct ();
+	      $this->load->helper('url');
 	      $this->load->database(); // load database
 	      $this->load->model('MReceiptItem');
+	      $this->load->helper('url');
 	  	}
 
 		public function index()
 		{
 			
 		}
-Item
+
+		public function viewCheckout()
+		{
+			$this->load->view('imports/vPosHeader');
+			$this->load->view('pos/vCheckout');
+		}
 	}
 
 ?>

@@ -5,6 +5,7 @@
 
 		public function __Construct(){
 	      parent::__Construct ();
+	      $this->load->helper('url');
 	      $this->load->database(); // load database
 	      $this->load->model('MGuest');
 	  	}
