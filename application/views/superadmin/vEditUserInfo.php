@@ -81,16 +81,12 @@
                             <div class='ui hidden divider'></div>
 
                             <label>POSITION</label><br>
-
-                            <div class='ui required search selection dropdown'>
-                                <input type='hidden' name='position'>
-                                <i class='dropdown icon'></i>
-                                <div class='default text'>Choose user position</div>
-                                <div class='menu'>
-                                    <div class='item' data-value='1'>Manager</div>
-                                    <div class='item' data-value='2'>Employee</div>
-                                </div>
-                            </div> <!-- position dropdown -->
+                            <select class="ui dropdown">
+                              <option value="">Choose category</option>
+                              <option value="1">Superadmin</option>
+                              <option value="2">Admin</option>
+                              <option value="3">Employee</option>
+                            </select> <!-- position dropdown -->
 
                             <div class='ui hidden divider'></div>
                             <div class='ui hidden divider'></div>
