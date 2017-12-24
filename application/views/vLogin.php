@@ -24,7 +24,7 @@
                 <div class='required field'>
                     <div class='ui left icon input'>
                         <i class='user icon'></i>
-                        <input type='text' name='userID' placeholder='Username' id='username'>
+                        <input type='number' name='userID' placeholder='ID Number' id='userID'>
                     </div>
                 </div>
                 <div class='required field'>

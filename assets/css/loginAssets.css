@@ -23,3 +23,15 @@ body>.grid {
 .column {
     max-width: 350px;
 }
+
+/* For Firefox */
+input[type='number'] {
+    -moz-appearance:textfield;
+}
+/* Webkit browsers like Safari and Chrome */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+     display: none;
+    -webkit-appearance: none;
+    margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+}
