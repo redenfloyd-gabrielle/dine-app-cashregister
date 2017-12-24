@@ -8,15 +8,29 @@
 	src: url(../fonts/Roboto-Light.ttf) format('truetype');
 }
 
+<<<<<<< HEAD
+.rbtnlabel{
+    color: white;
+    font-size: 15px;
+    padding-bottom: 15px;
+    margin: 0px;
+}
+.rtn:hover, .lbtn:hover{
+    background-color:#44749D;
+    border: 1px solid #44749D;
+=======
 @font-face{
 	font-family: 'RRegular';
 	src: url(../fonts/Roboto-Regular.ttf) format('truetype');
+>>>>>>> e203874cbf23cf07082d5f849f2bc4ccdeb58de6
 }
 
 @font-face{
 	font-family: 'SRegular';
 	src: url(../fonts/Sansation_Regular.ttf) format('truetype');
 }
+
+
 
 @font-face{
 	font-family: 'SLight';
