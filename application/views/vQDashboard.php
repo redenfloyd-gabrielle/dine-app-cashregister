@@ -1,7 +1,6 @@
 
 <div class="ui two column grid">
-	<div class="left floated left aligned seven wide column">
-	</div>
+	<?php $this->view('vQrScanner'); ?>
 	<?php $this->view('vOrder'); ?>
 </div>
 <div class="vdivide"></div

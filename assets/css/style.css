@@ -180,7 +180,7 @@ margin-right: 40px !important;
 .rbtnlabel{
     color: white;
     font-size: 15px;
-    padding-bottom: :15px;
+    padding-bottom: 15px;
     margin: 0px;
 }
 .rtn:hover, .lbtn:hover{
@@ -205,6 +205,17 @@ margin-right: 40px !important;
 .subBtn{
     float: right;
     margin: 50px;
+}
+
+.vid{
+    margin-top: 100px;
+    width: 500px;
+    height: 350px;
+ 
+}
+.scannerlabel{
+    margin: 0px;
+    padding: 0px;
 }
 
 
