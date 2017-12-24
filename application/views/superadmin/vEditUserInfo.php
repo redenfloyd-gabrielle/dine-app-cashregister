@@ -80,10 +80,6 @@
 
                             <div class='ui hidden divider'></div>
 
-                            <div class='nine wide  required field'><label>USERNAME</label><input type='text' placeholder='Enter username'></div>
-
-                            <div class='nine wide  required field'><label>EMAIL</label><input type='text' placeholder='Enter email address'></div>
-
                             <label>POSITION</label><br>
 
                             <div class='ui required search selection dropdown'>
