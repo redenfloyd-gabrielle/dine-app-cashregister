@@ -69,25 +69,31 @@
                 <h3 class='ui horizontal divider header'>
                     <i class='user icon'></i> User Information
                 </h3>
-
-                <table class='ui very basic table'>
-                    <tbody>
-                        <tr> 
-                            <td class='background-color: '>NAME</td>
-                            <td>Joanne Malaluan</td>
-                        </tr>
-                        <tr>
-                            <td>POSITION</td>
-                            <td>Manager</td>
-                        </tr>
-                    </tbody>
-                </table>
-
-                </div> <!-- twelve wide column -->
-            </div> <!-- grid -->
-        </div> <!-- thirteen wide column -->
-        <div class='column'></div>
-    </div> <!-- row-->
+                <?php if (isset($user)) {?>
+                <!-- <?php print_r($user);?>  -->
+                    <?php foreach ($user as $u) { ?>
+                    <table class='ui very basic table'>
+                        <tbody>
+                            <tr> 
+                                <td class='background-color: '>NAME</td>
+                                <td><?php echo $u->user_first_name.' '.$u->user_mi.'. '.$u->user_last_name; ?></td>
+                            </tr>
+                            <tr>
+                                <td>USER ID</td>
+                                <td><?php echo $u->user_id; ?> </td>
+                            </tr>
+                            <tr>
+                                <td>POSITION</td>
+                                <td><?php echo $u->user_type; ?> </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <?php } ?>
+                <?php } ?>
+            </div> <!-- twelve wide column -->
+        </div> <!-- grid -->
+    </div> <!-- pusher -->
+</div> <!-- segment -->
 </div> <!-- grid -->
 
 <div class="ui mini modal" id="confirmDelete">
