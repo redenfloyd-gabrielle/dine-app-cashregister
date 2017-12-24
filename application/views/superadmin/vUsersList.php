@@ -44,24 +44,26 @@
                 
                 <div class='ui hidden divider'></div>
 
-                <a href='<?php echo site_url()?>/CUser/addUser?>'><button class='ui big circular green icon button' title='Add new user'><i class='plus icon'></i></button></a>
+                <a href='<?php echo site_url()?>/CUser/vAddUser?>'><button class='ui big circular green icon button' title='Add new user'><i class='plus icon'></i></button></a>
 
                 <div class='ui hidden divider'></div>
-
-                <div class='ui stackable three cards'>
-                    <a class='ui card' href='<?php echo site_url()?>/CUser/viewUserInfo?>'>
-                        <div class='image'></div>
-                        <div class='content' id='superadmin-card'>
-                            <div class='header' id='userHeader'>
-                                Redenfloyd
-                            </div>
-                            <div class='description' id='userDesc'>
-                                CEO
-                            </div> 
-                        </div>
-                    </a>
-                </div> <!-- stackable cards -->
-
+                <?php if (isset($users)) {?>
+                    <?php foreach ($users as $u) {?>
+                        <div class='ui stackable three cards'>
+                            <a class='ui card' href='<?php echo site_url()?>/CUser/viewUserInfo?>'>
+                                <div class='image'></div>
+                                <div class='content' id='superadmin-card'>
+                                    <div class='header' id='userHeader'>
+                                        <?php echo $u->user_first_name; ?>
+                                    </div>
+                                    <div class='description' id='userDesc'>
+                                        <?php echo $u->user_type; ?>
+                                    </div> 
+                                </div>
+                            </a>
+                        </div> <!-- stackable cards -->
+                    <?php } ?>
+                <?php } ?>
                 <div class='ui hidden divider'></div>
 
                 <div class='center aligned middle aligned row'>
