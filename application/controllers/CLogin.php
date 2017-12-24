@@ -22,12 +22,14 @@
 		{
 			$this->load->view('imports/vAdminHeader');
 			$this->load->view('admin/vDashboard');
+			$this->load->view('imports/vAdminFooter');
 		}
 
 		function viewSuperadminDashboard()
 		{
 			$this->load->view('imports/vSuperadminHeader');
 			$this->load->view('superadmin/vDashboard');
+			$this->load->view('imports/vSuperadminFooter');
 		}
 
 		function viewPos()

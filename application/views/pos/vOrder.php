@@ -82,7 +82,7 @@
   <div class="row"></div>
   <div class="row orderOptions">
       <a href="<?php echo site_url();?>/CReceiptItem/viewCheckout" class="rght lbtn" style="margin-right: 50px;"><h4 class="lbtnlabel">Checkout</h4></a>
-      <a href="<?php echo site_url();?>/COrdered/viewMDashboard?>" class="rght lbtn" align="center" ><h4 class="lbtnlabel">Back</h4></a>
+      <a href="<?php echo site_url();?>/CProduct/viewMDashboard" class="rght lbtn" align="center" ><h4 class="lbtnlabel">Back</h4></a>
       <div class="column"></div>
   </div>
   <div class="row"></div>

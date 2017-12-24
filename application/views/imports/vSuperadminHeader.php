@@ -17,6 +17,7 @@
       <div class='menu' tabindex='-1'></div>
     </i>
         <div class='menu' tabindex='-1'>
+<<<<<<< HEAD
             <a href='' class='item'><i class='settings icon'></i>Settings</a>
             <a href='<?php echo site_url()?>/CLogin/userLogout' class='item'><i class='sign out icon'></i>Logout</a>
         </div>
@@ -30,3 +31,35 @@
     redirect('CInitialize');
 }
 ?>
+=======
+            <a id='changePass' class='item'><i class='lock icon'></i>Change Password</a>
+            <a href='' class='item'><i class='sign out icon'></i>Logout</a>
+        </div>
+    </div>
+</div>
+
+<div class="ui mini modal" id="confirmUpdate">
+  <div class="header">Update user credentials</div>
+  <div class="content">
+    <form class="ui form">
+        <div class="required field">
+            <label>Old Password</label>
+            <input type="password" name="" placeholder="Enter old password">
+        </div>
+        <div class="required field">
+            <label>New Password</label>
+            <input type="password" name="" placeholder="Enter new password">
+        </div>
+        <div class="required field">
+            <label>Confirm New Password</label>
+            <input type="password" name="" placeholder="Confirm new password">
+        </div>
+    </form>
+    <p></p>
+  </div>
+  <div class="actions" >
+    <div class="ui cancel negative button">Cancel</div>
+    <a><div class="ui approve positive button">Update</div></a>
+  </div>
+</div>
+>>>>>>> 7b0b306a45819047994a9bdb8f14b46db9ef2ec3

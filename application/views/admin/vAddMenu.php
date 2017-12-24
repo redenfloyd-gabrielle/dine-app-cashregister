@@ -91,28 +91,20 @@
                             <div class='nine wide  required field'><label>FOOD PRICE</label><input type='number' placeholder='Enter food price'></div>
 
                             <label>CATEGORY</label><br>
-                            <div class='ui required search selection dropdown'>
-                                <input type='hidden' name='positon'>
-                                <i class='dropdown icon'></i>
-                                <div class='default text'>Choose food category</div>
-                                <div class='menu'>
-                                    <div class='item' data-value='1'>Beverage</div>
-                                    <div class='item' data-value='2'>Meal</div>
-                                </div>
-                            </div> <!-- category dropdown -->
+                            <select class="ui dropdown">
+                              <option value="">Choose category</option>
+                              <option value="1">Beverage</option>
+                              <option value="2">Meal</option>
+                            </select> <!-- availability dropdown -->
 
                             <div class='ui hidden divider'></div>
 
                             <label>AVAILABILITY</label><br>
-                            <div class='ui required search selection dropdown'>
-                                <input type='hidden' name='position'>
-                                <i class='dropdown icon'></i>
-                                <div class='default text'>Choose food availability</div>
-                                <div class='menu'>
-                                    <div class='item' data-value='1'>Available</div>
-                                    <div class='item' data-value='0'>Not Available</div>
-                                </div>
-                            </div> <!-- availability dropdown -->
+                            <select class="ui dropdown">
+                              <option value="">Choose availability</option>
+                              <option value="1">Available</option>
+                              <option value="0">Not Available</option>
+                            </select> <!-- availability dropdown -->
 
                             <div class='ui hidden divider'></div>
                             <div class='ui hidden divider'></div>
