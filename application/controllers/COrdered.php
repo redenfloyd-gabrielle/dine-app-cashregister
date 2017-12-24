@@ -16,10 +16,7 @@
 			
 		}
  
-		function viewMDashboard(){
-			$this->load->view('imports/vPosHeader');
-			$this->load->view('pos/vMDashboard');
-		}
+		
 		function viewQDashboard(){
 			$this->load->view('imports/vPosHeader');
 			$this->load->view('pos/vQDashboard');

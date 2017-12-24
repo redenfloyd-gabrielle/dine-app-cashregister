@@ -20,6 +20,17 @@
 
 		}
 
+		public function getAllProducts(){
+			$query = $this->read_all();
+			return $query;			             
+		}
+
+		public function getProductsByCategory($cat){
+		   $where = array('product_category' =>$cat);
+		   $query = $this->read_where($where);
+		   return $query;
+		}
+
 		public function getProduct_id(){
 			return $this->product_id;
 		}
