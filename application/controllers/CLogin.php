@@ -9,7 +9,7 @@
 	      $this->load->database(); // load database
 	      $this->load->model('MUser');
 	      $this->load->library('session');
-	 	  $this->load->helper('url');
+		  $this->load->helper('url'); 
 	  	}
 
 		public function index()

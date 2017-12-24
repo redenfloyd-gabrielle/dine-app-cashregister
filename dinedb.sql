@@ -104,9 +104,9 @@ CREATE TABLE `receipt` (
 
 CREATE TABLE `receipt_item` (
   `receipt_item_id` int(11) NOT NULL,
-  `receipt_subtotal` float NOT NULL,
-  `receipt_quantity` int(11) NOT NULL,
-  `receipt_product_id` int(11) NOT NULL
+  `receipt_item_subtotal` float NOT NULL,
+  `receipt_item_quantity` int(11) NOT NULL,
+  `receipt_item_product_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
