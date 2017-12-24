@@ -54,14 +54,7 @@
     margin: 50px;
 }
 
-.vid{
-	margin: 50px 160px 10px 160px;
-    width: 500px;
-	height: 350px;
 
-}
 .scannerlabel{
-    margin: 0px;
-	padding: 0px;
-	text-align: center;
+    font-family: 'SLight', Fallback, sans-serif;
 }
