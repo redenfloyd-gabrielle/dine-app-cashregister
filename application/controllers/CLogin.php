@@ -37,18 +37,16 @@
 
 		function login(){
 			$this->load->library('form_validation');
-			$this->form_validation->set_rules('userID','Username','required');
+			$this->form_validation->set_rules('userID','User ID','required');
 			$this->form_validation->set_rules('password','Password','required');
-
 			if($this->form_validation->run()){
 				$userID = $this->input->post('userID');
 				$password = $this->input->post('password');
-
-				if($userID == 'cashier' && $password == 'cashier'){
+				if($userID == '333' && $password == 'cashier'){
 					$this->viewPos();
-				}else if($userID == 'admin' && $password == 'admin'){
+				}else if($userID == '222' && $password == 'admin'){
 					$this->viewAdminDashboard();
-				}else if($userID == 'superadmin' && $password == 'superadmin'){
+				}else if($userID == '111' && $password == 'superadmin'){
 					$this->viewSuperadminDashboard();
 				}else{
 					$this->index();
@@ -57,7 +55,5 @@
 				$this->index();
 			}
 		}
-
 	}
-
 ?>

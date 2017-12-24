@@ -37,7 +37,31 @@
 .changePrice{
 	color: red;
 }
-
 .orderSummary{
 	background-color: gray;
+}
+
+.kbtn{
+    width: 150px;
+    height: 40px;
+    background-color: white;
+    border: 1px solid gray;
+    margin: 0px;
+}
+
+.subBtn{
+    float: right;
+    margin: 50px;
+}
+
+.vid{
+	margin: 50px 160px 10px 160px;
+    width: 500px;
+	height: 350px;
+
+}
+.scannerlabel{
+    margin: 0px;
+	padding: 0px;
+	text-align: center;
 }
