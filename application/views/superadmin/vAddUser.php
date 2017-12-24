@@ -1,57 +1,69 @@
 
-<div class='ui bottom attached segment pushable'>
-    <div class='ui attached visible inverted labeled icon left inline vertical sidebar menu' id='sidebar'>
-        <a class='item' href='<?php echo site_url()?>/CUser/viewSuperadminDashboard?>'>
-            <i class='dashboard icon'></i> Dashboard
-        </a>
-        <a class='active item' href='<?php echo site_url()?>/CUser/viewUsersList?>'>
-            <i class='users icon'></i> Users
-        </a>
-    </div> <!-- sidebar menu -->
-    <div class='pusher' id='pusher'> 
-        <div class='ui grid'>
-            <div class='four wide column'>
-                <div class='ui card'>
-                    <div class='content'>
-                        <div class='header'>Joanne Malaluan</div>
-                        <div class='description'>
-                            Employee
+<!-- please include vAdminFooter para muload ang dropdown -->
+ 
+<div class='ui visible left vertical inverted sidebar labeled icon menu'>
+    <div class='borderless item'>
+        <strong>DINE</strong> 
+    </div>
+    <a class='item' href='<?php echo site_url()?>/CUser/viewSuperadminDashboard?>'>
+        <i class='dashboard icon'></i> Dashboard
+    </a>
+    <a class='active item' href='<?php echo site_url()?>/CUser/viewUsersList?>'>
+        <i class='users icon'></i> Users
+    </a>
+</div> <!-- sidebar menu -->
+ 
+
+<div class='ui grid'>
+    <div class='row'></div>
+    <div class='row'></div>
+    <div class='row'>
+        <div class='two wide column'></div>
+        <div class='thirteen wide column'>
+            <div class='ui stackable grid'>
+
+                <div class='four wide column'>
+                    <div class='ui card'>
+                        <div class='content'>
+                            <div class='header'>Joanne Malaluan</div>
+                            <div class='description'>
+                                Employee
+                            </div>
                         </div>
-                    </div>
-                    <div class='extra content' id='userContent' style='background-color:burlywood;'>
-                        <strong><i class='user icon'></i>SUPERADMIN</strong>
-                    </div>
-                </div> <!-- user info card -->
+                        <div class='extra content' id='userContent' style='background-color:burlywood;'>
+                            <strong><i class='user icon'></i>SUPERADMIN</strong>
+                        </div>
+                    </div> <!-- user info card -->
 
-                <div class='ui category search'>
-                    <div class='ui fluid icon input'>
-                        <input class='prompt' type='text' placeholder='Search . . .'>
-                        <i class='search icon'></i>
-                    </div>
-                    <div class='results'></div>
-                </div> <!-- search -->
-            </div> <!-- four wide column -->
-            <div class='twelve wide column'>
-                <h1 class='ui header'>
+                    <div class='ui category search'>
+                        <div class='ui fluid icon input'>
+                            <input class='prompt' type='text' placeholder='Search . . .'>
+                            <i class='search icon'></i>
+                        </div>
+                        <div class='results'></div>
+                    </div> <!-- search -->
+                </div> <!-- four wide column -->
+                <div class='column'></div>
+                <div class='eleven wide column'>
+                    <h1 class='ui header'>
+                        <div class='content'>
+                            USERS
+                            <div class='sub header'>Add a new user</div>
+                        </div>
+                    </h1> <!-- header -->
+
+                    <div class='ui breadcrumb'>
+                        <a class='section' href='<?php echo site_url()?>/CUser/viewUsersList?>'>USERS</a>
+                        <i class='right arrow icon divider'></i>
+                        <div class='active section'>ADD NEW USER</div>
+                    </div> <!-- breadcrumb -->
+
+                    <div class='ui hidden divider'></div>
+                    <div class='ui hidden divider'></div>
+                    <div class='ui hidden divider'></div>
+
                     <div class='content'>
-                        USERS
-                        <div class='sub header'>Add new user</div>
-                    </div>
-                </h1> <!-- header -->
-
-                <div class='ui breadcrumb'>
-                    <a class='section' href='<?php echo site_url()?>/CUser/viewUsersList?>'>USERS</a>
-                    <i class='right arrow icon divider'></i>
-                    <div class='active section'>ADD NEW USER</div>
-                </div> <!-- breadcrumb -->
-
-                <div class='ui hidden divider'></div>
-                <div class='ui hidden divider'></div>
-                <div class='ui hidden divider'></div>
-
-                <div class='content'>
-                    <form class='ui form'>
-                        <div id='fillUpForm'>
+                        <form class='ui form'>
                             <h3 class='ui horizontal divider header'>
                                 <i class='address card outline icon'></i> User Personal Information
                             </h3>
@@ -85,16 +97,23 @@
                             </div> <!-- position dropdown -->
 
                             <div class='ui hidden divider'></div>
+                            <div class='ui hidden divider'></div>
 
-                            <div class='ui submit positive right floated button'>Add</div>
-                            <a href='<?php echo site_url()?>/CUser/viewUsersList?>'><div class='ui submit negative right floated button'>Cancel</div></a>
-                        </div> <!-- fillUpForm -->
-                    </form> <!-- form -->
-                </div> <!-- content -->
-            </div> <!-- twelve wide column -->
-        </div> <!-- grid -->
-    </div> <!-- pusher -->
-</div> <!-- segment -->
+                            <a href="<?php echo site_url()?>/CUser/viewUsersList?>"><div class='ui submit negative button'>Cancel</div></a>
+
+                            <div class='ui submit positive button'>Add</div>
+
+                            <div class='ui hidden divider'></div>
+
+                        </form> <!-- form -->
+                    </div> <!-- content -->
+                </div> <!-- twelve wide column -->
+            </div> <!-- grid -->
+        </div> <!-- thirteen wide column -->
+        <div class='column'></div>
+    </div> <!-- row-->
+</div> <!-- grid -->
+
 
 </body>
 </html>

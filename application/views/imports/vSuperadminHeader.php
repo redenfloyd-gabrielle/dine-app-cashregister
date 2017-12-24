@@ -8,11 +8,8 @@
     <script src='<?php echo base_url("assets/semantic/semantic.min.js")?>'></script>
 </head>
 <body>
-
-<div class='ui top attached inverted menu'>
-    <a class='borderless item' href=''>
-        <strong>DINE</strong>
-    </a>
+ 
+<div class='ui sticky fixed inverted menu'>
     <div class='ui right floated simple dropdown item' tabindex='0'>
         <i class='user icon'></i>Profile
         <i class='dropdown icon' tabindex='0'>

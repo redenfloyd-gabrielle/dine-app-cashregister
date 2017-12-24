@@ -1,8 +1,3 @@
-#pusher {
-    padding: 20px 45px 20px 20px;
-    left: -150px;
-    max-width: 90%;
-}
 
 #userDesc {
     text-align: center;
@@ -11,14 +6,6 @@
 #userHeader {
     margin-top: 5px;
     text-align: center;
-}
-
-#sidebar {
-    height: 100%;
-}
-
-#fillUpForm {
-    margin: 0 auto;
 }
 
 #userContent{
