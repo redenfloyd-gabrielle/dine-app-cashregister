@@ -48,8 +48,8 @@
 
                 <div class='ui hidden divider'></div>
                 <?php if (isset($users)) {?>
-                    <?php foreach ($users as $u) {?>
-                        <div class='ui stackable three cards'>
+                    <div class='ui stackable three cards'>
+                        <?php foreach ($users as $u) {?>
                             <a class='ui card' href='<?php echo site_url()?>/CUser/viewUserInfo?>'>
                                 <div class='image'></div>
                                 <div class='content' id='superadmin-card'>
@@ -61,8 +61,8 @@
                                     </div> 
                                 </div>
                             </a>
-                        </div> <!-- stackable cards -->
-                    <?php } ?>
+                        <?php } ?>
+                    </div> <!-- stackable cards -->
                 <?php } ?>
                 <div class='ui hidden divider'></div>
 
