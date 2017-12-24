@@ -18,15 +18,16 @@
               <div class="active section">Category Name</div>
             </div>  
             <div class="ui three cards">
-
+            <?php if(isset($products)) { ?>
+              <?php foreach ($products as $prod){ ?>
               <div class="ui grey card">
                 <img class="ui centered fluid image" src= "<?php echo base_url('assets/images/rice.png')?>">
                 <div class="content">
-                  <div class="header">Product Name</div>
+                  <div class="header"><?php echo $prod->product_name; ?></div>
                 </div>
                 <div class="extra content">
                   <span class="left floated price ">
-                    P450.00
+                  <?php echo $prod->product_price; ?>
                   </span>
                   <button class="right floated cart pbtn">
                       <i class="cart icon"></i>
@@ -34,61 +35,11 @@
                   </button>
                 </div>
               </div>
-
+              <?php } ?>
+            <?php } ?>
             
 
-              <div class="ui grey card">
-                <img class="ui centered fluid image" src= "<?php echo base_url('assets/images/rice.png')?>">
-                <div class="content">
-                  <div class="header">Product Name</div>
-                </div>
-                <div class="extra content">
-                  <span class="left floated price ">
-                    P450.00
-                  </span>
-                  <button class="right floated cart pbtn">
-                      <i class="cart icon"></i>
-                    Order
-                  </button>
-                </div>
-              </div>
-
-
-
-
-              <div class="ui grey card">
-                <img class="ui centered fluid image" src= "<?php echo base_url('assets/images/rice.png')?>">
-                <div class="content">
-                  <div class="header">Product Name</div>
-                </div>
-                <div class="extra content">
-                  <span class="left floated price ">
-                    P450.00
-                  </span>
-                  <button class="right floated cart pbtn">
-                      <i class="cart icon"></i>
-                    Order
-                  </button>
-                </div>
-              </div>
-
-
-              <div class="ui grey card">
-                <img class="ui centered fluid image" src= "<?php echo base_url('assets/images/rice.png')?>">
-                <div class="content">
-                  <div class="header">Product Name</div>
-                </div>
-                <div class="extra content">
-                  <span class="left floated price ">
-                    P450.00
-                  </span>
-                  <button class="right floated cart pbtn">
-                      <i class="cart icon"></i>
-                    Order
-                  </button>
-                </div>
-              </div>
-
+              
               
             </div>
           </div>
