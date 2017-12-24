@@ -6,5 +6,5 @@ $(document).ready(function(){
 	$('#changePass').click(function(){
 		$('#confirmUpdate').modal('show');
 	})
-});
+}); 
 </script> 
