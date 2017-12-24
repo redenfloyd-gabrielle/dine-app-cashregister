@@ -77,14 +77,6 @@
                             <td>Joanne Malaluan</td>
                         </tr>
                         <tr>
-                            <td>USERNAME</td>
-                            <td>malaluanjo</td>
-                        </tr>
-                        <tr>
-                            <td>EMAIL ADDRESS</td>
-                            <td>malaluanjo@gmail.com</td>
-                        </tr>
-                        <tr>
                             <td>POSITION</td>
                             <td>Manager</td>
                         </tr>

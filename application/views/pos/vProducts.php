@@ -20,9 +20,9 @@
             <div class="ui three cards">
 
               <div class="ui grey card">
+                <img class="ui centered fluid image" src= "<?php echo base_url('assets/images/rice.png')?>">
                 <div class="content">
                   <div class="header">Product Name</div>
-                  <img class="ui image" src= "<?php echo base_url('assets/images/rice.png')?>">
                 </div>
                 <div class="extra content">
                   <span class="left floated price ">
@@ -34,12 +34,13 @@
                   </button>
                 </div>
               </div>
-              <!-- -------------------------- -->
+
+            
 
               <div class="ui grey card">
+                <img class="ui centered fluid image" src= "<?php echo base_url('assets/images/rice.png')?>">
                 <div class="content">
                   <div class="header">Product Name</div>
-                  <img class="ui image" src= "<?php echo base_url('assets/images/rice.png')?>">
                 </div>
                 <div class="extra content">
                   <span class="left floated price ">
@@ -51,12 +52,14 @@
                   </button>
                 </div>
               </div>
-              <!-- -------------------------- -->
+
+
+
 
               <div class="ui grey card">
+                <img class="ui centered fluid image" src= "<?php echo base_url('assets/images/rice.png')?>">
                 <div class="content">
                   <div class="header">Product Name</div>
-                  <img class="ui image" src= "<?php echo base_url('assets/images/rice.png')?>">
                 </div>
                 <div class="extra content">
                   <span class="left floated price ">
@@ -68,12 +71,12 @@
                   </button>
                 </div>
               </div>
-              <!-- -------------------------- -->
+
 
               <div class="ui grey card">
+                <img class="ui centered fluid image" src= "<?php echo base_url('assets/images/rice.png')?>">
                 <div class="content">
                   <div class="header">Product Name</div>
-                  <img class="ui image" src= "<?php echo base_url('assets/images/rice.png')?>">
                 </div>
                 <div class="extra content">
                   <span class="left floated price ">
@@ -85,7 +88,8 @@
                   </button>
                 </div>
               </div>
-              <!-- -------------------------- -->
+
+              
             </div>
           </div>
           <div class="column"></div>
