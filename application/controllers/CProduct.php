@@ -9,6 +9,7 @@
 	      $this->load->database(); // load database
 	      $this->load->model('MProduct');
 	      $this->load->helper('url');
+	      $this->load->library('session');
 	  	}
 
 		public function index()

@@ -14,7 +14,7 @@
     </div>
     <div class='column'></div>
     <div class='eight wide column'>
-        <form class='ui tiny form' method='POST' action='<?php echo site_url()?>/CLogin/login?>'>
+        <form class='ui tiny form' method='POST' action='<?php echo site_url()?>/CLogin/userLogin?>'>
             <div class='ui basic secondary segment'>
                 <h3 class='ui middle aligned header'>
                     <div class='content'>
@@ -24,7 +24,7 @@
                 <div class='required field'>
                     <div class='ui left icon input'>
                         <i class='user icon'></i>
-                        <input type='number' name='userID' placeholder='ID Number' id='userID'>
+                        <input type='number' name='user_id' placeholder='ID Number' id='userID'>
                     </div>
                 </div>
                 <div class='required field'>

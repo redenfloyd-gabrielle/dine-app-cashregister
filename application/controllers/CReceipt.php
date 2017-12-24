@@ -8,6 +8,7 @@
 	      $this->load->helper('url');
 	      $this->load->database(); // load database
 	      $this->load->model('MReceipt');
+	      $this->load->library('session');
 	  	}
 
 		public function index()
