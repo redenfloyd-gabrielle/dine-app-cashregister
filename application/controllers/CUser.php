@@ -42,6 +42,7 @@
 		{
 			$this->load->view('imports/vAdminHeader');
 			$this->load->view('admin/vDashboard');
+			$this->load->view('imports/vAdminFooter');
 		}
 
 		function viewSuperadminDashboard()
@@ -49,6 +50,7 @@
 
 			$this->load->view('imports/vSuperadminHeader');
 			$this->load->view('superadmin/vDashboard');
+			$this->load->view('imports/vSuperadminFooter');
 		}
 
 		function viewUsersList()
@@ -56,7 +58,8 @@
 			$data['users'] = $this->MUser->getUsers();
 
 			$this->load->view('imports/vSuperadminHeader');
-			$this->load->view('superadmin/vUsersList',$data);
+			$this->load->view('superadmin/vUsersList',$data);	
+			$this->load->view('imports/vSuperadminFooter');
 		}
 
 		function viewUserInfo($user_id)
@@ -66,6 +69,7 @@
 
 			$this->load->view('imports/vSuperadminHeader');
 			$this->load->view('superadmin/vUserInfo',$data);
+			$this->load->view('imports/vSuperadminFooter');
 		}
 
 		function vAddUser()
