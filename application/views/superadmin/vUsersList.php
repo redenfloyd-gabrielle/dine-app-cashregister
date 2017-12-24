@@ -58,7 +58,6 @@
                 <a href='<?php echo site_url()?>/CUser/vAddUser?>'><button class='ui big circular green icon button' title='Add new user'><i class='plus icon'></i></button></a>
 
                 <div class='ui hidden divider'></div>
-<<<<<<< HEAD
                 <?php if (isset($users)) {?>
                     <div class='ui stackable three cards'>
                         <?php foreach ($users as $u) {?>
@@ -75,28 +74,7 @@
                             </a>
                         <?php } ?>
                     </div> <!-- stackable cards -->
-                <?php } ?>
-=======
-                  
-																<?php if (isset($users)) {?>
-																	<div class='ui stackable three cards'>
-																					<?php foreach ($users as $u) {?>
-																									<a class='ui card' href='<?php echo site_url()?>/CUser/viewUserInfo?>'>
-																													<div class='image'></div>
-																													<div class='content' id='superadmin-card'>
-																																	<div class='header' id='userHeader'>
-																																					<?php echo $u->user_first_name; ?>
-																																	</div>
-																																	<div class='description' id='userDesc'>
-																																					<?php echo $u->user_type; ?>
-																																	</div> 
-																													</div>
-																									</a>
-																					<?php } ?>
-																		</div> <!-- stackable cards -->
-																<?php } ?>
-
->>>>>>> e32d96f9bf0552f168713ffaaf166d3de3f84a26
+                <?php } ?>                
                 <div class='ui hidden divider'></div>
 
                 <div class='center aligned middle aligned row'>

@@ -69,8 +69,6 @@
                 <h3 class='ui horizontal divider header'>
                     <i class='user icon'></i> User Information
                 </h3>
-
-<<<<<<< HEAD
                 <?php if (isset($user)) {?>
                 <!-- <?php print_r($user);?>  -->
                     <?php foreach ($user as $u) { ?>
@@ -96,29 +94,7 @@
         </div> <!-- grid -->
     </div> <!-- pusher -->
 </div> <!-- segment -->
-
-
-=======
-                <table class='ui very basic table'>
-                    <tbody>
-                        <tr> 
-                            <td class='background-color: '>NAME</td>
-                            <td>Joanne Malaluan</td>
-                        </tr>
-                        <tr>
-                            <td>POSITION</td>
-                            <td>Manager</td>
-                        </tr>
-                    </tbody>
-                </table>
-
-                </div> <!-- twelve wide column -->
-            </div> <!-- grid -->
-        </div> <!-- thirteen wide column -->
-        <div class='column'></div>
-    </div> <!-- row-->
 </div> <!-- grid -->
->>>>>>> e32d96f9bf0552f168713ffaaf166d3de3f84a26
 
 <div class="ui mini modal" id="confirmDelete">
   <div class="header">Delete account</div>
