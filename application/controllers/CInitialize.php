@@ -2,7 +2,7 @@
 	defined('BASEPATH') OR exit('No direct script access allowed');
 
 	class CInitialize extends CI_Controller {
-
+        
 		/**
 		 * Index Page for this controller.
 		 *
@@ -18,9 +18,15 @@
 		 * map to /index.php/welcome/<method_name>
 		 * @see https://codeigniter.com/user_guide/general/urls.html
 		 */
-		public function index()
+
+		public function __Construct(){
+	      parent::__Construct ();
+	 	    $this->load->helper('url');
+	  }
+
+		public function index() 
 		{
-			$this->load->view('welcome_message');
+			$this->load->view('vLogin');
 		}
 	}
 
