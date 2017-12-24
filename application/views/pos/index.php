@@ -24,7 +24,7 @@
      </a>
     </div>
     <div class="six wide center aligned middle aligned stackable column">
-      <a href="<?php echo site_url()?>/COrdered/viewMDashboard?>"><img src= "<?php echo base_url('assets/images/hand.png ')?>" class="ui centered small image">
+      <a href="<?php echo site_url()?>/CProduct/viewMDashboard?>"><img src= "<?php echo base_url('assets/images/hand.png ')?>" class="ui centered small image">
         <h2 class="ui header itemLabels">Input Order</h2>
       </a>
     </div> 

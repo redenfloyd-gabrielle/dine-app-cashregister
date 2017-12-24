@@ -83,18 +83,13 @@
 
                             <div class='ui hidden divider'></div>
 
-                           <label>POSITION</label><br>
-
-                            <div class='ui required search selection dropdown' name="position" >
-                                <input type='hidden' name='position'>
-                                <i class='dropdown icon'></i>
-                                <div class='default text'>Choose user position</div>
-                                <div class='menu' value="<?php echo $u->user_type;?>">
-                                    <div class='item' data-value='SUPERADMIN'>Superadmin</div>
-                                    <div class='item' data-value='ADMIN'>Manager</div>
-                                    <div class='item' data-value='REGULAR'>Employee</div>
-                                </div>
-                            </div> <!-- position dropdown -->
+                            <label>POSITION</label><br>
+                            <select class="ui dropdown">
+                              <option value="">Choose category</option>
+                              <option value="1">Superadmin</option>
+                              <option value="2">Admin</option>
+                              <option value="3">Employee</option>
+                            </select> <!-- position dropdown -->
 
                             <div class='ui hidden divider'></div>
                             <div class='ui hidden divider'></div>

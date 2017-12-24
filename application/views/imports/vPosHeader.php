@@ -1,3 +1,4 @@
+<?php if ($this->session->userdata('userSession') && $this->session->userdata['userSession']->user_type != 'SUPERADMIN') { ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,3 +19,10 @@
 			<a class="item" href=""><i class="very large white sign out icon"></i></a>
 		</div>
 	</div>
+
+<?php } else if ($this->session->userdata['userSession']->user_type == 'SUPERADMIN') {
+	 redirect('CLogin/viewSuperadminDashboard');
+} else {
+    redirect('CInitialize');
+}
+?>
