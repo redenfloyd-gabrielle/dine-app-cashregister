@@ -1,4 +1,4 @@
-<?php if ($this->session->userdata('userSession') && $this->session->userdata['userSession']->user_type == 'SUPERADMIN') { ?>
+<?php if ($this->session->userdata('userSession') && $this->session->userdata['userSession']['user_type'] == 'SUPERADMIN') { ?>
  <!DOCTYPE html>
 <html>
 <head>
@@ -17,23 +17,8 @@
       <div class='menu' tabindex='-1'></div>
     </i>
         <div class='menu' tabindex='-1'>
-<<<<<<< HEAD
-            <a href='' class='item'><i class='settings icon'></i>Settings</a>
-            <a href='<?php echo site_url()?>/CLogin/userLogout' class='item'><i class='sign out icon'></i>Logout</a>
-        </div>
-    </div>
-</div>
-<?php } else if ($this->session->userdata['userSession']->user_type == 'REGULAR') {
-    redirect('CLogin/viewPos');
-} else if ($this->session->userdata['userSession']->user_type == 'ADMIN') {
-    redirect('CLogin/viewAdminDashboard');
-} else {
-    redirect('CInitialize');
-}
-?>
-=======
             <a id='changePass' class='item'><i class='lock icon'></i>Change Password</a>
-            <a href='' class='item'><i class='sign out icon'></i>Logout</a>
+            <a href='<?php echo site_url()?>/CLogin/userLogout?>' class='item'><i class='sign out icon'></i>Logout</a>
         </div>
     </div>
 </div>
@@ -62,4 +47,12 @@
     <a><div class="ui approve positive button">Update</div></a>
   </div>
 </div>
->>>>>>> 7b0b306a45819047994a9bdb8f14b46db9ef2ec3
+<?php 
+} else if ($this->session->userdata['userSession']['user_type'] == 'REGULAR') {
+    redirect('CLogin/viewPos');
+} else if ($this->session->userdata['userSession']['user_type'] == 'ADMIN') {
+    redirect('CLogin/viewAdminDashboard');
+} else {
+    redirect('CInitialize');
+}
+?>
