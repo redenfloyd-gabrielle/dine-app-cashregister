@@ -17,10 +17,22 @@
 			$this->load->view('vLogin');
 		}
 
-		function viewIndex()
+		function viewAdminDashboard()
 		{
-			$this->load->view('imports/vHeader');
-			$this->load->view('index');
+			$this->load->view('imports/vAdminHeader');
+			$this->load->view('admin/vDashboard');
+		}
+
+		function viewSuperadminDashboard()
+		{
+			$this->load->view('imports/vSuperadminHeader');
+			$this->load->view('superadmin/vDashboard');
+		}
+
+		function viewPos()
+		{
+			$this->load->view('imports/vPosHeader');
+			$this->load->view('pos/index');
 		}
 
 		function login(){
@@ -32,8 +44,12 @@
 				$userID = $this->input->post('userID');
 				$password = $this->input->post('password');
 
-				if($userID == '123' && $password == 'user'){
-					$this->viewIndex();
+				if($userID == 'cashier' && $password == 'cashier'){
+					$this->viewPos();
+				}else if($userID == 'admin' && $password == 'admin'){
+					$this->viewAdminDashboard();
+				}else if($userID == 'superadmin' && $password == 'superadmin'){
+					$this->viewSuperadminDashboard();
 				}else{
 					$this->index();
 				}

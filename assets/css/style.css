@@ -1,213 +1,24 @@
-/* For Firefox */
-input[type='number'] {
-    -moz-appearance:textfield;
-}
-/* Webkit browsers like Safari and Chrome */
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-     display: none;
-    -webkit-appearance: none;
-    margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+@font-face{
+	font-family: 'RBlack';
+	src: url(../fonts/Roboto-Black.ttf) format('truetype');
 }
 
-body{
-    background-color: white !important;
-    max-width: 100%;
-    overflow-x: hidden;
-}
-.smlogo{
-    height: 80px;
-    width: 110px;
-    margin-top : 40px;
-}
-.pos{
-    font-size: 50px;
-    color: white;
-    font-weight: bold;
-}
-.col{
-    max-width: 350px;
-    margin-top:150px;
-}
-.login{
-    background-color: #6e7f80;
-}
-.login > .grid{
-    height: 100vh;
-}
-.loginbox{
-    margin-top: 25px;
+@font-face{
+	font-family: 'RLight';
+	src: url(../fonts/Roboto-Light.ttf) format('truetype');
 }
 
-.head{
-    background-color: #65737e !important;
-    height: 60px;
-}
-.logout{
-    padding: 10px 15px;
-    color: white;
-}
-.headlogo{
-    height: 40px;
-    width: 50px;
- /*   margin: 10px 20px;*/
- margin-top:10px;
- margin-left: 10px;
-}
-.username{
-    color: white;
-    text-transform: uppercase;
-    margin: 20px;
-}
-.headname{
-    color: white;
-    text-transform: uppercase;
-    margin-bottom:10px;
-    margin-left: 10px;
-}
-.rght{
-    float:right;
-}
-.lft{
-    float: left;
-}
-.r1{
-    margin-top:100px;
-}
-.qr{
-    margin-left: 280px;
-}
-.manual{
-    margin-right: 280px;
-}
-.order{
-   margin: 60px !important;
- }
-.option{
-    height: 185px;
-    width: 185px;
-}
-.vdivide{
-    border-left: 2px solid #303030;;
-    height: 110vh;
-    position: absolute;
-    left: 55%;
-    top: 60px;
-}
-.cardbox{
-    margin:25px 35px 0px 25px;
-    height: 70px;
-    width: 70px;
-}
-.ordertbl{
-    width: 620px;
-    margin-bottom: 200px;
-}
-.rf{
-    float: right;
-    margin-right: 100px;
-}
-.ilabel{
-    margin-left: 180px !important;
+@font-face{
+	font-family: 'RRegular';
+	src: url(../fonts/Roboto-Regular.ttf) format('truetype');
 }
 
-.divide{
-margin-right: 40px !important;
-}
-.eicon{
-    float: right;
-    margin-right: 50px;
-    height: 150px;
-    width: 50px;
-}
-.sub{ 
-    margin: 5px;
-    margin-left: 220px;
+@font-face{
+	font-family: 'SRegular';
+	src: url(../fonts/Sansation_Regular.ttf) format('truetype');
 }
 
-.hbox{
-    background-color: #C6D4E1;
-    text-align: center;
-    padding: 5px;
-    margin-right: 25px;
+@font-face{
+	font-family: 'SLight';
+	src: url(../fonts/Sansation_Light.ttf) format('truetype');
 }
-
-.mid{
-    text-align: center;
-}
-.change{
-    color: green;
-}
-.value{
-    margin-left: 15px;
-}
-.total{
-    margin-left: 50px;
-}
-.pbox{
-    margin-bottom: 10px;
-}
-
-/*BUTTON STYLING HERE*/
-.cbtn{
-    margin-top: 50px;
-}
-.rbtn{
-    width: 100px;
-    float: right;
-    margin:50px 30px 0px 0px;
-    height: 55px;
-    background-color: #3886c9;
-    border: 1px solid #3886c9;
-    color: white;
-    font-size: 20px;
-}
-.lbtn{
-    width: 100px;
-    margin:50px 10px 0px 10px;
-    height: 55px;
-    background-color: #336699;
-    border: 1px solid #336699;
-}
-
-.lbtnlabel{
-    color: white;
-    font-size: 15px;
-    padding:15px;
-    margin: 0px;
-}
-
-.rbtnlabel{
-    color: white;
-    font-size: 15px;
-    padding-bottom: :15px;
-    margin: 0px;
-}
-.rtn:hover, .lbtn:hover{
-    background-color:#44749D;
-    border: 1px solid #44749D;
-}
-
-.pbtn{
-    border: none;
-    background-color:white;
-}
-
-.kbtn{
-    width: 150px;
-    height: 40px;
-    background-color: white;
-    border: 1px solid gray;
-    margin: 0px;
-}
-
-
-.subBtn{
-    float: right;
-    margin: 50px;
-}
-
-
-
-
-

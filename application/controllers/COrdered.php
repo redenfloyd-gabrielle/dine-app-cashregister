@@ -15,14 +15,14 @@
 		{
 			
 		}
-
+ 
 		function viewMDashboard(){
-			$this->load->view('imports/vHeader');
-			$this->load->view('vMDashboard');
+			$this->load->view('imports/vPosHeader');
+			$this->load->view('pos/vMDashboard');
 		}
 		function viewQDashboard(){
-			$this->load->view('imports/vHeader');
-			$this->load->view('vQDashboard');
+			$this->load->view('imports/vPosHeader');
+			$this->load->view('pos/vQDashboard');
 		}
 
 	}

@@ -1,39 +1,43 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>POS</title>
-  <link type="text/css" rel="stylesheet" href="<?php echo base_url('assets/css/style.css')?>" />
-  <link type="text/css" rel="stylesheet" href="<?php echo base_url('assets/semantic/dist/semantic.min.css')?>" />
+    <title>Dine-Login</title>
+    <link rel='stylesheet' href='<?php echo base_url("assets/css/loginAssets.css")?>'>
+    <link rel='stylesheet' href='<?php echo base_url("assets/semantic/semantic.min.css")?>'>
 </head>
 <body>
-  <div class="login">
-    <div class="ui middle aligned center aligned grid">
-      <div class="column col">
-        <div class="row">
-          <img src= "<?php echo base_url('assets/images/logo.png')?>" class="smlogo">
-          <span class="pos">POS</span>
-        </div>   
-        <form class="ui small form" method="POST" action="<?php echo site_url()?>/CLogin/login?>">
-          <div class="ui segment loginbox">
-            <div class="required field">
-              <div class="ui left icon input">
-                <i class="user icon"></i>
-                <input type="number" name="userID" id = "user" placeholder="Username" required="" >
-              </div>
-            </div>
-            <div class="required field">
-              <div class="ui left icon input">
-                <i class="lock icon"></i>
-                <input type="password" name="password" id = "pass" placeholder="Password" required="">
-              </div>
-            </div>
-            <input type="submit" class="ui fluid large blue submit button" name="login" value="Login">
-              <!-- Login -->
-            <!-- </button> -->
-          </div>
-        </form>
-      </div>
+
+<div class='page-bg'></div>
+<div class='ui middle aligned center aligned stackable relaxed grid'>
+    <div class='eight wide column'>
+        <img class='ui fluid medium center aligned middle aligned image' src='<?php echo base_url("assets/images/logo.png")?>'>
     </div>
-  </div>
+    <div class='column'></div>
+    <div class='eight wide column'>
+        <form class='ui tiny form' method='POST' action='<?php echo site_url()?>/CLogin/login?>'>
+            <div class='ui basic secondary segment'>
+                <h3 class='ui middle aligned header'>
+                    <div class='content'>
+                        Welcome!
+                    </div> 
+                </h3>
+                <div class='required field'>
+                    <div class='ui left icon input'>
+                        <i class='user icon'></i>
+                        <input type='text' name='userID' placeholder='Username' id='username'>
+                    </div>
+                </div>
+                <div class='required field'>
+                    <div class='ui left icon input'>
+                        <i class='lock icon'></i>
+                        <input type='password' name='password' placeholder='Password' id='password'>
+                    </div>
+                </div>
+                <input type='submit' class='ui fluid teal medium submit button sbutton' value='LOGIN'>
+                <div class='ui error message'></div>
+            </div>
+        </form>
+    </div>
+</div>
 </body>
 </html>

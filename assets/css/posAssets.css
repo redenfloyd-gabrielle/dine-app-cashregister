@@ -1,0 +1,43 @@
+
+
+#topMenu{
+    background-color: #65737e
+}
+
+#topItem{
+    color: white; font-family: 'RBlack', Fallback, sans-serif; font-size: 20px;
+}
+
+#rightTopItem{
+    color: white; font-family: 'SLight', Fallback, sans-serif; font-size: 20px;
+}
+
+.itemLabels{
+	font-family: 'SRegular' !important , Fallback, sans-serif;
+}
+
+.headerName{
+	font-family: 'RRegular' , Fallback, sans-serif;
+}
+
+.subHeaderName{
+	font-family: 'RLight' , Fallback, sans-serif;
+}
+
+.noOfItems{
+	font-size: 20px;
+}
+
+.orderOptions{
+	position: fixed;
+	bottom: 0;
+	right: 0;
+}
+
+.changePrice{
+	color: red;
+}
+
+.orderSummary{
+	background-color: gray;
+}

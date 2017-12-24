@@ -18,8 +18,8 @@
 
 		public function viewCheckout()
 		{
-			$this->load->view('imports/vHeader');
-			$this->load->view('vCheckout');
+			$this->load->view('imports/vPosHeader');
+			$this->load->view('pos/vCheckout');
 		}
 	}
 
