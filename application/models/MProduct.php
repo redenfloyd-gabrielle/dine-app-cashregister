@@ -20,6 +20,47 @@
 
 		}
 
+		public function do_upload_product($id)
+		{
+			$config = array(
+				'upload_path' => "./assets/images",
+				'allowed_types' => "gif|jpg|png|jpeg",
+				'overwrite' => TRUE,
+				'max_size' => "100000000000000000000000000000000000000000000000000000", // Can be set to particular file size , here it is 2 MB(2048 Kb)
+				'max_height' => "1000000000000",
+				'max_width' => "1000000000"
+			);
+
+			$this->load->library('upload', $config);
+			
+			if ( ! $this->upload->do_upload('image'))
+			{
+				$error = array('error' => $this->upload->display_errors());
+				return false;
+			}
+			else
+			{
+				$data = array('upload_data' => $this->upload->data()); //actual uploading
+				
+				if($this->insertPhotoProduct($this->upload->data()['file_name'], $id)) { //query to db
+					return true;	
+				} else {
+					return false;
+				}
+			}
+		}
+		
+		//called upon uploading file
+		public function insertPhotoProduct($filename,$id) 
+		{ 
+			$where = array(
+				"product_image" =>  "assets/images/".$filename,
+			);
+
+			return $result = $this->update($id, $where);
+		}
+
+
 		public function getAllProducts(){
 			$query = $this->read_all();
 			return $query;			             
