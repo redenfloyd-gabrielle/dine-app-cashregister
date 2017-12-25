@@ -4,6 +4,7 @@
 		private $order_item_qty;
 		private $order_item_subtotal;
 		private $order_item_product_id;
+		private $order_item_ordered_id;
 		
 
     	const DB_TABLE = "order_item";
@@ -43,6 +44,14 @@
 
 		public function setOrder_item_product_id($order_item_product_id){
 			$this->order_item_product_id = $order_item_product_id;
+		}
+
+		public function getOrder_item_ordered_id(){
+			return $this->order_item_ordered_id;
+		}
+
+		public function setOrder_item_ordered_id($order_item_ordered_id){
+			$this->order_item_ordered_id = $order_item_ordered_id;
 		}
 	}
 ?>

@@ -23,6 +23,12 @@
 			$this->load->view('pos/vQDashboard');
 		}
 
+		function displayOrder(){
+			$qr = $_POST['qr'];
+			
+			$this->load->view('pos/vQrScan');
+			
+		}
 	}
 
 ?>

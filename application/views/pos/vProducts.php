@@ -13,7 +13,7 @@
           <div class="column"></div>
           <div class="fourteen wide column"> 
             <div class="ui breadcrumb">
-              <a class="section" href="<?php echo site_url()?>/COrdered/viewMDashboard?>">Home</a>
+              <a class="section" href="<?php echo site_url()?>/CProduct/viewMDashboard?>">Home</a>
               <i class="right chevron icon divider"></i>
               <div class="active section">Category Name</div>
             </div>  
@@ -36,22 +36,17 @@
                 </div>
               </div>
               <?php } ?>
-            <?php } ?>
-            
-
-              
-              
+            <?php } ?> 
             </div>
           </div>
           <div class="column"></div>
         </div>
       </div>
     </div>
-    <div class="column">
-      <?php $this->view('pos/vOrder'); ?>
-    </div>
+    <?php $this->view('pos/vOrder'); ?>
   </div>
 </div>
 <!-- <div class="vdivide"></div> -->
 </body>
 </html>
+<

@@ -4,6 +4,7 @@
 		private $receipt_item_subtotal;
 		private $receipt_item_quantity;
 		private $receipt_item_product_id;
+		private $receipt_item_receipt_id;
 		
 
     	const DB_TABLE = "receipt_item";
@@ -45,8 +46,13 @@
 			$this->receipt_item_product_id = $receipt_item_product_id;
 		}
 
+		public function getReceipt_item_receipt_id(){
+			return $this->receipt_item_receipt_id;
+		}
 
-
+		public function setReceipt_item_receipt_id($receipt_item_receipt_id){
+			$this->receipt_item_receipt_id = $receipt_item_receipt_id;
+		}
 
 	}
 ?>

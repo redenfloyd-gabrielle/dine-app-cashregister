@@ -21,7 +21,6 @@
         <div class='two wide column'></div>
         <div class='thirteen wide column'>
             <div class='ui stackable grid'>
-
                 <div class='four wide column'>
                     <div class='ui card'>
                         <div class='content'>
@@ -83,7 +82,7 @@
                             <div class='ui hidden divider'></div>
 
                             <label>POSITION</label><br>
-                            <select class="ui dropdown">
+                            <select class="ui dropdown" name="position">
                               <option value="">Choose category</option>
                               <option value="1">Superadmin</option>
                               <option value="2">Admin</option>

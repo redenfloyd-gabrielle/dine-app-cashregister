@@ -4,15 +4,17 @@
 		private $ordered_time;
 		private $ordered_qr_code;
 		private $ordered_total;
-		private $ordered_order_item;
 		private $ordered_guest_id;
 
     	const DB_TABLE = "ordered";
-    	const DB_TABLE_PK = "ordered_id";
+		const DB_TABLE_PK = "ordered_id";
+		
 
 		public function __construct(){
 
 		}
+
+
 
 		public function getOrdered_id(){
 			return $this->ordered_id;

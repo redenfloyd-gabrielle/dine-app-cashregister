@@ -83,7 +83,6 @@
     </div>
 
 
-
     <div class="column">
       <div class="ui unstackable grid">
 
@@ -125,7 +124,7 @@
             <div class="ui right labeled input ilabel">
               <label for="amount" class="ui label">P</label>
               <input type="text" placeholder="Amount" id="amount">
-              <div class="ui basic label">.00</div>
+              <div class="ui basic label button">.00</div>
             </div>
           </div>
           <div class="column"></div>
