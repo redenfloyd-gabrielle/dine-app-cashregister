@@ -43,7 +43,6 @@ CREATE TABLE `ordered` (
   `ordered_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `ordered_qr_code` int(11) NOT NULL,
   `ordered_total` float NOT NULL,
-  `ordered_order_item` int(11) NOT NULL,
   `ordered_guest_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -57,7 +56,8 @@ CREATE TABLE `order_item` (
   `order_item_id` int(11) NOT NULL,
   `order_item_qty` int(11) NOT NULL,
   `order_item_subtotal` float NOT NULL,
-  `order_item_product_id` int(11) NOT NULL
+  `order_item_product_id` int(11) NOT NULL,
+  `order_item_ordered_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -92,8 +92,7 @@ CREATE TABLE `receipt` (
   `receipt_total` float NOT NULL,
   `receipt_cashier` int(11) NOT NULL,
   `receipt_cash` float NOT NULL,
-  `receipt_change` float NOT NULL,
-  `receipt_receipt_item_id` int(11) NOT NULL
+  `receipt_change` float NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -106,7 +105,8 @@ CREATE TABLE `receipt_item` (
   `receipt_item_id` int(11) NOT NULL,
   `receipt_item_subtotal` float NOT NULL,
   `receipt_item_quantity` int(11) NOT NULL,
-  `receipt_item_product_id` int(11) NOT NULL
+  `receipt_item_product_id` int(11) NOT NULL,
+  `receipt_item_receipt_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
