@@ -26,9 +26,9 @@
                 <div class='four wide column'>
                     <div class='ui card'>
                         <div class='content'>
-                            <div class='header'>Joanne Malaluan</div>
+                            <div class='header'><?php echo $this->session->userdata['userSession']['user_first_name'].' '.$this->session->userdata['userSession']['user_mi'].'. '.$this->session->userdata['userSession']['user_last_name'];?></div>
                             <div class='description'>
-                                Employee
+                               <?php echo $this->session->userdata['userSession']['user_type']; ?>
                             </div>
                         </div>
                         <div class='extra content' id='userContent' style='background-color:burlywood;'>
@@ -59,19 +59,18 @@
                 </div> <!-- breadcrumb -->
 
                 <div class='ui hidden divider'></div>
+                <?php if (isset($user)) {?>
+                    <?php foreach ($user as $u) { ?>
+                <a href='<?php echo site_url()?>/CUser/editUserInfo/<?php echo $u->user_id; ?> ''><button class='ui big circular blue icon button' title='Edit user information'><i class='pencil icon'></i></button></a>
 
-                <a href='<?php echo site_url()?>/CUser/editUserInfo?>'><button class='ui big circular blue icon button' title='Edit user information'><i class='pencil icon'></i></button></a>
-
-                <button class='ui big circular red icon button' title='Delete this user' id='deleteUser'><i class='remove icon'></i></button>
+                <button class='ui big circular red icon button' title='Delete this user' id='deleteUser' data-id="<?php echo $u->user_id; ?>" ><i class='remove icon'></i></button>
 
                 <div class='ui hidden divider'></div>
 
                 <h3 class='ui horizontal divider header'>
                     <i class='user icon'></i> User Information
                 </h3>
-                <?php if (isset($user)) {?>
-                <!-- <?php print_r($user);?>  -->
-                    <?php foreach ($user as $u) { ?>
+               
                     <table class='ui very basic table'>
                         <tbody>
                             <tr> 
@@ -97,14 +96,19 @@
 </div> <!-- grid -->
 
 <div class="ui mini modal" id="confirmDelete">
-  <div class="header">Delete account</div>
-  <div class="content">
-    <p>Are you sure you want to delete this account?</p>
-  </div>
-  <div class="actions">
-    <div class="ui cancel negative button">Cancel</div>
-    <a><div class="ui approve positive button">Yes</div></a>
-  </div>
+    
+        <div class="header">Delete account</div>
+        <div class="content">
+            <form action="<?php echo site_url()?>/CUser/deleteUser" method="POST" >
+                <input type="hidden" name="user_id" id="user_id">
+            <p>Are you sure you want to delete this account?</p>
+        </div>
+        <div class="actions">
+            <div class="ui cancel negative button">Cancel</div>
+            <button class="ui approve positive button" type="submit">Yes</div>
+            </form>
+        </div>
+    
 </div>
 
 </body>
@@ -113,6 +117,8 @@
 <script>
 $(document).ready(function(){
     $('#deleteUser').click(function(){
+        var id = $(this).data("id");
+        $('#user_id').val(id);
         $('#confirmDelete').modal('show');
     });
 });

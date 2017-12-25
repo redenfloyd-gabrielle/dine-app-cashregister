@@ -5,6 +5,7 @@
 
 		public function __Construct(){
 	      parent::__Construct ();
+	      $this->load->library('session');
 	      $this->load->helper('url');
 	      $this->load->database(); // load database
 	      $this->load->model('MUser');
@@ -23,12 +24,51 @@
 						  'user_mi' => $this->input->post('mname'),
 			  			  'user_last_name' => $this->input->post('lname'),
 						  'user_type' => $this->input->post('position'),
-						  'user_created_by' => '1',
+						  'user_created_by' => $this->session->userdata['userSession']['user_id'],
 						  'user_created_on' => $now->format('Y-m-d H:i:s'),
-						  'user_modified_by' => '1',
+						  'user_modified_by' => $this->session->userdata['userSession']['user_id'],
 						  'user_modified_on' => $now->format('Y-m-d H:i:s'),
 						 );
 			$result = $this->MUser->insert($data);
+			if ($result) {
+				// $this->viewUsersList();
+				redirect('CUser/viewUsersList');
+			} else {
+				print_r('SOMETHING WENT WRONG;');
+			}
+
+		}
+
+		public function updateUser($user_id)
+		{
+			$now = new DateTime(NULL, new DateTimeZone('Asia/Manila'));
+
+			$data = array('user_first_name' => $this->input->post('fname'),
+						  'user_mi' => $this->input->post('mname'),
+			  			  'user_last_name' => $this->input->post('lname'),
+						  'user_type' => $this->input->post('position'),
+						  'user_modified_by' => $this->session->userdata['userSession']['user_id'],
+						  'user_modified_on' => $now->format('Y-m-d H:i:s'),
+						 );
+			$result = $this->MUser->update($user_id,$data);
+			if ($result) {
+				// $this->viewUsersList();
+				redirect('CUser/viewUserInfo/'.$user_id);
+			} else {
+				print_r('SOMETHING WENT WRONG;');
+			}
+			# code...
+		}
+
+		public function deleteUser()
+		{
+			$now = new DateTime(NULL, new DateTimeZone('Asia/Manila'));
+			$user_id = $this->input->post('user_id');
+			$data = array('user_status' => 'DELETED',
+						  'user_modified_by' => $this->session->userdata['userSession']['user_id'],
+						  'user_modified_on' => $now->format('Y-m-d H:i:s'),
+						 );
+			$result = $this->MUser->update($user_id, $data);
 			if ($result) {
 				// $this->viewUsersList();
 				redirect('CUser/viewUsersList');
@@ -64,11 +104,17 @@
 
 		function viewUserInfo($user_id)
 		{
-			// print_r($user_id);
 			$data['user'] = $this->MUser->getUser($user_id);
 
 			$this->load->view('imports/vSuperadminHeader');
 			$this->load->view('superadmin/vUserInfo',$data);
+			$this->load->view('imports/vSuperadminFooter');
+		}
+
+		function viewReports()
+		{
+			$this->load->view('imports/vSuperadminHeader');
+			$this->load->view('admin/vReports');
 			$this->load->view('imports/vSuperadminFooter');
 		}
 
@@ -79,10 +125,12 @@
 			$this->load->view('imports/vSuperadminFooter');
 		}
 
-		function editUserInfo()
+		function editUserInfo($user_id)
 		{
+			$data['user'] = $this->MUser->getUser($user_id);
+
 			$this->load->view('imports/vSuperadminHeader');
-			$this->load->view('superadmin/vEditUserInfo');
+			$this->load->view('superadmin/vEditUserInfo',$data);
 			$this->load->view('imports/vSuperadminFooter');
 		}
 	}

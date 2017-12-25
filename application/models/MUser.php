@@ -24,6 +24,7 @@
 		{
 			$this->db->select("*");
 			$this->db->from($this::DB_TABLE);
+			$this->db->where('user_status', 'ACTIVE');
 			// $this->db->where('user_id !=' , $this->session->userdata['empSession']['userID']);
 			$query = $this->db->get();
 			
@@ -35,6 +36,7 @@
 			$this->db->select('*');
 			$this->db->from($this::DB_TABLE);
 			$this->db->where('user_id' , $user_id);
+			$this->db->where('user_status', 'ACTIVE');
 			$query = $this->db->get();
 			
 
@@ -44,7 +46,7 @@
     
     	public function attemptLogin(){
 			//$hashPass=hash('sha512',$this->agentPassword);
-			$query= $this->db->get_where($this::DB_TABLE,array('user_id'=>$this->user_id,'password'=>$this->user_password));
+			$query= $this->db->get_where($this::DB_TABLE,array('user_id'=>$this->user_id,'user_password'=>$this->user_password, 'user_status !='=>'DELETED'));
 			if($query -> num_rows() == 1){
 				return $query->result();
 			}else{

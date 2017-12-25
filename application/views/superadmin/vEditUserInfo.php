@@ -25,9 +25,9 @@
                 <div class='four wide column'>
                     <div class='ui card'>
                         <div class='content'>
-                            <div class='header'>Joanne Malaluan</div>
+                            <div class='header'><?php echo $this->session->userdata['userSession']['user_first_name'].' '.$this->session->userdata['userSession']['user_mi'].'. '.$this->session->userdata['userSession']['user_last_name'];?></div>
                             <div class='description'>
-                                Employee
+                               <?php echo $this->session->userdata['userSession']['user_type']; ?>
                             </div>
                         </div>
                         <div class='extra content' id='userContent' style='background-color:burlywood;'>
@@ -61,46 +61,46 @@
                     <div class='ui hidden divider'></div>
                     <div class='ui hidden divider'></div>
                     <div class='ui hidden divider'></div>
+                    <?php if (isset($user)) {?>
+                        <?php foreach ($user as $u) { ?>
 
                     <div class='content'>
-                        <form class='ui form'>
+                        <form class='ui form' method="POST" action="<?php echo site_url()?>/CUser/updateUser/<?php echo $u->user_id; ?> ">
                             <h3 class='ui horizontal divider header'>
                                 <i class='address card outline icon'></i> User Personal Information
                             </h3>
 
+                            
                             <div class='ui hidden divider'></div>
 
-                            <div class='nine wide required field'><label>FIRST NAME</label><input type='text' placeholder='Enter first name'></div>
+                             <div class='nine wide required field'><label>FIRST NAME</label><input type='text' placeholder='Enter first name' name="fname" value="<?php echo $u->user_first_name;?>"></div>
 
-                            <div class='nine wide  required field'><label>MIDDLE NAME</label><input type='text' placeholder='Enter middle name'></div>
+                            <div class='nine wide  required field'><label>MIDDLE NAME</label><input type='text' placeholder='Enter middle name' name="mname" value="<?php echo $u->user_mi;?>"></div>
 
-                            <div class='nine wide  required field'><label>LAST NAME</label><input type='text' placeholder='Enter last name'></div>
+                            <div class='nine wide  required field'><label>LAST NAME</label><input type='text' placeholder='Enter last name' name="lname" value="<?php echo $u->user_last_name;?>"></div>
 
                             <h3 class='ui horizontal divider header'><i class='user icon'></i>User Account Information</h3>
 
                             <div class='ui hidden divider'></div>
 
                             <label>POSITION</label><br>
-
-                            <div class='ui required search selection dropdown'>
-                                <input type='hidden' name='position'>
-                                <i class='dropdown icon'></i>
-                                <div class='default text'>Choose user position</div>
-                                <div class='menu'>
-                                    <div class='item' data-value='1'>Manager</div>
-                                    <div class='item' data-value='2'>Employee</div>
-                                </div>
-                            </div> <!-- position dropdown -->
+                            <select class="ui dropdown">
+                              <option value="">Choose category</option>
+                              <option value="1">Superadmin</option>
+                              <option value="2">Admin</option>
+                              <option value="3">Employee</option>
+                            </select> <!-- position dropdown -->
 
                             <div class='ui hidden divider'></div>
                             <div class='ui hidden divider'></div>
 
                             <a href="<?php echo site_url()?>/CUser/viewUsersList?>"><div class='ui submit negative button'>Cancel</div></a>
 
-                            <div class='ui submit positive button'>Edit</div>
+                            <button class='ui submit positive button' type="submit">Edit</button>
 
                             <div class='ui hidden divider'></div>
-
+                                <?php } ?>
+                            <?php } ?>
                         </form> <!-- form -->
                     </div> <!-- content -->
                 </div> <!-- twelve wide column -->

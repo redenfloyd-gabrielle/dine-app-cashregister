@@ -9,6 +9,7 @@
 	      $this->load->database(); // load database
 	      $this->load->model('MOrdered');
 	      $this->load->helper('url');
+	      $this->load->library('session');
 	  	}
 
 		public function index()
@@ -16,15 +17,18 @@
 			
 		}
  
-		function viewMDashboard(){
-			$this->load->view('imports/vPosHeader');
-			$this->load->view('pos/vMDashboard');
-		}
+		
 		function viewQDashboard(){
 			$this->load->view('imports/vPosHeader');
 			$this->load->view('pos/vQDashboard');
 		}
 
+		function displayOrder(){
+			$qr = $_POST['qr'];
+			
+			$this->load->view('pos/vQrScan');
+			
+		}
 	}
 
 ?>

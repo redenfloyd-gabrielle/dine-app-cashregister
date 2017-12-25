@@ -1,3 +1,4 @@
+<?php if ($this->session->userdata('userSession') && $this->session->userdata['userSession']['user_type'] == 'SUPERADMIN') { ?>
  <!DOCTYPE html>
 <html>
 <head>
@@ -17,7 +18,7 @@
     </i>
         <div class='menu' tabindex='-1'>
             <a id='changePass' class='item'><i class='lock icon'></i>Change Password</a>
-            <a href='' class='item'><i class='sign out icon'></i>Logout</a>
+            <a href='<?php echo site_url()?>/CLogin/userLogout?>' class='item'><i class='sign out icon'></i>Logout</a>
         </div>
     </div>
 </div>
@@ -41,8 +42,17 @@
     </form>
     <p></p>
   </div>
-  <div class="actions">
+  <div class="actions" >
     <div class="ui cancel negative button">Cancel</div>
     <a><div class="ui approve positive button">Update</div></a>
   </div>
 </div>
+<?php 
+} else if ($this->session->userdata['userSession']['user_type'] == 'REGULAR') {
+    redirect('CLogin/viewPos');
+} else if ($this->session->userdata['userSession']['user_type'] == 'ADMIN') {
+    redirect('CLogin/viewAdminDashboard');
+} else {
+    redirect('CInitialize');
+}
+?>
