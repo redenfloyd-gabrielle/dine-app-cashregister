@@ -111,6 +111,13 @@
 			$this->load->view('imports/vSuperadminFooter');
 		}
 
+		function viewReports()
+		{
+			$this->load->view('imports/vSuperadminHeader');
+			$this->load->view('admin/vReports');
+			$this->load->view('imports/vSuperadminFooter');
+		}
+
 		function vAddUser()
 		{
 			$this->load->view('imports/vSuperadminHeader');

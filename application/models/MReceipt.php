@@ -6,7 +6,6 @@
 		private $receipt_cashier;
 		private $receipt_cash;
 		private $receipt_change;
-		private $receipt_receipt_item_id;
 		
 
     	const DB_TABLE = "receipt";
@@ -63,12 +62,6 @@
 		public function setReceipt_change($receipt_change){
 			$this->receipt_change = $receipt_change;
 		}
-		public function getReceipt_receipt_item_id(){
-			return $this->receipt_receipt_item_id;
-		}
-
-		public function setReceipt_receipt_item_id($receipt_receipt_item_id){
-			$this->receipt_receipt_item_id = $receipt_receipt_item_id;
-		}
+		
 	}
 ?>

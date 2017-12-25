@@ -11,6 +11,7 @@
 	      $this->load->library('session');
 	      $this->load->library('form_validation');
 		  $this->load->helper('url'); 
+		  $this->load->model('MUser');
 	  	}
 
 		public function index()
