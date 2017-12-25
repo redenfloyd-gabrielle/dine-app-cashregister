@@ -24,9 +24,9 @@
 						  'user_mi' => $this->input->post('mname'),
 			  			  'user_last_name' => $this->input->post('lname'),
 						  'user_type' => $this->input->post('position'),
-						  'user_created_by' => '1',
+						  'user_created_by' => $this->session->userdata['userSession']['user_id'],
 						  'user_created_on' => $now->format('Y-m-d H:i:s'),
-						  'user_modified_by' => '1',
+						  'user_modified_by' => $this->session->userdata['userSession']['user_id'],
 						  'user_modified_on' => $now->format('Y-m-d H:i:s'),
 						 );
 			$result = $this->MUser->insert($data);
@@ -47,7 +47,7 @@
 						  'user_mi' => $this->input->post('mname'),
 			  			  'user_last_name' => $this->input->post('lname'),
 						  'user_type' => $this->input->post('position'),
-						  'user_modified_by' => '1',
+						  'user_modified_by' => $this->session->userdata['userSession']['user_id'],
 						  'user_modified_on' => $now->format('Y-m-d H:i:s'),
 						 );
 			$result = $this->MUser->update($user_id,$data);
@@ -65,7 +65,7 @@
 			$now = new DateTime(NULL, new DateTimeZone('Asia/Manila'));
 			$user_id = $this->input->post('user_id');
 			$data = array('user_status' => 'DELETED',
-						  'user_modified_by' => '1',
+						  'user_modified_by' => $this->session->userdata['userSession']['user_id'],
 						  'user_modified_on' => $now->format('Y-m-d H:i:s'),
 						 );
 			$result = $this->MUser->update($user_id, $data);

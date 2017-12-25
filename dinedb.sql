@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 21, 2017 at 08:54 AM
+-- Generation Time: Dec 25, 2017 at 06:50 AM
 -- Server version: 10.1.28-MariaDB
 -- PHP Version: 7.1.11
 
@@ -68,7 +68,7 @@ CREATE TABLE `order_item` (
 
 CREATE TABLE `product` (
   `product_id` int(11) NOT NULL,
-  `product_image` varchar(30) NOT NULL,
+  `product_image` varchar(30) NOT NULL DEFAULT 'assets/images/rice.png',
   `product_name` varchar(30) NOT NULL,
   `product_description` varchar(50) NOT NULL,
   `product_price` float NOT NULL,
@@ -76,8 +76,8 @@ CREATE TABLE `product` (
   `product_category` enum('MEALS','DRINKS','DESSERTS','EXTRAS') NOT NULL,
   `product_created_by` int(11) NOT NULL,
   `product_created_on` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `producut_modified_by` int(11) NOT NULL,
-  `product_modefied_on` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  `product_modified_by` int(11) NOT NULL,
+  `product_modified_on` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -128,6 +128,15 @@ CREATE TABLE `user` (
   `user_modified_by` int(11) NOT NULL,
   `user_modified_on` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `user`
+--
+
+INSERT INTO `user` (`user_id`, `user_first_name`, `user_mi`, `user_last_name`, `user_password`, `user_type`, `user_status`, `user_created_by`, `user_created_on`, `user_modified_by`, `user_modified_on`) VALUES
+(17000, 'Redenfloyd Gabrielle', 'M', 'Cayanan', 'BA3253876AED6BC22D4A6FF53D8406C6AD864195ED144AB5C87621B6C233B548BAEAE6956DF346EC8C17F5EA10F35EE3CBC514797ED7DDD3145464E2A0BAB413', 'SUPERADMIN', 'ACTIVE', 1, '2017-12-24 10:40:32', 1, '2017-12-24 11:05:43'),
+(17001, 'Joanne', 'S', 'Malaluan', 'BA3253876AED6BC22D4A6FF53D8406C6AD864195ED144AB5C87621B6C233B548BAEAE6956DF346EC8C17F5EA10F35EE3CBC514797ED7DDD3145464E2A0BAB413', 'ADMIN', 'ACTIVE', 1, '2017-12-24 11:06:25', 1, '2017-12-24 11:06:25'),
+(17002, 'Angela', 'C', 'Ong', 'BA3253876AED6BC22D4A6FF53D8406C6AD864195ED144AB5C87621B6C233B548BAEAE6956DF346EC8C17F5EA10F35EE3CBC514797ED7DDD3145464E2A0BAB413', 'REGULAR', 'ACTIVE', 1, '2017-12-24 11:07:08', 1, '2017-12-24 11:07:08');
 
 --
 -- Indexes for dumped tables
@@ -201,7 +210,7 @@ ALTER TABLE `order_item`
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
-  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1000;
+  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `receipt`
@@ -219,7 +228,7 @@ ALTER TABLE `receipt_item`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17000;
+  MODIFY `user_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17003;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -25,9 +25,9 @@
                 <div class='four wide column'>
                     <div class='ui card'>
                         <div class='content'>
-                            <div class='header'>Joanne Malaluan</div>
+                            <div class='header'><?php echo $this->session->userdata['userSession']['user_first_name'].' '.$this->session->userdata['userSession']['user_mi'].'. '.$this->session->userdata['userSession']['user_last_name'];?></div>
                             <div class='description'>
-                                Employee
+                               <?php echo $this->session->userdata['userSession']['user_type']; ?>
                             </div>
                         </div>
                         <div class='extra content' id='userContent' style='background-color:burlywood;'>

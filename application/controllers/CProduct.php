@@ -16,6 +16,39 @@
 		{
 			
 		}
+
+		public function addProduct()
+		{
+			$now = new DateTime(NULL, new DateTimeZone('Asia/Manila'));
+			
+			$data = array('product_image' => $this->input->post('image'),
+						  'product_name' => $this->input->post('name'),
+						  'product_description' => $this->input->post('description'),
+						  'product_price' => $this->input->post('price'),
+						  'product_availability' => $this->input->post('availability'),
+						  'product_category' => $this->input->post('category'),
+						  'product_created_by' => $this->session->userdata['userSession']['user_id'],
+						  'product_created_on' => $now->format('Y-m-d H:i:s'),
+						  'product_modified_by' => $this->session->userdata['userSession']['user_id'],
+						  'product_modified_on' => $now->format('Y-m-d H:i:s'),
+						  );
+			$result = $this->MProduct->insert($data);
+			
+			if ($result) {
+				$prod_id = $this->MProduct->db->insert_id();
+				$image = $this->MProduct->do_upload_product($prod_id);
+				if(!$image){
+					$photo = $this->MProduct->insertPhotoProduct("rice.png",$prod_id);
+				}
+				redirect('CProduct/viewMenuList');
+			} else {
+				print_r('SOMETHING WENT WRONG;');
+			}
+		}
+
+
+
+
         function viewMDashboard(){
 			$prod = new MProduct();
 			$result = $prod->getAllProducts();

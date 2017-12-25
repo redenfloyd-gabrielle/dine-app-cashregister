@@ -25,9 +25,9 @@
                 <div class='four wide column'>
                     <div class='ui card'>
                         <div class='content'>
-                            <div class='header'>Joanne Malaluan</div>
+                            <div class='header'><?php echo $this->session->userdata['userSession']['user_first_name'].' '.$this->session->userdata['userSession']['user_mi'].'. '.$this->session->userdata['userSession']['user_last_name'];?></div>
                             <div class='description'>
-                                Employee
+                               <?php echo $this->session->userdata['userSession']['user_type']; ?>
                             </div>
                         </div>
                         <div class='extra content' id='userContent' style='background-color:burlywood;'>
@@ -53,7 +53,7 @@
                     </h1> <!-- header -->
 
                     <div class='ui breadcrumb'>
-                        <a class='section' href='<?php echo site_url()?>/CUser/viewUsersList?>'>USERS</a>
+                        <a class='section' href='<?php echo site_url()?>/CUser/viewUsersList'>USERS</a>
                         <i class='right arrow icon divider'></i>
                         <div class='active section'>ADD NEW USER</div>
                     </div> <!-- breadcrumb -->
@@ -64,7 +64,7 @@
 
                     <div class='content'>
                
-                    <form class='ui form' method="POST" action="<?php echo site_url()?>/CUser/addUser?>">
+                    <form class='ui form' method="POST" action="<?php echo site_url()?>/CUser/addUser">
                         
                             <h3 class='ui horizontal divider header'>
                                 <i class='address card outline icon'></i> User Personal Information

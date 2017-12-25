@@ -2,10 +2,10 @@
     <div class='borderless item'>
         <strong>DINE</strong> 
     </div>
-    <a class='item' href='<?php echo site_url()?>/CUser/viewAdminDashboard?>'>
+    <a class='item' href='<?php echo site_url()?>/CUser/viewAdminDashboard'>
         <i class='dashboard icon'></i> Dashboard
     </a>
-    <a class='active item' href='<?php echo site_url()?>/CProduct/viewMenuList?>'>
+    <a class='active item' href='<?php echo site_url()?>/CProduct/viewMenuList'>
         <i class='sidebar icon'></i> Menu
     </a> 
     <a class='item' href=''>
@@ -63,7 +63,7 @@
 
                         <div class='ui hidden divider'></div>
 
-                        <a href='<?php echo site_url()?>/CProduct/addMenu?>'><button class='ui big circular green icon button' title='Add new user'><i class='plus icon'></i></button></a> <!-- Add new user -->
+                        <a href='<?php echo site_url()?>/CProduct/addMenu'><button class='ui big circular green icon button' title='Add new user'><i class='plus icon'></i></button></a> <!-- Add new user -->
 
                         <div class='ui hidden divider'></div>
 

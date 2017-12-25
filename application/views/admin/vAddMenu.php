@@ -5,10 +5,10 @@
     <div class='borderless item'>
         <strong>DINE</strong>
     </div>
-    <a class='item' href='<?php echo site_url()?>/CUser/viewAdminDashboard?>'>
+    <a class='item' href='<?php echo site_url()?>/CUser/viewAdminDashboard'>
         <i class='dashboard icon'></i> Dashboard
     </a>
-    <a class='active item' href='<?php echo site_url()?>/CProduct/viewMenuList?>'>
+    <a class='active item' href='<?php echo site_url()?>/CProduct/viewMenuList'>
         <i class='sidebar icon'></i> Menu
     </a>
     <a class='item' href=''>
@@ -34,9 +34,9 @@
                 <div class='four wide column'>
                     <div class='ui card'>
                         <div class='content'>
-                            <div class='header'>Joanne Malaluan</div>
+                            <div class='header'><?php echo $this->session->userdata['userSession']['user_first_name'].' '.$this->session->userdata['userSession']['user_mi'].'. '.$this->session->userdata['userSession']['user_last_name'];?></div>
                             <div class='description'>
-                                Employee
+                               <?php echo $this->session->userdata['userSession']['user_type']; ?>
                             </div>
                         </div>
                         <div class='extra content' id='userContent'>
@@ -62,7 +62,7 @@
                     </h1> <!-- header -->
 
                     <div class='ui breadcrumb'>
-                        <a class='section' href='<?php echo site_url()?>/CProduct/viewMenuList?>'>MENU</a>
+                        <a class='section' href='<?php echo site_url()?>/CProduct/viewMenuList'>MENU</a>
                         <i class='right arrow icon divider'></i>
                         <div class='active section'>ADD MENU</div>
                     </div> <!-- breadcrumb -->
@@ -72,7 +72,7 @@
                     <div class='ui hidden divider'></div>
 
                     <div class='content'>
-                        <form class='ui form'>
+                        <form class='ui form' method="POST" action="<?php echo site_url()?>/CProduct/addProduct" accept-charset="utf-8" enctype="multipart/form-data" >
                             <h3 class='ui horizontal divider header'>
                                 <i class='food icon'></i> Food Information
                             </h3>
@@ -81,26 +81,37 @@
 
                             <div class='nine wide field'>
                                 <label>UPLOAD IMAGE</label>
-                                <input type="file" name="pic" accept="image/*">
+                                <input type="file" name="image" accept="image/*">
                             </div>
 
-                            <div class='nine wide required field'><label>FOOD NAME</label><input type='text' placeholder='Enter first name'></div>
+                            <div class='nine wide required field'>
+                                <label>FOOD NAME</label>
+                                <input type='text' placeholder='Enter first name' name="name">
+                            </div>
 
-                            <div class='nine wide  required field'><label>FOOD DESCRIPTION</label><textarea placeholder='Enter food description'></textarea></div>
+                            <div class='nine wide  required field'>
+                                <label>FOOD DESCRIPTION</label>
+                                <textarea placeholder='Enter food description' name="description"></textarea>
+                            </div>
 
-                            <div class='nine wide  required field'><label>FOOD PRICE</label><input type='number' placeholder='Enter food price'></div>
+                            <div class='nine wide  required field'>
+                                <label>FOOD PRICE</label>
+                                <input type='number' placeholder='Enter food price' name="price">
+                            </div>
 
                             <label>CATEGORY</label><br>
-                            <select class="ui dropdown">
+                            <select class="ui dropdown" name="category">
                               <option value="">Choose category</option>
-                              <option value="1">Beverage</option>
-                              <option value="2">Meal</option>
+                              <option value="MEALS">Meals</option>
+                              <option value="DRINKS">Drinks</option>
+                              <option value="DESSERTS">Desserts</option>
+                              <option value="EXTRAS">Extras</option>
                             </select> <!-- availability dropdown -->
 
                             <div class='ui hidden divider'></div>
 
                             <label>AVAILABILITY</label><br>
-                            <select class="ui dropdown">
+                            <select class="ui dropdown" name="availability">
                               <option value="">Choose availability</option>
                               <option value="1">Available</option>
                               <option value="0">Not Available</option>
@@ -111,7 +122,7 @@
 
                             <a href="<?php echo site_url()?>/CProduct/viewMenuList?>"><div class='ui submit negative button'>Cancel</div></a>
 
-                            <div class='ui submit positive button'>Add</div>
+                            <button class='ui submit positive button' type="submit" >Add</button>
 
                             <div class='ui hidden divider'></div>
 
