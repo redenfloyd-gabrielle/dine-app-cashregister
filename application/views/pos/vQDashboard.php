@@ -5,13 +5,19 @@
 			<div class="ui stackable grid">
 				<div class="row">
 					<div class="column"></div>
-					<div class="fourteen wide center aligned middle aligned column">
+					 
+					<div class="fourteen wide column">
+					<div class="ui breadcrumb">
+						<a class="section" href="<?php echo site_url()?>/CProduct/viewMDashboard?>">Home</a>
+						<i class="right chevron icon divider"></i>
+						<div class="active section">Category Name</div>
+					</div> 
+					<div class="mid">
 						<video id="qrcam" class="vid" ></video> 
 						<h2 class="scannerlabel">Scan Here</h2>
-						<!-- <form method="POST" action="<?php echo site_url()?>/COrdered/displayOrder?>" -->
-							<input type="hidden" id = "qrcode" name="qrcode">
-						<!-- </form> -->
-						<button class="ui brown big icon button" id="trybtn"><i class="refresh icon"></i>Try Again</button>	
+					
+						<button class="ui brown big icon button" id="trybtn"><i class="refresh icon"></i>Try Again</button>
+					</div>
 					</div>
 					<div class="column"></div>		
 				</div>
@@ -50,7 +56,6 @@
 				console.log(errorThrown);
 			}
 		});
-		
 	});
 	Instascan.Camera.getCameras().then(function(cams){
 		qr.start(cams[0]);
