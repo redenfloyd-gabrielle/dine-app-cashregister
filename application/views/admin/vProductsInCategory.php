@@ -5,7 +5,7 @@
     <a class='item' href='<?php echo site_url()?>/CUser/viewAdminDashboard'>
         <i class='dashboard icon'></i> Dashboard
     </a>
-    <a class='active item' href='<?php echo site_url()?>/CProduct/viewMenuList'>
+    <a class='active item' href='<?php echo site_url()?>/CProduct/viewCategoryList'>
         <i class='sidebar icon'></i> Menu
     </a> 
     <a class='item' href=''>
@@ -55,16 +55,41 @@
                         <h1 class='ui header'>
                             <div class='content'>
                                 MENU
-                                <div class='sub header'>Shows the list of food available in the menu</div> <!-- sub-header -->
+                                <div class='sub header'>Shows the list of food under a category</div> <!-- sub-header -->
                             </div> <!-- content -->
                         </h1> <!-- header -->
 
-                        <div class='ui breadcrumb'></div><!-- breadcrumb -->
+
+                        <div class='ui breadcrumb'>
+                            <a class='section' href='<?php echo site_url()?>/CProduct/viewCategoryList?>'>MENU</a>
+                            <i class='right arrow icon divider'></i>
+                            <div class='active section'>VIEW LIST OF FOOD BY CATEGORY</div>
+                        </div><!-- breadcrumb -->
 
                         <div class='ui hidden divider'></div>
 
-                        <a href='<?php echo site_url()?>/CProduct/addMenu'><button class='ui big circular green icon button' title='Add new user'><i class='plus icon'></i></button></a> <!-- Add new user -->
+                        
 
+                        <div class='ui floating dropdown labeled icon button'>
+                            <i class='filter icon'></i>
+                            <span class='text'>Filter products</span>
+                            <div class='menu'>
+                                <div class='item'>
+                                    <div class='ui blue empty circular label'></div>
+                                    All
+                                </div>
+                                <div class='item'>
+                                    <div class='ui green empty circular label'></div>
+                                    Available
+                                </div>
+                                <div class='item'>
+                                    <div class='ui red empty circular label'></div>
+                                    Not Available
+                                </div>
+                            </div>
+                        </div>
+
+                        <h1 class='ui horizontal divider header'>CATEGORY NAME</h1>
                         <div class='ui hidden divider'></div>
 
                         <div class='ui three stackable cards'>
@@ -78,34 +103,8 @@
                                 </div>
                             </a> <!-- meal card -->
 
-                            <a class='ui small card' href='<?php echo site_url()?>/CProduct/viewMenuInfo'>
-                                <div class='image'></div>
-                                <div class='content' id='superadmin-card'>
-                                    <div class='header' id='userHeader'>
-                                        Chicken Meal
-                                    </div>
-                                </div>
-                            </a> <!-- meal card -->
-
-                            <a class='ui small card' href='<?php echo site_url()?>/CProduct/viewMenuInfo'>
-                                <div class='image'></div>
-                                <div class='content' id='superadmin-card'>
-                                    <div class='header' id='userHeader'>
-                                        Chicken Meal
-                                    </div>
-                                </div>
-                            </a> <!-- meal card -->
-
-                            <a class='ui small card' href='<?php echo site_url()?>/CProduct/viewMenuInfo'>
-                                <div class='image'></div>
-                                <div class='content' id='superadmin-card'>
-                                    <div class='header' id='userHeader'>
-                                        Chicken Meal
-                                    </div>
-                                </div>
-                            </a> <!-- meal card -->
-
                         </div> <!--three cards -->
+
                     </div> <!-- row -->
                     
                     <div class='ui hidden divider'></div>
