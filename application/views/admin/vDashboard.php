@@ -8,7 +8,7 @@
     <a class='active item' href='<?php echo site_url()?>/CUser/viewAdminDashboard?>'>
         <i class='dashboard icon'></i> Dashboard
     </a>
-    <a class='item' href='<?php echo site_url()?>/CProduct/viewMenuList?>'>
+    <a class='item' href='<?php echo site_url()?>/CProduct/viewCategoryList?>'>
         <i class='sidebar icon'></i> Menu
     </a> 
     <a class='item' href=''>

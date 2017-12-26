@@ -7,7 +7,7 @@
     <a class='item' href='<?php echo site_url()?>/CUser/viewAdminDashboard?>'>
         <i class='dashboard icon'></i> Dashboard
     </a>
-    <a class='active item' href='<?php echo site_url()?>/CProduct/viewMenuList?>'>
+    <a class='active item' href='<?php echo site_url()?>/CProduct/viewCategoryList?>'>
         <i class='sidebar icon'></i> Menu
     </a>
     <a class='item' href=''>
@@ -60,7 +60,7 @@
                     </h1> <!-- header -->
 
                     <div class='ui breadcrumb'>
-                        <a class='section' href='<?php echo site_url()?>/CProduct/viewMenuList?>'>MENU</a>
+                        <a class='section' href='<?php echo site_url()?>/CProduct/viewProductsInCategory?>'>MENU</a>
                         <i class='right arrow icon divider'></i>
                         <div class='active section'>VIEW FOOD INFORMATION</div>
                     </div> <!-- breadcrumb -->
