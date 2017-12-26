@@ -1,4 +1,9 @@
 
+body{
+    background-color: white !important;
+    max-width: 100%;
+    overflow-x: hidden;
+}
 
 #topMenu{
     background-color: #65737e
@@ -24,6 +29,13 @@
 	font-family: 'RLight' , Fallback, sans-serif;
 }
 
+.rght{
+    float:right;
+}
+.lft{
+    float: left;
+}
+
 .noOfItems{
 	font-size: 20px;
 }
@@ -36,9 +48,6 @@
 
 .changePrice{
 	color: red;
-}
-.orderSummary{
-	background-color: gray;
 }
 
 .kbtn{
@@ -55,11 +64,55 @@
 }
 
 
+.cbtn{
+    margin-top: 50px;
+}
+.lbtn{
+    width: 100px;
+    float: right;
+    margin:50px 110px 0px 0px;
+    height: 55px;
+    background-color: #3886c9;
+    border: 1px solid #3886c9;
+    color: white;
+    font-size: 20px;
+}
+.rbtn{
+    width: 100px;
+    margin-top:50px;
+    height: 55px;
+    background-color: #336699;
+    border: 1px solid #336699;
+}
+
+.rbtnlabel{
+    color: white;
+    font-size: 14px;
+    padding:5px 12px;
+    margin: 0px;
+}
+
+.lbtnlabel{
+    color: white;
+    font-size: 15px;
+    padding: 0px;
+    margin: 0px;s
+}
+.rtn:hover, .lbtn:hover{
+    background-color:#44749D;
+    border: 1px solid #44749D;
+}
+.pbtn{
+    border: none;
+    background-color:white;
+}
+.pbtn:hover{
+    border: none;
+    background-color:white;
+}
 .scannerlabel{
     font-family: 'SLight', Fallback, sans-serif;
 }
-
-
 .receiptbox{
     height: 600px;
     width: 280px;
@@ -100,4 +153,39 @@
     margin-top : 10px;
     text-transform: uppercase;
     font-weight: bold;
+}
+
+.ui.modal{
+    position: absolute; 
+    visibility: hidden; 
+    max-width: 40%; 
+    max-height: 40%; 
+    overflow: auto;
+}
+.close{
+    border: none; 
+    background: none; 
+    right: 25px; 
+    color: #000; 
+    font-size: 25px;
+    font-weight: bold;
+}
+.close:hover{
+    color: red;
+    cursor: pointer;
+}
+.close:focus{
+    outline:0;
+    box-shadow:none;
+    border:0px;
+    -moz-border-radius:2px; 
+    border-radius: 2px;
+}
+
+.itemRow{
+    margin: 5px !important;
+    padding: 5px !important;
+}
+.labelhead{
+    font-size: 16px;
 }

@@ -56,10 +56,30 @@
 			foreach ($result as $filter_result) {
 				$arr[] = $filter_result->product_category;
 			}
+			
 			$unique_category = array_unique($arr);
+
+			foreach ($unique_category as $cat) {
+				$result1 = $prod->getProductsByCategory($cat);
+				$arr1 = array();
+				
+				foreach ($result1 as $res) {
+					if ($res === reset($result1)){
+						$arr1 = $res->product_image;
+					}
+						
+				 }
+				  $arr2[] = $arr1;
+			}
+			
+			
+			$data['image'] = $arr2;
 			$data['category'] = $unique_category;
+			
 			$this->load->view('imports/vPosHeader');
 			$this->load->view('pos/vMDashboard',$data);
+
+			
 			
 		}
 	
@@ -75,13 +95,18 @@
 						$arrObj = new stdClass;
 						$arrObj->product_name = $value->product_name;
 						$arrObj->product_price = $value->product_price;
+						$arrObj->product_image = $value->product_image;
+						$arrObj->product_category = $value->product_category;
 						$array[] = $arrObj;
 				}
 			}
 			////////////STOPS HERE///////////////////////////////////////////////////
-			$data['products']   = $array;
+			$data['products']  = $array;
+			$data['prod_cat']  = $cat;
 			$this->load->view('imports/vPosHeader');
 			$this->load->view('pos/vProducts',$data);
+
+			// print_r($data);
 		}
 
 		function viewMenuList()

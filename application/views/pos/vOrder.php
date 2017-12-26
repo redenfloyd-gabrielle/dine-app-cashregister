@@ -2,7 +2,7 @@
   <div class="ui unstackable grid">
     <div class="row">
       <div class="column"></div>
-      <div class="seven wide column">
+      <div class="twelve wide column">
         <h1 class="ui header headerName">
           <i class="circular cart icon"></i>
           <div class="content">
@@ -11,8 +11,8 @@
           </div>
         </h1>
       </div>
-      <div class="seven wide center aligned middle aligned column">
-        <a href="<?php echo site_url()?>/COrderItem/viewEditOrder?>"><i class="brown huge edit icon"></i></a>
+      <div class="three wide column">
+        <a href="<?php echo site_url()?>/COrderItem/viewEditOrder?>"><i class="huge edit icon"></i></a>
       </div>
     </div>
     <div class="row">
@@ -22,7 +22,7 @@
           <table class="ui single line table">
             <thead>
               <tr>
-                <th>Product Name</th>
+                <th class="itemLabels">Product Name</th>
                 <th>Unit Price</th>
                 <th>Quantity</th>
                 <th>Total</th>
@@ -40,46 +40,90 @@
         </form>
       </div>
     </div>
+
+    
+
     <div class="row">
+      <div class="four wide right aligned column">
+      </div>
+      <div class="nine wide column">
+        <form class="ui form">
+        <div class="field">
+          <label for="amount">Cash Amount</label>
+          <input type="text" placeholder="Enter Cash Amount" id="amount">
+          
+        </div>
+      </form>
+      </div>
       <div class="column"></div>
-      <div class="seven wide column ">
-          <span class="noOfItems">No. of Items</span>
-      </div>
-      <div class="two wide column"></div>
-      <div class="five wide right aligned column">
-        <strong class="noOfItems">2</strong>
-      </div>
     </div>
+    
     <div class="row">
+
+      <div class="six wide column"> 
+      </div>
+      <div class="three wide column">
+        <strong class="itemLabels">AMOUNT DUE</strong>
+      </div>
+      <div class="six wide right aligned column">
+        P<span id="due">200.00</span>
+      </div>
       <div class="column"></div>
-      <div class="seven wide column ">
-          <span class="noOfItems">Subtotal</span>
-      </div>
-      <div class="two wide column"></div>
-      <div class="five wide right aligned column">
-        <strong class="noOfItems">P 700.00</strong>
-      </div>
     </div>
-    <div class="ui divider"></div>
+
     <div class="row">
+      <div class="six wide column"></div>
+      <div class="three wide column">
+        <span class="itemLabels">Cash</span>
+      </div>
+      <div class="six wide right aligned column">
+        P<span id="cash">00.00</span>
+      </div>
       <div class="column"></div>
-      <div class="seven wide column ">
-          <span class="noOfItems">Total</span>
-      </div>
-      <div class="two wide column"></div>
-      <div class="five wide right aligned column">
-        <strong class="noOfItems">P 700.00</strong>
-      </div>
     </div>
+
+    <div class="row">
+      <div class="six wide column"></div>
+      <div class="three wide column">
+        <span class="red itemLabels" >Change</span>
+      </div>
+      <div class="six wide right aligned column">
+        P<span id="change">00.00</span>
+      </div>
+      <div class="column"></div>
+    </div>
+
   </div>
 
   <div class="ui grid orderOptions">
     <div class="row"></div>
+
     <div class="row orderOptions">
-        <a href="<?php echo site_url();?>/CReceiptItem/viewCheckout" class="rght lbtn" style="margin-right: 50px;"><h4 class="lbtnlabel">Checkout</h4></a>
-        <a href="<?php echo site_url();?>/CProduct/viewMDashboard" class="rght lbtn" align="center" ><h4 class="lbtnlabel">Back</h4></a>
-        <div class="column"></div>
+      <div class="three wide column">
+        <a href="<?php echo site_url();?>/CLogin/viewPos" class="lft lbtn" align="center" ><h4 class="rbtnlabel">Back</h4></a>
+      </div>
+      <div class="ten wide column">
+        <a href="<?php echo site_url();?>/CLogin/viewPos" class="rght rbtn" style="margin-right: 50px;"><h4 class="rbtnlabel">Charge/No Receipt</h4></a>
+      </div>
+      <div class="three wide column">
+        <a href="<?php echo site_url();?>/CReceipt/viewReceipt" class="rght rbtn" style="margin-right: 50px;"><h4 class="rbtnlabel">Charge & Print</h4></a>
+      </div>
+      
+      <div class="column"></div>
     </div>
     <div class="row"></div>
+    
+<script type="text/javascript">
+  jQuery(function($) {
+    $('#amount').on('keyup', function() {
+      var amt = $("#amount").val();
+      var due = $("#due").text();
+      var cash = amt+'.00';
+      var change = parseFloat(cash)-parseFloat(due)+'.00';
+      $("#cash").html(cash); 
+      $("#change").html(change);
+    });
+});
+</script>
   </div>
-</div>
+

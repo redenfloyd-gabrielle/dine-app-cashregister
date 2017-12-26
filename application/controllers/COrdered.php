@@ -24,10 +24,28 @@
 		}
 
 		function displayOrder(){
+			$order = new MOrdered();
 			$qr = $_POST['qr'];
-			
-			$this->load->view('pos/vQrScan');
-			
+
+			$result = $order->getOrderByQR($qr);
+			foreach ($result as $q) {}
+			$id = $q->ordered_id;
+			$total = $q->ordered_total;
+
+			$result1 = $order->displayOrderItemsByOrder($id);
+			$qty = 0;
+			foreach ($result1 as $r) {
+				$qty += $r->order_item_qty;
+			}
+
+			$data['order_info'] = null;
+			if($result1){
+				$data['order_info'] = $result1;
+			}
+			$data['total'] = $total;
+			$data['qty'] = $qty;
+			 $this->load->view('pos/vQrScan',$data);	
+			//   print_r($data);	
 		}
 	}
 
