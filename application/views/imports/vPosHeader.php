@@ -3,12 +3,13 @@
 <html>
 <head>
 	<title>Dine-POS</title>
-	<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/style1.css')?>">
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/style.css')?>">
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/posAssets.css')?>">
     <link type="text/css" rel="stylesheet" href="<?php echo base_url('assets/semantic/dist/semantic.min.css')?>" />
     <script type="text/javascript" src="<?php echo base_url('assets/jquery/jquery.min.js')?>"></script>
+    <script src='<?php echo base_url("assets/semantic/semantic.min.js")?>'></script>
     <script type="text/javascript" src="<?php echo base_url('assets/jquery/instascan.min.js')?>"></script>
+    
 </head>
 <body>
 	<div class="ui top attached borderless menu" id="topMenu">
