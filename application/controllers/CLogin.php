@@ -10,8 +10,7 @@
 	      $this->load->model('MUser');
 	      $this->load->library('session');
 	      $this->load->library('form_validation');
-		  $this->load->helper('url'); 
-		  $this->load->model('MUser');
+		  $this->load->helper('url');  
 	  	}
 
 		public function index()

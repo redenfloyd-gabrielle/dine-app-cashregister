@@ -10,11 +10,6 @@
     <script src='<?php echo base_url("assets/semantic/semantic.min.js")?>'></script>
     <script type="text/javascript" src="<?php echo base_url('assets/jquery/instascan.min.js')?>"></script>
     
-<script type="text/javascript">
-  functiion getCash(value){
-    $("#cash").html('value');
-  }
-</script>
 </head>
 <body>
 	<div class="ui top attached borderless menu" id="topMenu">
