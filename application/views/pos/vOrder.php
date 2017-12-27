@@ -19,10 +19,10 @@
       <div class="column"></div>
       <div class="fourteen wide column">
         <form>
-          <table class="ui single line table">
+          <table class="ui single line table itemLabels">
             <thead>
               <tr>
-                <th class="itemLabels">Product Name</th>
+                <th>Product Name</th>
                 <th>Unit Price</th>
                 <th>Quantity</th>
                 <th>Total</th>
@@ -40,9 +40,6 @@
         </form>
       </div>
     </div>
-
-    
-
     <div class="row">
       <div class="four wide right aligned column">
       </div>
@@ -50,8 +47,7 @@
         <form class="ui form">
         <div class="field">
           <label for="amount">Cash Amount</label>
-          <input type="text" placeholder="Enter Cash Amount" id="amount">
-          
+          <input type="number" placeholder="Enter Cash Amount" id="amount">
         </div>
       </form>
       </div>
@@ -77,7 +73,7 @@
         <span class="itemLabels">Cash</span>
       </div>
       <div class="six wide right aligned column">
-        P<span id="cash">00.00</span>
+        P<span id="cash">0.00</span>
       </div>
       <div class="column"></div>
     </div>
@@ -88,7 +84,7 @@
         <span class="red itemLabels" >Change</span>
       </div>
       <div class="six wide right aligned column">
-        P<span id="change">00.00</span>
+        P<span id="change">0.00</span>
       </div>
       <div class="column"></div>
     </div>
@@ -100,13 +96,13 @@
 
     <div class="row orderOptions">
       <div class="three wide column">
-        <a href="<?php echo site_url();?>/CLogin/viewPos" class="lft lbtn" align="center" ><h4 class="rbtnlabel">Back</h4></a>
+        <a href="<?php echo site_url();?>/CLogin/viewPos" class="lft lbtn" align="center" ><h4 class="lbtnlabel">Back</h4></a>
       </div>
       <div class="ten wide column">
-        <a href="<?php echo site_url();?>/CLogin/viewPos" class="rght rbtn" style="margin-right: 50px;"><h4 class="rbtnlabel">Charge/No Receipt</h4></a>
+        <a href="<?php echo site_url();?>/CLogin/viewPos" class="rght rbtn" align="center""><h4 class="rbtnlabel">Charge/No Receipt</h4></a>
       </div>
       <div class="three wide column">
-        <a href="<?php echo site_url();?>/CReceipt/viewReceipt" class="rght rbtn" style="margin-right: 50px;"><h4 class="rbtnlabel">Charge & Print</h4></a>
+        <a href="<?php echo site_url();?>/CReceipt/viewReceipt" class="rght rbtn" align="center""><h4 class="rbtnlabel">Charge & Print</h4></a>
       </div>
       
       <div class="column"></div>
@@ -114,7 +110,7 @@
     <div class="row"></div>
     
 <script type="text/javascript">
-  jQuery(function($) {
+  $(document).ready(function(){
     $('#amount').on('keyup', function() {
       var amt = $("#amount").val();
       var due = $("#due").text();
@@ -125,5 +121,5 @@
     });
 });
 </script>
-  </div>
+</div>
 

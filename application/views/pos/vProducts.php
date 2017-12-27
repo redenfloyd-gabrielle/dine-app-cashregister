@@ -1,5 +1,5 @@
 <div class="ui two column grid">
-  <div class="row"></div>
+ <div class="row"></div>
   <div class="row">
     <div class="column">
       <div class="ui stackable grid">
@@ -33,6 +33,7 @@
                       <i class="cart icon"></i>
                     Order
                   </button>
+                  <input type="hidden" value="<?php echo $prod->product_id ?>">
                 </div>
               </div>
               <?php } ?>
@@ -49,3 +50,10 @@
 <!-- <div class="vdivide"></div> -->
 </body>
 </html>
+<script type="text/javascript">
+  $(document).ready(function(){
+    $('.pbtn').on('click', function() {
+      
+    });
+});
+</script>
