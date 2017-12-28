@@ -16,7 +16,12 @@
 		{
 			
 		}
- 
+ 		function viewOrderList()
+ 		{
+ 			$this->load->view('imports/vAdminHeader');
+			$this->load->view('admin/vOrderList');
+			$this->load->view('imports/vAdminFooter');
+ 		}
 		
 		public function viewQDashboard($id){
 			$order = new MOrdered();

@@ -8,13 +8,13 @@
     <a class='item' href='<?php echo site_url()?>/CUser/viewAdminDashboard'>
         <i class='dashboard icon'></i> Dashboard
     </a>
-    <a class='active item' href='<?php echo site_url()?>/CProduct/viewMenuList'>
+    <a class='active item' href='<?php echo site_url()?>/CProduct/viewCategoryList'>
         <i class='sidebar icon'></i> Menu
     </a>
-    <a class='item' href=''>
+    <a class='item' href='<?php echo site_url()?>/COrdered/viewOrderList?>'>
         <i class='shop icon'></i> Orders
     </a>
-    <a class='item' href=''>
+    <a class='item' href='<?php echo site_url()?>/CUser/viewReports?>'>
         <i class='bar chart icon'></i> Reports
     </a>
     <a class='item' href=''>
@@ -59,10 +59,10 @@
                             MENU
                             <div class='sub header'>Add a new item to the menu</div>
                         </div>
-                    </h1> <!-- header -->
+                    </h1> <!-- header --> 
 
                     <div class='ui breadcrumb'>
-                        <a class='section' href='<?php echo site_url()?>/CProduct/viewMenuList'>MENU</a>
+                        <a class='section' href='<?php echo site_url()?>/CProduct/viewCategoryList'>CATEGORIES</a>
                         <i class='right arrow icon divider'></i>
                         <div class='active section'>ADD MENU</div>
                     </div> <!-- breadcrumb -->
@@ -120,7 +120,7 @@
                             <div class='ui hidden divider'></div>
                             <div class='ui hidden divider'></div>
 
-                            <a href="<?php echo site_url()?>/CProduct/viewMenuList?>"><div class='ui submit negative button'>Cancel</div></a>
+                            <a href="<?php echo site_url()?>/CProduct/viewCategoryList?>"><div class='ui submit negative button'>Cancel</div></a>
 
                             <button class='ui submit positive button' type="submit" >Add</button>
 

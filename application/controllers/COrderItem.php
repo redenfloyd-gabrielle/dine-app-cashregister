@@ -54,6 +54,7 @@
 			echo $res;
 		}
 
+
 		public function displayOrderListFromQR()
 		{
 			$ordered_item = new MOrderItem();
@@ -148,6 +149,15 @@
 
 }
 
+
+
+		function viewOrderInfo()
+		{
+			$this->load->view('imports/vAdminHeader');
+			$this->load->view('admin/vOrderInfo');
+			$this->load->view('imports/vAdminFooter');
+		}
+	}
 
 
 ?>

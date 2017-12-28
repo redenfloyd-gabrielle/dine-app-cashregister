@@ -51,6 +51,8 @@
 			$this->load->view('imports/vPosHeader');
 			$this->load->view('pos/vMDashboard');
 		}
+
+		
 	
 
 		public function viewProduct($cat)
@@ -115,10 +117,18 @@
 			
 		}
 
-		function viewMenuList()
+		function viewCategoryList()
 		{
+
 			$this->load->view('imports/vAdminHeader');
-			$this->load->view('admin/vMenuList');
+			$this->load->view('admin/vCategoryList');
+			$this->load->view('imports/vAdminFooter');
+		} 
+
+		function viewProductsInCategory()
+		{
+			$this->load->view('imports/vAdminHeader'); 
+			$this->load->view('admin/vProductsInCategory');
 			$this->load->view('imports/vAdminFooter');
 		}
 
@@ -131,6 +141,7 @@
 
 		function viewMenuInfo()
 		{
+			
 			$this->load->view('imports/vAdminHeader');
 			$this->load->view('admin/vMenuInfo');
 			$this->load->view('imports/vAdminFooter');
