@@ -18,12 +18,12 @@
 		}
  
 		
-		function viewQDashboard(){
+		public function viewQDashboard(){
 			$this->load->view('imports/vPosHeader');
 			$this->load->view('pos/vQDashboard');
 		}
 
-		function displayOrder(){
+		public function displayOrderFromQR(){
 			$order = new MOrdered();
 			$qr = $_POST['qr'];
 
@@ -45,13 +45,40 @@
 				}
 				$data['total'] = $total;
 				$data['qty'] = $qty;
+				$data['id'] = $id;
 			}else{
 				$data = null;
 			}
 			
-			 $this->load->view('pos/vQrScan',$data);	
+			 $this->load->view('pos/vQROrder',$data);	
 			   // print_r($qr);	
 		}
-	}
 
+
+		public function displayQROrderFromEdit($id){
+		// 	$order = new MOrdered();
+		// 	$qr = $id;
+			
+		// 	$total = $q->ordered_total;
+		// 	$result1 = $order->displayOrderItemsByOrder($id);
+		   
+		//     $qty = 0;
+		
+		// 	$data['order_info'] = null;
+		// 	if($result1){
+		// 		foreach ($result1 as $r) {
+		// 		$qty += $r->order_item_qty;
+		// 	    }
+		// 		$data['order_info'] = $result1;
+		// 	}
+		// 	$data['total'] = $total;
+		// 	$data['qty'] = $qty;
+		// 	$data['id'] = $id;
+		// }else{
+		// 	$data = null;
+		// 
+		 $this->load->view('imports/vPosHeader');
+		 $this->load->view('pos/index');	
+		}	
+}
 ?>

@@ -24,16 +24,15 @@
 			</div>
 		</div>
 		
-		<!-- $this->view('pos/vOrder'); -->
-	
-
+		 <div id="vOrder" class="column">
+	       <!-- <?php $this->view('pos/vQROrder'); ?> -->
+	    </div>
 	</div>
 </div>
 <!-- <div class="vdivide"></div> -->
 </body>
 </html>
-<script type="text/javascript">
-
+<script type="text/javascript"> 
 	var qr = new Instascan.Scanner({
 		video: document.getElementById("qrcam")
 	});
@@ -42,12 +41,12 @@
 		var dataSet = "qr="+data;
 		$.ajax({
 			type: "POST",
-			url: '<?php echo site_url()?>/COrdered/displayOrder',
+			url: '<?php echo site_url()?>/COrdered/displayOrderFromQR',
 			data: dataSet,
 			cache: false,
 			success: function(result){
 				if(result){
-					$('body').html(result);
+					$('#vOrder').html(result);
 				 }else{
 					alert("Error");
 				 }                 

@@ -14,14 +14,6 @@
 
 		}
 
-		public function getLastOrderedId(){
-			$last = $this->db->order_by('product_id',"desc")
-			->limit(1)
-			->get('product')
-			->row();
-			return $last;
-		}
-
 		public function getOrderByQR($qr){
 			$where = array('ordered_qr_code' =>$qr);
 			$query = $this->read_where($where);

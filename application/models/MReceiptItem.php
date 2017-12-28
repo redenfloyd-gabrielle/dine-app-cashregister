@@ -14,6 +14,25 @@
 
 		}
 
+		public function getReceiptItemDetailsByProduct($pid,$rid)
+		{
+			$where = array('receipt_item_product_id' =>$pid,
+		                   'receipt_item_receipt_id'=> $rid);
+			$query = $this->read_where($where);
+			return $query;
+		}
+
+		public function getReceiptItemDetailsByReceipt($id)
+		{
+			$this->db->select('*');
+			$this->db->from($this::DB_TABLE);
+			$this->db->join('product',$this::DB_TABLE.'.receipt_item_product_id= product_id' );
+			$this->db->where(array($this::DB_TABLE.'_receipt_id' => $id));
+			$query = $this->db->get();
+			return $query->result();
+		}
+
+
 		public function getReceipt_item_id(){
 			return $this->receipt_item_id;
 		}

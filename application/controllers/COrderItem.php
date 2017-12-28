@@ -17,9 +17,11 @@
 			
 		}
 
-		function viewEditOrder(){
+		function viewEditOrder($page,$id){
+			$data['page'] = $page;
+			$data['id'] = $id;
 			$this->load->view('imports/vPosHeader');
-			$this->load->view('pos/vEditOrder');
+			$this->load->view('pos/vEditOrder',$data);
 		}
 
 	}
