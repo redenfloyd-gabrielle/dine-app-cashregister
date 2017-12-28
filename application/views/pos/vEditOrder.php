@@ -1,107 +1,137 @@
+<?php if ($this->session->userdata('userSession') && $this->session->userdata['userSession']['user_type'] != 'SUPERADMIN') { ?>
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Dine-POS</title>
+  <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/style.css')?>">
+  <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/posAssets.css')?>">
+    <link type="text/css" rel="stylesheet" href="<?php echo base_url('assets/semantic/dist/semantic.min.css')?>" />
+    <script type="text/javascript" src="<?php echo base_url('assets/jquery/jquery.min.js')?>"></script>
+    <script src='<?php echo base_url("assets/semantic/semantic.min.js")?>'></script>
+    <script type="text/javascript" src="<?php echo base_url('assets/jquery/instascan.min.js')?>"></script>
+    
+</head>
+<body>
+  <div class="ui top attached borderless menu" id="topMenu">
+    <h3 class="ui header item " id="topItem">DINE</h3>
+    <div class="right menu">
+      <h3 class="ui header item " id="rightTopItem"><?php echo $this->session->userdata['userSession']['user_first_name'].' '.$this->session->userdata['userSession']['user_last_name'];?> &nbsp &nbsp | &nbsp &nbsp <span id="curdate"></span>&nbsp &nbsp | &nbsp &nbsp <span id ="curtime" ></span>&nbsp &nbsp</h3>
+      <div class="hidden item"></div>
+      <a class="item" href="<?php echo site_url()?>/CLogin/userLogout?>"><i class="very large white sign out icon"></i></a>
+    </div>
+  </div>
+
+  <script>
+    var dt = new Date();
+    document.getElementById("curdate").innerHTML = dt.toLocaleDateString();
+    document.getElementById("curtime").innerHTML = dt.toLocaleTimeString();
+  </script>
+
+<?php } else if ($this->session->userdata['userSession']['user_type'] == 'SUPERADMIN') {
+   redirect('CLogin/viewSuperadminDashboard');
+} else {
+    redirect('CInitialize');
+}
+?>
 
 <div class="ui two column grid">
   <div class="row"></div>
   <div class="row">
     <div class="column">
-      <?php $this->view('pos/vCategory'); ?>
-    </div>
-    <div class="column">
-      
-      <div class="ui unstackable grid">
+      <div class="ui stackable grid">
         <div class="row">
           <div class="column"></div>
           <div class="seven wide column">
-            <h1 class="ui header headerName">
-              <i class="circular pencil icon"></i>
+            <h1 class="huge header">CATEGORIES</h1>
+          </div>
+        </div>
+      <div class="row">
+        <div class="column"></div>
+        <div class="fourteen wide column"> 
+          <input type="hidden" name="ordered_id" id="ordered_id" value="<?php echo $eid; ?>">
+          <div class="ui three cards">
+            <div class="ui card">
+              <a class="image" href="<?php echo site_url()."/CProduct/viewProductQR/".$page."/MEALS/".$eid; ?>">
+                <img class="ui centered fluid image" src="<?php echo base_url('assets/images/meals.jpg')?>">
+              </a>
               <div class="content">
-                Edit Order
-                <div class="sub header subHeaderName">List of Orders</div>
+                <a class="header" href="<?php echo site_url()."/CProduct/viewProductQR/".$page."/MEALS/".$eid; ?>">MEALS</a>
+                <div class="meta">
+                  <a>Category</a>
+                </div>
               </div>
-            </h1>
+            </div>
+
+            <div class="ui card">
+              <a class="image" href="<?php echo site_url()."/CProduct/viewProductQR/".$page."/MEALS/".$eid; ?>">
+                <img class="ui centered fluid image" src="<?php echo base_url('assets/images/beverage.jpg')?>">
+              </a>
+              <div class="content">
+                <a class="header" href="<?php echo site_url()."/CProduct/viewProductQR/".$page."/MEALS/".$eid; ?>">DRINKS</a>
+                <div class="meta">
+                  <a>Category</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="ui card">
+              <a class="image" href="<?php echo site_url()."/CProduct/viewProductQR/".$page."/MEALS/".$eid; ?>">
+                <img class="ui centered fluid image" src="<?php echo base_url('assets/images/dessert.jpg')?>">
+              </a>
+              <div class="content">
+                <a class="header" href="<?php echo site_url()."/CProduct/viewProductQR/".$page."/MEALS/".$eid; ?>">DESSERTS</a>
+                <div class="meta">
+                  <a>Category</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="ui card">
+              <a class="image" href="<?php echo site_url()."/CProduct/viewProductQR/".$page."/MEALS/".$eid; ?>">
+                <img class="ui centered fluid image" src="<?php echo base_url('assets/images/soup.jpg')?>">
+              </a>
+              <div class="content">
+                <a class="header" href="<?php echo site_url()."/CProduct/viewProductQR/".$page."/MEALS/".$eid; ?>">EXTRAS</a>
+                <div class="meta">
+                  <a>Category</a>
+                </div>
+              </div>
+            </div>
           </div>
-        </div>
-        <div class="row">
-          <div class="column"></div>
-          <div class="fourteen wide column">
-            <form>
-              <table class="ui single line table">
-                <thead>
-                  <tr>
-                    <th>Product Name</th>
-                    <th>Unit Price</th>
-                    <th>Quantity</th>
-                    <th>Total</th>
-                    <th></th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>Product 1</td>
-                    <td>P 70.00</td>
-                    <td>5</td>
-                    <td>P 350.00</td>
-                    <td><i class="big red remove icon"></i></td>
-                  </tr>
-                  <tr>
-                    <td>Product 1</td>
-                    <td>P 70.00</td>
-                    <td>5</td>
-                    <td>P 350.00</td>
-                    <td><i class="big red remove icon"></i></td>
-                  </tr>
-                </tbody>
-              </table>
-            </form>
-          </div>
-        </div>
-        <div class="row">
-          <div class="column"></div>
-          <div class="seven wide column ">
-              <span class="noOfItems">No. of Items</span>
-          </div>
-          <div class="two wide column"></div>
-          <div class="five wide right aligned column">
-            <strong class="noOfItems">2</strong>
-          </div>
-        </div>
-        <div class="row">
-          <div class="column"></div>
-          <div class="seven wide column ">
-              <span class="noOfItems">Subtotal</span>
-          </div>
-          <div class="two wide column"></div>
-          <div class="five wide right aligned column">
-            <strong class="noOfItems">P 700.00</strong>
-          </div>
-        </div>
-        <div class="ui divider"></div>
-        <div class="row">
-          <div class="column"></div>
-          <div class="seven wide column ">
-              <span class="noOfItems">Total</span>
-          </div>
-          <div class="two wide column"></div>
-          <div class="five wide right aligned column">
-            <strong class="noOfItems">P 700.00</strong>
-          </div>
-        </div>
+        <div class="column"></div>
       </div>
-
-      <div class="ui grid orderOptions">
-        <div class="row"></div>
-        <div class="row orderOptions">
-            <a href="<?php echo site_url();?>/COrdered/viewMDashboard?>" class="rbtn" align="center"><h4 class="lbtnlabel">Edit</h4></a>
-
-            <a href="<?php echo site_url();?>/COrdered/viewMDashboard?>" class="rght lbtn" align="center" ><h4 class="lbtnlabel">Back</h4></a>
-
-            <div class="column"></div>
-        </div>
-        <div class="row"></div>
-      </div>
-
-
-
-
     </div>
   </div>
-  
+</div>
+  <div class="column" id="vEditOrder">
+  <?php $this->view('pos/vEditComponent'); ?>
+  </div>
+  </div>
+</div>
+</body>
+</html>
+<script>
+ $(document).ready(function(){
+   
+    var ordered_id = $('#ordered_id').val();
+   
+    var dataSet = "ordered_id="+ordered_id;
+    $.ajax({
+        type: "POST",
+        url: '<?php echo site_url()?>/COrderItem/displayOrderListFromQR',
+        data: dataSet,
+        cache: false,
+        success: function(result){
+            if(result){
+               $('#vEditOrder').html(result);
+            }else{
+                alert("Error");
+            }                         
+        },
+        error: function(jqXHR, errorThrown){
+            console.log(errorThrown);
+        }
+    });
+});
+</script>
+

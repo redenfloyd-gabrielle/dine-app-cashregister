@@ -5,6 +5,7 @@
 		private $order_item_subtotal;
 		private $order_item_product_id;
 		private $order_item_ordered_id;
+		private $order_item_status;
 		
 
     	const DB_TABLE = "order_item";
@@ -13,6 +14,26 @@
 		public function __construct(){
 
 		}
+
+		public function getOrderItemDetailsByOrder($id)
+		{
+			$this->db->select('*');
+			$this->db->from($this::DB_TABLE);
+			$this->db->join('product',$this::DB_TABLE.'.order_item_product_id= product_id' );
+			$this->db->where(array($this::DB_TABLE.'_ordered_id' => $id,
+		 						   $this::DB_TABLE.'_status' => 'ACTIVE'));
+			$query = $this->db->get();
+			return $query->result();
+		}
+
+		public function getOrderItemDetailsByProduct($pid,$oid)
+		{
+			$where = array($this::DB_TABLE.'_product_id' =>$pid,
+		                   $this::DB_TABLE.'_ordered_id'=> $oid);
+			$query = $this->read_where($where);
+			return $query;
+		}
+
 
 		public function getOrder_item_id(){
 			return $this->order_item_id;
@@ -53,5 +74,14 @@
 		public function setOrder_item_ordered_id($order_item_ordered_id){
 			$this->order_item_ordered_id = $order_item_ordered_id;
 		}
+
+		public function getOrder_item_status(){
+			return $this->order_item_status;
+		}
+
+		public function setOrder_item_status($order_item_status){
+			$this->order_item_status = $order_item_status;
+		}
+
 	}
 ?>

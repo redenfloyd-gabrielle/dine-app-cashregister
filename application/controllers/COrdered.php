@@ -23,12 +23,22 @@
 			$this->load->view('imports/vAdminFooter');
  		}
 		
-		function viewQDashboard(){
+		public function viewQDashboard($id){
+			$order = new MOrdered();
+
+			$result = $order->getOrderById($id);
+			if($result){
+				foreach ($result as $key) {}
+				$data['qr'] = $key->ordered_qr_code;
+			}else{
+				$data['qr'] = null;
+			}
+			// print_r($data);
 			$this->load->view('imports/vPosHeader');
-			$this->load->view('pos/vQDashboard');
+			$this->load->view('pos/vQDashboard',$data);
 		}
 
-		function displayOrder(){
+		public function displayOrderFromQR(){
 			$order = new MOrdered();
 			$qr = $_POST['qr'];
 
@@ -50,13 +60,20 @@
 				}
 				$data['total'] = $total;
 				$data['qty'] = $qty;
+				$data['id'] = $id;
+				$data['qr'] = $qr;
 			}else{
 				$data = null;
+				
+			}
+			if($data == null){
+				echo "<script>alert('INVALID QR CODE')</script>";
+			}else{
+				$res = $this->load->view('pos/vQROrder',$data,TRUE);
+				echo $res;	
 			}
 			
-			 $this->load->view('pos/vQrScan',$data);	
-			   // print_r($qr);	
+			
 		}
-	}
-
+    }
 ?>

@@ -14,16 +14,14 @@
 
 		}
 
-		public function getLastOrderedId(){
-			$last = $this->db->order_by('product_id',"desc")
-			->limit(1)
-			->get('product')
-			->row();
-			return $last;
-		}
-
 		public function getOrderByQR($qr){
 			$where = array('ordered_qr_code' =>$qr);
+			$query = $this->read_where($where);
+			return $query;
+		}
+
+		public function getOrderById($id){
+			$where = array($this::DB_TABLE_PK =>$id);
 			$query = $this->read_where($where);
 			return $query;
 		}
