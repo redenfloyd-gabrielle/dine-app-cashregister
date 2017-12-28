@@ -8,14 +8,14 @@
 					 
 					<div class="fourteen wide column">
 					<div class="ui breadcrumb">
-						<a class="section" href="<?php echo site_url()?>/CProduct/viewMDashboard?>">Home</a>
+						<a class="section" href="<?php echo site_url()?>/CLogin/viewPos?>">Home</a>
 						<i class="right chevron icon divider"></i>
-						<div class="active section">Category Name</div>
+						<div class="active section">QR SCANNER</div>
 					</div> 
 					<div class="mid">
 						<video id="qrcam" class="vid" ></video> 
 						<h2 class="scannerlabel">Scan Here</h2>
-					
+					<input type="hidden" name="qr" id="qr" value="<?php echo $qr ?>">
 						<button class="ui brown big icon button" id="trybtn"><i class="refresh icon"></i>Try Again</button>
 					</div>
 					</div>
@@ -23,9 +23,7 @@
 				</div>
 			</div>
 		</div>
-		
 		 <div id="vOrder" class="column">
-	       <!-- <?php $this->view('pos/vQROrder'); ?> -->
 	    </div>
 	</div>
 </div>
@@ -38,7 +36,15 @@
 	});
 	qr.addListener('scan',function(data){
 		console.log(data);
-		var dataSet = "qr="+data;
+
+		if(data != null){
+			dataSet = "qr="+data;
+		}else{
+			var qr = $('#qr').val().trim();
+			dataSet = "qr="+qr;
+		}
+ 
+	
 		$.ajax({
 			type: "POST",
 			url: '<?php echo site_url()?>/COrdered/displayOrderFromQR',

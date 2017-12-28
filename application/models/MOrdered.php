@@ -20,6 +20,12 @@
 			return $query;
 		}
 
+		public function getOrderById($id){
+			$where = array($this::DB_TABLE_PK =>$id);
+			$query = $this->read_where($where);
+			return $query;
+		}
+
 		public function displayOrderItemsByOrder($id){
 
 			$this->db->select('*');

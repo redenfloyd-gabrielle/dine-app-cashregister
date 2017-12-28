@@ -1,4 +1,3 @@
-
 <div class="ui unstackable grid">
   <div class="row">
     <div class="column"></div>
@@ -12,12 +11,15 @@
       </h1>
     </div>
     <div class="three wide column">
-      <a href="<?php echo site_url()?>/COrderItem/viewEditOrder/qr/<?php echo $id?>"><i class="huge edit icon"></i></a>
+      <button class="ibtn" id="ibtn"><i class="huge blue edit icon"></i></button>
     </div>
   </div>
   <div class="row">
     <div class="column"></div>
     <div class="fourteen wide column">
+      <?php if (isset($id)){ ?>
+      <input type="hidden" id="eid" value="<?php echo $id ?>">
+      <?php } ?>
       <form>
         <table class="ui single line table">
           <thead>
@@ -66,7 +68,9 @@
       <strong class="itemLabels">AMOUNT DUE</strong>
     </div>
     <div class="six wide right aligned column">
+      <?php if(isset($total)){ ?>
       P<span id="due"><?php echo $total ?></span>
+      <?php } ?>
     </div>
     <div class="column"></div>
   </div>
@@ -88,7 +92,7 @@
       <span class="red itemLabels" >Change</span>
     </div>
     <div class="six wide right aligned column">
-      P<span id="change">0.00</span>
+      <span id="peso">P</span><span id="change">0.00</span>
     </div>
     <div class="column"></div>
   </div>
@@ -112,20 +116,49 @@
     <div class="column"></div>
   </div>
   <div class="row"></div>
-<script type="text/javascript">
-    $(document).ready(function(){
-        $('#amount').on('keyup', function() {
-          var amt = $("#amount").val();
-          var due = $("#due").text();
-          var cash = amt+'.00';
-          var change = parseFloat(cash)-parseFloat(due)+'.00';
-          $("#cash").html(cash); 
-          $("#change").html(change);
-          if(change < 0){
+<script>
+  $(document).ready(function(){
+      $('#amount').on('keyup', function() {
+        var amt = $("#amount").val();
+        var due = $("#due").text();
+        var cash = amt+'.00';
+        var change = parseFloat(cash)-parseFloat(due)+'.00';
+        $("#cash").html(cash); 
+        $("#change").html(change);
+        if(change < 0){
             $("#change").css("color","red");
+            $('#peso').css("color","red");
+          }else{
+            $("#change").css("color","black");
+            $('#peso').css("color","black");
           }
-        });
+      });
+
+      $('#ibtn').on('click', function() {
+        var eid = $("#eid").val();
+        var page = "qr";
+        var dataSet = "eid="+eid+"&page="+page;
+
+        $.ajax({
+          type: "POST",
+          url: '<?php echo site_url()?>/COrderItem/viewEditOrder',
+          data: dataSet,
+          cache: false,
+          success: function(result){
+              if(result){
+                 $('body').html(result);
+
+              }else{
+                  alert("Error");
+              }                         
+          },
+          error: function(jqXHR, errorThrown){
+              console.log(errorThrown);
+
+          }
+      });
     });
+  });
 </script>
 
 

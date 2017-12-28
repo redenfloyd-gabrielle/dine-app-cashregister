@@ -69,14 +69,50 @@
 						$arrObj->product_category = $value->product_category;
 						$array[] = $arrObj;
 				}
+				$data['products']  = $array;
+				
+			}else{
+				$data['products']  = null;
 			}
 			////////////STOPS HERE///////////////////////////////////////////////////
-			$data['products']  = $array;
 			$data['prod_cat']  = $cat;
 			$this->load->view('imports/vPosHeader');
 			$this->load->view('pos/vProducts',$data);
 
 			// print_r($data);
+		}
+		public function viewProductQR($page,$cat,$id)
+		{
+			$prod = new MProduct();
+			$order = new MOrdered();
+			$result = $prod->getProductsByCategory($cat);
+
+            $array = array();
+			if($result){
+				foreach ($result as $value) {
+						$arrObj = new stdClass;
+						$arrObj->product_id = $value->product_id;
+						$arrObj->product_name = $value->product_name;
+						$arrObj->product_price = $value->product_price;
+						$arrObj->product_image = $value->product_image;
+						$arrObj->product_category = $value->product_category;
+						$array[] = $arrObj;
+				}
+			$data['products']  = $array;
+			$data['prod_cat']  = $cat;
+			}else{
+				$data = null;
+			}
+			////////////STOPS HERE///////////////////////////////////////////////////
+			$res = $order->getOrderById($id);
+			foreach ($res as $key){}
+			$data['ordered_id'] = $id;
+			$data['page'] = $page;
+
+			$this->load->view('imports/vPosHeader');
+			$this->load->view('pos/vProductQR',$data);
+
+			
 		}
 
 		function viewMenuList()

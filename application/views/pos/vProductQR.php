@@ -13,16 +13,23 @@
           <div class="column"></div>
           <div class="fourteen wide column"> 
             <div class="ui breadcrumb">
-              <a class="section" href="<?php echo site_url()?>/CProduct/viewMDashboard?>">Home</a>
+              <?php 
+              if($page == 'manual'){
+                echo '<a class="section" href="'.site_url().'/CProduct/viewMDashboard">Home</a>';
+              }else if($page == 'qr'){
+                echo '<a class="section" href="'.site_url().'/COrderItem/viewEditOrderFromProduct/'.$ordered_id.'">Home</a>';
+              }
+              ?>
               <i class="right chevron icon divider"></i>
               <div class="active section">Category Name</div>
             </div>  
-       
+            <input type="hidden" name="ordered_id" id="ordered_id" value="<?php echo $ordered_id; ?>">
+            
             <div class="ui three cards">
             <?php if(isset($products)) { ?>
               <?php $x=0; foreach ($products as $prod){ ?>
               <div class="ui grey card">
-                <form method="POST" action="<?php echo site_url()?>/CReceiptItem/addReceiptItem/<?php echo $prod->product_id?>">
+                <form method="POST" action="<?php echo site_url()?>/COrderItem/addOrderItem/<?php echo $prod->product_id?>">
                   <div class="ui grey card">
                 <img class="ui centered fluid image" src= "<?php echo base_url($prod->product_image)?>">
                 <div class="content">
@@ -32,25 +39,25 @@
                   <span class="left floated price">
                   P<span id="price"><?php echo $prod->product_price; ?>.00</span>
                   </span>
-                  <button class="right floated cart pbtn" id="pbtn" type="submit" name="pbutton[]">
+                  <button class="right floated cart pbtn" id="pbtn" type="submit">
                       <i class="cart icon"></i>
                     Order
                   </button>
-                  <input type="hidden" value="<?php echo $this->session->userdata['receiptSession']['receipt_id']?>" name="receipt_id" id="receipt_id">
+                  <input type="hidden" value="<?php echo $ordered_id?> " id="ordered_id" name="ordered_id">
                 </div>
               </div>
               </form>
               </div>
               <?php } ?>
-            <?php }else{ echo "<i class='warning circle icon error'></i>No items to display.";} ?> 
+            <?php } ?> 
             </div>
           </div>
           <div class="column"></div>
         </div>
       </div>
     </div>
-    <div id="vOrder" class="column">
-    <?php $this->view('pos/vOrder'); ?>
+    <div id="vEditOrder" class="column">
+    <!-- <?php //$this->view('pos/vEditComponent'); ?> -->
     </div>
   </div>
 </div>
@@ -58,19 +65,19 @@
 </body>
 </html>
 <script>
-  $(document).ready(function(){
+ $(document).ready(function(){
    
-    var receipt_id = $('#receipt_id').val();
+    var ordered_id = $('#ordered_id').val();
    
-    var dataSet = "receipt_id="+receipt_id;
+    var dataSet = "ordered_id="+ordered_id;
     $.ajax({
         type: "POST",
-        url: '<?php echo site_url()?>/CReceiptItem/displayOrderListManual',
+        url: '<?php echo site_url()?>/COrderItem/displayOrderListFromQR',
         data: dataSet,
         cache: false,
         success: function(result){
             if(result){
-               $('#vOrder').html(result);
+               $('#vEditOrder').html(result);
             }else{
                 alert("Error");
             }                         
@@ -80,5 +87,4 @@
         }
     });
 });
-
 </script>

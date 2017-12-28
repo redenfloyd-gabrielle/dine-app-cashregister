@@ -12,8 +12,8 @@
         </h1>
       </div>
       <div class="three wide column">
-        <a href="<?php echo site_url()?>/COrderItem/viewEditOrder?>"><i class="huge edit icon"></i></a>
-      </div>
+      <button class="ibtn" id="ibtn"><i class="huge blue edit icon"></i></button>
+    </div>
     </div>
     <div class="row">
       <div class="column"></div>
@@ -41,6 +41,7 @@
                <?php } ?>
             </tbody>
           </table>
+           <input type="hidden" value="<?php echo $this->session->userdata['receiptSession']['receipt_id']?>" name="eid" id="eid">
         </form>
       </div>
     </div>
@@ -88,7 +89,7 @@
         <span class="red itemLabels" >Change</span>
       </div>
       <div class="six wide right aligned column">
-        P<span id="change">0.00</span>
+        <span id="peso">P</span><span id="change">0.00</span>
       </div>
       <div class="column"></div>
     </div>
@@ -124,18 +125,47 @@
           $("#change").html(change);
           if(change < 0){
             $("#change").css("color","red");
+            $('#peso').css("color","red");
+          }else{
+            $("#change").css("color","black");
+            $('#peso').css("color","black");
           }
         });
-    });
-       var sum = 0;
+  
+      var sum = 0;
       $(".subtotal").each(function() {
           var value = $(this).text();
-          // add only if the value is number
           if(!isNaN(value) && value.length != 0) {
               sum += parseFloat(value);
           }
           $("#due").html(sum); 
       });
+
+      $('#ibtn').on('click', function() {
+        var eid = $("#eid").val();
+        var page = "manual";
+        var dataSet = "eid="+eid+"&page="+page;
+
+        $.ajax({
+          type: "POST",
+          url: '<?php echo site_url()?>/COrderItem/viewEditOrder',
+          data: dataSet,
+          cache: false,
+          success: function(result){
+              if(result){
+                 $('body').html(result);
+
+              }else{
+                  alert("Error");
+              }                         
+          },
+          error: function(jqXHR, errorThrown){
+              console.log(errorThrown);
+
+          }
+      });
+    });
+   });
 </script>
 
 
