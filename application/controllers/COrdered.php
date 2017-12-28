@@ -16,7 +16,12 @@
 		{
 			
 		}
- 
+ 		function viewOrderList()
+ 		{
+ 			$this->load->view('imports/vAdminHeader');
+			$this->load->view('admin/vOrderList');
+			$this->load->view('imports/vAdminFooter');
+ 		}
 		
 		function viewQDashboard(){
 			$this->load->view('imports/vPosHeader');
