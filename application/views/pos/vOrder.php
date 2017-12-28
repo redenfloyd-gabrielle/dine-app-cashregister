@@ -1,4 +1,4 @@
-<div class="column">
+
   <div class="ui unstackable grid">
     <div class="row">
       <div class="column"></div>
@@ -29,12 +29,16 @@
               </tr>
             </thead>
             <tbody>
+              <?php if(isset($receipt_item)) { ?>
+                 <?php foreach ($receipt_item as $item){ ?>
               <tr id="myTR">
-                <td>Product 1</td>
-                <td>P 70.00</td>
-                <td>5</td>
-                <td>P 350.00</td>
+                <td><?php echo $item->product_name ?></td>
+                <td><?php echo $item->product_price ?></td>
+                <td><?php echo $item->receipt_item_quantity ?></td>
+                <td class="subtotal"><?php echo $item->receipt_item_subtotal ?></td>
               </tr>
+              <?php } ?>
+               <?php } ?>
             </tbody>
           </table>
         </form>
@@ -110,16 +114,28 @@
     <div class="row"></div>
     
 <script type="text/javascript">
-  $(document).ready(function(){
-    $('#amount').on('keyup', function() {
-      var amt = $("#amount").val();
-      var due = $("#due").text();
-      var cash = amt+'.00';
-      var change = parseFloat(cash)-parseFloat(due)+'.00';
-      $("#cash").html(cash); 
-      $("#change").html(change);
+   $(document).ready(function(){
+        $('#amount').on('keyup', function() {
+          var amt = $("#amount").val();
+          var due = $("#due").text();
+          var cash = amt+'.00';
+          var change = parseFloat(cash)-parseFloat(due)+'.00';
+          $("#cash").html(cash); 
+          $("#change").html(change);
+          if(change < 0){
+            $("#change").css("color","red");
+          }
+        });
     });
-});
+       var sum = 0;
+      $(".subtotal").each(function() {
+          var value = $(this).text();
+          // add only if the value is number
+          if(!isNaN(value) && value.length != 0) {
+              sum += parseFloat(value);
+          }
+          $("#due").html(sum); 
+      });
 </script>
-</div>
+
 

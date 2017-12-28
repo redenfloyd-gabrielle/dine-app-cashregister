@@ -24,13 +24,15 @@
      </a>
     </div>
     <div class="six wide center aligned middle aligned stackable column">
-      <a href="<?php echo site_url()?>/CProduct/viewMDashboard?>"><img src= "<?php echo base_url('assets/images/hand.png ')?>" class="ui centered small image">
-        <h2 class="ui header itemLabels">Input Order</h2>
-      </a>
+        <a href="<?php echo site_url()?>/CProduct/viewMDashboard?>"><img class="ui centered small image" src="<?php echo base_url('assets/images/qrcode.png')?>">
+       <h2 class="ui header itemLabels">Input Order</h2>
+     </a>
     </div> 
     <div class="two wide column"></div>
   </div>
 </div>
-
+<script>
+  
+</script>
 </body>
 </html>
