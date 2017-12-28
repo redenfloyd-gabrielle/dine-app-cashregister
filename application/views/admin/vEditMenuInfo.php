@@ -11,10 +11,10 @@
     <a class='active item' href='<?php echo site_url()?>/CProduct/viewCategoryList?>'>
         <i class='sidebar icon'></i> Menu
     </a>
-    <a class='item' href=''>
+    <a class='item' href='<?php echo site_url()?>/COrdered/viewOrderList?>'>
         <i class='shop icon'></i> Orders
     </a>
-    <a class='item' href=''>
+    <a class='item' href='<?php echo site_url()?>/CUser/viewReports?>'>
         <i class='bar chart icon'></i> Reports
     </a>
     <a class='item' href=''>
@@ -61,10 +61,14 @@
                         </div>
                     </h1> <!-- header -->
 
-                    <div class='ui breadcrumb'>
-                        <a class='section' href='<?php echo site_url()?>/CProduct/viewMenuList?>'>MENU</a>
+                    <div class='ui breadcrumb'> 
+                        <a class='section' href='<?php echo site_url()?>/CProduct/viewCategoryList?>'>CATEGORIES</a>
                         <i class='right arrow icon divider'></i>
-                        <div class='active section'>EDIT ITEM INFORMATION</div>
+                        <a class='section' href='<?php echo site_url()?>/CProduct/viewProductsInCategory?>'>FOOD LIST</a>
+                        <i class='right arrow icon divider'></i>
+                        <a class='section' href='<?php echo site_url()?>/CProduct/viewMenuInfo?>'>FOOD INFORMATION</a>
+                        <i class='right arrow icon divider'></i>
+                        <div class='active section'>EDIT FOOD INFORMATION</div>
                     </div> <!-- breadcrumb -->
 
                     <div class='ui hidden divider'></div>
@@ -109,7 +113,7 @@
                             <div class='ui hidden divider'></div>
                             <div class='ui hidden divider'></div>
 
-                            <a href="<?php echo site_url()?>/CProduct/viewMenuList?>"><div class='ui submit negative button'>Cancel</div></a>
+                            <a href="<?php echo site_url()?>/CProduct/viewMenuInfo?>"><div class='ui submit negative button'>Cancel</div></a>
 
                             <div class='ui submit positive button'>Edit</div>
 

@@ -14,7 +14,31 @@
 
 		}
 
+		public function getLastOrderedId(){
+			$last = $this->db->order_by('product_id',"desc")
+			->limit(1)
+			->get('product')
+			->row();
+			return $last;
+		}
 
+		public function getOrderByQR($qr){
+			$where = array('ordered_qr_code' =>$qr);
+			$query = $this->read_where($where);
+			return $query;
+		}
+
+		public function displayOrderItemsByOrder($id){
+
+			$this->db->select('*');
+			$this->db->from('order_item');
+			$this->db->join($this::DB_TABLE,'order_item'.'.order_item_ordered_id= ordered_id ' );
+			$this->db->join('product','order_item'.'.order_item_product_id= product_id ' );
+			$this->db->where(array($this::DB_TABLE.'_id' => $id ));
+			$query = $this->db->get();
+			return $query->result();
+			// SELECT * FROM `order_item` JOIN ordered ON ordered_id = order_item_ordered_id WHERE ordered_id = 1
+		}
 
 		public function getOrdered_id(){
 			return $this->ordered_id;

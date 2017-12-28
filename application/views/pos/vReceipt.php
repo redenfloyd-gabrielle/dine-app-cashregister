@@ -1,4 +1,4 @@
-<<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
   <meta charset="utf-8" />
@@ -7,7 +7,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
   <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/style1.css')?>">
-	<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/style.css')?>">
   <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/posAssets.css')?>">
   <link type="text/css" rel="stylesheet" href="<?php echo base_url('assets/semantic/dist/semantic.min.css')?>" />
   <script src="main.js"></script>
