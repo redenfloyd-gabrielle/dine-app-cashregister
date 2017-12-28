@@ -113,7 +113,7 @@
                             <div class='ui hidden divider'></div>
                             <div class='ui hidden divider'></div>
 
-                            <a href="<?php echo site_url()?>/CProduct/viewProductsInCategory?>"><div class='ui submit negative button'>Cancel</div></a>
+                            <a href="<?php echo site_url()?>/CProduct/viewMenuInfo?>"><div class='ui submit negative button'>Cancel</div></a>
 
                             <div class='ui submit positive button'>Edit</div>
 
