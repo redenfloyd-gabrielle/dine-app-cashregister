@@ -74,7 +74,7 @@
                     <table class='ui very basic table'>
                         <tbody>
                             <tr> 
-                                <td class='background-color: '>NAME</td>
+                                <td>NAME</td>
                                 <td><?php echo $u->user_first_name.' '.$u->user_mi.'. '.$u->user_last_name; ?></td>
                             </tr>
                             <tr>

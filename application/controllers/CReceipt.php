@@ -15,6 +15,11 @@
 		{
 			
 		}
+   
+		public function viewReceipt(){
+			$this->load->view('pos/vReceipt');
+		}
+
 
 	}
 

@@ -8,10 +8,10 @@
     <a class='active item' href='<?php echo site_url()?>/CProduct/viewCategoryList'>
         <i class='sidebar icon'></i> Menu
     </a> 
-    <a class='item' href=''>
+    <a class='item' href='<?php echo site_url()?>/COrdered/viewOrderList?>'>
         <i class='shop icon'></i> Orders
     </a>
-    <a class='item' href=''>
+    <a class='item' href='<?php echo site_url()?>/CUser/viewReports?>'>
         <i class='bar chart icon'></i> Reports
     </a>
     <a class='item' href=''>
@@ -117,15 +117,6 @@
                     </div> <!-- row -->
                     
                     <div class='ui hidden divider'></div>
-
-                    <div class='center aligned middle aligned row'>
-                        <div class='ui pagination menu'>
-                            <a class='active item'>1</a>
-                            <a class='item'>2</a>
-                            <a class='item'>3</a>
-                        </div> <!-- pagination -->
-                    </div> <!-- row -->
-
                 </div> <!-- twelve wide column -->
             </div> <!-- grid -->
         </div> <!-- thirteen wide column -->

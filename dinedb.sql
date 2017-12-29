@@ -57,7 +57,8 @@ CREATE TABLE `order_item` (
   `order_item_qty` int(11) NOT NULL,
   `order_item_subtotal` float NOT NULL,
   `order_item_product_id` int(11) NOT NULL,
-  `order_item_ordered_id` int(11) NOT NULL
+  `order_item_ordered_id` int(11) NOT NULL,
+  `order_item_status` enum('ACTIVE','INACTIVE') NOT NULL DEFAULT 'ACTIVE'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -106,7 +107,8 @@ CREATE TABLE `receipt_item` (
   `receipt_item_subtotal` float NOT NULL,
   `receipt_item_quantity` int(11) NOT NULL,
   `receipt_item_product_id` int(11) NOT NULL,
-  `receipt_item_receipt_id` int(11) NOT NULL
+  `receipt_item_receipt_id` int(11) NOT NULL,
+  `receipt_item_status` enum('ACTIVE','INACTIVE') NOT NULL DEFAULT 'ACTIVE'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------

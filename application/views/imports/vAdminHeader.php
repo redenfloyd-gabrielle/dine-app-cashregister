@@ -4,9 +4,11 @@
 <head>
     <title>Dine-Admin Module</title>
     <link rel='stylesheet' href='<?php echo base_url("assets/css/adminAssets.css")?>'>
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/posAssets.css')?>">
     <link rel='stylesheet' href='<?php echo base_url("assets/semantic/semantic.min.css")?>'>
     <script src='<?php echo base_url("assets/jquery.min.js")?>'></script>
     <script src='<?php echo base_url("assets/semantic/semantic.min.js")?>'></script>
+    <script type="text/javascript" src="<?php echo base_url('assets/jquery/instascan.min.js')?>"></script>
 </head>
 <body>
  

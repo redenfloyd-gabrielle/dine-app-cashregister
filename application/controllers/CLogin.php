@@ -11,7 +11,7 @@
 	      $this->load->library('session');
 	      $this->load->library('form_validation');
 		  $this->load->helper('url'); 
-		  $this->load->model('MUser');
+		  $this->load->model('MReceipt');
 	  	}
 
 		public function index()
@@ -33,12 +33,21 @@
 			$this->load->view('imports/vSuperadminFooter');
 		}
 
+		public function createReceiptSession()
+		{
+			$data = array('receipt_id'=>null);
+			$this->MReceipt->insert($data);
+			$id = $this->db->insert_id();
+			$this->MReceipt->setReceipt_id($id);
+			$sessionReceipt = array("receipt_id" =>$id);
+			$this->session->set_userdata('receiptSession',$sessionReceipt);
+		}
 		function viewPos()
 		{
+			$this->createReceiptSession();
 			$this->load->view('imports/vPosHeader');
 			$this->load->view('pos/index');
 		}
-
 		function userLogin(){
 			
 			$this->form_validation->set_rules('user_id','User ID','required');
@@ -85,7 +94,7 @@
 			$this->session->set_userdata('userSession', $sessionData);
 			}
 		}
-
+		
 		public function userLogout()
 		{
 			$this->session->unset_userdata('userSession');

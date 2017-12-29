@@ -19,6 +19,13 @@
 		public function __construct(){
 
 		}
+		public function getProductDetailsById($id)
+		{
+			$where = array($this::DB_TABLE_PK =>$id);
+			$query = $this->read_where($where);
+			return $query;
+		}
+
 
 		public function do_upload_product($id)
 		{
