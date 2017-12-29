@@ -18,7 +18,7 @@
     <div class="column"></div>
     <div class="fourteen wide column">
       <?php if (isset($id)){ ?>
-      <input type="hidden" id="eid" value="<?php echo $id ?>">
+      <input type="hidden" id="eid" value="<?php echo $id; ?>">
       <?php } ?>
       <form>
         <table class="ui single line table">
@@ -69,7 +69,7 @@
     </div>
     <div class="six wide right aligned column">
       <?php if(isset($total)){ ?>
-      P<span id="due"><?php echo $total ?></span>
+      P<span id="due"><?php echo $total; ?></span>
       <?php } ?>
     </div>
     <div class="column"></div>
@@ -99,10 +99,10 @@
 
 </div>
 
-<div class="ui grid orderOptions">
+<div class="ui grid ">
   <div class="row"></div>
 
-  <div class="row orderOptions">
+  <div class="row">
     <div class="three wide column">
       <a href="<?php echo site_url();?>/CLogin/viewPos" class="lft lbtn" align="center" ><h4 class="lbtnlabel">Back</h4></a>
     </div>

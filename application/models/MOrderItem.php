@@ -26,6 +26,7 @@
 			return $query->result();
 		}
 
+
 		public function getOrderItemDetailsByProduct($pid,$oid)
 		{
 			$where = array($this::DB_TABLE.'_product_id' =>$pid,
