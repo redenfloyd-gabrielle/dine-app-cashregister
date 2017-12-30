@@ -43,8 +43,6 @@
 			var qr = $('#qr').val().trim();
 			dataSet = "qr="+qr;
 		}
- 
-	
 		$.ajax({
 			type: "POST",
 			url: '<?php echo site_url()?>/COrdered/displayOrderFromQR',

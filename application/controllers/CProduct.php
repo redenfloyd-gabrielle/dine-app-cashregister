@@ -9,6 +9,8 @@
 	      $this->load->database(); // load database
 	      $this->load->model('MProduct');
 	      $this->load->model('MOrdered');
+	      $this->load->model('MOrderItem');
+	      $this->load->model('MReceiptItem');
 	      $this->load->helper('url');
 	      $this->load->library('session');
 	  	}
@@ -83,12 +85,17 @@
 
 			// print_r($data);
 		}
-		public function viewProductQR($page,$cat,$id)
+		public function viewProductEdit($page,$cat,$id)
 		{
 			$prod = new MProduct();
 			$order = new MOrdered();
+			$order_item = new MOrderItem();
+			$receipt_item = new MReceiptItem();
 			$result = $prod->getProductsByCategory($cat);
 
+
+			$data['page'] = $page;
+			$data['prod_cat']  = $cat;
             $array = array();
 			if($result){
 				foreach ($result as $value) {
@@ -104,13 +111,46 @@
 			}else{
 				$data = null;
 			}
-			////////////STOPS HERE///////////////////////////////////////////////////
-			$res = $order->getOrderById($id);
-			foreach ($res as $key){}
-			$data['ordered_id'] = $id;
-			$data['page'] = $page;
-			$data['prod_cat']  = $cat;
+			////////////STOPS HERE//////////////////////////////////////////////////
 
+			if($page=='qr'){
+				$result = $order_item->getOrderItemDetailsByOrder($id);
+				if($result){
+					foreach ($result as $value) {
+						$arr= new stdClass;
+						$arr->product_name = $value->product_name;
+						$arr->item_id = $value->order_item_id;
+						$arr->product_price = $value->product_price;
+						$arr->order_item_qty = $value->order_item_qty;
+						$arr->order_item_subtotal = $value->order_item_subtotal;
+						$array1[] = $arr;
+					}
+					$data['order_info'] = $array1;
+				}else{
+					$data['order_info'] = null;
+				}
+			}else{
+				$result = $receipt_item->getReceiptItemDetailsByReceipt($id);
+
+				if($result){
+					foreach ($result as $value) {
+						$arr= new stdClass;
+						$arr->item_id = $value->receipt_item_id;
+						$arr->product_name = $value->product_name;
+						$arr->product_price = $value->product_price;
+						$arr->order_item_qty = $value->receipt_item_quantity;
+						$arr->order_item_subtotal = $value->receipt_item_subtotal;
+						$array1[] = $arr;
+					}
+
+					$data['order_info'] = $array1;
+			    }else{
+			    	$data['order_info'] = null;
+			    }
+			}
+
+			
+			$data['eid'] = $id;
 			$this->load->view('imports/vPosHeader');
 			$this->load->view('pos/vProductEdit',$data);
 

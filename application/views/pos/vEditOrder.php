@@ -51,11 +51,11 @@
           <input type="hidden" name="ordered_id" id="ordered_id" value="<?php echo $eid; ?>">
           <div class="ui three cards">
             <div class="ui card">
-              <a class="image" href="<?php echo site_url()."/CProduct/viewProductQR/".$page."/MEALS/".$eid; ?>">
+              <a class="image" href="<?php echo site_url()."/CProduct/viewProductEdit/".$page."/MEALS/".$eid; ?>">
                 <img class="ui centered fluid image" src="<?php echo base_url('assets/images/meals.jpg')?>">
               </a>
               <div class="content">
-                <a class="header" href="<?php echo site_url()."/CProduct/viewProductQR/".$page."/MEALS/".$eid; ?>">MEALS</a>
+                <a class="header" href="<?php echo site_url()."/CProduct/viewProductEdit/".$page."/MEALS/".$eid; ?>">MEALS</a>
                 <div class="meta">
                   <a>Category</a>
                 </div>
@@ -63,11 +63,11 @@
             </div>
 
             <div class="ui card">
-              <a class="image" href="<?php echo site_url()."/CProduct/viewProductQR/".$page."/DRINKS/".$eid; ?>">
+              <a class="image" href="<?php echo site_url()."/CProduct/viewProductEdit/".$page."/DRINKS/".$eid; ?>">
                 <img class="ui centered fluid image" src="<?php echo base_url('assets/images/beverage.jpg')?>">
               </a>
               <div class="content">
-                <a class="header" href="<?php echo site_url()."/CProduct/viewProductQR/".$page."/DRINKS/".$eid; ?>">DRINKS</a>
+                <a class="header" href="<?php echo site_url()."/CProduct/viewProductEdit/".$page."/DRINKS/".$eid; ?>">DRINKS</a>
                 <div class="meta">
                   <a>Category</a>
                 </div>
@@ -75,11 +75,11 @@
             </div>
 
             <div class="ui card">
-              <a class="image" href="<?php echo site_url()."/CProduct/viewProductQR/".$page."/DESSERTS/".$eid; ?>">
+              <a class="image" href="<?php echo site_url()."/CProduct/viewProductEdit/".$page."/DESSERTS/".$eid; ?>">
                 <img class="ui centered fluid image" src="<?php echo base_url('assets/images/dessert.jpg')?>">
               </a>
               <div class="content">
-                <a class="header" href="<?php echo site_url()."/CProduct/viewProductQR/".$page."/DESSERTS/".$eid; ?>">DESSERTS</a>
+                <a class="header" href="<?php echo site_url()."/CProduct/viewProductEdit/".$page."/DESSERTS/".$eid; ?>">DESSERTS</a>
                 <div class="meta">
                   <a>Category</a>
                 </div>
@@ -87,11 +87,11 @@
             </div>
 
             <div class="ui card">
-              <a class="image" href="<?php echo site_url()."/CProduct/viewProductQR/".$page."/EXTRAS/".$eid; ?>">
+              <a class="image" href="<?php echo site_url()."/CProduct/viewProductEdit/".$page."/EXTRAS/".$eid; ?>">
                 <img class="ui centered fluid image" src="<?php echo base_url('assets/images/soup.jpg')?>">
               </a>
               <div class="content">
-                <a class="header" href="<?php echo site_url()."/CProduct/viewProductQR/".$page."/EXTRAS/".$eid; ?>">EXTRAS</a>
+                <a class="header" href="<?php echo site_url()."/CProduct/viewProductEdit/".$page."/EXTRAS/".$eid; ?>">EXTRAS</a>
                 <div class="meta">
                   <a>Category</a>
                 </div>
@@ -104,34 +104,33 @@
   </div>
 </div>
   <div class="column" id="vEditOrder">
-  <?php $this->view('pos/vEditComponent'); ?>
-  </div>
-  </div>
+   <?php $this->view('pos/vEditComponent') ?>
 </div>
 </body>
 </html>
 <script>
- $(document).ready(function(){
+//  $(document).ready(function(){
    
-    var ordered_id = $('#ordered_id').val();
+//     var ordered_id = $('#ordered_id').val();
    
-    var dataSet = "ordered_id="+ordered_id;
-    $.ajax({
-        type: "POST",
-        url: '<?php echo site_url()?>/COrderItem/displayOrderListFromQR',
-        data: dataSet,
-        cache: false,
-        success: function(result){
-            if(result){
-               $('#vEditOrder').html(result);
-            }else{
-                alert("Error");
-            }                         
-        },
-        error: function(jqXHR, errorThrown){
-            console.log(errorThrown);
-        }
-    });
-});
+//     var dataSet = "ordered_id="+ordered_id;
+//     $.ajax({
+//         type: "POST",
+//         url: '<?php //echo site_url()?>/COrderItem/displayOrderListFromQR',
+//         data: dataSet,
+//         cache: false,
+//         success: function(result){
+//             if(result){
+//                $('#vEditOrder').html(result);
+//             }else{
+//                 alert("Error");
+//             }                         
+//         },
+//         error: function(jqXHR, errorThrown){
+//             console.log(errorThrown);
+//         }
+//     });
+// });
+    
 </script>
 

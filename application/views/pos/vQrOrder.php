@@ -11,14 +11,15 @@
       </h1>
     </div>
     <div class="three wide column">
-      <button class="ibtn" id="ibtn"><i class="huge blue edit icon"></i></button>
+      <!-- <button class="ibtn" id="ibtn"><i class="huge blue edit icon"></i></button> -->
+       <a href="<?php echo site_url()?>/COrderItem/viewEdit/qr/<?php echo $id ?>"><i class="huge blue edit icon"></i></a>
     </div>
   </div>
   <div class="row">
     <div class="column"></div>
     <div class="fourteen wide column">
       <?php if (isset($id)){ ?>
-      <input type="hidden" id="eid" value="<?php echo $id; ?>">
+      <input type="hidden" id="eid" value="<?php echo $id; ?>" name='eid'>
       <?php } ?>
       <form>
         <table class="ui single line table">
@@ -68,9 +69,9 @@
       <strong class="itemLabels">AMOUNT DUE</strong>
     </div>
     <div class="six wide right aligned column">
-      <?php if(isset($total)){ ?>
-      P<span id="due"><?php echo $total; ?></span>
-      <?php } ?>
+      
+      P<span id="due">0</span>.00
+     
     </div>
     <div class="column"></div>
   </div>
@@ -134,30 +135,30 @@
           }
       });
 
-      $('#ibtn').on('click', function() {
-        var eid = $("#eid").val();
-        var page = "qr";
-        var dataSet = "eid="+eid+"&page="+page;
+    //   $('#ibtn').on('click', function() {
+    //     var eid = $("#eid").val();
+    //     var page = "qr";
+    //     var dataSet = "eid="+eid+"&page="+page;
 
-        $.ajax({
-          type: "POST",
-          url: '<?php echo site_url()?>/COrderItem/viewEditOrder',
-          data: dataSet,
-          cache: false,
-          success: function(result){
-              if(result){
-                 $('body').html(result);
+    //     $.ajax({
+    //       type: "POST",
+    //       url: '<?php echo site_url()?>/COrderItem/viewEditOrder',
+    //       data: dataSet,
+    //       cache: false,
+    //       success: function(result){
+    //           if(result){
+    //              $('body').html(result);
 
-              }else{
-                  alert("Error");
-              }                         
-          },
-          error: function(jqXHR, errorThrown){
-              console.log(errorThrown);
+    //           }else{
+    //               alert("Error");
+    //           }                         
+    //       },
+    //       error: function(jqXHR, errorThrown){
+    //           console.log(errorThrown);
 
-          }
-      });
-    });
+    //       }
+    //   });
+    // });
   });
 </script>
 

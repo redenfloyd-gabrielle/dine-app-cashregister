@@ -32,7 +32,7 @@
                   <span class="left floated price">
                   P<span id="price"><?php echo $prod->product_price; ?>.00</span>
                   </span>
-                  <button class="right floated cart pbtn" id="pbtn" type="submit" name="pbutton[]">
+                  <button class="right floated cart pbtn" id="pbtn" type="submit">
                       <i class="cart icon"></i>
                     Order
                   </button>
