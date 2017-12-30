@@ -12,8 +12,9 @@
         </h1>
       </div>
       <div class="three wide column">
-      <button class="ibtn" id="ibtn"><i class="huge blue edit icon"></i></button>
-    </div>
+    <!--   <button class="ibtn" id="ibtn"><i class="huge blue edit icon"></i></button> -->
+        <a href="<?php echo site_url()?>/COrderItem/viewEdit/manual/<?php echo $this->session->userdata['receiptSession']['receipt_id']?>"><i class="huge blue edit icon"></i></a>
+      </div>
     </div>
     <div class="row">
       <div class="column"></div>
@@ -67,7 +68,7 @@
         <strong class="itemLabels">AMOUNT DUE</strong>
       </div>
       <div class="six wide right aligned column">
-        P<span id="due">200.00</span>
+        P<span id="due">0</span>.00
       </div>
       <div class="column"></div>
     </div>
@@ -75,7 +76,6 @@
     <div class="row">
       <div class="six wide column"></div>
       <div class="three wide column">
-        <span class="itemLabels">Cash</span>
       </div>
       <div class="six wide right aligned column">
         P<span id="cash">0.00</span>
@@ -126,7 +126,6 @@
           if(change < 0){
             $("#change").css("color","red");
             $('#peso').css("color","red");
-          }else{
             $("#change").css("color","black");
             $('#peso').css("color","black");
           }
@@ -141,30 +140,30 @@
           $("#due").html(sum); 
       });
 
-      $('#ibtn').on('click', function() {
-        var eid = $("#eid").val();
-        var page = "manual";
-        var dataSet = "eid="+eid+"&page="+page;
+    //   $('#ibtn').on('click', function() {
+    //     var eid = $("#eid").val();
+    //     var page = "manual";
+    //     var dataSet = "eid="+eid+"&page="+page;
 
-        $.ajax({
-          type: "POST",
-          url: '<?php echo site_url()?>/COrderItem/viewEditOrder',
-          data: dataSet,
-          cache: false,
-          success: function(result){
-              if(result){
-                 $('body').html(result);
+    //     $.ajax({
+    //       type: "POST",
+    //       url: '<?php echo site_url()?>/COrderItem/viewEditOrder',
+    //       data: dataSet,
+    //       cache: false,
+    //       success: function(result){
+    //           if(result){
+    //              $('body').html(result);
 
-              }else{
-                  alert("Error");
-              }                         
-          },
-          error: function(jqXHR, errorThrown){
-              console.log(errorThrown);
+    //           }else{
+    //               alert("Error");
+    //           }                         
+    //       },
+    //       error: function(jqXHR, errorThrown){
+    //           console.log(errorThrown);
 
-          }
-      });
-    });
+    //       }
+    //   });
+    // });
    });
 </script>
 

@@ -26,6 +26,13 @@
 			return $query->result();
 		}
 
+		public function updateQty($id,$qty){
+			$where = array($this::DB_TABLE_PK =>$id);
+			$field = array($this::DB_TABLE.'_qty' => $qty);
+			$query = $this->update1($where,$field);
+			return $query;
+		}
+
 
 		public function getOrderItemDetailsByProduct($pid,$oid)
 		{

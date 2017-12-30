@@ -71,7 +71,7 @@
   </div>
 </div>
   <div class="column" id="vOrder">
- <!--  <?php $this->view('pos/vOrder'); ?> -->
+ <!--  <?php //$this->view('pos/vOrder'); ?> -->
   </div>
 
 <!-- <div class="vdivide"></div> -->
