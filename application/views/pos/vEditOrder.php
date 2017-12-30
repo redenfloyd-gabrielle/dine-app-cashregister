@@ -63,11 +63,11 @@
             </div>
 
             <div class="ui card">
-              <a class="image" href="<?php echo site_url()."/CProduct/viewProductQR/".$page."/MEALS/".$eid; ?>">
+              <a class="image" href="<?php echo site_url()."/CProduct/viewProductQR/".$page."/DRINKS/".$eid; ?>">
                 <img class="ui centered fluid image" src="<?php echo base_url('assets/images/beverage.jpg')?>">
               </a>
               <div class="content">
-                <a class="header" href="<?php echo site_url()."/CProduct/viewProductQR/".$page."/MEALS/".$eid; ?>">DRINKS</a>
+                <a class="header" href="<?php echo site_url()."/CProduct/viewProductQR/".$page."/DRINKS/".$eid; ?>">DRINKS</a>
                 <div class="meta">
                   <a>Category</a>
                 </div>
@@ -75,11 +75,11 @@
             </div>
 
             <div class="ui card">
-              <a class="image" href="<?php echo site_url()."/CProduct/viewProductQR/".$page."/MEALS/".$eid; ?>">
+              <a class="image" href="<?php echo site_url()."/CProduct/viewProductQR/".$page."/DESSERTS/".$eid; ?>">
                 <img class="ui centered fluid image" src="<?php echo base_url('assets/images/dessert.jpg')?>">
               </a>
               <div class="content">
-                <a class="header" href="<?php echo site_url()."/CProduct/viewProductQR/".$page."/MEALS/".$eid; ?>">DESSERTS</a>
+                <a class="header" href="<?php echo site_url()."/CProduct/viewProductQR/".$page."/DESSERTS/".$eid; ?>">DESSERTS</a>
                 <div class="meta">
                   <a>Category</a>
                 </div>
@@ -87,11 +87,11 @@
             </div>
 
             <div class="ui card">
-              <a class="image" href="<?php echo site_url()."/CProduct/viewProductQR/".$page."/MEALS/".$eid; ?>">
+              <a class="image" href="<?php echo site_url()."/CProduct/viewProductQR/".$page."/EXTRAS/".$eid; ?>">
                 <img class="ui centered fluid image" src="<?php echo base_url('assets/images/soup.jpg')?>">
               </a>
               <div class="content">
-                <a class="header" href="<?php echo site_url()."/CProduct/viewProductQR/".$page."/MEALS/".$eid; ?>">EXTRAS</a>
+                <a class="header" href="<?php echo site_url()."/CProduct/viewProductQR/".$page."/EXTRAS/".$eid; ?>">EXTRAS</a>
                 <div class="meta">
                   <a>Category</a>
                 </div>

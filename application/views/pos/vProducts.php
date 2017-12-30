@@ -42,7 +42,7 @@
               </form>
               </div>
               <?php } ?>
-            <?php }else{ echo "<i class='warning circle icon error'></i>No items to display.";} ?> 
+            <?php }else{  echo "<i class='circle warning icon error'></i><span> No items to display.</span>" ;} ?> 
             </div>
           </div>
           <div class="column"></div>

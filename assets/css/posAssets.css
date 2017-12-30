@@ -1,5 +1,5 @@
 
-body{background-color: white !important;max-width: 100%;overflow-x: hidden;}
+body{background-color: white !important;max-width: 100%;}
 /* For Firefox */
 input[type='number'] { -moz-appearance:textfield;}
 /* Webkit browsers like Safari and Chrome */
@@ -17,7 +17,7 @@ input::-webkit-outer-spin-button,input::-webkit-inner-spin-button { display: non
 .ltext{text-align: left;}
 .receipttbl{width: 100%;}
 .noOfItems{font-size: 20px;}
-.orderOptions{position: fixed;bottom: 0;right: 0;}
+/*.orderOptions{position: fixed;bottom: 0;right: 0;}*/
 .lbtn{ width: 100px; margin:50px 110px 0px 0px; height: 55px; background-color: #3886c9;border: 1px solid #3886c9;
     color: white;font-size: 20px;}
 .rbtn{ width: 100px; margin:50px; height: 55px;background-color: #336699;border: 1px solid #336699;}

@@ -96,10 +96,10 @@
 
   </div>
 
-  <div class="ui grid orderOptions">
+  <div class="ui grid">
     <div class="row"></div>
 
-    <div class="row orderOptions">
+    <div class="row">
       <div class="three wide column">
         <a href="<?php echo site_url();?>/CLogin/viewPos" class="lft lbtn" align="center" ><h4 class="lbtnlabel">Back</h4></a>
       </div>
