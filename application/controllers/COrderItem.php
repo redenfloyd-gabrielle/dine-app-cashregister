@@ -117,7 +117,8 @@
 	   				       'order_item_subtotal' => $p->product_price,
 	   				       'order_item_qty' => 1,
 	   				       'order_item_product_id' => $product_id,
-	   				       'order_item_ordered_id' => $ordered_id
+	   				       'order_item_ordered_id' => $ordered_id,
+	   				       'order_item_status' => $pending
 					);
 				  $o = $order_item->insert($insertData);
 			 }else{
@@ -145,9 +146,6 @@
 
 			$this->load->view('pos/vEditOrder',$data);
 		}
-
-
-}
 
 
 

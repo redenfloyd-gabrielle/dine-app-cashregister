@@ -101,7 +101,6 @@
 						$array[] = $arrObj;
 				}
 			$data['products']  = $array;
-			$data['prod_cat']  = $cat;
 			}else{
 				$data = null;
 			}
@@ -110,9 +109,10 @@
 			foreach ($res as $key){}
 			$data['ordered_id'] = $id;
 			$data['page'] = $page;
+			$data['prod_cat']  = $cat;
 
 			$this->load->view('imports/vPosHeader');
-			$this->load->view('pos/vProductQR',$data);
+			$this->load->view('pos/vProductEdit',$data);
 
 			
 		}

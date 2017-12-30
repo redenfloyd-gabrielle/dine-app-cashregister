@@ -27,7 +27,7 @@
             
             <div class="ui three cards">
             <?php if(isset($products)) { ?>
-              <?php $x=0; foreach ($products as $prod){ ?>
+              <?php foreach ($products as $prod){ ?>
               <div class="ui grey card">
                 <form method="POST" action="<?php echo site_url()?>/COrderItem/addOrderItem/<?php echo $prod->product_id?>">
                   <div class="ui grey card">
@@ -49,7 +49,7 @@
               </form>
               </div>
               <?php } ?>
-            <?php } ?> 
+            <?php }else{  echo "<i class='circle warning icon error'></i><span> No items to display.</span>" ;;}?> 
             </div>
           </div>
           <div class="column"></div>
