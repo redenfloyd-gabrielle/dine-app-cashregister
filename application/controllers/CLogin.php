@@ -89,7 +89,8 @@
                  				 'user_first_name' => $row->user_first_name,
 	                             'user_mi' => $row->user_mi,
 	                             'user_last_name' => $row->user_last_name,
-	                             'user_type' => $row->user_type,
+								 'user_type' => $row->user_type,
+								 'user_password' => $row->user_password
 	                     		);
 			$this->session->set_userdata('userSession', $sessionData);
 			}

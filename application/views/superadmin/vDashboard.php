@@ -29,7 +29,7 @@
                             <div class='description'>
                                <?php echo $this->session->userdata['userSession']['user_type']; ?>
                             </div>
-                        </div>
+                            <input type="hidden" id="pass" value="<?php echo strtolower($this->session->userdata['userSession']['user_password']); ?>"> </div>
                         <div class='extra content' id='userContent' style='background-color:burlywood;'>
                             <strong><i class='user icon'></i>SUPERADMIN</strong>
                         </div>
