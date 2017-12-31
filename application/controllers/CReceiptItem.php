@@ -91,6 +91,7 @@
 		    $res = $this->load->view('pos/vOrder',$data,TRUE);
 
 		    echo $res;
+		    
 		}
 	
 	}

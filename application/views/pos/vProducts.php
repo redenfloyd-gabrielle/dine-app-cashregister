@@ -36,7 +36,7 @@
                       <i class="cart icon"></i>
                     Order
                   </button>
-                  <input type="hidden" value="<?php echo $this->session->userdata['receiptSession']['receipt_id']?>" name="receipt_id" id="receipt_id">
+                  <input type="hidden" value="<?php echo $this->session->userdata['receiptSession']['receipt_id']?>" name="eid" id="eid">
                 </div>
               </div>
               </form>
@@ -60,7 +60,7 @@
 <script>
   $(document).ready(function(){
    
-    var receipt_id = $('#receipt_id').val();
+    var receipt_id = $('#eid').val();
    
     var dataSet = "receipt_id="+receipt_id;
     $.ajax({
@@ -73,7 +73,8 @@
                $('#vOrder').html(result);
             }else{
                 alert("Error");
-            }                         
+            }    
+            console.log(result);                  
         },
         error: function(jqXHR, errorThrown){
             console.log(errorThrown);
