@@ -20,11 +20,20 @@
 			
 		}
 
+		public function viewProducts()
+		{
+			
+			$this->load->view('imports/vAdminHeader'); 
+			$this->load->view('admin/vProductsInCategory');
+			$this->load->view('imports/vAdminFooter');
+
+		}
+
 		public function addProduct()
 		{
 			$now = new DateTime(NULL, new DateTimeZone('Asia/Manila'));
 			
-			$data = array('product_image' => $this->input->post('image'),
+			$data = array('product_image' => 'rice.png',
 						  'product_name' => $this->input->post('name'),
 						  'product_description' => $this->input->post('description'),
 						  'product_price' => $this->input->post('price'),
@@ -43,7 +52,7 @@
 				if(!$image){
 					$photo = $this->MProduct->insertPhotoProduct("rice.png",$prod_id);
 				}
-				redirect('CProduct/viewMenuList');
+				redirect('CProduct/viewCategoryList');
 			} else {
 				print_r('SOMETHING WENT WRONG;');
 			}
@@ -165,10 +174,24 @@
 			$this->load->view('imports/vAdminFooter');
 		} 
 
-		function viewProductsInCategory()
+		function viewProductsInCategory($cat)
 		{
+			$result = $this->MProduct->getProductsByCategory($cat);
+			$data['prod_cat']  = $cat;
+			
+            $array = array();
+			if($result){
+				foreach ($result as $value) {
+						$arrObj = new stdClass;
+						$arrObj->product_id = $value->product_id;
+						$arrObj->product_name = $value->product_name;
+						$array[] = $arrObj;
+				}
+			$data['products']  = $array;
+			}
+
 			$this->load->view('imports/vAdminHeader'); 
-			$this->load->view('admin/vProductsInCategory');
+			$this->load->view('admin/vProductsInCategory',$data);
 			$this->load->view('imports/vAdminFooter');
 		}
 

@@ -8,10 +8,10 @@
     <a class='active item' href='<?php echo site_url()?>/CProduct/viewCategoryList'>
         <i class='sidebar icon'></i> Menu
     </a> 
-    <a class='item' href='<?php echo site_url()?>/COrdered/viewOrderList?>'>
+    <a class='item' href='<?php echo site_url()?>/COrdered/viewOrderList'>
         <i class='shop icon'></i> Orders
     </a>
-    <a class='item' href='<?php echo site_url()?>/CUser/viewReports?>'>
+    <a class='item' href='<?php echo site_url()?>/CUser/viewReports'>
         <i class='bar chart icon'></i> Reports
     </a>
     <a class='item' href=''>
@@ -70,7 +70,7 @@
                         <div class='ui hidden divider'></div>
                          
                         <div class='ui three stackable cards'>
-                            <a class='ui small card' href='<?php echo site_url()?>/CProduct/viewProductsInCategory'>
+                            <a class='ui small card' href='<?php echo site_url()?>/CProduct/viewProductsInCategory/MEALS'>
                                 
                                 <div class='center aligned middle aligned content' id='superadmin-card'>
                                     <img src='<?php echo base_url("assets/images/meals.svg")?>' class='ui small image'>
@@ -80,7 +80,7 @@
                                 </div>
                             </a> <!-- meal card -->
 
-                            <a class='ui small card' href='<?php echo site_url()?>/CProduct/viewProductsInCategory'>
+                            <a class='ui small card' href='<?php echo site_url()?>/CProduct/viewProductsInCategory/DRINKS'>
                                 
                                 <div class='center aligned middle aligned content' id='superadmin-card'>
                                     <img src='<?php echo base_url("assets/images/drinks.svg")?>' class='ui small image'>
@@ -90,7 +90,7 @@
                                 </div>
                             </a> <!-- meal card -->
 
-                            <a class='ui small card' href='<?php echo site_url()?>/CProduct/viewProductsInCategory'>
+                            <a class='ui small card' href='<?php echo site_url()?>/CProduct/viewProductsInCategory/DESSERTS'>
                                 
                                 <div class='center aligned middle aligned content' id='superadmin-card'>
                                     <img src='<?php echo base_url("assets/images/desserts.svg")?>' class='ui small image'>
@@ -100,7 +100,7 @@
                                 </div>
                             </a> <!-- meal card -->
 
-                            <a class='ui small card' href='<?php echo site_url()?>/CProduct/viewProductsInCategory'>
+                            <a class='ui small card' href='<?php echo site_url()?>/CProduct/viewProductsInCategory/EXTRAS'>
                                 
                                 <div class='center aligned middle aligned content' id='superadmin-card'>
                                     <img src='<?php echo base_url("assets/images/extras.svg")?>' class='ui small image'>
