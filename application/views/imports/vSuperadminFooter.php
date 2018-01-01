@@ -35,11 +35,6 @@ $(document).ready(function(){
 		//classes sa if
     });
 
-
-
-
-
-
 }); 
 
 </script> 
