@@ -30,17 +30,17 @@
             <div class='ui stackable grid'>
 
                 <div class='four wide column'>
-                    <div class='ui card'>
-                        <div class='content'>
-                            <div class='header'>Joanne Malaluan</div>
+                <div class='ui card'>
+                    <div class='content'>
+                        <div class='header'><?php echo $this->session->userdata['userSession']['user_first_name'].' '.$this->session->userdata['userSession']['user_mi'].'. '.$this->session->userdata['userSession']['user_last_name'];?></div>
                             <div class='description'>
-                                Employee
+                                <?php echo $this->session->userdata['userSession']['user_type']; ?>
                             </div>
-                        </div>
+                            <input type="hidden" id="pass" value="<?php echo strtolower($this->session->userdata['userSession']['user_password']); ?>"> </div>
                         <div class='extra content' id='userContent'>
                             <strong><i class='user icon'></i>ADMIN</strong>
                         </div>
-                    </div> <!-- user info card -->
+                </div> <!-- user info card -->
 
                     <div class='ui category search'>
                         <div class='ui fluid icon input'>
@@ -62,14 +62,15 @@
                     <div class='ui breadcrumb'> 
                         <a class='section' href='<?php echo site_url()?>/CProduct/viewCategoryList?>'>CATEGORIES</a>
                         <i class='right arrow icon divider'></i>
-                        <a class='section' href='<?php echo site_url()?>/CProduct/viewProductsInCategory?>'>FOOD LIST</a>
+                        <a class='section' href='<?php echo site_url()?>/CProduct/viewProductsInCategory'>FOOD LIST</a>
                         <i class='right arrow icon divider'></i>
                         <div class='active section'>VIEW FOOD INFORMATION</div>
                     </div> <!-- breadcrumb -->
-
+                    <?php if (isset($product)) { ?>
+                    <?php foreach($product as $prod) {} ?>
                     <div class='ui hidden divider'></div>
 
-                    <a href='<?php echo site_url()?>/CProduct/editMenuInfo?>'><button class='ui big circular blue icon button' title='Edit user information'><i class='pencil icon'></i></button></a> 
+                    <a href='<?php echo site_url()?>/CProduct/editMenuInfo/<?php echo $prod->product_id; ?>'><button class='ui big circular blue icon button' title='Edit user information'><i class='pencil icon'></i></button></a> 
 
                     <button class='ui big circular red icon button' title='Delete this item' id='deleteItem'><i class='remove icon'></i></button>
 
@@ -80,30 +81,30 @@
                     <div class='ui grid'>
                         <div class='row'>
                             <div class='center aligned middle aligned six wide column'>
-                                <img src='<?php echo base_url("assets/images/porksilog.jpg")?>'>
+                                <img src='<?php echo base_url($prod->product_image)?>'>
                             </div>
                             <div class='nine wide column'>
                                 <table class='ui very basic table' style='overflow:hidden;'>
                                     <tbody>
                                         <tr>
                                             <td>FOOD NAME</td>
-                                            <td>Chicken Joy</td>
+                                            <td><?php echo $prod->product_name;  ?></td>
                                         </tr>
                                         <tr>
                                             <td>FOOD DESCRIPTION</td>
-                                            <td>Food description</td>
+                                            <td><?php echo $prod->product_description;  ?></td>
                                         </tr>
                                         <tr>
                                             <td>FOOD PRICE</td>
-                                            <td>P 10000.00</td>
+                                            <td><?php echo $prod->product_price;  ?></td>
                                         </tr>
                                         <tr>
                                             <td>FOOD CATEGORY</td>
-                                            <td>Meal</td>
+                                            <td><?php echo $prod->product_category;  ?></td>
                                         </tr>
                                         <tr>
                                             <td>FOOD AVAILABILITY</td>
-                                            <td>Available</td>
+                                            <td><?php echo $prod->product_availability;  ?></td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -111,7 +112,7 @@
                             <div class='column'></div>
                         </div>
                     </div>
-                                
+                <?php } ?>        
                 </div> <!-- twelve wide column -->
             </div> <!-- grid -->
         </div> <!-- thirteen wide column -->
