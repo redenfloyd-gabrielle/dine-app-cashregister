@@ -105,7 +105,7 @@
 
   <div class="row">
     <div class="three wide column">
-      <a href="<?php echo site_url();?>/CLogin/viewPos" class="lft lbtn" align="center" ><h4 class="lbtnlabel">Back</h4></a>
+      <a href="<?php echo site_url();?>/CLogin/viewPosNoSession" class="lft lbtn" align="center" ><h4 class="lbtnlabel">Back</h4></a>
     </div>
     <div class="ten wide column">
       <a href="<?php echo site_url();?>/CLogin/viewPos" class="rght rbtn" align="center" ><h4 class="rbtnlabel">Charge/No Receipt</h4></a>

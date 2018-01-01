@@ -48,6 +48,10 @@
 			$this->load->view('imports/vPosHeader');
 			$this->load->view('pos/index');
 		}
+		function viewPosNoSession(){
+			$this->load->view('imports/vPosHeader');
+			$this->load->view('pos/index');
+		}
 		function userLogin(){
 			
 			$this->form_validation->set_rules('user_id','User ID','required');
