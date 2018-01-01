@@ -8,32 +8,58 @@
     <link rel='stylesheet' href='<?php echo base_url("assets/semantic/semantic.min.css")?>'>
     <script src='<?php echo base_url("assets/jquery.min.js")?>'></script>
     <script src='<?php echo base_url("assets/semantic/semantic.min.js")?>'></script>
+    <script type="text/javascript" src="<?php echo base_url('assets/jquery/tablesort.js')?>"></script>
     <script type="text/javascript" src="<?php echo base_url('assets/jquery/instascan.min.js')?>"></script>
     <script src='<?php echo base_url("assets/jquery/sha.js")?>'></script>
 </head>
-<body>
+<body> 
  
-<div class='ui sticky fixed inverted menu'>
-    <div class='ui right floated simple dropdown item' tabindex='0'>
+
+<div class='ui top attached inverted menu'>
+    <a class="borderless item toggleMenu">
+        <i class="sidebar icon"></i>
+    </a>
+    <a class='borderless item' href='<?php echo site_url()?>/CUser/viewAdminDashboard?>'>DINE</a>
+    <div class='right menu'>
+        <div class="ui inverted transparent left icon action input borderless item">
+            <input type="text" placeholder="Enter keyword..." name="search">
+            <i class="search icon"></i>
+            <button class='ui brown button'>Search</button>
+        </div>
+        <div class='ui simple dropdown item' tabindex='0'>
         <i class='user icon'></i>Profile
         <i class='dropdown icon' tabindex='0'>
-      <div class='menu' tabindex='-1'></div>
-    </i>
+            <div class='menu' tabindex='-1'></div>
+        </i>
         <div class='menu' tabindex='-1'>
             <a class='item' id='changePass'><i class='lock icon'></i>Change Password</a>
-            <a class='item' href='<?php echo site_url()?>/CLogin/userLogout?>' ><i class='sign out icon'></i>Logout</a>
+            <a class='item' href='<?php echo site_url()?>/CLogin/userLogout?>' ><i class='power icon'></i>Logout</a>
         </div>
     </div>
-</div>
-<div class='ui visible left vertical inverted sidebar labeled icon menu'>
-    <div class='borderless item'>
-        <strong>DINE</strong>
     </div>
+</div>
+
+<div class="ui bottom attached segment pushable">
+  <div class="ui inverted labeled icon left inline vertical thin sidebar menu">
+    <div style='background: brown;'>
+        <br>
+        <img class='ui tiny centered image' src='<?php echo base_url("assets/images/admin.png")?>'>
+        <br>
+        <p style='background-color: white;'>ADMIN</p>
+        <h3 style='color:white;'>Hello, 
+            <strong style='font-style: italic;'>
+                <?php echo $this->session->userdata['userSession']['user_first_name'];?> 
+            </strong>
+        </h3>
+        <p style='color:white;'>
+            ID: <?php echo $this->session->userdata['userSession']['user_id'];?> 
+        </p>
+    </div> 
     <a class='item' href='<?php echo site_url()?>/CUser/viewAdminDashboard'>
         <i class='dashboard icon'></i> Dashboard
     </a>
     <a class='item' href='<?php echo site_url()?>/CProduct/viewCategoryList'>
-        <i class='sidebar icon'></i> Menu
+        <i class='food icon'></i> Products
     </a>
     <a class='item' href='<?php echo site_url()?>/COrdered/viewOrderList?>'>
         <i class='shop icon'></i> Orders
@@ -44,39 +70,13 @@
     <a class='item' href=''>
         <i class='calculator icon'></i> POS
     </a>
-</div> <!-- sidebar menu -->
-
-
-<div class='ui grid'>
-    <div class='row'></div>
-    <div class='row'></div>
-    <div class='row'>
-        <div class='two wide column'></div>
-        <div class='thirteen wide column'>
-            <div class='ui stackable grid'>
-
-                <div class='four wide column'>
-                    <div class='ui card'>
-                        <div class='content'>
-                            <div class='header'><?php echo $this->session->userdata['userSession']['user_first_name'].' '.$this->session->userdata['userSession']['user_mi'].'. '.$this->session->userdata['userSession']['user_last_name'];?></div>
-                        </div>
-                        <div class='extra content' id='userContent'>
-                            <strong><i class='user icon'></i>ADMIN</strong>
-                        </div>
-                    </div> <!-- user info card -->
-
-                    <div class='ui category search'>
-                        <div class='ui fluid icon input'>
-                            <input class='prompt' type='text' placeholder='Search . . .'>
-                            <i class='search icon'></i>
-                        </div>
-                        <div class='results'></div>
-                    </div> <!-- search -->
-                </div> <!-- four wide column -->
+  </div>
 
 
 
 
+
+<!-- CHANGE PASSWORD MODAL -->
 
 <div class="ui mini modal" id="confirmUpdate" aria-hidden="true">
   <div class="header">Update user credentials</div>
@@ -98,11 +98,14 @@
 
   </div>
   <div class="actions" >
-    <div class="ui cancel negative button">Cancel</div>
-    <button class="ui submit positive button" type="submit">Update</button>
+    <div class="ui cancel gray button">Cancel</div>
+    <button class="ui submit brown button" type="submit">Update</button>
     </form>
   </div>
 </div>
+
+
+
 <?php 
 } else if ($this->session->userdata['userSession']['user_type'] == 'REGULAR') {
     redirect('CLogin/viewPos');

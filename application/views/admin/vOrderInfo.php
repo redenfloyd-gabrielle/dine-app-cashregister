@@ -1,19 +1,28 @@
-                <div class='column'></div>
-                <div class='eleven wide column'>
-                    <h1 class='ui header'>
-                        <div class='content'>
-                            ORDERS
-                            <div class='sub header'>Shows the information of the order</div>
-                        </div>
-                    </h1> <!-- header -->
-
-                    <div class='ui breadcrumb'>
-                        <a class='section' href='<?php echo site_url()?>/COrdered/viewOrderList?>'>ORDER LIST</a>
-                        <i class='right arrow icon divider'></i>
-                        <div class='active section'>VIEW ORDER INFORMATION</div>
-                    </div> <!-- breadcrumb -->
-
-                    <div class='ui hidden divider'></div>
+  <div class="pusher">
+    <div class='ui basic segment'>
+        <h1 class="ui brown dividing header">
+            <i class="shop icon"></i>
+            <div class="content">
+              ORDERS
+              <div class="sub header">Shows the order information</div>
+            </div>
+        </h1> <!-- header -->
+        <div class='ui breadcrumb'>
+            <a class='section' href='<?php echo site_url()?>/CUser/viewAdminDashboard'>HOME</a>
+            <i class='right arrow icon divider'></i>
+            <a class='section' href='<?php echo site_url()?>/COrdered/viewOrderList'>ORDERS</a>
+            <i class='right arrow icon divider'></i>
+            <div class='active section'>ORDER INFORMATION</div>
+        </div> <!-- breadcrumb -->
+    </div> <!-- segment -->
+    <h3 class="ui horizontal header divider">
+        Order Information
+    </h3>
+    <div class='ui segment'> 
+        <div class='ui stackable padded grid'>
+            <div class='row'>
+                <div class='two wide column'></div>
+                <div class='twelve wide column'>
                     <p>REFERENCE NUMBER: <strong style='font-style: italic;'>00001</strong></p>
 
                     <p>ORDER DATE: <strong style='font-style: italic;'>01/20/18</strong></p>
@@ -44,13 +53,14 @@
                     <p>CASH (P): <strong style='font-style: italic;'>200.00</strong></p>
                     <p>CHANGE (P): <strong style='font-style: italic;'>200.00</strong></p>
                     <div class='ui hidden divider'></div>
-                    
-                </div> <!-- twelve wide column -->
-            </div> <!-- grid -->
-        </div> <!-- thirteen wide column -->
-        <div class='column'></div>
-    </div> <!-- row-->
-</div> <!-- grid -->
+                </div>
+                <div class='two wide column'></div>
+            </div>
+            <div class='row'></div> <!-- row -->
+        </div> <!-- ui grid -->
+    </div> <!-- segment -->
+  </div> <!-- pusher -->
+</div> <!-- bottom attached segment -->
 
 
 </body>
