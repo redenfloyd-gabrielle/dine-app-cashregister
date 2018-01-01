@@ -33,17 +33,16 @@
 
                 <div class='four wide column'>
                     <div class='ui card'>
-                        <div class='content'>
-                            <div class='header'>Joanne Malaluan</div>
+                    <div class='content'>
+                        <div class='header'><?php echo $this->session->userdata['userSession']['user_first_name'].' '.$this->session->userdata['userSession']['user_mi'].'. '.$this->session->userdata['userSession']['user_last_name'];?></div>
                             <div class='description'>
-                                Employee
+                                <?php echo $this->session->userdata['userSession']['user_type']; ?>
                             </div>
-                        </div>
+                            <input type="hidden" id="pass" value="<?php echo strtolower($this->session->userdata['userSession']['user_password']); ?>"> </div>
                         <div class='extra content' id='userContent'>
                             <strong><i class='user icon'></i>ADMIN</strong>
                         </div>
                     </div> <!-- user info card -->
-
                     <div class='ui category search'>
                         <div class='ui fluid icon input'>
                             <input class='prompt' type='text' placeholder='Search . . .'>
