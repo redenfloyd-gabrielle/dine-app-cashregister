@@ -22,7 +22,7 @@
             <?php if(isset($products)) { ?>
               <?php $x=0; foreach ($products as $prod){ ?>
               <div class="ui grey card">
-                <form method="POST" action="<?php echo site_url()?>/CReceiptItem/addReceiptItem/<?php echo $prod->product_id?>">
+                <form method="POST" action="<?php echo site_url()?>/CReceiptItem/addReceiptItem/<?php echo $prod->product_id.'/'.$this->session->userdata['receiptSession']['receipt_id'];?>">
                   <div class="ui grey card">
                 <img class="ui centered fluid image" src= "<?php echo base_url($prod->product_image)?>">
                 <div class="content">

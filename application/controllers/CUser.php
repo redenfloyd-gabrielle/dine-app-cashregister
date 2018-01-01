@@ -130,9 +130,9 @@
 
 		function viewReports()
 		{
-			$this->load->view('imports/vSuperadminHeader');
+			$this->load->view('imports/vAdminHeader');
 			$this->load->view('admin/vReports');
-			$this->load->view('imports/vSuperadminFooter');
+			$this->load->view('imports/vAdminFooter');
 		}
 
 		function vAddUser()

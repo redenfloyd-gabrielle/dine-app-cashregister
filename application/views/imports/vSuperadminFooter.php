@@ -5,7 +5,8 @@ $(document).ready(function(){
 	$('.ui.sticky').sticky();
 	$('#changePass').click(function(){
 		$('#confirmUpdate').modal('show');
-	})
+	});
+	$('.ui.modal').modal('setting', 'closable', false);
 }); 
 
 

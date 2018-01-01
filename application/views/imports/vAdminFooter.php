@@ -7,11 +7,14 @@ $(document).ready(function(){
     // Change Password Modal
 	$('#changePass').click(function(){
 		$('#confirmUpdate').modal('show');
-	})
+	});
+
+    $('.ui.modal').modal('setting', 'closable', false);
 
 	$('#getQr').click(function(){
         $('#scanqr').modal('show');
     });
+
 
     document.getElementById("trybtn").addEventListener("click", tryFunc);
         var qr = new Instascan.Scanner({
