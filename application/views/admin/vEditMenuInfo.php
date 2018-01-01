@@ -20,7 +20,8 @@
                     <div class='ui hidden divider'></div>
                     <div class='ui hidden divider'></div>
                     <div class='ui hidden divider'></div>
-
+                    <?php if (isset($product)) { ?>
+                    <?php foreach($product as $prod) {} ?>
                     <div class='content'>
                         <form class='ui form'>
                             <h3 class='ui horizontal divider header'>
@@ -34,15 +35,15 @@
                                 <input type="file" name="pic" accept="image/*">
                             </div>
 
-                            <div class='nine wide required field'><label>FOOD NAME</label><input type='text' placeholder='Enter first name'></div>
+                            <div class='nine wide required field'><label>FOOD NAME</label><input type='text' placeholder='Enter first name' value='<?php echo $prod->product_name;  ?>'></div>
 
-                            <div class='nine wide  required field'><label>FOOD DESCRIPTION</label><textarea placeholder='Enter food description'></textarea></div>
+                            <div class='nine wide  required field'><label>FOOD DESCRIPTION</label><textarea placeholder='Enter food description'><?php echo $prod->product_description;  ?></textarea></div>
 
-                            <div class='nine wide  required field'><label>FOOD PRICE</label><input type='number' placeholder='Enter food price'></div>
+                            <div class='nine wide  required field'><label>FOOD PRICE</label><input type='number' placeholder='Enter food price' value='<?php echo $prod->product_price;  ?>'></div>
 
                             <label>CATEGORY</label><br>
                             <select class="ui dropdown">
-                              <option value="">Choose category</option>
+                              <option value="<?php echo $prod->product_description;  ?>" class='selected'><?php echo $prod->product_category;  ?></option>
                               <option value="1">Beverage</option>
                               <option value="2">Meal</option>
                             </select> <!-- availability dropdown -->
@@ -51,6 +52,7 @@
 
                             <label>AVAILABILITY</label><br>
                             <select class="ui dropdown">
+                              <option value="<?php echo $prod->product_availability;  ?>" class='selected'><?php echo $prod->product_availability;  ?></option>
                               <option value="">Choose availability</option>
                               <option value="1">Available</option>
                               <option value="0">Not Available</option>
@@ -69,6 +71,7 @@
                     </div> <!-- content -->
                 </div> <!-- twelve wide column -->
             </div> <!-- grid -->
+            <?php } ?>   
         </div> <!-- thirteen wide column -->
         <div class='column'></div>
     </div> <!-- row-->

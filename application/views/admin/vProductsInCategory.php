@@ -44,8 +44,7 @@
                         <?php if (isset($products)) { ?>
                         <?php foreach($products as $prod) { ?>
                         <div class='ui three stackable cards'>
-
-                            <a class='ui small card' href='<?php echo site_url()?>/CProduct/viewMenuInfo'>
+                            <a class='ui small card' href='<?php echo site_url()?>/CProduct/viewMenuInfo/<?php echo $prod->product_id; ?>'>
                                 <div class='image'></div>
                                 <div class='content' id='superadmin-card'>
                                     <div class='header' id='userHeader'>
