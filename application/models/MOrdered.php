@@ -32,7 +32,8 @@
 			$this->db->from('order_item');
 			$this->db->join($this::DB_TABLE,'order_item'.'.order_item_ordered_id= ordered_id ' );
 			$this->db->join('product','order_item'.'.order_item_product_id= product_id ' );
-			$this->db->where(array($this::DB_TABLE.'_id' => $id ));
+			$this->db->where(array($this::DB_TABLE.'_id' => $id,
+			'order_item_status !=' => 'INACTIVE' ));
 			$query = $this->db->get();
 			return $query->result();
 			// SELECT * FROM `order_item` JOIN ordered ON ordered_id = order_item_ordered_id WHERE ordered_id = 1

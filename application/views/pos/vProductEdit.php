@@ -26,7 +26,7 @@
               <?php foreach ($products as $prod){ ?>
               
               <div class="ui grey card">
-                <form method="POST" action="<?php echo site_url().'/COrderItem/addOrderItem/'.$prod->product_id.'/'.$eid;?>">
+                <form method="POST" action="<?php echo site_url().'/COrderItem/addOrderItem/'.$page.'/'.$prod->product_id.'/'.$eid;?>">
                   <div class="ui grey card">
                 <img class="ui centered fluid image" src= "<?php echo base_url($prod->product_image)?>">
                 <div class="content">
@@ -38,7 +38,7 @@
                   </span>
                   <button class="right floated cart pbtn" id="pbtn" type="submit">
                     
-                    <input type="hidden" value="<?php echo $prod->product_id ?> " id="pid" name="pid" class="pid">
+                   <!--  <input type="hidden" value="<?php echo $prod->product_id ?> " id="pid" name="pid" class="pid"> -->
                       <i class="cart icon"></i>
                     Order
 
@@ -65,28 +65,27 @@
 </body>
 </html>
 <script>
- $(document).ready(function(){
+$(document).ready(function(){
    
-//     var ordered_id = $('#ordered_id').val();
+    // var ordered_id = $('#ordered_id').val();
    
-//     var dataSet = "ordered_id="+ordered_id;
-//     $.ajax({
-//         type: "POST",
-//         url: '<?php echo site_url()?>/COrderItem/displayOrderListFromQR',
-//         data: dataSet,
-//         cache: false,
-//         success: function(result){
-//             if(result){
-//                $('#vEditOrder').html(result);
-//             }else{
-//                 alert("Error");
-//             }                         
-//         },
-//         error: function(jqXHR, errorThrown){
-//             console.log(errorThrown);
-//         }
-//     });
-
+    // var dataSet = "ordered_id="+ordered_id;
+    // $.ajax({
+    //     type: "POST",
+    //     url: '<?php //echo site_url()?>/COrderItem/viewEdit',
+    //     data: dataSet,
+    //     cache: false,
+    //     success: function(result){
+    //         if(result){
+    //            $('#vEditOrder').html(result);
+    //         }else{
+    //             alert("Error");
+    //         }                         
+    //     },
+    //     error: function(jqXHR, errorThrown){
+    //         console.log(errorThrown);
+    //     }
+     });
 
   // $('.pbtn').on('click', function() {
   //   var pid = $(this).find(".pid").val();
@@ -95,7 +94,7 @@
 
   //   $.ajax({
   //     type: "POST",
-  //     url: '<?php echo site_url()?>/COrderItem/addRowItem',
+  //     url: '<?php //echo site_url()?>/COrderItem/addRowItem',
   //     data: dataSet,
   //     cache: false,
   //     success: function(result){
@@ -125,30 +124,16 @@
 
   //     }
   // });
-});
+//});
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-});
+//});
 
 // function addRow()
 // {
   
 
-//     $('#myTR').append('<tr><td><?php echo $prod->product_name ?></td> <td>xxx</td><td>peee</td><td>P<span class="subtotal">yyyy</span></td>eee<td><i class="red remove icon"></i></td> <input type="hidden" id="order_item" name ="order_item" value="0"></tr');
+//     $('#myTR').append('<tr><td><?php //echo $prod->product_name ?></td> <td>xxx</td><td>peee</td><td>P<span class="subtotal">yyyy</span></td>eee<td><i class="red remove icon"></i></td> <input type="hidden" id="order_item" name ="order_item" value="0"></tr');
    
 // }
 

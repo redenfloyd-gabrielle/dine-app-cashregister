@@ -52,7 +52,7 @@
           <div class="ui three cards">
             <div class="ui card">
               <a class="image" href="<?php echo site_url()."/CProduct/viewProductEdit/".$page."/MEALS/".$eid; ?>">
-                <img class="ui centered fluid image" src="<?php echo base_url('assets/images/meals.jpg')?>">
+                <img class="ui centered fluid image" src="<?php echo base_url('assets/images/meals.svg')?>">
               </a>
               <div class="content">
                 <a class="header" href="<?php echo site_url()."/CProduct/viewProductEdit/".$page."/MEALS/".$eid; ?>">MEALS</a>
@@ -64,7 +64,7 @@
 
             <div class="ui card">
               <a class="image" href="<?php echo site_url()."/CProduct/viewProductEdit/".$page."/DRINKS/".$eid; ?>">
-                <img class="ui centered fluid image" src="<?php echo base_url('assets/images/beverage.jpg')?>">
+                <img class="ui centered fluid image" src="<?php echo base_url('assets/images/drinks.svg')?>">
               </a>
               <div class="content">
                 <a class="header" href="<?php echo site_url()."/CProduct/viewProductEdit/".$page."/DRINKS/".$eid; ?>">DRINKS</a>
@@ -76,7 +76,7 @@
 
             <div class="ui card">
               <a class="image" href="<?php echo site_url()."/CProduct/viewProductEdit/".$page."/DESSERTS/".$eid; ?>">
-                <img class="ui centered fluid image" src="<?php echo base_url('assets/images/dessert.jpg')?>">
+                <img class="ui centered fluid image" src="<?php echo base_url('assets/images/desserts.svg')?>">
               </a>
               <div class="content">
                 <a class="header" href="<?php echo site_url()."/CProduct/viewProductEdit/".$page."/DESSERTS/".$eid; ?>">DESSERTS</a>
@@ -88,7 +88,7 @@
 
             <div class="ui card">
               <a class="image" href="<?php echo site_url()."/CProduct/viewProductEdit/".$page."/EXTRAS/".$eid; ?>">
-                <img class="ui centered fluid image" src="<?php echo base_url('assets/images/soup.jpg')?>">
+                <img class="ui centered fluid image" src="<?php echo base_url('assets/images/extras.svg')?>">
               </a>
               <div class="content">
                 <a class="header" href="<?php echo site_url()."/CProduct/viewProductEdit/".$page."/EXTRAS/".$eid; ?>">EXTRAS</a>

@@ -29,7 +29,7 @@
 			$this->db->from($this::DB_TABLE);
 			$this->db->join('product',$this::DB_TABLE.'.receipt_item_product_id= product_id' );
 			$this->db->where(array($this::DB_TABLE.'_receipt_id' => $id,
-								   $this::DB_TABLE.'_status' => 'ACTIVE'));
+								   $this::DB_TABLE.'_status !=' => 'INACTIVE'));
 			$query = $this->db->get();
 			return $query->result();
 		}

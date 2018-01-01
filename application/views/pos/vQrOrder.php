@@ -38,7 +38,7 @@
                   <td><?php echo $order->product_name; ?></td>
                   <td><?php echo $order->product_price; ?></td>
                   <td><?php echo $order->order_item_qty; ?></td>
-                  <td><?php echo $order->order_item_subtotal; ?></td>
+                  <td class="subtotal"><?php echo $order->order_item_subtotal; ?></td>
               </tr>
               <?php } ?>
           <?php } ?>
@@ -142,7 +142,7 @@
 
     //     $.ajax({
     //       type: "POST",
-    //       url: '<?php echo site_url()?>/COrderItem/viewEditOrder',
+    //       url: '<?php// echo site_url()?>/COrderItem/viewEdit',
     //       data: dataSet,
     //       cache: false,
     //       success: function(result){
@@ -159,6 +159,14 @@
     //       }
     //   });
     // });
+     var sum = 0;
+      $(".subtotal").each(function() {
+          var value = $(this).text();
+          if(!isNaN(value) && value.length != 0) {
+              sum += parseFloat(value);
+          }
+          $("#due").html(sum); 
+      });
   });
 </script>
 
