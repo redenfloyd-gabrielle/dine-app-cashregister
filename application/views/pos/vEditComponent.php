@@ -34,7 +34,7 @@
                   <td>P<span class="price"><?php echo $order->product_price; ?></span></td>
                   <td class="qty"> <input type="number" name="qty" value="<?php echo $order->order_item_qty; ?>"><i class="mini add circle icon ibtn btn"><span class="sign">+</span></i><i class="mini minus circle icon ibtn btn"><span class="sign">-</span></i></td>
                   <td>P<span class="subtotal" id="subtotal"><?php echo $order->order_item_subtotal; ?></span></td>
-                  <td><button class="ibtn"><i class="red remove icon"></i></button></td>
+                  <td><a class="ibtn" href="<?php echo site_url().'/CReceiptItem/updateReceiptItemStatus/'.$order->item_id.'/'.$page.'/'.$eid;?>"><i class="red remove icon"></i></a></td>
                   <input type="hidden" id="order_item" name ="order_item" value="<?php $order->item_id?>">
               </tr>
             <!-- </form> -->

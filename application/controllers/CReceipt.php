@@ -20,6 +20,7 @@
 			$this->load->view('pos/vReceipt');
 		}
 
+		
 
 	}
 

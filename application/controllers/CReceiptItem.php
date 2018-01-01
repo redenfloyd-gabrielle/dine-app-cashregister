@@ -8,6 +8,7 @@
 	      $this->load->helper('url');
 	      $this->load->database(); // load database
 	      $this->load->model('MReceiptItem');
+	      $this->load->model('MOrderItem');
 	      $this->load->model('MProduct');
 	      $this->load->helper('url');
 	      $this->load->library('session');
@@ -19,13 +20,26 @@
 		}
 
 
+		public function updateReceiptItemStatus($id,$page,$eid){
+			if($page == 'manual'){
+				$data = array('receipt_item_status' => 'INACTIVE');
+				$query = $this->MReceiptItem->update($id,$data);
+			}else{
+				$data = array('order_item_status' => 'INACTIVE');
+				 $query = $this->MOrderItem->update($id,$data);
+			}
+			
+		    if ($query) {
+		       redirect('COrderItem/viewEdit/'.$page.'/'.$eid);
+		    }
+		}
 
-		public function addReceiptItem($product_id)
+		public function addReceiptItem($product_id,$receipt_id)
 		{
 			$receipt_item = new MReceiptItem();
 			$prod = new MProduct();
 			
-			$receipt_id = $this->input->post('receipt_id');
+			// $receipt_id = $this->input->post('receipt_id');
 	       
 			$qty = 1;
 
@@ -60,6 +74,7 @@
 			} else {
 				print_r('SOMETHING WENT WRONG;');
 			}
+
 		}
 
 		public function displayOrderListManual(){
