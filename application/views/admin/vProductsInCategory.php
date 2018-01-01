@@ -88,23 +88,26 @@
                                 </div>
                             </div>
                         </div>
-
-                        <h1 class='ui horizontal divider header'>CATEGORY NAME</h1>
+                        <?php if (isset($prod_cat)) { ?>
+                        <h1 class='ui horizontal divider header'><?php echo $prod_cat; ?></h1>
+                        <?php } ?>
                         <div class='ui hidden divider'></div>
-
+                        <?php if (isset($products)) { ?>
+                        <?php foreach($products as $prod) { ?>
                         <div class='ui three stackable cards'>
 
                             <a class='ui small card' href='<?php echo site_url()?>/CProduct/viewMenuInfo'>
                                 <div class='image'></div>
                                 <div class='content' id='superadmin-card'>
                                     <div class='header' id='userHeader'>
-                                        Chicken Meal
+                                        <?php echo $prod->product_name; ?>
                                     </div>
                                 </div>
                             </a> <!-- meal card -->
 
                         </div> <!--three cards -->
-
+                        <?php } ?>
+                        <?php } ?>
                     </div> <!-- row -->
                     
                     <div class='ui hidden divider'></div>
