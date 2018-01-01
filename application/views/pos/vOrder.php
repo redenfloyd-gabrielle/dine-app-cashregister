@@ -76,6 +76,7 @@
     <div class="row">
       <div class="six wide column"></div>
       <div class="three wide column">
+        <span class="itemLabels">Cash</span>
       </div>
       <div class="six wide right aligned column">
         P<span id="cash">0.00</span>

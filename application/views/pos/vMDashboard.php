@@ -18,7 +18,7 @@
 
             <div class="ui card">
               <a class="image" href="<?php echo site_url();?>/CProduct/viewProduct/MEALS">
-                <img class="ui centered fluid image" src="<?php echo base_url('assets/images/meals.jpg')?>">
+                <img class="ui centered fluid image" src="<?php echo base_url('assets/images/meals.svg')?>">
               </a>
               <div class="content">
                 <a class="header" href="<?php echo site_url();?>/CProduct/viewProduct/MEALS">MEALS</a>
@@ -31,7 +31,7 @@
 
             <div class="ui card">
               <a class="image" href="<?php echo site_url();?>/CProduct/viewProduct/DRINKS">
-                <img class="ui centered fluid image" src="<?php echo base_url('assets/images/beverage.jpg')?>">
+                <img class="ui centered fluid image" src="<?php echo base_url('assets/images/drinks.svg')?>">
               </a>
               <div class="content">
                 <a class="header" href="<?php echo site_url();?>/CProduct/viewProduct/DRINKS">DRINKS</a>
@@ -43,7 +43,7 @@
 
             <div class="ui card">
               <a class="image" href="<?php echo site_url();?>/CProduct/viewProduct/DESSERTS">
-                <img class="ui centered fluid image" src="<?php echo base_url('assets/images/dessert.jpg')?>">
+                <img class="ui centered fluid image" src="<?php echo base_url('assets/images/desserts.svg')?>">
               </a>
               <div class="content">
                 <a class="header" href="<?php echo site_url();?>/CProduct/viewProduct/DESSERTS">DESSERTS</a>
@@ -55,7 +55,7 @@
 
             <div class="ui card">
               <a class="image" href="<?php echo site_url();?>/CProduct/viewProduct/EXTRAS">
-                <img class="ui centered fluid image" src="<?php echo base_url('assets/images/soup.jpg')?>">
+                <img class="ui centered fluid image" src="<?php echo base_url('assets/images/extras.svg')?>">
               </a>
               <div class="content">
                 <a class="header" href="<?php echo site_url();?>/CProduct/viewProduct/EXTRAS">EXTRAS</a>
