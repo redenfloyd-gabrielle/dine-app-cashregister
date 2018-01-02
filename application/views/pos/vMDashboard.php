@@ -17,11 +17,11 @@
           <div class="ui three cards">
 
             <div class="ui card">
-              <a class="image" href="<?php echo site_url();?>/CProduct/viewProduct/MEALS">
-                <img class="ui centered fluid image" src="<?php echo base_url('assets/images/meals.svg')?>">
+              <a class="image" href="<?php echo site_url();?>/CProduct/viewProduct/RICE MEAL">
+                <img class="ui centered fluid image" src="<?php echo base_url('assets/images/ricemeal.png')?>">
               </a>
               <div class="content">
-                <a class="header" href="<?php echo site_url();?>/CProduct/viewProduct/MEALS">MEALS</a>
+                <a class="header" href="<?php echo site_url();?>/CProduct/viewProduct/RICE MEAL">RICE MEAL</a>
                 <div class="meta">
                   <a>Category</a>
                 </div>
@@ -42,11 +42,23 @@
             </div>
 
             <div class="ui card">
-              <a class="image" href="<?php echo site_url();?>/CProduct/viewProduct/DESSERTS">
-                <img class="ui centered fluid image" src="<?php echo base_url('assets/images/desserts.svg')?>">
+              <a class="image" href="<?php echo site_url();?>/CProduct/viewProduct/SOUP">
+                <img class="ui centered fluid image" src="<?php echo base_url('assets/images/soup.png')?>">
               </a>
               <div class="content">
-                <a class="header" href="<?php echo site_url();?>/CProduct/viewProduct/DESSERTS">DESSERTS</a>
+                <a class="header" href="<?php echo site_url();?>/CProduct/viewProduct/SOUP">SOUP</a>
+                <div class="meta">
+                  <a>Category</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="ui card">
+              <a class="image" href="<?php echo site_url();?>/CProduct/viewProduct/MAIN COURSE">
+                <img class="ui centered fluid image" src="<?php echo base_url('assets/images/meals.svg')?>">
+              </a>
+              <div class="content">
+                <a class="header" href="<?php echo site_url();?>/CProduct/viewProduct/MAIN COURSE">MAIN COURSE</a>
                 <div class="meta">
                   <a>Category</a>
                 </div>
