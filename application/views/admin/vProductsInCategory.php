@@ -46,9 +46,10 @@
             </div>
             <div class='row'>
                 <div class='sixteen wide column'>
-                    <?php if (isset($products)) { ?>
-                        <?php foreach($products as $prod) { ?>
+                    
                         <div class='ui five stackable cards'>
+                            <?php if (isset($products)) { ?>
+                            <?php foreach($products as $prod) { ?>
                             <a class='ui small card' href='<?php echo site_url()?>/CProduct/viewProductInfo/<?php echo $prod->product_id; ?>'>
                                 <div class='image'></div>
                                 <div class='content' id='superadmin-card'>
@@ -57,10 +58,10 @@
                                     </div>
                                 </div>
                             </a> <!-- meal card -->
-
+                            <?php } ?>
+                            <?php } ?>
                         </div> <!--three cards -->
-                        <?php } ?>
-                    <?php } ?>
+                      
                 </div> <!-- sixteen wide column -->
             </div> <!-- row -->
 

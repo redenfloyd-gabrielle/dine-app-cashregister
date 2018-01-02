@@ -65,7 +65,7 @@
 
                         <a href="<?php echo site_url()?>/CProduct/viewCategoryList?>"><div class='ui submit gray button'>Cancel</div></a>
 
-                        <div class='ui submit brown button'>Add</div>
+                        <button class='ui submit brown button' type="submit">Add</button>
 
                         <div class='ui hidden divider'></div>
 
