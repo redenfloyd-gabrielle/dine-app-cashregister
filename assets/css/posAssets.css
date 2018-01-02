@@ -36,6 +36,7 @@ font-weight: bold;}
 .itemRow{margin: 5px !important;padding: 5px !important;}
 .ibtn{border: none; background:none;}
 .error {color:gray; font-size:20px;text-align: center;font-family: 'SLight', Fallback, sans-serif; }
+.sign {color: white}
 
 /*.ui.modal{position: absolute; visibility: hidden; max-width: 40%; max-height: 40%; overflow: auto;}
 .close{ border: none; background: none; right: 25px; color: #000; font-size: 25px;font-weight: bold;}

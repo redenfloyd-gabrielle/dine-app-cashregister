@@ -22,7 +22,7 @@
             <?php if(isset($products)) { ?>
               <?php $x=0; foreach ($products as $prod){ ?>
               <div class="ui grey card">
-                <form method="POST" action="<?php echo site_url()?>/CReceiptItem/addReceiptItem/<?php echo $prod->product_id?>">
+                <form method="POST" action="<?php echo site_url()?>/CReceiptItem/addReceiptItem/<?php echo $prod->product_id.'/'.$this->session->userdata['receiptSession']['receipt_id'];?>">
                   <div class="ui grey card">
                 <img class="ui centered fluid image" src= "<?php echo base_url($prod->product_image)?>">
                 <div class="content">
@@ -32,11 +32,11 @@
                   <span class="left floated price">
                   P<span id="price"><?php echo $prod->product_price; ?>.00</span>
                   </span>
-                  <button class="right floated cart pbtn" id="pbtn" type="submit" name="pbutton[]">
+                  <button class="right floated cart pbtn" id="pbtn" type="submit">
                       <i class="cart icon"></i>
                     Order
                   </button>
-                  <input type="hidden" value="<?php echo $this->session->userdata['receiptSession']['receipt_id']?>" name="receipt_id" id="receipt_id">
+                  <input type="hidden" value="<?php echo $this->session->userdata['receiptSession']['receipt_id']?>" name="eid" id="eid">
                 </div>
               </div>
               </form>
@@ -60,7 +60,7 @@
 <script>
   $(document).ready(function(){
    
-    var receipt_id = $('#receipt_id').val();
+    var receipt_id = $('#eid').val();
    
     var dataSet = "receipt_id="+receipt_id;
     $.ajax({
@@ -73,7 +73,8 @@
                $('#vOrder').html(result);
             }else{
                 alert("Error");
-            }                         
+            }    
+            console.log(result);                  
         },
         error: function(jqXHR, errorThrown){
             console.log(errorThrown);

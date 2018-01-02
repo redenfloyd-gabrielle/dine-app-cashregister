@@ -21,9 +21,16 @@
 			$this->db->from($this::DB_TABLE);
 			$this->db->join('product',$this::DB_TABLE.'.order_item_product_id= product_id' );
 			$this->db->where(array($this::DB_TABLE.'_ordered_id' => $id,
-		 						   $this::DB_TABLE.'_status' => 'ACTIVE'));
+		 						   $this::DB_TABLE.'_status !=' => 'INACTIVE'));
 			$query = $this->db->get();
 			return $query->result();
+		}
+
+		public function updateQty($id,$qty){
+			$where = array($this::DB_TABLE_PK =>$id);
+			$field = array($this::DB_TABLE.'_qty' => $qty);
+			$query = $this->update1($where,$field);
+			return $query;
 		}
 
 

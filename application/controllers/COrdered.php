@@ -24,9 +24,7 @@
  		}
 		
 		public function viewQDashboard($id){
-			$order = new MOrdered();
-
-			$result = $order->getOrderById($id);
+			$result = $this->MOrdered->getOrderById($id);
 			if($result){
 				foreach ($result as $key) {}
 				$data['qr'] = $key->ordered_qr_code;
@@ -38,16 +36,16 @@
 			$this->load->view('pos/vQDashboard',$data);
 		}
 
-		public function displayOrderFromQR(){
-			$order = new MOrdered();
+		public function displayOrderFromQR()
+		{
 			$qr = $_POST['qr'];
 
-			$result = $order->getOrderByQR($qr);
+			$result = $this->MOrdered->getOrderByQR($qr);
 			if($result){
 				foreach ($result as $q) {}
 				$id = $q->ordered_id;
 				$total = $q->ordered_total;
-				$result1 = $order->displayOrderItemsByOrder($id);
+				$result1 = $this->MOrdered->displayOrderItemsByOrder($id);
 			   
 			    $qty = 0;
 			

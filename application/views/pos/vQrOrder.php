@@ -11,17 +11,18 @@
       </h1>
     </div>
     <div class="three wide column">
-      <button class="ibtn" id="ibtn"><i class="huge blue edit icon"></i></button>
+      <!-- <button class="ibtn" id="ibtn"><i class="huge blue edit icon"></i></button> -->
+       <a href="<?php echo site_url()?>/COrderItem/viewEdit/qr/<?php echo $id ?>"><i class="huge blue edit icon"></i></a>
     </div>
   </div>
   <div class="row">
     <div class="column"></div>
     <div class="fourteen wide column">
       <?php if (isset($id)){ ?>
-      <input type="hidden" id="eid" value="<?php echo $id; ?>">
+      <input type="hidden" id="eid" value="<?php echo $id; ?>" name='eid'>
       <?php } ?>
       <form>
-        <table class="ui single line table">
+        <table class="ui single line table" id="myTable">
           <thead>
             <tr>
               <th>Product Name</th>
@@ -34,10 +35,11 @@
           <?php if(isset($order_info)) { ?>
                <?php foreach ($order_info as $order){ ?>
               <tr id="myTR">
-                  <td><?php echo $order->product_name; ?></td>
+                  <td ><?php echo $order->product_name; ?></td>
                   <td><?php echo $order->product_price; ?></td>
                   <td><?php echo $order->order_item_qty; ?></td>
-                  <td><?php echo $order->order_item_subtotal; ?></td>
+                  <td class="subtotal"><?php echo $order->order_item_subtotal; ?></td>
+                  <input type="hidden" id="prod_id" value="<?php echo $order->product_id ?>">
               </tr>
               <?php } ?>
           <?php } ?>
@@ -68,9 +70,9 @@
       <strong class="itemLabels">AMOUNT DUE</strong>
     </div>
     <div class="six wide right aligned column">
-      <?php if(isset($total)){ ?>
-      P<span id="due"><?php echo $total; ?></span>
-      <?php } ?>
+      
+      P<span id="due">0</span>.00
+     
     </div>
     <div class="column"></div>
   </div>
@@ -104,10 +106,10 @@
 
   <div class="row">
     <div class="three wide column">
-      <a href="<?php echo site_url();?>/CLogin/viewPos" class="lft lbtn" align="center" ><h4 class="lbtnlabel">Back</h4></a>
+      <a href="<?php echo site_url();?>/CLogin/viewPosNoSession" class="lft lbtn" align="center" ><h4 class="lbtnlabel">Back</h4></a>
     </div>
     <div class="ten wide column">
-      <a href="<?php echo site_url();?>/CLogin/viewPos" class="rght rbtn" align="center" ><h4 class="rbtnlabel">Charge/No Receipt</h4></a>
+      <button class="rght rbtn" id="rbtn" align="center"><h4 class="rbtnlabel">Charge/No Receipt</h4></button>
     </div>
     <div class="three wide column">
       <a href="<?php echo site_url();?>/CReceipt/viewReceipt" class="rght rbtn" align="center" "><h4 class="rbtnlabel">Charge & Print</h4></a>
@@ -134,31 +136,87 @@
           }
       });
 
-      $('#ibtn').on('click', function() {
-        var eid = $("#eid").val();
-        var page = "qr";
-        var dataSet = "eid="+eid+"&page="+page;
+    //   $('#ibtn').on('click', function() {
+    //     var eid = $("#eid").val();
+    //     var page = "qr";
+    //     var dataSet = "eid="+eid+"&page="+page;
 
-        $.ajax({
-          type: "POST",
-          url: '<?php echo site_url()?>/COrderItem/viewEditOrder',
-          data: dataSet,
-          cache: false,
-          success: function(result){
-              if(result){
-                 $('body').html(result);
+      //   $.ajax({
+      //     type: "POST",
+      //     url: '<?php// echo site_url()?>/COrderItem/viewEdit',
+      //     data: dataSet,
+      //     cache: false,
+      //     success: function(result){
+      //         if(result){
+      //            $('body').html(result);
 
-              }else{
-                  alert("Error");
-              }                         
-          },
-          error: function(jqXHR, errorThrown){
-              console.log(errorThrown);
+      //         }else{
+      //             alert("Error");
+      //         }                         
+      //     },
+      //     error: function(jqXHR, errorThrown){
+      //         console.log(errorThrown);
 
+      //     }
+      // });
+    // });
+     var sum = 0;
+      $(".subtotal").each(function() {
+          var value = $(this).text();
+          if(!isNaN(value) && value.length != 0) {
+              sum += parseFloat(value);
           }
+          $("#due").html(sum); 
       });
-    });
-  });
+
+      function storeTblValues(){
+
+        var tableData = new Array();
+        $("#myTable tr").each(function(row,tr){
+            tableData[row] = {
+              "qty" :$(tr).find('td:eq(2)').text()
+            , "subtotal" :$(tr).find('td:eq(3)').text()
+            , "prod_id" : $(tr).find('#prod_id').val()
+            }
+        });
+
+       tableData.shift();
+       return tableData;
+      }
+
+    $('#rbtn').on('click',function(){
+
+      var tableData;
+      var total = $("#due").text();
+      var cash = $("#cash").text();
+      var change = $("#change").text();
+      tableData = storeTblValues();
+
+      tableData = $.toJSON(tableData);
+      var dataSet =  "pTableData=" + tableData+"&total="+total+"&cash="+cash+"&change="+change;
+
+      $.ajax({
+        type: "POST",
+        url: "<?php echo site_url()?>/CReceipt/addQROrderToReceipt",
+        data: dataSet,
+        cache: false,
+        success: function(result){
+           // alert(result);
+           $('body').html(result);
+        },
+        error: function(jqXHR, errorThrown){
+            console.log(errorThrown);
+        }
+
+      });
+
+    })
+      
+});
+     
+
+     
+  // });
 </script>
 
 

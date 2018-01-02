@@ -1,129 +1,99 @@
-<div class='ui visible left vertical inverted sidebar labeled icon menu'>
-    <div class='borderless item'>
-        <strong>DINE</strong> 
+<div class="pusher">
+    <div class='ui basic segment'>
+        <h1 class="ui brown dividing header">
+            <i class="food icon"></i>
+            <div class="content">
+              PRODUCTS
+              <div class="sub header">Shows the list of food by category</div>
+            </div>
+        </h1> <!-- header -->
+        <div class='ui breadcrumb'>
+            <a class='section' href='<?php echo site_url()?>/CUser/viewAdminDashboard'>HOME</a>
+            <i class='right arrow icon divider'></i>
+            <div class='active section'>CATEGORIES</div>
+        </div> <!-- breadcrumb -->
+    </div> <!-- segment -->
+    <div class='ui top attached secondary inverted segment'>
+        <h3>CATEGORIES</h3>
     </div>
-    <a class='item' href='<?php echo site_url()?>/CUser/viewAdminDashboard'>
-        <i class='dashboard icon'></i> Dashboard
-    </a>
-    <a class='active item' href='<?php echo site_url()?>/CProduct/viewCategoryList'>
-        <i class='sidebar icon'></i> Menu
-    </a> 
-    <a class='item' href='<?php echo site_url()?>/COrdered/viewOrderList?>'>
-        <i class='shop icon'></i> Orders
-    </a>
-    <a class='item' href='<?php echo site_url()?>/CUser/viewReports?>'>
-        <i class='bar chart icon'></i> Reports
-    </a>
-    <a class='item' href=''>
-        <i class='calculator icon'></i> POS
-    </a>
-</div> <!-- sidebar menu -->
-
-
-<div class='ui grid'>
-    <div class='row'></div>
-    <div class='row'></div>
-    <div class='row'>
-        <div class='two wide column'></div>
-        <div class='thirteen wide column'>
-            <div class='ui stackable grid'>
-
-                <div class='four wide column'>
-                    <div class='ui card'>
-                        <div class='content'>
-                            <div class='header'>Joanne Malaluan</div>
-                            <div class='description'>
-                                Employee
+    <div class='ui basic attached segment'> 
+        <div class='ui stackable padded grid'>
+            <div class='row'>
+                <a href='<?php echo site_url()?>/CProduct/addNewProduct'><button class='ui circular green icon button' title='Add new product'><i class='plus icon'></i>Add product</button></a> <!-- Add new product -->
+            </div> <!-- row -->
+            <div class='row'>
+                <div class='sixteen wide column'>
+                    <div class='ui three stackable centered cards'>
+                        <a class='ui small card' href='<?php echo site_url()?>/CProduct/viewProductsInCategory/RICE MEAL'> 
+                            <div class='center aligned middle aligned content' id='superadmin-card'>
+                                <img src='<?php echo base_url("assets/images/ricemeal.png")?>' class='ui small image'>
+                                <div class='header' id='userHeader'>
+                                    RICE MEAL
+                                </div>
                             </div>
-                        </div>
-                        <div class='extra content' id='userContent'>
-                            <strong><i class='user icon'></i>ADMIN</strong>
-                        </div>
-                    </div> <!-- user info card -->
+                        </a> <!-- category card -->
 
-                    <div class='ui category search'>
-                        <div class='ui fluid icon input'>
-                            <input class='prompt' type='text' placeholder='Search . . .'>
-                            <i class='search icon'></i>
-                        </div>
-                        <div class='results'></div>
-                    </div> <!-- search -->
-                </div> <!-- four wide column -->
-                <div class='column'></div>
-                <div class='eleven wide column'>
-                    <div class='row'>
-                        <h1 class='ui header'>
-                            <div class='content'>
-                                MENU
-                                <div class='sub header'>Shows the list of food by category</div> <!-- sub-header -->
-                            </div> <!-- content -->
-                        </h1> <!-- header -->
-
-                        <div class='ui breadcrumb'></div><!-- breadcrumb -->
-
-                        <div class='ui hidden divider'></div>
-
-                        <a href='<?php echo site_url()?>/CProduct/addMenu'><button class='ui big circular green icon button' title='Add new user'><i class='plus icon'></i></button></a> <!-- Add new user -->
-
-                        
-                        <h1 class='ui horizontal divider header'>CATEGORIES</h1>
-                        <div class='ui hidden divider'></div>
-                         
-                        <div class='ui three stackable cards'>
-                            <a class='ui small card' href='<?php echo site_url()?>/CProduct/viewProductsInCategory'>
-                                
-                                <div class='center aligned middle aligned content' id='superadmin-card'>
-                                    <img src='<?php echo base_url("assets/images/meals.svg")?>' class='ui small image'>
-                                    <div class='header' id='userHeader'>
-                                        MEALS
-                                    </div>
+                        <a class='ui small card' href='<?php echo site_url()?>/CProduct/viewProductsInCategory/SOUP'>
+                            
+                            <div class='center aligned middle aligned content' id='superadmin-card'>
+                                <img src='<?php echo base_url("assets/images/soup.png")?>' class='ui small image'>
+                                <div class='header' id='userHeader'>
+                                    SOUP
                                 </div>
-                            </a> <!-- meal card -->
+                            </div>
+                        </a> <!-- category card -->
 
-                            <a class='ui small card' href='<?php echo site_url()?>/CProduct/viewProductsInCategory'>
-                                
-                                <div class='center aligned middle aligned content' id='superadmin-card'>
-                                    <img src='<?php echo base_url("assets/images/drinks.svg")?>' class='ui small image'>
-                                    <div class='header' id='userHeader'>
-                                        DRINKS
-                                    </div>
+                        <a class='ui small card' href='<?php echo site_url()?>/CProduct/viewProductsInCategory/MAIN COURSE'>
+                            
+                            <div class='center aligned middle aligned content' id='superadmin-card'>
+                                <img src='<?php echo base_url("assets/images/meals.svg")?>' class='ui small image'>
+                                <div class='header' id='userHeader'>
+                                    MAIN COURSE
                                 </div>
-                            </a> <!-- meal card -->
+                            </div>
+                        </a> <!-- category card -->
 
-                            <a class='ui small card' href='<?php echo site_url()?>/CProduct/viewProductsInCategory'>
-                                
-                                <div class='center aligned middle aligned content' id='superadmin-card'>
-                                    <img src='<?php echo base_url("assets/images/desserts.svg")?>' class='ui small image'>
-                                    <div class='header' id='userHeader'>
-                                        DESSERTS
-                                    </div>
+                        <a class='ui small card' href='<?php echo site_url()?>/CProduct/viewProductsInCategory/DRINKS'>
+                            
+                            <div class='center aligned middle aligned content' id='superadmin-card'>
+                                <img src='<?php echo base_url("assets/images/drinks.svg")?>' class='ui small image'>
+                                <div class='header' id='userHeader'>
+                                    DRINKS
                                 </div>
-                            </a> <!-- meal card -->
+                            </div>
+                        </a> <!-- category card -->
 
-                            <a class='ui small card' href='<?php echo site_url()?>/CProduct/viewProductsInCategory'>
-                                
-                                <div class='center aligned middle aligned content' id='superadmin-card'>
-                                    <img src='<?php echo base_url("assets/images/extras.svg")?>' class='ui small image'>
-                                    <div class='header' id='userHeader'>
-                                        EXTRAS
-                                    </div>
+                        <a class='ui small card' href='<?php echo site_url()?>/CProduct/viewProductsInCategory/EXTRAS'>
+                            
+                            <div class='center aligned middle aligned content' id='superadmin-card'>
+                                <img src='<?php echo base_url("assets/images/extras.svg")?>' class='ui small image'>
+                                <div class='header' id='userHeader'>
+                                    EXTRAS
                                 </div>
-                            </a> <!-- meal card -->
+                            </div>
+                        </a> <!-- category card -->
+                    </div> <!-- stackable cards -->
+                </div> <!-- sixteen wide column -->
+            </div> <!-- row -->
 
+            <div class='row'></div> <!-- row -->
 
+            <div class='two column row'>
+                <div class='middle aligned column'>
+                    Pages 1 out of 1 pages.
+                </div>
+                <div class='right aligned column'>
+                    <div class='ui pagination menu'>
+                        <a class='active item'>1</a>
+                    </div> <!-- pagination -->
+                </div>
+            </div> <!-- two column row -->
 
-                        </div> <!--three cards -->
+        </div> <!-- ui grid -->
+    </div> <!-- segment -->
+  </div> <!-- pusher -->
+</div> <!-- bottom attached segment -->
 
-                    </div> <!-- row -->
-                    
-                    <div class='ui hidden divider'></div>
-                </div> <!-- twelve wide column -->
-            </div> <!-- grid -->
-        </div> <!-- thirteen wide column -->
-        <div class='column'></div>
-    </div> <!-- row-->
-</div> <!-- grid -->
- 
 
 </body>
-</html>
+</html> 

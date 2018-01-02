@@ -1,129 +1,90 @@
-<div class='ui visible left vertical inverted sidebar labeled icon menu'>
-    <div class='borderless item'>
-        <strong>DINE</strong> 
-    </div>
-    <a class='item' href='<?php echo site_url()?>/CUser/viewAdminDashboard'>
-        <i class='dashboard icon'></i> Dashboard
-    </a>
-    <a class='active item' href='<?php echo site_url()?>/CProduct/viewCategoryList'>
-        <i class='sidebar icon'></i> Menu
-    </a> 
-    <a class='item' href='<?php echo site_url()?>/COrdered/viewOrderList?>'>
-        <i class='shop icon'></i> Orders
-    </a>
-    <a class='item' href='<?php echo site_url()?>/CUser/viewReports?>'>
-        <i class='bar chart icon'></i> Reports
-    </a>
-    <a class='item' href=''>
-        <i class='calculator icon'></i> POS
-    </a>
-</div> <!-- sidebar menu -->
+<div class="pusher">
+    <div class='ui basic segment'>
+        <h1 class="ui brown dividing header">
+            <i class="food icon"></i>
+            <div class="content">
+              PRODUCTS
+              <div class="sub header">Shows the list of products under a category</div>
+            </div>
+        </h1> <!-- header -->
+        <div class='ui breadcrumb'>
+            <a class='section' href='<?php echo site_url()?>/CUser/viewAdminDashboard'>HOME</a>
+            <i class='right arrow icon divider'></i>
+            <a class='section' href='<?php echo site_url()?>/CProduct/viewCategoryList'>CATEGORIES</a>
+            <i class='right arrow icon divider'></i>
+            <div class='active section'>PRODUCT LIST</div>
+        </div> <!-- breadcrumb -->
+    </div> <!-- segment -->
+    <div class='ui top attached secondary segment'>
+        <?php if (isset($prod_cat)) { ?>
+            <h3 class="ui header">
+                <i class='food icon'></i>
+                <?php echo $prod_cat; ?>
+            </h3>
+        <?php } ?>
+    </div> 
+    <div class='ui attached segment'>
 
-
-<div class='ui grid'>
-    <div class='row'></div>
-    <div class='row'></div>
-    <div class='row'>
-        <div class='two wide column'></div>
-        <div class='thirteen wide column'>
-            <div class='ui stackable grid'>
-
-                <div class='four wide column'>
-                    <div class='ui card'>
-                        <div class='content'>
-                            <div class='header'>Joanne Malaluan</div>
-                            <div class='description'>
-                                Employee
-                            </div>
+        <div class='ui stackable padded grid'>
+            <div class='row'>
+                <div class='ui floating dropdown labeled brown icon button'>
+                    <i class='filter icon'></i>
+                    <span class='text'>Filter products</span>
+                    <div class='menu'>
+                        <div class='item'>
+                            <div class='ui blue empty circular label'></div>
+                            All
                         </div>
-                        <div class='extra content' id='userContent'>
-                            <strong><i class='user icon'></i>ADMIN</strong>
+                        <div class='item'>
+                            <div class='ui green empty circular label'></div>
+                            Available
                         </div>
-                    </div> <!-- user info card -->
-
-                    <div class='ui category search'>
-                        <div class='ui fluid icon input'>
-                            <input class='prompt' type='text' placeholder='Search . . .'>
-                            <i class='search icon'></i>
+                        <div class='item'>
+                            <div class='ui red empty circular label'></div>
+                            Not Available
                         </div>
-                        <div class='results'></div>
-                    </div> <!-- search -->
-                </div> <!-- four wide column -->
-                <div class='column'></div>
-                <div class='eleven wide column'>
-                    <div class='row'>
-                        <h1 class='ui header'>
-                            <div class='content'>
-                                MENU
-                                <div class='sub header'>Shows the list of food under a category</div> <!-- sub-header -->
-                            </div> <!-- content -->
-                        </h1> <!-- header -->
-
-
-                        <div class='ui breadcrumb'>
-                            <a class='section' href='<?php echo site_url()?>/CProduct/viewCategoryList?>'>CATEGORIES</a>
-                            <i class='right arrow icon divider'></i>
-                            <div class='active section'>VIEW LIST OF FOOD BY CATEGORY</div>
-                        </div><!-- breadcrumb -->
-
-                        <div class='ui hidden divider'></div>
-
-                        
-
-                        <div class='ui floating dropdown labeled icon button'>
-                            <i class='filter icon'></i>
-                            <span class='text'>Filter products</span>
-                            <div class='menu'>
-                                <div class='item'>
-                                    <div class='ui blue empty circular label'></div>
-                                    All
-                                </div>
-                                <div class='item'>
-                                    <div class='ui green empty circular label'></div>
-                                    Available
-                                </div>
-                                <div class='item'>
-                                    <div class='ui red empty circular label'></div>
-                                    Not Available
-                                </div>
-                            </div>
-                        </div>
-
-                        <h1 class='ui horizontal divider header'>CATEGORY NAME</h1>
-                        <div class='ui hidden divider'></div>
-
-                        <div class='ui three stackable cards'>
-
-                            <a class='ui small card' href='<?php echo site_url()?>/CProduct/viewMenuInfo'>
+                    </div>
+                </div>
+            </div>
+            <div class='row'>
+                <div class='sixteen wide column'>
+                    
+                        <div class='ui five stackable cards'>
+                            <?php if (isset($products)) { ?>
+                            <?php foreach($products as $prod) { ?>
+                            <a class='ui small card' href='<?php echo site_url()?>/CProduct/viewProductInfo/<?php echo $prod->product_id; ?>'>
                                 <div class='image'></div>
                                 <div class='content' id='superadmin-card'>
                                     <div class='header' id='userHeader'>
-                                        Chicken Meal
+                                        <?php echo $prod->product_name; ?>
                                     </div>
                                 </div>
                             </a> <!-- meal card -->
-
+                            <?php } ?>
+                            <?php } ?>
                         </div> <!--three cards -->
+                      
+                </div> <!-- sixteen wide column -->
+            </div> <!-- row -->
 
-                    </div> <!-- row -->
-                    
-                    <div class='ui hidden divider'></div>
+            <div class='row'></div> <!-- row -->
 
-                    <div class='center aligned middle aligned row'>
-                        <div class='ui pagination menu'>
-                            <a class='active item'>1</a>
-                            <a class='item'>2</a>
-                            <a class='item'>3</a>
-                        </div> <!-- pagination -->
-                    </div> <!-- row -->
+            <div class='two column row'>
+                <div class='middle aligned column'>
+                    Pages 1 out of 1 pages.
+                </div>
+                <div class='right aligned column'>
+                    <div class='ui pagination menu'>
+                        <a class='active item'>1</a>
+                    </div> <!-- pagination -->
+                </div>
+            </div> <!-- two column row -->
 
-                </div> <!-- twelve wide column -->
-            </div> <!-- grid -->
-        </div> <!-- thirteen wide column -->
-        <div class='column'></div>
-    </div> <!-- row-->
-</div> <!-- grid -->
- 
+        </div> <!-- ui grid -->
+    </div> <!-- segment -->
+  </div> <!-- pusher -->
+</div> <!-- bottom attached segment -->
+
 
 </body>
-</html>
+</html> 

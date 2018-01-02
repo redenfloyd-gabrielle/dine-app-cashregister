@@ -16,6 +16,23 @@
 			
 		}
 
+		public function changePassword()
+		{
+			$now = new DateTime(NULL, new DateTimeZone('Asia/Manila'));
+			$id = $this->session->userdata['userSession']['user_id'];
+			$data = array('user_password' => hash('sha512',$this->input->post('confirm')),
+						  'user_modified_by' => $this->session->userdata['userSession']['user_id'],
+						  'user_modified_on' => $now->format('Y-m-d H:i:s')
+						 );
+
+			$result = $this->MUser->update($id, $data);
+			if ($result) {
+				redirect('CLogin/userLogout');
+			} else {
+				redirect('CLogin/viewSuperadminDashboard');
+			}
+		}
+
 		public function addUser($value='')
 		{
 			$now = new DateTime(NULL, new DateTimeZone('Asia/Manila'));
@@ -113,9 +130,9 @@
 
 		function viewReports()
 		{
-			$this->load->view('imports/vSuperadminHeader');
+			$this->load->view('imports/vAdminHeader');
 			$this->load->view('admin/vReports');
-			$this->load->view('imports/vSuperadminFooter');
+			$this->load->view('imports/vAdminFooter');
 		}
 
 		function vAddUser()
