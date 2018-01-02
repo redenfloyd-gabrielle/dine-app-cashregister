@@ -16,7 +16,7 @@
         </div> <!-- breadcrumb -->
     </div> <!-- segment -->
     <h3 class="ui horizontal header divider">
-        User Information
+        User Information 
     </h3>
     <div class='ui segment'> 
         <div class='ui stackable padded grid'>
@@ -69,21 +69,32 @@
 </div> <!-- bottom attached segment -->
 
 
-<div class="ui mini modal" id="confirmDelete">
-    
-        <div class="header">Delete account</div>
-        <div class="content">
-            <form action="<?php echo site_url()?>/CUser/deleteUser" method="POST" >
-                <input type="hidden" name="user_id" id="user_id">
-            <p>Are you sure you want to delete this account?</p>
-        </div>
-        <div class="actions">
-            <div class="ui cancel gray button">Cancel</div>
-            <button class="ui approve blue button" type="submit">Yes</div>
-            </form>
-        </div>
-    
+
+
+<div class="ui basic modal" id="confirmDelete">
+  <div class="ui icon header">
+    <i class="remove user icon"></i>
+    Remove User
+  </div>
+  <div class="content">
+<form class='ui form' method='POST' action='<?php echo site_url()?>/CUser/deleteUser?>'>
+    <center><p style='font-size: 1.5em;'>Are you sure you want to remove this user?</p></center>
+    <input hidden='' name='user_id' id="user_id">
+  </div>
+  <div class="actions">
+    <div class="ui gray basic cancel inverted button">
+      <i class="remove icon"></i>
+      No
+    </div>
+    <button class="ui blue basic submit inverted button" type="submit">
+      <i class="checkmark icon"></i>
+      Yes
+    </button>
+</form>
+  </div>
 </div>
+
+
 
 </body>
 </html>

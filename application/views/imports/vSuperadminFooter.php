@@ -5,7 +5,15 @@ $(document).ready(function(){
 	$('.ui.sticky').sticky();
 	$('#changePass').click(function(){
 		$('#confirmUpdate').modal('show');
-	});
+	}); 
+	$('#confirmCancel').click(function(){
+        $('#cancelModal').modal('show');
+    });
+
+    $('#confirmCancelBR').click(function(){
+        $('#cancelModal').modal('show');
+    });
+    
 	$('.ui.sidebar').sidebar({ context: $('.bottom.segment')})
                     .sidebar('attach events', '.toggleMenu')
     ;

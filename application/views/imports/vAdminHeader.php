@@ -12,7 +12,7 @@
     <script type="text/javascript" src="<?php echo base_url('assets/jquery/instascan.min.js')?>"></script>
     <script src='<?php echo base_url("assets/jquery/sha.js")?>'></script>
 </head>
-<body> 
+<body>  
  
 
 <div class='ui top attached inverted menu'>
@@ -54,6 +54,7 @@
         <p style='color:white;'>
             ID: <?php echo $this->session->userdata['userSession']['user_id'];?> 
         </p>
+        <input hidden='' type='text' name='old' id='old' value='<?php echo $this->session->userdata['userSession']['user_password'];?>'>
     </div> 
     <a class='item' href='<?php echo site_url()?>/CUser/viewAdminDashboard'>
         <i class='dashboard icon'></i> Dashboard
@@ -101,6 +102,27 @@
     <div class="ui cancel gray button">Cancel</div>
     <button class="ui submit brown button" type="submit">Update</button>
     </form>
+  </div>
+</div>
+
+<!-- leave page modal -->
+<div class="ui basic modal" id="cancelModal">
+  <div class="ui icon header">
+    <i class="sign out icon"></i>
+    Leave Page
+  </div>
+  <div class="content">
+    <center><p style='font-size: 1.5em;'>Are you sure you want to leave this page? Changes you made may not be saved.</p></center>
+  </div>
+  <div class="actions">
+    <div class="ui gray basic cancel inverted button">
+      <i class="remove icon"></i>
+      No
+    </div>
+    <a href="<?php echo site_url()?>/CProduct/viewCategoryList?>"><button class="ui basic brown ok inverted button" type="submit">
+      <i class="checkmark icon"></i>
+      Yes
+    </button></a>
   </div>
 </div>
 

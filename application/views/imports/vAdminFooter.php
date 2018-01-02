@@ -9,6 +9,14 @@ $(document).ready(function(){
 		$('#confirmUpdate').modal('show');
 	});
 
+    $('#confirmCancel').click(function(){
+        $('#cancelModal').modal('show');
+    });
+
+    $('#confirmCancelBR').click(function(){
+        $('#cancelModal').modal('show');
+    });
+
     $('.ui.modal').modal('setting', 'closable', false);
 
 	$('#getQr').click(function(){
