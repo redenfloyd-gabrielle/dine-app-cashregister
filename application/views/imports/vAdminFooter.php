@@ -81,4 +81,13 @@ $(document).ready(function(){
     });
 
 }); 
+
+$(document).ready(function(){
+	$(document).on('change','#image',function(e) {
+        var fileName = e.target.files[0].name;
+        $('#pic').val(fileName);
+    });
+
+
+});
 </script> 

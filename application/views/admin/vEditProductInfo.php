@@ -29,21 +29,22 @@
             <?php foreach($product as $prod) {} ?>  
             <div class='row'>
                 <div class='column'>
-                    <form class='ui form'>
+                    <form class='ui form' method='POST' action='<?php echo site_url()?>/CProduct/updateProduct/<?php echo $prod->product_id; ?>' accept-charset="utf-8" enctype="multipart/form-data">
                         <div class='nine wide field'>
                             <label>UPLOAD IMAGE</label>
-                            <input type="file" name="pic" accept="image/*" value='<?php echo $prod->product_image; ?>'>
+                            <input type="hidden" name='pic' id='pic' >
+                            <input type="file" name="image" id='image' accept="image/*" >
                         </div>
 
-                        <div class='nine wide required field'><label>FOOD NAME</label><input type='text' placeholder='Enter first name' value='<?php echo $prod->product_name;  ?>'></div>
+                        <div class='nine wide required field'><label>FOOD NAME</label><input name='name' type='text' placeholder='Enter first name' value='<?php echo $prod->product_name;  ?>'></div>
 
-                        <div class='nine wide  required field'><label>FOOD DESCRIPTION</label><textarea placeholder='Enter food description'><?php echo $prod->product_description;  ?></textarea></div>
+                        <div class='nine wide  required field'><label>FOOD DESCRIPTION</label><textarea name='description' placeholder='Enter food description'><?php echo $prod->product_description;  ?></textarea></div>
 
-                        <div class='nine wide  required field'><label>FOOD PRICE</label><input type='number' placeholder='Enter food price' value='<?php echo $prod->product_price;  ?>'></div>
+                        <div class='nine wide  required field'><label>FOOD PRICE</label><input name='price' type='number' placeholder='Enter food price' value='<?php echo $prod->product_price;  ?>'></div>
 
                         <label>CATEGORY</label><br>
-                        <select class="ui dropdown">
-                          <option value="<?php echo $prod->product_description;  ?>" class='selected'><?php echo $prod->product_category;  ?></option>
+                        <select class="ui dropdown" name='category'>
+                          <option value="<?php echo $prod->product_category;  ?>" selected='selected'><?php echo $prod->product_category;  ?></option>
                           <option value="1">Beverage</option>
                           <option value="2">Meals</option>
                         </select> <!-- availability dropdown -->
@@ -51,8 +52,8 @@
                         <div class='ui hidden divider'></div>
 
                         <label>AVAILABILITY</label><br>
-                        <select class="ui dropdown">
-                          <option value="<?php echo $prod->product_availability;  ?>" class='selected'><?php echo $prod->product_availability;  ?></option>
+                        <select class="ui dropdown" name='availability'>
+                          <option value="<?php echo $prod->product_availability;  ?>" selected='selected'><?php echo $prod->product_availability;  ?></option>
                           <option value="">Choose availability</option>
                           <option value="1">Available</option>
                           <option value="0">Not Available</option>
@@ -63,7 +64,7 @@
 
                         <a href="<?php echo site_url()?>/CProduct/viewProductInfo/1?>"><div class='ui submit gray button'>Cancel</div></a>
 
-                        <div class='ui submit brown button'>Edit</div>
+                        <button class='ui submit brown button' type='submit'>Edit</button>
 
                         <div class='ui hidden divider'></div>
 

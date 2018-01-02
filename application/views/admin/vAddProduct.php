@@ -24,7 +24,7 @@
                     <form class='ui form' method="POST" action="<?php echo site_url()?>/CProduct/addProduct" accept-charset="utf-8" enctype="multipart/form-data">
                         <div class='nine wide field'>
                             <label>UPLOAD IMAGE</label>
-                            <input type="file" name="pic" accept="image/*">
+                            <input type="file" name="pic"id='pic' accept="image/*">
                         </div>
 
                         <div class='nine wide required field'>
