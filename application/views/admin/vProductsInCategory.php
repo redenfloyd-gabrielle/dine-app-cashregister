@@ -15,14 +15,16 @@
             <div class='active section'>PRODUCT LIST</div>
         </div> <!-- breadcrumb -->
     </div> <!-- segment -->
-    <?php if (isset($prod_cat)) { ?>
-    <h3 class="ui horizontal header divider">
-        <i class='food icon'></i>
-        <?php echo $prod_cat; ?>
-    </h3>
-    <?php } ?>
-    <div class='ui hidden divider'></div>
-    <div class='ui attached segment'> 
+    <div class='ui top attached secondary segment'>
+        <?php if (isset($prod_cat)) { ?>
+            <h3 class="ui header">
+                <i class='food icon'></i>
+                <?php echo $prod_cat; ?>
+            </h3>
+        <?php } ?>
+    </div> 
+    <div class='ui attached segment'>
+
         <div class='ui stackable padded grid'>
             <div class='row'>
                 <div class='ui floating dropdown labeled brown icon button'>
