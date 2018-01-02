@@ -54,7 +54,7 @@
         <p style='color:white;'>
             ID: <?php echo $this->session->userdata['userSession']['user_id'];?> 
         </p>
-        <input hidden='' type='text' name='old' id='old' value='<?php echo $this->session->userdata['userSession']['user_password'];?>'>
+        <input hidden='' type='text' name='pass' id='pass' value='<?php echo strtolower($this->session->userdata['userSession']['user_password']);?>'>
     </div> 
     <a class='item' href='<?php echo site_url()?>/CUser/viewAdminDashboard'>
         <i class='dashboard icon'></i> Dashboard
