@@ -10,6 +10,8 @@
         <div class='ui breadcrumb'>
             <a class='section' href='<?php echo site_url()?>/CUser/viewAdminDashboard'>HOME</a>
             <i class='right arrow icon divider'></i>
+            <a class='section' id='confirmCancelBR'>CATEGORIES</a>
+            <i class='right arrow icon divider'></i>
             <div class='active section'>ADD NEW PRODUCT</div>
         </div> <!-- breadcrumb -->
     </div> <!-- segment --> 
@@ -63,7 +65,7 @@
                         <div class='ui hidden divider'></div>
                         <div class='ui hidden divider'></div>
 
-                        <a href="<?php echo site_url()?>/CProduct/viewCategoryList?>"><div class='ui submit gray button'>Cancel</div></a>
+                        <a id='confirmCancel'><div class='ui submit gray button'>Cancel</div></a>
 
                         <button class='ui submit brown button' type="submit">Add</button>
 

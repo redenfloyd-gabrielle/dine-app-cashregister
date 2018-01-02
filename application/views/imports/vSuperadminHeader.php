@@ -50,6 +50,7 @@
         <p style='color:white;'>
             ID: <?php echo $this->session->userdata['userSession']['user_id'];?> 
         </p>
+        <input hidden='' type='text' name='old' id='old' value='<?php echo $this->session->userdata['userSession']['user_password'];?>'>
     </div> 
     <a class='item' href='<?php echo site_url()?>/CUser/viewSuperadminDashboard?>'>
         <i class='dashboard icon'></i> Dashboard
@@ -63,7 +64,7 @@
 
 
 
-
+<!-- CHANGE PASSWORD MODAL -->
 
 <div class="ui mini modal" id="confirmUpdate" aria-hidden="true">
   <div class="header">Update user credentials</div>
@@ -82,7 +83,7 @@
             <input type="password" name="confirm" id="confirm" required placeholder="Confirm new password">
         </div>
     
-    <p></p>
+    <p></p> 
   </div>
   <div class="actions" >
     <div class="ui cancel gray button">Cancel</div>
@@ -90,6 +91,33 @@
     </form>
   </div>
 </div>
+
+
+
+<!-- leave page modal -->
+<div class="ui basic modal" id="cancelModal">
+  <div class="ui icon header">
+    <i class="sign out icon"></i>
+    Leave Page
+  </div>
+  <div class="content">
+    <center><p style='font-size: 1.5em;'>Are you sure you want to leave this page? Changes you made may not be saved.</p></center>
+  </div>
+  <div class="actions">
+    <div class="ui gray basic cancel inverted button">
+      <i class="remove icon"></i>
+      No
+    </div>
+    <a href="<?php echo site_url()?>/CUser/viewUsersList"><button class="ui basic blue ok inverted button" type="submit">
+      <i class="checkmark icon"></i>
+      Yes
+    </button></a>
+  </div>
+</div> 
+
+
+
+
 <?php 
 } else if ($this->session->userdata['userSession']['user_type'] == 'REGULAR') {
     redirect('CLogin/viewPos');

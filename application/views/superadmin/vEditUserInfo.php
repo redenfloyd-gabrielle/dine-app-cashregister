@@ -10,7 +10,7 @@
         <div class='ui breadcrumb'>
             <a class='section' href='<?php echo site_url()?>/CUser/viewSuperadminDashboard'>HOME</a>
             <i class='right arrow icon divider'></i>
-            <a class='section' href='<?php echo site_url()?>/CUser/viewUsersList'>USERS</a>
+            <a class='section' id='confirmCancelBR'>USERS</a>
             <i class='right arrow icon divider'></i>
             <div class='active section'>ADD USER</div>
         </div> <!-- breadcrumb -->
@@ -50,7 +50,7 @@
                 </div>
             </div> <!-- row -->
             <div class='row'>
-                <a href="<?php echo site_url()?>/CUser/viewUsersList?>"><div class='ui submit gray button'>Cancel</div></a>
+                <a id='confirmCancel'><div class='ui submit gray button'>Cancel</div></a>
 
                 <button class='ui submit blue button' type='submit'>Edit</button>
 

@@ -12,8 +12,6 @@
             <i class='right arrow icon divider'></i>
             <a class='section' href='<?php echo site_url()?>/CProduct/viewCategoryList'>CATEGORIES</a> 
             <i class='right arrow icon divider'></i>
-            <a class='section' href='<?php echo site_url()?>/CProduct/viewProductsInCategory'>PRODUCT LIST</a>
-            <i class='right arrow icon divider'></i>
             <div class='active section'>PRODUCT INFORMATION</div>
         </div> <!-- breadcrumb -->
     </div> <!-- segment -->
@@ -24,7 +22,7 @@
     <div class='ui attached segment'> 
         <div class='ui stackable padded grid'>
             <?php if (isset($product)) { ?>
-            <?php foreach($product as $prod) {} ?>    
+            <?php foreach($product as $prod) {} ?>  
                 <div class='row'>
                     <a href='<?php echo site_url()?>/CProduct/editProductInfo/<?php echo $prod->product_id; ?>'><button class='ui circular blue icon button' title='Edit product information'><i class='pencil icon'></i>Edit item</button></a> <!-- Edit product information -->
 
@@ -70,16 +68,31 @@
 
 
 
-<div class="ui mini modal" id="confirmDelete">
-  <div class="header">Remove item</div>
+<div class="ui basic modal" id="confirmDelete">
+  <div class="ui icon header">
+    <i class="remove icon"></i>
+    Remove Item
+  </div>
   <div class="content">
-    <p>Are you sure you want to remove this item?</p>
+<form class='ui form' method='POST' action='<?php echo site_url()?>/CProduct/deleteProduct?>'>
+    <center><p style='font-size: 1.5em;'>Are you sure you want to remove this item?</p></center>
+    <input hidden='' type='text' name='product_id' id='product_id' value='<?php echo $prod->product_id?>'>
   </div>
   <div class="actions">
-    <div class="ui cancel gray button">Cancel</div>
-    <a><div class="ui approve brown button">Yes</div></a>
+    <div class="ui gray basic cancel inverted button">
+      <i class="remove icon"></i>
+      No
+    </div>
+    <button class="ui basic brown ok inverted button" type="submit">
+      <i class="checkmark icon"></i>
+      Yes
+    </button>
+</form>
   </div>
 </div>
+
+
+
 
 
 
