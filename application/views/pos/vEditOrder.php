@@ -51,11 +51,11 @@
           <input type="hidden" name="ordered_id" id="ordered_id" value="<?php echo $eid; ?>">
           <div class="ui three cards">
             <div class="ui card">
-              <a class="image" href="<?php echo site_url()."/CProduct/viewProductEdit/".$page."/MEALS/".$eid; ?>">
-                <img class="ui centered fluid image" src="<?php echo base_url('assets/images/meals.svg')?>">
+              <a class="image" href="<?php echo site_url()."/CProduct/viewProductEdit/".$page."/RICE MEAL/".$eid; ?>">
+                <img class="ui centered fluid image" src="<?php echo base_url('assets/images/ricemeal.png')?>">
               </a>
               <div class="content">
-                <a class="header" href="<?php echo site_url()."/CProduct/viewProductEdit/".$page."/MEALS/".$eid; ?>">MEALS</a>
+                <a class="header" href="<?php echo site_url()."/CProduct/viewProductEdit/".$page."/RICE MEAL/".$eid; ?>">RICE MEAL</a>
                 <div class="meta">
                   <a>Category</a>
                 </div>
@@ -75,11 +75,23 @@
             </div>
 
             <div class="ui card">
-              <a class="image" href="<?php echo site_url()."/CProduct/viewProductEdit/".$page."/DESSERTS/".$eid; ?>">
-                <img class="ui centered fluid image" src="<?php echo base_url('assets/images/desserts.svg')?>">
+              <a class="image" href="<?php echo site_url()."/CProduct/viewProductEdit/".$page."/SOUP/".$eid; ?>">
+                <img class="ui centered fluid image" src="<?php echo base_url('assets/images/soup.png')?>">
               </a>
               <div class="content">
-                <a class="header" href="<?php echo site_url()."/CProduct/viewProductEdit/".$page."/DESSERTS/".$eid; ?>">DESSERTS</a>
+                <a class="header" href="<?php echo site_url()."/CProduct/viewProductEdit/".$page."/SOUP/".$eid; ?>">SOUP</a>
+                <div class="meta">
+                  <a>Category</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="ui card">
+              <a class="image" href="<?php echo site_url()."/CProduct/viewProductEdit/".$page."/MAIN COURSE/".$eid; ?>">
+                <img class="ui centered fluid image" src="<?php echo base_url('assets/images/meals.svg')?>">
+              </a>
+              <div class="content">
+                <a class="header" href="<?php echo site_url()."/CProduct/viewProductEdit/".$page."/MAIN COURSE/".$eid; ?>">MAIN COURSE</a>
                 <div class="meta">
                   <a>Category</a>
                 </div>
