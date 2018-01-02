@@ -105,7 +105,7 @@
         <a href="<?php echo site_url();?>/CLogin/viewPosNoSession" class="lft lbtn" align="center" ><h4 class="lbtnlabel">Back</h4></a>
       </div>
       <div class="ten wide column">
-        <a href="<?php echo site_url();?>/CLogin/viewPos" class="rght rbtn" align="center""><h4 class="rbtnlabel">Charge/No Receipt</h4></a>
+        <button class="rght rbtn" align="center" id="rbtn"><h4 class="rbtnlabel">Charge/No Receipt</h4></button>
       </div>
       <div class="three wide column">
         <a href="<?php echo site_url();?>/CReceipt/viewReceipt" class="rght rbtn" align="center""><h4 class="rbtnlabel">Charge & Print</h4></a>
@@ -140,6 +140,31 @@
           }
           $("#due").html(sum); 
       });
+
+       $('#rbtn').on('click',function(){
+
+      var total = $("#due").text();
+      var cash = $("#cash").text();
+      var change = $("#change").text();
+    
+      var dataSet =  "total="+total+"&cash="+cash+"&change="+change;
+
+      $.ajax({
+        type: "POST",
+        url: "<?php echo site_url()?>/CReceipt/addManualOrderToReceipt",
+        data: dataSet,
+        cache: false,
+        success: function(result){
+           // alert(result);
+           $('body').html(result);
+        },
+        error: function(jqXHR, errorThrown){
+            console.log(errorThrown);
+        }
+
+      });
+
+    })
 
     //   $('#ibtn').on('click', function() {
     //     var eid = $("#eid").val();
