@@ -20,6 +20,23 @@
 			
 		}
 
+		public function deleteProduct()
+		{
+			$now = new DateTime(NULL, new DateTimeZone('Asia/Manila'));
+			$prod_id = $this->input->post('product_id');
+			$data = array('product_availability' => 'NOT AVAILABLE',
+						  'product_modified_by' => $this->session->userdata['userSession']['user_id'],
+			              'product_modified_on' => $now->format('Y-m-d H:i:s a'),
+						 );
+			$result = $this->MProduct->update($prod_id, $data);
+			if ($result) {
+				redirect('CProduct/viewCategoryList');
+			} else {
+				print_r('SOMETHING WENT WRONG;');
+			}
+
+		}
+
 		
 		public function updateProduct($id)
 		{
@@ -31,7 +48,7 @@
 						  'product_availability' => $this->input->post('availability'),
 						  'product_category' => $this->input->post('category'),
 						  'product_modified_by' => $this->session->userdata['userSession']['user_id'],
-						  'product_modified_on' => $now->format('Y-m-d H:i:s'),
+						  'product_modified_on' => $now->format('Y-m-d H:i:s a'),
 						  );
 			$result = $this->MProduct->update($id,$data);
 			
@@ -69,9 +86,9 @@
 						  'product_availability' => $this->input->post('availability'),
 						  'product_category' => $this->input->post('category'),
 						  'product_created_by' => $this->session->userdata['userSession']['user_id'],
-						  'product_created_on' => $now->format('Y-m-d H:i:s'),
+						  'product_created_on' => $now->format('Y-m-d H:i:s a'),
 						  'product_modified_by' => $this->session->userdata['userSession']['user_id'],
-						  'product_modified_on' => $now->format('Y-m-d H:i:s'),
+						  'product_modified_on' => $now->format('Y-m-d H:i:s a'),
 						  );
 			$result = $this->MProduct->insert($data);
 			
