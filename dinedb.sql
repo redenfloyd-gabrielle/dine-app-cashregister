@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 02, 2018 at 06:14 PM
--- Server version: 10.1.26-MariaDB
--- PHP Version: 7.1.9
+-- Generation Time: Jan 02, 2018 at 06:24 PM
+-- Server version: 10.1.28-MariaDB
+-- PHP Version: 7.1.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -108,7 +108,7 @@ CREATE TABLE `product` (
   `product_name` varchar(30) NOT NULL,
   `product_description` varchar(50) NOT NULL,
   `product_price` float NOT NULL,
-  `product_availability` enum('AVAILABLE','NOT AVAILABLE') NOT NULL,
+  `product_availability` enum('AVAILABLE','NOT AVAILABLE') NOT NULL DEFAULT 'AVAILABLE',
   `product_category` enum('DRINKS','RICE MEAL','SOUP','MAIN COURSE','EXTRAS') NOT NULL,
   `product_created_by` int(11) NOT NULL,
   `product_created_on` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -122,21 +122,21 @@ CREATE TABLE `product` (
 
 INSERT INTO `product` (`product_id`, `product_image`, `product_name`, `product_description`, `product_price`, `product_availability`, `product_category`, `product_created_by`, `product_created_on`, `product_modified_by`, `product_modified_on`) VALUES
 (1, 'assets/images/rice.png', 'Nature Spring ', '250ml', 10, 'AVAILABLE', 'DRINKS', 17001, '2018-01-02 16:04:43', 17001, '2018-01-02 16:04:44'),
-(2, 'assets/images/rice.png', 'Nature Spring  500 ml', '500 ml', 15, '', '', 17001, '2018-01-02 16:05:09', 17001, '2018-01-02 16:05:09'),
+(2, 'assets/images/rice.png', 'Nature Spring  500 ml', '500 ml', 15, 'AVAILABLE', 'DRINKS', 17001, '2018-01-02 16:05:09', 17001, '2018-01-02 17:20:18'),
 (3, 'assets/images/rice.png', 'Nature Spring  500 ml', '500 ml', 15, 'AVAILABLE', 'DRINKS', 17001, '2018-01-02 16:07:20', 17001, '2018-01-02 16:07:20'),
 (4, 'assets/images/rice.png', 'Pepsi ', 'bottle', 15, 'AVAILABLE', 'DRINKS', 17001, '2018-01-02 16:07:52', 17001, '2018-01-02 16:07:52'),
 (5, 'assets/images/rice.png', 'Pepsi Max', 'Can', 15, 'AVAILABLE', 'DRINKS', 17001, '2018-01-02 16:08:17', 17001, '2018-01-02 16:08:17'),
 (6, 'assets/images/rice.png', 'Mountain Dew ', 'Can', 26, 'AVAILABLE', 'DRINKS', 17001, '2018-01-02 16:08:48', 17001, '2018-01-02 16:08:49'),
 (7, 'assets/images/rice.png', '7up', 'can', 18, 'AVAILABLE', 'DRINKS', 17001, '2018-01-02 16:11:20', 17001, '2018-01-02 16:11:20'),
-(8, 'assets/images/rice.png', 'Mirenda', 'can', 15, '', '', 17001, '2018-01-02 16:12:02', 17001, '2018-01-02 16:12:02'),
+(8, 'assets/images/rice.png', 'Mirenda', 'can', 15, 'AVAILABLE', 'DRINKS', 17001, '2018-01-02 16:12:02', 17001, '2018-01-02 17:20:39'),
 (9, 'assets/images/rice.png', 'Mirenda', 'Bottle ', 15, 'AVAILABLE', 'DRINKS', 17001, '2018-01-02 16:14:05', 17001, '2018-01-02 16:14:05'),
 (10, 'assets/images/rice.png', 'San Mig Beer Pilsen', 'sample sample ', 45, 'AVAILABLE', 'DRINKS', 17001, '2018-01-02 16:15:00', 17001, '2018-01-02 16:15:01'),
 (11, 'assets/images/drink.png', 'San Mig Light ', 'sample sample ', 45, 'AVAILABLE', 'DRINKS', 17001, '2018-01-02 16:16:11', 17001, '2018-01-02 16:25:19'),
 (12, 'assets/images/drink.png', 'San Mig Flavored ', 'sample ', 45, 'AVAILABLE', 'DRINKS', 17001, '2018-01-02 16:21:47', 17001, '2018-01-02 16:22:58'),
-(13, 'assets/images/rice.png', 'Bucket', 'sample ', 265, 'AVAILABLE', '', 17001, '2018-01-02 16:30:00', 17001, '2018-01-02 16:30:00'),
+(13, 'assets/images/rice.png', 'Bucket', 'sample ', 265, 'AVAILABLE', 'DRINKS', 17001, '2018-01-02 16:30:00', 17001, '2018-01-02 17:21:37'),
 (14, 'assets/images/rice.png', 'Bucket', 'sample', 265, 'AVAILABLE', 'DRINKS', 17001, '2018-01-02 16:30:47', 17001, '2018-01-02 16:34:17'),
 (15, 'assets/images/rice.png', 'trial', 'trial', 100, 'AVAILABLE', 'DRINKS', 17001, '2018-01-02 16:35:57', 17001, '2018-01-02 16:35:58'),
-(16, 'assets/images/rice.png', 'Chicken BBQ  with Rice and Dri', 'meal', 95, 'AVAILABLE', '', 17001, '2018-01-02 16:40:16', 17001, '2018-01-02 16:40:16'),
+(16, 'assets/images/rice.png', 'Chicken BBQ  with Rice and Dri', 'meal', 95, 'AVAILABLE', 'EXTRAS', 17001, '2018-01-02 16:40:16', 17001, '2018-01-02 17:22:01'),
 (17, 'assets/images/bihon.jpg', 'Pancit Canton', 'sample ', 120, 'AVAILABLE', 'EXTRAS', 17001, '2018-01-02 16:48:16', 17001, '2018-01-02 16:48:16'),
 (18, 'assets/images/rice.png', 'Tinola - Mayamaya, Lapulapu', 'sample ', 130, 'AVAILABLE', 'SOUP', 17001, '2018-01-02 16:50:40', 17001, '2018-01-02 16:50:40'),
 (19, 'assets/images/rice.png', 'Tinola - Malasugi, Liplipan', 'sample ', 130, 'AVAILABLE', 'SOUP', 17001, '2018-01-02 16:51:21', 17001, '2018-01-02 16:51:21'),
