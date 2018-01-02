@@ -195,14 +195,14 @@
 			$this->load->view('imports/vAdminFooter');
 		}
 
-		function addMenu()
+		function addNewProduct()
 		{
 			$this->load->view('imports/vAdminHeader');
-			$this->load->view('admin/vAddMenu');
+			$this->load->view('admin/vAddProduct');
 			$this->load->view('imports/vAdminFooter');
 		}
 
-		function viewMenuInfo($id)
+		function viewProductInfo($id)
 		{
 			$data['product'] = null;
 			$result = $this->MProduct->getProductDetailsById($id);
@@ -211,11 +211,11 @@
 			}
 			
 			$this->load->view('imports/vAdminHeader');
-			$this->load->view('admin/vMenuInfo',$data);
+			$this->load->view('admin/vProductInfo',$data);
 			$this->load->view('imports/vAdminFooter');
 		}
 
-		function editMenuInfo($id)
+		function editProductInfo($id)
 		{
 			$data['product'] = null;
 			$result = $this->MProduct->getProductDetailsById($id);
@@ -224,7 +224,7 @@
 			} 
 
 			$this->load->view('imports/vAdminHeader');
-			$this->load->view('admin/vEditMenuInfo',$data);
+			$this->load->view('admin/vEditProductInfo',$data);
 			$this->load->view('imports/vAdminFooter');
 		}
 	}

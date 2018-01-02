@@ -15,6 +15,11 @@ $(document).ready(function(){
         $('#scanqr').modal('show');
     });
 
+    $('table').tablesort();
+
+    $('.ui.sidebar').sidebar({ context: $('.bottom.segment')})
+                    .sidebar('attach events', '.toggleMenu')
+    ;
 
     document.getElementById("trybtn").addEventListener("click", tryFunc);
         var qr = new Instascan.Scanner({

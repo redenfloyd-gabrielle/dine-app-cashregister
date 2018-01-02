@@ -1,31 +1,35 @@
-                <div class='column'></div>
-                <div class='eleven wide column'>
-                    <h1 class='ui header'>
-                    <div class='content'>
-                        USERS
-                        <div class='sub header'>Displays the user's information</div>
-                    </div>
-                </h1> <!-- header -->
-                <div class='ui breadcrumb'>
-                    <a class='section' href='<?php echo site_url()?>/CUser/viewUsersList?>'>USERS</a>
-                    <i class='right arrow icon divider'></i>
-                    <div class='active section'>VIEW USER INFORMATION</div>
-                </div> <!-- breadcrumb -->
+<div class="pusher">
+    <div class='ui basic segment'>
+        <h1 class="ui blue dividing header">
+            <i class="dashboard icon"></i>
+            <div class="content">
+              USERS
+              <div class="sub header">Shows the information of the user</div>
+            </div>
+        </h1> <!-- header -->
+        <div class='ui breadcrumb'>
+            <a class='section' href='<?php echo site_url()?>/CUser/viewSuperadminDashboard'>HOME</a>
+            <i class='right arrow icon divider'></i>
+            <a class='section' href='<?php echo site_url()?>/CUser/viewUsersList'>USERS</a>
+            <i class='right arrow icon divider'></i>
+            <div class='active section'>USER INFORMATION</div>
+        </div> <!-- breadcrumb -->
+    </div> <!-- segment -->
+    <h3 class="ui horizontal header divider">
+        User Information
+    </h3>
+    <div class='ui segment'> 
+        <div class='ui stackable padded grid'>
+            <?php if (isset($user)) {?>
+            <?php foreach ($user as $u) { ?>
+            <div class='row'>
+                <a href='<?php echo site_url()?>/CUser/editUserInfo/<?php echo $u->user_id; ?> ''><button class='ui circular blue icon button' title='Edit user information'><i class='pencil icon'></i>Edit info</button></a>
 
-                <div class='ui hidden divider'></div>
-                <?php if (isset($user)) {?>
-                    <?php foreach ($user as $u) { ?>
-                <a href='<?php echo site_url()?>/CUser/editUserInfo/<?php echo $u->user_id; ?> ''><button class='ui big circular blue icon button' title='Edit user information'><i class='pencil icon'></i></button></a>
-
-                <button class='ui big circular red icon button' title='Delete this user' id='deleteUser' data-id="<?php echo $u->user_id; ?>" ><i class='remove icon'></i></button>
-
-                <div class='ui hidden divider'></div>
-
-                <h3 class='ui horizontal divider header'>
-                    <i class='user icon'></i> User Information
-                </h3>
-               
-                    <table class='ui very basic table'>
+                <button class='ui circular red icon button' title='Remove user' id='deleteUser' data-id="<?php echo $u->user_id; ?>" ><i class='remove icon'></i>Remove user</button>
+            </div>
+            <div class='row'>
+                <div class='sixteen wide column'>
+                    <table class='ui large very basic table'>
                         <tbody>
                             <tr> 
                                 <td>NAME</td>
@@ -43,11 +47,27 @@
                     </table>
                     <?php } ?>
                 <?php } ?>
-            </div> <!-- twelve wide column -->
-        </div> <!-- grid -->
-    </div> <!-- pusher -->
-</div> <!-- segment -->
-</div> <!-- grid -->
+                </div> <!-- sixteen wide column -->
+            </div> <!-- row -->
+
+            <div class='row'></div> <!-- row -->
+
+            <div class='two column row'>
+                <div class='middle aligned column'>
+                    Pages 1 out of 1 pages.
+                </div>
+                <div class='right aligned column'>
+                    <div class='ui pagination menu'>
+                        <a class='active item'>1</a>
+                    </div> <!-- pagination -->
+                </div>
+            </div> <!-- two column row -->
+
+        </div> <!-- ui grid -->
+    </div> <!-- segment -->
+  </div> <!-- pusher -->
+</div> <!-- bottom attached segment -->
+
 
 <div class="ui mini modal" id="confirmDelete">
     
@@ -58,8 +78,8 @@
             <p>Are you sure you want to delete this account?</p>
         </div>
         <div class="actions">
-            <div class="ui cancel negative button">Cancel</div>
-            <button class="ui approve positive button" type="submit">Yes</div>
+            <div class="ui cancel gray button">Cancel</div>
+            <button class="ui approve blue button" type="submit">Yes</div>
             </form>
         </div>
     

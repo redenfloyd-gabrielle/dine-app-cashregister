@@ -6,6 +6,10 @@ $(document).ready(function(){
 	$('#changePass').click(function(){
 		$('#confirmUpdate').modal('show');
 	});
+	$('.ui.sidebar').sidebar({ context: $('.bottom.segment')})
+                    .sidebar('attach events', '.toggleMenu')
+    ;
+	
 	$('.ui.modal').modal('setting', 'closable', false);
 }); 
 
