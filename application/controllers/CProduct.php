@@ -213,6 +213,7 @@
 
 		function viewProductsInCategory($cat)
 		{
+			$cat = urldecode($cat);
 			$result = $this->MProduct->getProductsByCategory($cat);
 			$data['prod_cat']  = $cat;
 			

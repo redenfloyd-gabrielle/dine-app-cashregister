@@ -40,19 +40,22 @@
 
                         <label>CATEGORY</label><br>
                         <select class="ui dropdown" name='category'>
-                          <option value="<?php echo $prod->product_category;  ?>" selected='selected'><?php echo $prod->product_category;  ?></option>
-                          <option value="1">Beverage</option>
-                          <option value="2">Meals</option>
+                            <option value="<?php echo $prod->product_category;  ?>" selected='selected'><?php echo $prod->product_category;  ?></option>
+                            <option value="DRINKS">Drinks</option>
+                            <option value="RICE MEAL">Rice Meal</option>
+                            <option value="SOUP">Soup</option>
+                            <option value="MAIN COURSE">Main Course</option>  
+                            <option value="EXTRAS">Extras</option>
                         </select> <!-- availability dropdown -->
 
                         <div class='ui hidden divider'></div>
 
                         <label>AVAILABILITY</label><br>
                         <select class="ui dropdown" name='availability'>
-                          <option value="<?php echo $prod->product_availability;  ?>" selected='selected'><?php echo $prod->product_availability;  ?></option>
-                          <option value="">Choose availability</option>
-                          <option value="1">Available</option>
-                          <option value="0">Not Available</option>
+                            <option value="<?php echo $prod->product_availability;  ?>" selected='selected'>  <?php echo $prod->product_availability;  ?></option>
+                            <option value="">Choose availability</option>
+                            <option value="AVAILABLE">Available</option>
+                            <option value="NOT AVAILABLE">Not Available</option>
                         </select> <!-- availability dropdown -->
 
                         <div class='ui hidden divider'></div>
