@@ -13,22 +13,42 @@
             <div class='active section'>CATEGORIES</div>
         </div> <!-- breadcrumb -->
     </div> <!-- segment -->
-    <h3 class="ui horizontal header divider">
-        Categories
-    </h3>
-    <div class='ui segment'> 
+    <div class='ui top attached secondary inverted segment'>
+        <h3>CATEGORIES</h3>
+    </div>
+    <div class='ui basic attached segment'> 
         <div class='ui stackable padded grid'>
             <div class='row'>
                 <a href='<?php echo site_url()?>/CProduct/addNewProduct'><button class='ui circular green icon button' title='Add new product'><i class='plus icon'></i>Add product</button></a> <!-- Add new product -->
             </div> <!-- row -->
             <div class='row'>
                 <div class='sixteen wide column'>
-                    <div class='ui four stackable cards'>
-                        <a class='ui small card' href='<?php echo site_url()?>/CProduct/viewProductsInCategory/MEALS'> 
+                    <div class='ui three stackable centered cards'>
+                        <a class='ui small card' href='<?php echo site_url()?>/CProduct/viewProductsInCategory/RICE MEAL'> 
+                            <div class='center aligned middle aligned content' id='superadmin-card'>
+                                <img src='<?php echo base_url("assets/images/ricemeal.png")?>' class='ui small image'>
+                                <div class='header' id='userHeader'>
+                                    RICE MEAL
+                                </div>
+                            </div>
+                        </a> <!-- category card -->
+
+                        <a class='ui small card' href='<?php echo site_url()?>/CProduct/viewProductsInCategory/SOUP'>
+                            
+                            <div class='center aligned middle aligned content' id='superadmin-card'>
+                                <img src='<?php echo base_url("assets/images/soup.png")?>' class='ui small image'>
+                                <div class='header' id='userHeader'>
+                                    SOUP
+                                </div>
+                            </div>
+                        </a> <!-- category card -->
+
+                        <a class='ui small card' href='<?php echo site_url()?>/CProduct/viewProductsInCategory/MAIN COURSE'>
+                            
                             <div class='center aligned middle aligned content' id='superadmin-card'>
                                 <img src='<?php echo base_url("assets/images/meals.svg")?>' class='ui small image'>
                                 <div class='header' id='userHeader'>
-                                    MEALS
+                                    MAIN COURSE
                                 </div>
                             </div>
                         </a> <!-- category card -->
@@ -39,16 +59,6 @@
                                 <img src='<?php echo base_url("assets/images/drinks.svg")?>' class='ui small image'>
                                 <div class='header' id='userHeader'>
                                     DRINKS
-                                </div>
-                            </div>
-                        </a> <!-- category card -->
-
-                        <a class='ui small card' href='<?php echo site_url()?>/CProduct/viewProductsInCategory/DESSERTS'>
-                            
-                            <div class='center aligned middle aligned content' id='superadmin-card'>
-                                <img src='<?php echo base_url("assets/images/desserts.svg")?>' class='ui small image'>
-                                <div class='header' id='userHeader'>
-                                    DESSERTS
                                 </div>
                             </div>
                         </a> <!-- category card -->
