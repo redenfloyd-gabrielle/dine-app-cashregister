@@ -29,9 +29,8 @@
 
 		public function do_upload_product($id)
 		{
-			$uploadpath = $_SERVER['DOCUMENT_ROOT'].'/folderame';
 			$config = array(
-				'upload_path' => $uploadpath,
+				'upload_path' => './assests/images/',
 				'allowed_types' => "gif|jpg|png|jpeg",
 				'overwrite' => TRUE,
 				'max_size' => "100000000000000000000000000000000000000000000000000000", // Can be set to particular file size , here it is 2 MB(2048 Kb)
