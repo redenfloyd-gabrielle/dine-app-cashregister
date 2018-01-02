@@ -36,7 +36,6 @@
 			}
 
 		}
-
 		
 		public function updateProduct($id)
 		{
@@ -110,12 +109,9 @@
 		}
 
 		
-	
-
 		public function viewProduct($cat)
 		{
-			$prod = new MProduct();
-			$result = $prod->getProductsByCategory($cat);
+			$result = $this->MProduct->getProductsByCategory($cat);
 
             $array = array();
 			if($result){
@@ -142,11 +138,7 @@
 		}
 		public function viewProductEdit($page,$cat,$id)
 		{
-			$prod = new MProduct();
-			$order = new MOrdered();
-			$order_item = new MOrderItem();
-			$receipt_item = new MReceiptItem();
-			$result = $prod->getProductsByCategory($cat);
+			$result = $this->MProduct->getProductsByCategory($cat);
 
 
 			$data['page'] = $page;
@@ -169,7 +161,7 @@
 			////////////STOPS HERE//////////////////////////////////////////////////
 
 			if($page=='qr'){
-				$result = $order_item->getOrderItemDetailsByOrder($id);
+				$result = $this->MOrderItem->getOrderItemDetailsByOrder($id);
 				if($result){
 					foreach ($result as $value) {
 						$arr= new stdClass;
@@ -185,7 +177,7 @@
 					$data['order_info'] = null;
 				}
 			}else{
-				$result = $receipt_item->getReceiptItemDetailsByReceipt($id);
+				$result = $this->MReceiptItem->getReceiptItemDetailsByReceipt($id);
 
 				if($result){
 					foreach ($result as $value) {
@@ -203,7 +195,6 @@
 			    	$data['order_info'] = null;
 			    }
 			}
-
 			
 			$data['eid'] = $id;
 			$this->load->view('imports/vPosHeader');

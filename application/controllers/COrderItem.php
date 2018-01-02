@@ -64,7 +64,7 @@
 			$array = array();
 			
 			if($page=='qr'){
-				$result = $order_item->getOrderItemDetailsByOrder($id);
+				$result = $this->MOrderItem->getOrderItemDetailsByOrder($id);
 				if($result){
 					foreach ($result as $value) {
 						$arr= new stdClass;
@@ -80,7 +80,7 @@
 					$data = null;
 				}
 			}else{
-				$result = $receipt_item->getReceiptItemDetailsByReceipt($id);
+				$result = $this->MReceiptItem->getReceiptItemDetailsByReceipt($id);
 
 				if($result){
 					foreach ($result as $value) {
@@ -172,20 +172,14 @@
 		// }
 		public function addOrderItem($page,$product_id,$eid)
 		{
-			$order_item = new MOrderItem();
-			$prod = new MProduct();
-			$receipt_item = new MReceiptItem();
-	       
 			$qty = 1;
-
-
-			$product = $prod->getProductDetailsById($product_id);
+			$product = $this->MProduct->getProductDetailsById($product_id);
 			
 			foreach ($product as $p) {}
 
 			if($page == 'qr') {
 
-				$checker = $order_item->getOrderItemDetailsByProduct($product_id,$eid);
+				$checker = $this->MOrderItem->getOrderItemDetailsByProduct($product_id,$eid);
 				
 				if(empty($checker)){
 					 $insertData = array('order_item_id' => null,
@@ -195,7 +189,7 @@
 		   				       'order_item_ordered_id' => $eid,
 		   				       'order_item_status' => 'pending'
 						);
-					  $o = $order_item->insert($insertData);
+					  $o = $this->MOrderItem->insert($insertData);
 				 }else{
 					foreach ($checker as $check) {}
 						$qty += $check->order_item_qty;
@@ -204,11 +198,11 @@
 					    
 						$updateField = array('order_item_qty'=> $qty,
 										'order_item_subtotal' => $subtotal);
-						$o = $order_item->update($id,$updateField);
+						$o = $this->MOrderItem->update($id,$updateField);
 				} 
 			}else{
 			       
-				$checker = $receipt_item->getReceiptItemDetailsByProduct($product_id,$eid);
+				$checker = $this->MReceiptItem->getReceiptItemDetailsByProduct($product_id,$eid);
 		
 				if(empty($checker)){
 					 $insertData = array('receipt_item_id' => null,
@@ -217,7 +211,7 @@
 		   				       'receipt_item_product_id' => $product_id,
 		   				       'receipt_item_receipt_id' => $eid
 						);
-					  $o = $receipt_item->insert($insertData);
+					  $o = $this->MReceiptItem->insert($insertData);
 				 }else{
 					
 					foreach ($checker as $check) {}
@@ -227,7 +221,7 @@
 					    
 						$updateField = array('receipt_item_quantity'=> $qty,
 										'receipt_item_subtotal' => $subtotal);
-						$o = $receipt_item->update($id,$updateField);  
+						$o = $this->MReceiptItem->update($id,$updateField);  
 				}	
 		    }
 			$cat = $p->product_category;
@@ -239,11 +233,12 @@
 
 		}
 
-		public function updateQty(){
-			$order_item = new MOrderItem();
+		public function updateQty()
+		{
+		
 			$id = $this->input->post('eid');
 			$qty = $this->input->post('qty');
-			$details = $order_item->updateQty($id,$qty);
+			$details = $this->MOrderItem->updateQty($id,$qty);
 		}
 
 		function viewOrderInfo()

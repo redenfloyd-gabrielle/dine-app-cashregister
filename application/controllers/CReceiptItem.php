@@ -20,7 +20,8 @@
 		}
 
 
-		public function updateReceiptItemStatus($id,$page,$eid){
+		public function updateReceiptItemStatus($id,$page,$eid)
+		{
 			if($page == 'manual'){
 				$data = array('receipt_item_status' => 'INACTIVE');
 				$query = $this->MReceiptItem->update($id,$data);
@@ -36,16 +37,11 @@
 
 		public function addReceiptItem($product_id,$receipt_id)
 		{
-			$receipt_item = new MReceiptItem();
-			$prod = new MProduct();
-			
-			// $receipt_id = $this->input->post('receipt_id');
-	       
 			$qty = 1;
 
-			$checker = $receipt_item->getReceiptItemDetailsByProduct($product_id,$receipt_id);
+			$checker = $this->MReceiptItem->getReceiptItemDetailsByProduct($product_id,$receipt_id);
 			
-			$product = $prod->getProductDetailsById($product_id);
+			$product = $this->MProduct->getProductDetailsById($product_id);
 			
 			foreach ($product as $p) {}
 
@@ -56,7 +52,7 @@
 	   				       'receipt_item_product_id' => $product_id,
 	   				       'receipt_item_receipt_id' => $receipt_id
 					);
-				  $r = $receipt_item->insert($insertData);
+				  $r = $this->MReceiptItem->insert($insertData);
 			 }else{
 				
 				foreach ($checker as $check) {}
@@ -66,7 +62,7 @@
 				    
 					$updateField = array('receipt_item_quantity'=> $qty,
 									'receipt_item_subtotal' => $subtotal);
-					$r = $receipt_item->update($id,$updateField);  
+					$r = $this->MReceiptItem->update($id,$updateField);  
 			}	
 			$cat = $p->product_category;
 			 if ($r) {
@@ -77,16 +73,17 @@
 
 		}
 
-		public function displayOrderListManual(){
-			$receipt_item = new MReceiptItem();
+		public function displayOrderListManual()
+		{
 			$receipt_id = $_POST['receipt_id'];
-			$result = $receipt_item->getReceiptItemDetailsByReceipt($receipt_id);
+			$result = $this->MReceiptItem->getReceiptItemDetailsByReceipt($receipt_id);
  
 			if(isset($result)){
 				$qty = 0;
 				$array = array();
 				foreach ($result as $value) {
 					$arr= new stdClass;
+					$arr->product_id = $value->product_id;
 					$arr->product_name = $value->product_name;
 					$arr->product_price = $value->product_price;
 					$arr->receipt_item_quantity = $value->receipt_item_quantity;
