@@ -67,12 +67,12 @@
 	});
 	document.getElementById("trybtn").addEventListener("click", tryFunc);
 
-		function tryFunc() {
-			Instascan.Camera.getCameras().then(function(cams){
-			qr.start(cams[0]);
-			}).catch(function(err){
-				console.log(err);
-			});
-	    }
+	function tryFunc() {
+		Instascan.Camera.getCameras().then(function(cams){
+		qr.start(cams[0]);
+		}).catch(function(err){
+			console.log(err);
+		});
+    }
 
 </script>	

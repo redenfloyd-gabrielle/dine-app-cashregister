@@ -111,6 +111,7 @@
 		
 		public function viewProduct($cat)
 		{
+			$cat = urldecode($cat);
 			$result = $this->MProduct->getProductsByCategory($cat);
 
             $array = array();
@@ -138,6 +139,7 @@
 		}
 		public function viewProductEdit($page,$cat,$id)
 		{
+			$cat = urldecode($cat);
 			$result = $this->MProduct->getProductsByCategory($cat);
 
 
@@ -213,6 +215,7 @@
 
 		function viewProductsInCategory($cat)
 		{
+			$cat = urldecode($cat);
 			$result = $this->MProduct->getProductsByCategory($cat);
 			$data['prod_cat']  = $cat;
 			
