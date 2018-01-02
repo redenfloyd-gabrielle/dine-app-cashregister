@@ -26,7 +26,7 @@
                     <form class='ui form' method="POST" action="<?php echo site_url()?>/CProduct/addProduct" accept-charset="utf-8" enctype="multipart/form-data">
                         <div class='nine wide field'>
                             <label>UPLOAD IMAGE</label>
-                            <input type="file" name="pic"id='pic' accept="image/*">
+                            <input type="file" name="image" id='image' accept="image/*">
                         </div>
 
                         <div class='nine wide required field'>
@@ -47,9 +47,10 @@
                             <label>CATEGORY</label><br>
                             <select class="ui dropdown" name="category">
                               <option value="">Choose category</option>
-                              <option value="MEALS">Meals</option>
                               <option value="DRINKS">Drinks</option>
-                              <option value="DESSERTS">Desserts</option>
+                              <option value="RICE MEAL">Rice Meal</option>
+                              <option value="SOUP">Soup</option>
+                              <option value="MAIN COURSE">Main Course</option>  
                               <option value="EXTRAS">Extras</option>
                             </select> <!-- availability dropdown -->
 
@@ -58,8 +59,8 @@
                             <label>AVAILABILITY</label><br>
                             <select class="ui dropdown" name="availability">
                               <option value="">Choose availability</option>
-                              <option value="1">Available</option>
-                              <option value="0">Not Available</option>
+                              <option value="AVAILABLE">Available</option>
+                              <option value="NOT AVAILABLE">Not Available</option>
                             </select> <!-- availability dropdown -->
 
                         <div class='ui hidden divider'></div>
