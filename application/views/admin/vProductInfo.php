@@ -1,70 +1,82 @@
 <div class="pusher">
-    <div class='ui basic segment'>
-        <h1 class="ui brown dividing header">
-            <i class="food icon"></i>
-            <div class="content">
-              PRODUCTS
-              <div class="sub header">Shows the list of products under a category</div>
-            </div>
-        </h1> <!-- header -->
-        <div class='ui breadcrumb'>
-            <a class='section' href='<?php echo site_url()?>/CUser/viewAdminDashboard'>HOME</a>
-            <i class='right arrow icon divider'></i>
-            <a class='section' href='<?php echo site_url()?>/CProduct/viewCategoryList'>CATEGORIES</a> 
-            <i class='right arrow icon divider'></i>
-            <div class='active section'>PRODUCT INFORMATION</div>
-        </div> <!-- breadcrumb -->
-    </div> <!-- segment -->
-    <h3 class="ui horizontal header divider">
-        <i class="food icon"></i>
-        Product Information
-    </h3>
-    <div class='ui attached segment'> 
-        <div class='ui stackable padded grid'>
-            <?php if (isset($product)) { ?>
-            <?php foreach($product as $prod) {} ?>  
-                <div class='row'>
-                    <a href='<?php echo site_url()?>/CProduct/editProductInfo/<?php echo $prod->product_id; ?>'><button class='ui circular blue icon button' title='Edit product information'><i class='pencil icon'></i>Edit item</button></a> <!-- Edit product information -->
+    <div class='ui hidden segment'></div>
+    <div class='ui padded segment'>
+        <!-- header -->
+        <div class='ui basic segment'>
+            <h1 class="ui brown dividing header">
+                <i class="food icon"></i>
+                <div class="content">
+                  PRODUCTS
+                  <div class="sub header">Shows the list of products under a category</div>
+                </div>
+            </h1> <!-- header -->
+            <div class='ui breadcrumb'>
+                <a class='section' href='<?php echo site_url()?>/CUser/viewAdminDashboard'>HOME</a>
+                <i class='right arrow icon divider'></i>
+                <a class='section' href='<?php echo site_url()?>/CProduct/viewCategoryList'>CATEGORIES</a> 
+                <i class='right arrow icon divider'></i>
+                <div class='active section'>PRODUCT INFORMATION</div>
+            </div> <!-- breadcrumb -->
+        </div> <!-- segment -->
+        <!-- end of header -->
 
-                    <button class='ui circular red icon button' title='Delete this product' id='deleteItem'><i class='remove icon'></i>Remove item</button> <!-- Delete product -->
-                </div>
-                <div class='two column row'>
-                    <div class='center aligned middle aligned column'>
-                        <img src='<?php echo base_url($prod->product_image)?>'>
-                    </div>
-                    <div class='column'>
-                        <h3><table class='ui very basic table'>
-                            <tbody>
-                                <tr>
-                                    <td>FOOD NAME</td>
-                                    <td style='font-style: italic;'><?php echo $prod->product_name;  ?></td>
-                                </tr>
-                                <tr>
-                                    <td>FOOD DESCRIPTION</td>
-                                    <td style='font-style: italic;'><?php echo $prod->product_description;  ?></td>
-                                </tr>
-                                <tr>
-                                    <td>FOOD PRICE</td>
-                                    <td style='font-style: italic;'><?php echo $prod->product_price;  ?></td>
-                                </tr>
-                                <tr>
-                                    <td>FOOD CATEGORY</td>
-                                    <td style='font-style: italic;'><?php echo $prod->product_category;  ?></td>
-                                </tr>
-                                <tr>
-                                    <td>FOOD AVAILABILITY</td>
-                                    <td style='font-style: italic;'><?php echo $prod->product_availability;  ?></td>
-                                </tr>
-                            </tbody>
-                        </table><h3>
-                    </div>
-                </div>
-            <?php } ?> 
-            <div class='row'></div> <!-- row -->
-        </div> <!-- ui grid -->
-    </div> <!-- segment -->
-  </div> <!-- pusher -->
-</div> <!-- bottom attached segment -->
+        <!-- content -->
+        <div class='ui segments'>
+            <div class='ui basic segment'> 
+                <h5 class='ui header brown ribbon label'><i class='info icon'></i>Product Information</h5>
+                <div class='ui stackable padded grid'>
+                    <?php if (isset($product)) { ?>
+                    <?php foreach($product as $prod) {} ?>  
+                        <div class='row'>
+                            <div class='right aligned column'>
+                                <!-- <?php //if($prod->product_availability == "AVAILABLE"){
+                                        //echo "
+                                        //<a href='<?php echo site_url()?>/CProduct/editProductInfo/<?php //echo $prod->product_id; ?>'>
+                                            <div class='ui basic blue labeled icon button'>
+                                                Edit <i class='pencil icon'></i>
+                                            </div>
+                                        </a> 
+                                        ";
+                                    }
+                                ?>  -->
+                                <a href='<?php echo site_url()?>/CProduct/editProductInfo/<?php echo $prod->product_id; ?>'>
+                                    <div class='ui basic blue labeled icon button'>
+                                        Edit <i class='pencil icon'></i>
+                                    </div>
+                                </a> <!-- Edit product information -->
+                            </div>
+                        </div>
+                        <div class='two column row'>
+                            <div class='center aligned middle aligned column'>
+                                <img src='<?php echo base_url($prod->product_image)?>'>
+                            </div>
+                            <div class='column'>
+                                <p style='font-size: 1em;'>PRODUCT ID &nbsp &nbsp| &nbsp &nbsp <span style='font-size: 1.2em; font-style: italic; font-weight: bold;'><?php echo $prod->product_id; ?></span></p>
+                                <div class='ui divider'></div>
+
+                                <p style='font-size: 1em;'>PRODUCT NAME &nbsp &nbsp| &nbsp &nbsp <span style='font-size: 1.2em; font-style: italic; font-weight: bold;'><?php echo $prod->product_name; ?></span></p>
+                                <div class='ui divider'></div>
+
+                                <p style='font-size: 1em;'>PRODUCT DESCRIPTION &nbsp &nbsp| &nbsp &nbsp <span style='font-size: 1.2em; font-style: italic; font-weight: bold;'><?php echo $prod->product_description; ?></span></p>
+                                <div class='ui divider'></div>
+
+                                <p style='font-size: 1em;'>PRODUCT PRICE &nbsp &nbsp| &nbsp &nbsp P <span style='font-size: 1.2em; font-style: italic; font-weight: bold;'><?php echo $prod->product_price; ?></span></p>
+                                <div class='ui divider'></div>
+
+                                <p style='font-size: 1em;'>PRODUCT CATEGORY &nbsp &nbsp| &nbsp &nbsp <span style='font-size: 1.2em; font-style: italic; font-weight: bold;'><?php echo $prod->product_category; ?></span></p>
+                                <div class='ui divider'></div>
+
+                                <p style='font-size: 1em;'>PRODUCT AVAILABILITY &nbsp &nbsp| &nbsp &nbsp <span style='font-size: 1.2em; font-style: italic; font-weight: bold;'><?php echo $prod->product_availability; ?></span></p>
+                                <div class='ui divider'></div>
+                            </div>
+                        </div>
+                    <?php } ?> 
+                    <div class='row'></div> <!-- row -->
+                </div> <!-- ui grid -->    
+            </div> <!-- segment -->
+        </div> <!-- segments -->
+    </div> <!-- padded segment -->
+</div> <!-- pusher -->
 
 
 
