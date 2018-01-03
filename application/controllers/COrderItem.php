@@ -147,29 +147,79 @@
 		// 	// print_r($result);
 		// }
 
-		// public function addRowItem()
-		// {
-		// 	$product = new MProduct();
-		// 	$order_item = new MOrderItem();
-		// 	$product_id = $_POST['pid'];
-		// 	$ordered_id = $_POST['oid'];
+		public function addRowItem()
+		{
 
-		// 	$result = $product->getProductDetailsById($product_id);
-			
-		// 	foreach ($result as $q) {}
-		// 	$checker = $order_item->getOrderItemDetailsByProduct($product_id,$ordered_id);
-		// 	$qty = 1;
-			
-		// 	if(empty($checker)){
-		// 		 echo $q->product_name."|".$q->product_price."|1|".$q->product_price;
-		// 	 }else{
-		// 		foreach ($checker as $check) {}
-		// 		$qty += $check->order_item_qty;
-		// 		$subtotal = $qty * $q->product_price;
-				
-		// 	}	
+			$tableData = stripcslashes($_POST['pTableData']);
+			$tableData = json_decode($tableData,TRUE);
+			$product_id = $_POST['pid'];
 
+			$result = $this->MProduct->getProductDetailsById($product_id);
+			foreach ($result as $q){}
+
+
+			if($tableData){
+				foreach ($tableData as $table) {
+					// if($table['prod_id'] != $product_id){
+				 	$arr = array('name' => $q->product_name,
+				 				'price' =>$q->product_price,
+				 				'qty' =>1,
+				 				'subtotal' =>$q->product_price,
+				 				'prod_id' =>$q->product_id
+				 			);
+				 	$tableData = $arr;
+				 	// $dataTable = json_encode($tableData);
+				 	// $dataTable = json_decode($dataTable, TRUE);
+}
+			// 	 }else{
+			// 		$tableData['qty'] = $tableData['qty'] + 1;
+			// 		$tableData['subtotal'] = $tableData['qty'] * $p->product_price;
+			// 		// $dataTable =json_encode($tableData);
+			// 		// $dataTable = json_decode($dataTable, TRUE);
+			// 	 }
+			// 	}
+			// }else{
+			// 	$arr = array('name' => $q->product_name,
+			//  				'price' =>$q->product_price,
+			//  				'qty' =>1,
+			//  				'subtotal' =>$q->product_price,
+			//  				'prod_id' =>$q->product_id
+			//  			);
+			//  	$tableData = $arr;
+				// $dataTable = json_encode($tableData);
+				// $dataTable = json_decode($dataTable, TRUE);
+			}
+
+
+			$array = array();
+ 			$dataTable = json_encode($tableData);
+ 			$dataTable = json_decode($dataTable, TRUE);
+
+ //if(!empty($dataTable)){
+ 			$datas = $dataTable;
+ 			$size = count($datas)/5;
+				for($x=1; $x<= $size; $x++) {
+					$arrObj = new stdClass;
+					$arrObj->name = $datas[$x]['name'];
+					$arrObj->price= $datas[$x]['price'];
+					$arrObj->qty= $datas[$x]['qty'];
+					$arrObj->subtotal = $datas[$x]['subtotal'];
+					$arrObj->prod_id= $datas[$x]['prod_id'];
+					$array[] = $arrObj;
+					
+				}
+				$data['receipt_item'] = $array;
+		// }else{
+		// 	$data['receipt_item'] = null;
 		// }
+		
+		//   $this->load->view('pos/vOrder',$data);
+
+ print_r($data);
+		   
+		  
+		   
+		}
 		public function addOrderItem($page,$product_id,$eid)
 		{
 			$qty = 1;

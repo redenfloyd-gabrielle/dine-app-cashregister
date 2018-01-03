@@ -43,7 +43,6 @@
 	        var strTime = hours + ':' + minutes + ':' + seconds + ' ' + ampm;
 
 	        $(".time").html(strTime);
-
 	     }
 
 	    $(document).ready(function()
