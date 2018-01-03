@@ -2,7 +2,10 @@
 <!DOCTYPE html>
 <html> 
 <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Dine-Admin Module</title>
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <link rel='stylesheet' href='<?php echo base_url("assets/css/adminAssets.css")?>'>
     <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/posAssets.css')?>">
     <link rel='stylesheet' href='<?php echo base_url("assets/semantic/semantic.min.css")?>'>
@@ -12,10 +15,43 @@
     <script type="text/javascript" src="<?php echo base_url('assets/jquery/instascan.min.js')?>"></script>
     <script src='<?php echo base_url("assets/jquery/sha.js")?>'></script>
 </head>
-<body>  
- 
+<body class="pushable" >  
 
-<div class='ui top attached inverted menu'>
+<!-- sidebar -->
+<div class='ui sidebar vertical inverted menu left labeled icon thin'>
+    <div style='background: #A5673F;'>
+        <img style='padding-top: 5px; margin-bottom: 5px;' class='ui tiny centered image' src='<?php echo base_url("assets/images/admin.png")?>'>
+        <p style='background-color: white; margin:0;'>ADMIN</p>
+        <span style='color:white; font-size: 1em'>Hello, 
+            <strong style='font-style: italic;'>
+                <?php echo $this->session->userdata['userSession']['user_first_name'];?> 
+            </strong>
+        </span><br>
+        <span style='color:white;'>
+            ID: <?php echo $this->session->userdata['userSession']['user_id'];?> 
+        </span>
+        <input hidden='' type='text' name='pass' id='pass' value='<?php echo strtolower($this->session->userdata['userSession']['user_password']);?>'>
+    </div> 
+    <a class='item' href='<?php echo site_url()?>/CUser/viewAdminDashboard'>
+        <i class='dashboard icon'></i> Dashboard
+    </a>
+    <a class='item' href='<?php echo site_url()?>/CProduct/viewCategoryList'>
+        <i class='food icon'></i> Products
+    </a>
+    <a class='item' href='<?php echo site_url()?>/COrdered/viewOrderList?>'>
+        <i class='shop icon'></i> Orders
+    </a>
+    <a class='item' href='<?php echo site_url()?>/CUser/viewReports?>'>
+        <i class='bar chart icon'></i> Reports
+    </a>
+    <a class='item' href=''>
+        <i class='calculator icon'></i> POS
+    </a>
+</div>
+<!-- end of sidebar -->
+
+<!-- top menu -->
+<div class='ui fixed inverted menu'>
     <a class="borderless item toggleMenu">
         <i class="sidebar icon"></i>
     </a>
@@ -38,41 +74,15 @@
     </div>
     </div>
 </div>
+<!-- end of top menu -->
 
-<div class="ui bottom attached segment pushable">
-  <div class="ui inverted labeled icon left inline vertical thin sidebar menu">
-    <div style='background: brown;'>
-        <br>
-        <img class='ui tiny centered image' src='<?php echo base_url("assets/images/admin.png")?>'>
-        <br>
-        <p style='background-color: white;'>ADMIN</p>
-        <h3 style='color:white;'>Hello, 
-            <strong style='font-style: italic;'>
-                <?php echo $this->session->userdata['userSession']['user_first_name'];?> 
-            </strong>
-        </h3>
-        <p style='color:white;'>
-            ID: <?php echo $this->session->userdata['userSession']['user_id'];?> 
-        </p>
-        <input hidden='' type='text' name='pass' id='pass' value='<?php echo strtolower($this->session->userdata['userSession']['user_password']);?>'>
-    </div> 
-    <a class='item' href='<?php echo site_url()?>/CUser/viewAdminDashboard'>
-        <i class='dashboard icon'></i> Dashboard
-    </a>
-    <a class='item' href='<?php echo site_url()?>/CProduct/viewCategoryList'>
-        <i class='food icon'></i> Products
-    </a>
-    <a class='item' href='<?php echo site_url()?>/COrdered/viewOrderList?>'>
-        <i class='shop icon'></i> Orders
-    </a>
-    <a class='item' href='<?php echo site_url()?>/CUser/viewReports?>'>
-        <i class='bar chart icon'></i> Reports
-    </a>
-    <a class='item' href=''>
-        <i class='calculator icon'></i> POS
-    </a>
-  </div>
 
+    
+
+    
+    
+
+    
 
 
 

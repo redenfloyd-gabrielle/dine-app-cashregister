@@ -1,23 +1,33 @@
 
 <script>
 $(document).ready(function(){
+	//Initializes dropdown
 	$('.ui.dropdown').dropdown();
-	$('.ui.sticky').sticky();
+
+	//Change Password Modal
 	$('#changePass').click(function(){
 		$('#confirmUpdate').modal('show');
 	}); 
+
+	//Cancel Modal
 	$('#confirmCancel').click(function(){
         $('#cancelModal').modal('show');
     });
 
+	// Cancel Modal (when breadcrumb is clicked)
     $('#confirmCancelBR').click(function(){
         $('#cancelModal').modal('show');
     });
     
-	$('.ui.sidebar').sidebar({ context: $('.bottom.segment')})
+    // Shows sidebar
+    $('.ui.sidebar').sidebar({ 
+    					context: $('.pushable'),
+    					dimPage: false
+    				})
                     .sidebar('attach events', '.toggleMenu')
     ;
 	
+	// Prevents modal from closing when clicked outside
 	$('.ui.modal').modal('setting', 'closable', false);
 }); 
 

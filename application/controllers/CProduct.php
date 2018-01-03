@@ -224,7 +224,9 @@
 				foreach ($result as $value) {
 						$arrObj = new stdClass;
 						$arrObj->product_id = $value->product_id;
+						$arrObj->product_image = $value->product_image;
 						$arrObj->product_name = $value->product_name;
+						$arrObj->product_availability = $value->product_availability;
 						$array[] = $arrObj;
 				}
 			$data['products']  = $array;

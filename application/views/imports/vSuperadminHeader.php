@@ -9,18 +9,46 @@
     <script src='<?php echo base_url("assets/semantic/semantic.min.js")?>'></script>
     <script src='<?php echo base_url("assets/jquery/sha.js")?>'></script>
 </head>
-<body>
+<body class='pushable'>
 
-<div class='ui top attached inverted menu'>
+<!-- sidebar -->
+<div class='ui sidebar vertical inverted menu left labeled icon thin'>
+    <div style='background: teal;'>
+        <img style='padding-top: 5px; margin-bottom: 5px;' class='ui tiny centered image' src='<?php echo base_url("assets/images/superadmin.png")?>'>
+        <p style='background-color: white; margin:0;'>SUPERADMIN</p>
+        <span style='color:white; font-size: 1em'>Hello, 
+            <strong style='font-style: italic;'>
+                <?php echo $this->session->userdata['userSession']['user_first_name'];?> 
+            </strong>
+        </span><br>
+        <span style='color:white;'>
+            ID: <?php echo $this->session->userdata['userSession']['user_id'];?> 
+        </span>
+        <input hidden='' type='text' name='pass' id='pass' value='<?php echo strtolower($this->session->userdata['userSession']['user_password']);?>'>
+    </div> 
+    <a class='item' href='<?php echo site_url()?>/CUser/viewSuperadminDashboard?>'>
+        <i class='dashboard icon'></i> Dashboard
+    </a>
+    <a class='item' href='<?php echo site_url()?>/CUser/viewUsersList?>'>
+        <i class='users icon'></i> Users
+    </a>
+</div>
+<!-- end of sidebar -->
+
+
+
+
+<!-- top menu -->
+<div class='ui fixed inverted menu'>
     <a class="borderless item toggleMenu">
         <i class="sidebar icon"></i>
-    </a>
+    </a> 
     <a class='borderless item' href='<?php echo site_url()?>/CUser/viewSuperadminDashboard?>'>DINE</a>
     <div class='right menu'>
         <div class="ui inverted transparent left icon action input borderless item">
             <input type="text" placeholder="Enter keyword..." name="search">
             <i class="search icon"></i>
-            <button class='ui blue button'>Search</button>
+            <button class='ui teal button'>Search</button>
         </div>
         <div class='ui simple dropdown item' tabindex='0'>
         <i class='user icon'></i>Profile
@@ -34,31 +62,7 @@
     </div>
     </div>
 </div>
-
-<div class="ui bottom attached segment pushable">
-  <div class="ui inverted labeled icon left inline vertical thin sidebar menu">
-    <div style='background: blue;'>
-        <br>
-        <img class='ui tiny centered image' src='<?php echo base_url("assets/images/admin.png")?>'>
-        <br>
-        <p style='background-color: white;'>SUPERADMIN</p>
-        <h3 style='color:white;'>Hello, 
-            <strong style='font-style: italic;'>
-                <?php echo $this->session->userdata['userSession']['user_first_name'];?> 
-            </strong>
-        </h3>
-        <p style='color:white;'>
-            ID: <?php echo $this->session->userdata['userSession']['user_id'];?> 
-        </p>
-        <input hidden='' type='text' name='pass' id='pass' value='<?php echo strtolower($this->session->userdata['userSession']['user_password']);?>'>
-    </div> 
-    <a class='item' href='<?php echo site_url()?>/CUser/viewSuperadminDashboard?>'>
-        <i class='dashboard icon'></i> Dashboard
-    </a>
-    <a class='item' href='<?php echo site_url()?>/CUser/viewUsersList?>'>
-        <i class='users icon'></i> Users
-    </a>
-  </div>
+<!-- end of top menu -->
 
 
 
@@ -87,7 +91,7 @@
   </div>
   <div class="actions" >
     <div class="ui cancel gray button">Cancel</div>
-    <button class="ui approve blue button" type="submit">Update</button>
+    <button class="ui submit teal button" type="submit">Update</button>
     </form>
   </div>
 </div>
