@@ -4,6 +4,8 @@
     <title>Dine-Login</title>
     <link rel='stylesheet' href='<?php echo base_url("assets/css/loginAssets.css")?>'>
     <link rel='stylesheet' href='<?php echo base_url("assets/semantic/semantic.min.css")?>'>
+    <script src='<?php echo base_url("assets/jquery.min.js")?>'></script>
+     <script src='<?php echo base_url("assets/semantic/semantic.min.js")?>'></script>
 </head>
 <body>
 
@@ -14,13 +16,23 @@
     </div>
     <div class='column'></div>
     <div class='eight wide column'>
-        <form class='ui tiny form' method='POST' action='<?php echo site_url()?>/CLogin/userLogin?>'>
+
+        <form class='ui tiny form' method='POST' action='<?php echo site_url()?>/CLogin/userLogin'>
             <div class='ui basic secondary segment'>
                 <h3 class='ui middle aligned header'>
                     <div class='content'>
                         Welcome!
                     </div> 
                 </h3>
+                <?php if(isset($errors)){ ?>
+                <div class="ui negative message">
+                    <i class="close icon"></i>
+                    <div class="header">
+                        <?php echo $errors; ?>
+                    </div>
+                    <p> <?php echo $msg; ?></p>
+                </div>
+                <?php }?>
                 <div class='required field'>
                     <div class='ui left icon input'>
                         <i class='user icon'></i>
@@ -41,3 +53,10 @@
 </div>
 </body>
 </html>
+<script type="text/javascript">
+$(document).ready(function(){
+    $('.message .close').on('click', function() {
+        $(this).closest('.message').transition('fade');
+    });
+});
+</script>

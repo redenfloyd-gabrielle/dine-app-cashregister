@@ -20,7 +20,7 @@
       <div class="column"></div>
       <div class="fourteen wide column">
         <form>
-          <table class="ui single line table itemLabels">
+          <table class="ui single line table itemLabels" id="myTable">
             <thead>
               <tr>
                 <th>Product Name</th>
@@ -32,11 +32,12 @@
             <tbody>
               <?php if(isset($receipt_item)) { ?>
                  <?php foreach ($receipt_item as $item){ ?>
-              <tr id="myTR">
-                <td><?php echo $item->product_name ?></td>
-                <td><?php echo $item->product_price ?></td>
-                <td><?php echo $item->receipt_item_quantity ?></td>
-                <td class="subtotal"><?php echo $item->receipt_item_subtotal ?></td>
+              <tr class="trow" id="trow">
+                <td class="name"><?php echo $item->name ?></td>
+                <td><?php echo $item->price ?></td>
+                <td><?php echo $item->qty?></td>
+                <td class="subtotal"><?php echo $item->subtotal?></td>
+
               </tr>
               <?php } ?>
                <?php } ?>
@@ -173,7 +174,7 @@
 
     //     $.ajax({
     //       type: "POST",
-    //       url: '<?php echo site_url()?>/COrderItem/viewEditOrder',
+    //       url: '<?php //echo site_url()?>/COrderItem/viewEditOrder',
     //       data: dataSet,
     //       cache: false,
     //       success: function(result){

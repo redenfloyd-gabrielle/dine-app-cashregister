@@ -73,38 +73,66 @@
 
 		}
 
-		public function displayOrderListManual()
-		{
-			$receipt_id = $_POST['receipt_id'];
-			$result = $this->MReceiptItem->getReceiptItemDetailsByReceipt($receipt_id);
+		// public function displayOrderListManual()
+		// {
+		// 	$receipt_id = $_POST['receipt_id'];
+		// 	$result = $this->MReceiptItem->getReceiptItemDetailsByReceipt($receipt_id);
  
-			if(isset($result)){
-				$qty = 0;
-				$array = array();
-				foreach ($result as $value) {
-					$arr= new stdClass;
-					$arr->product_id = $value->product_id;
-					$arr->product_name = $value->product_name;
-					$arr->product_price = $value->product_price;
-					$arr->receipt_item_quantity = $value->receipt_item_quantity;
-					$arr->receipt_item_subtotal = $value->receipt_item_subtotal;
-					$array[] = $arr;
-					$qty += $value->receipt_item_quantity;
-			    }
+		// 	if(isset($result)){
+		// 		$qty = 0;
+		// 		$array = array();
+		// 		foreach ($result as $value) {
+		// 			$arr= new stdClass;
+		// 			$arr->product_id = $value->product_id;
+		// 			$arr->product_name = $value->product_name;
+		// 			$arr->product_price = $value->product_price;
+		// 			$arr->receipt_item_quantity = $value->receipt_item_quantity;
+		// 			$arr->receipt_item_subtotal = $value->receipt_item_subtotal;
+		// 			$array[] = $arr;
+		// 			$qty += $value->receipt_item_quantity;
+		// 	    }
 
-			    $data['receipt_item'] = $array;
-			    $data['total'] = 0;
-				$data['qty'] = $qty;
-				$data['id'] = $receipt_id;
-			}else{
-				$data = null;
-			}
+		// 	    $data['receipt_item'] = $array;
+		// 	    $data['total'] = 0;
+		// 		$data['qty'] = $qty;
+		// 		$data['id'] = $receipt_id;
+		// 	}else{
+		// 		$data = null;
+		// 	}
 			
-		    $res = $this->load->view('pos/vOrder',$data,TRUE);
+		//     $res = $this->load->view('pos/vOrder',$data,TRUE);
 
-		    echo $res;
+		//     echo $res;
 		    
-		}
+		// }
+
+
+		// public function displayOrderListManual()
+		// {
+		// 	$tableData = stripcslashes($_POST['pTableData']);
+		// 	$tableData = json_decode($tableData,TRUE);
+		// 	$array = array();
+
+		// 	foreach ($tableData as $value) {
+		// 		if($tableData){
+		// 		$arr= new stdClass;
+		// 		$arr->product_id = $table['prod_id'];
+		// 		$arr->product_name = $table['name'];
+		// 		$arr->product_price = $table['price'];
+		// 		$arr->receipt_item_quantity = $table['qty'];
+		// 		$arr->receipt_item_subtotal =  $table['subtotal'];
+		// 		$array[] = $arr;
+		// 		}else{
+		// 			$array[] = null;
+		// 		}
+		//     }
+		// 	$data['receipt_item'] = $array;
+			
+		//     $res = $this->load->view('pos/vOrder',$data,TRUE);
+
+		//     echo $res;
+		    
+		// }
 	
 	}
 

@@ -74,15 +74,24 @@
 					} else if ($result[0]->user_type == 'REGULAR') {
 						redirect('CLogin/viewPos');
 					} else {
-						redirect('CLogin');
+						$data['errors'] = "Invalid Login Attemp!";
+						$data['msg'] = "Check User ID and Password.";
+
+						$this->load->view('vLogin',$data);
+						// redirect('CLogin',$data);
+					
 					}
 				} else {
-					$data['errors'] = "";
+					$data['errors'] = "Invalid Login Attemp!";
+					$data['msg'] = "Check User ID and Password.";
 
-					redirect('CLogin');
+					$this->load->view('vLogin',$data);
 				}
 			}else{
-				redirect('CLogin');
+				$data['errors'] = "Empty Login!";
+				$data['msg'] = "Enter User ID and Password.";
+
+				$this->load->view('vLogin',$data);	
 			}
 		}
 
