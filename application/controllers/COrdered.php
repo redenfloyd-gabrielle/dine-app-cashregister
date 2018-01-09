@@ -38,7 +38,7 @@
 
 		public function displayOrderFromQR()
 		{
-			$qr = $_POST['qr'];
+			$qr = $this->input->post('qr');
 
 			$result = $this->MOrdered->getOrderByQR($qr);
 			if($result){
@@ -67,7 +67,7 @@
 			if($data == null){
 				echo "<script>alert('INVALID QR CODE')</script>";
 			}else{
-				$res = $this->load->view('pos/vQROrder',$data,TRUE);
+				$res = $this->load->view('pos/vQrOrder',$data,TRUE);
 				echo $res;	
 			}
 			

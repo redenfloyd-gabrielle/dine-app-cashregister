@@ -32,7 +32,7 @@
 </html>
 <script type="text/javascript"> 
 	var qr = new Instascan.Scanner({
-		video: document.getElementById("qrcam")
+		video: $('#qrcam')[0]
 	});
 	qr.addListener('scan',function(data){
 		console.log(data);
@@ -57,6 +57,7 @@
 			},
 			error: function(jqXHR, errorThrown){
 				console.log(errorThrown);
+				console.log(dataSet);
 			}
 		});
 	});
