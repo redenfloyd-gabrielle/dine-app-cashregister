@@ -85,6 +85,7 @@
 				if($result){
 					foreach ($result as $value) {
 						$arr= new stdClass;
+						$arr->product_id = $value->product_id;
 						$arr->item_id = $value->receipt_item_id;
 						$arr->product_name = $value->product_name;
 						$arr->product_price = $value->product_price;
@@ -147,78 +148,93 @@
 		// 	// print_r($result);
 		// }
 
+// 		public function addRowItem()
+// 		{
+
+// 			$tableData = stripcslashes($_POST['pTableData']);
+// 			$tableData = json_decode($tableData,TRUE);
+// 			$product_id = $_POST['pid'];
+
+// 			$result = $this->MProduct->getProductDetailsById($product_id);
+// 			foreach ($result as $q){}
+
+
+// 			if($tableData){
+// 				foreach ($tableData as $key => $table) {
+// 					 if($table['prod_id'] != $product_id){
+// 				 	$arr = array('name' => $q->product_name,
+// 				 				'price' =>$q->product_price,
+// 				 				'qty' =>1,
+// 				 				'subtotal' =>$q->product_price,
+// 				 				'prod_id' =>$q->product_id
+// 				 			);
+// //$tableData = $arr;
+// 				 	// $dataTable = json_encode($tableData);
+// 				 	// $dataTable = json_decode($dataTable, TRUE);
+// 				 	array_push($tableData, $arr);
+
+// 				 }else{
+// 					$tableData['qty'] = $tableData['qty'] + 1;
+// 					$tableData['subtotal'] = $tableData['qty'] * $p->product_price;
+// 					// $dataTable =json_encode($tableData);
+// 					// $dataTable = json_decode($dataTable, TRUE);
+// 				 }
+// 				}
+// 			}else{
+// 				$arr = array('name' => $q->product_name,
+// 			 				'price' =>$q->product_price,
+// 			 				'qty' =>1,
+// 			 				'subtotal' =>$q->product_price,
+// 			 				'prod_id' =>$q->product_id
+// 			 			);
+// 			 	array_push($tableData, $arr);
+// 				// $dataTable = json_encode($tableData);
+// 				// $dataTable = json_decode($dataTable, TRUE);
+// 			}
+
+
+// 			$array = array();
+//  			// $dataTable = json_encode($tableData);
+//  			// $dataTable = json_decode($dataTable, TRUE);
+
+// 		 if($tableData){
+//  		//	$datas = $tableData;
+//  			foreach ($tableData as $key => $datas) {
+//  				$arrObj = new stdClass;
+// 					$arrObj->name = $datas['name'];
+// 					$arrObj->price= $datas['price'];
+// 					$arrObj->qty= $datas['qty'];
+// 					$arrObj->subtotal = $datas['subtotal'];
+// 					$arrObj->prod_id= $datas['prod_id'];
+// 					$array[] = $arrObj;
+					
+					
+//  			}
+				
+// 				$data['receipt_item'] = $array;
+// 		}else{
+// 			$data['receipt_item'] = null;
+// 		}
+		
+// 		   $this->load->view('pos/vOrder',$data);
+
+ 
+// 		  // print_r($data);
+		  
+		   
+// 		}
+
 		public function addRowItem()
 		{
 
-			$tableData = stripcslashes($_POST['pTableData']);
-			$tableData = json_decode($tableData,TRUE);
 			$product_id = $_POST['pid'];
-
+			$tableData = array();
 			$result = $this->MProduct->getProductDetailsById($product_id);
 			foreach ($result as $q){}
+			$qty =1;
 
+			echo $q->product_name."|".$q->product_price."|".$qty."|".$q->product_price; 
 
-			if($tableData){
-				foreach ($tableData as $table) {
-					// if($table['prod_id'] != $product_id){
-				 	$arr = array('name' => $q->product_name,
-				 				'price' =>$q->product_price,
-				 				'qty' =>1,
-				 				'subtotal' =>$q->product_price,
-				 				'prod_id' =>$q->product_id
-				 			);
-				 	$tableData = $arr;
-				 	// $dataTable = json_encode($tableData);
-				 	// $dataTable = json_decode($dataTable, TRUE);
-}
-			// 	 }else{
-			// 		$tableData['qty'] = $tableData['qty'] + 1;
-			// 		$tableData['subtotal'] = $tableData['qty'] * $p->product_price;
-			// 		// $dataTable =json_encode($tableData);
-			// 		// $dataTable = json_decode($dataTable, TRUE);
-			// 	 }
-			// 	}
-			// }else{
-			// 	$arr = array('name' => $q->product_name,
-			//  				'price' =>$q->product_price,
-			//  				'qty' =>1,
-			//  				'subtotal' =>$q->product_price,
-			//  				'prod_id' =>$q->product_id
-			//  			);
-			//  	$tableData = $arr;
-				// $dataTable = json_encode($tableData);
-				// $dataTable = json_decode($dataTable, TRUE);
-			}
-
-
-			$array = array();
- 			$dataTable = json_encode($tableData);
- 			$dataTable = json_decode($dataTable, TRUE);
-
- //if(!empty($dataTable)){
- 			$datas = $dataTable;
- 			$size = count($datas)/5;
-				for($x=1; $x<= $size; $x++) {
-					$arrObj = new stdClass;
-					$arrObj->name = $datas[$x]['name'];
-					$arrObj->price= $datas[$x]['price'];
-					$arrObj->qty= $datas[$x]['qty'];
-					$arrObj->subtotal = $datas[$x]['subtotal'];
-					$arrObj->prod_id= $datas[$x]['prod_id'];
-					$array[] = $arrObj;
-					
-				}
-				$data['receipt_item'] = $array;
-		// }else{
-		// 	$data['receipt_item'] = null;
-		// }
-		
-		//   $this->load->view('pos/vOrder',$data);
-
- print_r($data);
-		   
-		  
-		   
 		}
 		public function addOrderItem($page,$product_id,$eid)
 		{
@@ -282,20 +298,46 @@
 			}
 
 		}
-
-		public function updateQty()
-		{
-		
-			$id = $this->input->post('eid');
-			$qty = $this->input->post('qty');
-			$details = $this->MOrderItem->updateQty($id,$qty);
-		}
-
 		function viewOrderInfo()
 		{
 			$this->load->view('imports/vAdminHeader');
 			$this->load->view('admin/vOrderInfo');
 			$this->load->view('imports/vAdminFooter');
+		}
+
+		public function removeToList($id,$page,$eid)
+		{
+			// print_r('deleting..');
+			// $order_item_id = $this->input->post('order_item');
+			// print_r($order_item_id);
+			if($page == 'qr'){
+				$result = $this->MOrderItem->delete($id);
+			}else{
+				$result = $this->MReceiptItem->delete($id);
+			}
+			
+			if($result){
+				 redirect('COrderItem/viewEdit/'.$page.'/'.$eid);
+			}
+		}
+
+		public function updateList($order_item_id,$page,$eid)
+		{
+			if($this->input->post('qty'."$order_item_id") > 0){
+			
+				$data = array('receipt_item_quantity' => $this->input->post('qty'."$order_item_id"),
+						  'receipt_item_subtotal' => $this->input->post('prod_total')
+						  );
+				$result = $this->MReceiptItem->update($order_item_id,$data);
+				if($result){
+					 redirect('COrderItem/viewEdit/'.$page.'/'.$eid);
+				}
+			} else {
+				$result = $this->MReceiptItem->delete($order_item_id);
+				if($result){
+					 redirect('COrderItem/viewEdit/'.$page.'/'.$eid);
+				}
+			}
 		}
 	}
 ?>

@@ -26,7 +26,7 @@
               <?php foreach ($products as $prod){ ?>
               
               <div class="ui grey card">
-                <form method="POST" action="<?php echo site_url().'/COrderItem/addOrderItem/'.$page.'/'.$prod->product_id.'/'.$eid;?>">
+                <form method="POST" action="<?php echo site_url().'/CReceiptItem/editReceiptItem/'.$page.'/'. $prod->product_id.'/'.$this->session->userdata['receiptSession']['receipt_id'];?>">
                   <div class="ui grey card">
                 <img class="ui centered fluid image" src= "<?php echo base_url($prod->product_image)?>">
                 <div class="content">
@@ -85,6 +85,37 @@ $(document).ready(function(){
     //     error: function(jqXHR, errorThrown){
     //         console.log(errorThrown);
     //     }
+
+
+     $('.confirmRemove').click(function(){
+      $('#order_item_id').val($(this).data("id"));
+      $('#removeItem').modal('show');
+
+    });
+    var value = 0 ;
+    $(document).on('click','#plus',function() {
+      var id = $(this).data("id");
+      var get = parseInt($('#qty'+id).val());
+          if (get <= 99) {
+            get += 1;
+            $('#qty'+id).val(get);  
+        }
+    });
+
+    $(document).on('click','#minus',function(e) {
+      var id = $(this).data("id");
+      if($('#qty'+id).val() > 1){
+        var get = $('#qty'+id).val();
+        get -= 1;
+        $('#qty'+id).val(get); 
+      }else{
+        $('#order_item_id').val($('#od_id'+id).val());
+        $('#removeItem').modal('show');
+        e.preventDefault();
+      }
+    });
+
+    $('.ui.modal').modal('setting', 'closable', false);
      });
 
   // $('.pbtn').on('click', function() {

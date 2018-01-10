@@ -185,6 +185,7 @@
 					foreach ($result as $value) {
 						$arr= new stdClass;
 						$arr->item_id = $value->receipt_item_id;
+						$arr->product_id = $value->product_id;
 						$arr->product_name = $value->product_name;
 						$arr->product_price = $value->product_price;
 						$arr->order_item_qty = $value->receipt_item_quantity;

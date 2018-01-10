@@ -33,10 +33,10 @@
               <?php if(isset($receipt_item)) { ?>
                  <?php foreach ($receipt_item as $item){ ?>
               <tr class="trow" id="trow">
-                <td class="name"><?php echo $item->name ?></td>
-                <td><?php echo $item->price ?></td>
-                <td><?php echo $item->qty?></td>
-                <td class="subtotal"><?php echo $item->subtotal?></td>
+                <td class="name"><?php echo $item->product_name ?></td>
+                <td><?php echo $item->product_price ?></td>
+                <td><?php echo $item->receipt_item_quantity?></td>
+                <td class="subtotal"><?php echo $item->receipt_item_subtotal?></td>
 
               </tr>
               <?php } ?>
@@ -106,7 +106,7 @@
         <a href="<?php echo site_url();?>/CLogin/viewPosNoSession" class="lft lbtn" align="center" ><h4 class="lbtnlabel">Back</h4></a>
       </div>
       <div class="ten wide column">
-        <button class="rght rbtn" align="center" id="rbtn"><h4 class="rbtnlabel">Charge/No Receipt</h4></button>
+       <button class="rght rbtn" id="rbtn" align="center"><h4 class="rbtnlabel">Charge/No Receipt</h4></button>
       </div>
       <div class="three wide column">
         <a href="<?php echo site_url();?>/CReceipt/viewReceipt" class="rght rbtn" align="center""><h4 class="rbtnlabel">Charge & Print</h4></a>
@@ -118,6 +118,14 @@
     
 <script type="text/javascript">
    $(document).ready(function(){
+      var sum = 0;
+      $(".subtotal").each(function() {
+          var value = $(this).text();
+          if(!isNaN(value) && value.length != 0) {
+              sum += parseFloat(value);
+          }
+          $("#due").html(sum); 
+      });
         $('#amount').on('keyup', function() {
           var amt = $("#amount").val();
           var due = $("#due").text();
@@ -133,14 +141,7 @@
           }
         });
   
-      var sum = 0;
-      $(".subtotal").each(function() {
-          var value = $(this).text();
-          if(!isNaN(value) && value.length != 0) {
-              sum += parseFloat(value);
-          }
-          $("#due").html(sum); 
-      });
+     
 
        $('#rbtn').on('click',function(){
 
@@ -191,6 +192,53 @@
     //       }
     //   });
     // });
+
+    function storeTblValues(){
+
+        var tableData = new Array();
+        $("#myTable tr").each(function(row,tr){
+            tableData[row] = {
+              "qty" :$(tr).find('td:eq(2)').text()
+            , "subtotal" :$(tr).find('td:eq(3)').text()
+            , "prod_id" : $(tr).find('#prod_id').val()
+            }
+        });
+
+       tableData.shift();
+       return tableData;
+      }
+
+    $('#rbtn').on('click',function(){
+
+      var tableData;
+      var total = $("#due").text();
+      var cash = $("#cash").text();
+      var change = $("#change").text();
+      tableData = storeTblValues();
+
+      tableData = $.toJSON(tableData);
+      var dataSet =  "pTableData=" + tableData+"&total="+total+"&cash="+cash+"&change="+change;
+
+      $.ajax({
+        type: "POST",
+        url: "<?php echo site_url()?>/CReceipt/addManualOrderToReceipt",
+        data: dataSet,
+        cache: false,
+        success: function(result){
+           // alert(result);
+           $('body').html(result);
+        },
+        error: function(jqXHR, errorThrown){
+            console.log(errorThrown);
+        }
+
+      });
+
+    });
+
+
+
+
    });
 </script>
 
