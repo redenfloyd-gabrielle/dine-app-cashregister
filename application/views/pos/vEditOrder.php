@@ -51,11 +51,11 @@
           <input type="hidden" name="ordered_id" id="ordered_id" value="<?php echo $eid; ?>">
           <div class="ui three cards">
             <div class="ui card">
-              <a class="image" href="<?php echo site_url()."/CProduct/viewProductEdit/".$page."/RICE MEAL/".$eid; ?>">
+              <a class="image" href="<?php echo site_url()."/CProduct/viewProductEdit/".$page."/RICE MEAL/".$eid."/".$qr; ?>">
                 <img class="ui centered fluid image" src="<?php echo base_url('assets/images/ricemeal.png')?>">
               </a>
               <div class="content">
-                <a class="header" href="<?php echo site_url()."/CProduct/viewProductEdit/".$page."/RICE MEAL/".$eid; ?>">RICE MEAL</a>
+                <a class="header" href="<?php echo site_url()."/CProduct/viewProductEdit/".$page."/RICE MEAL/".$eid."/".$qr; ?>">RICE MEAL</a>
                 <div class="meta">
                   <a>Category</a>
                 </div>
@@ -63,11 +63,11 @@
             </div>
 
             <div class="ui card">
-              <a class="image" href="<?php echo site_url()."/CProduct/viewProductEdit/".$page."/DRINKS/".$eid; ?>">
+              <a class="image" href="<?php echo site_url()."/CProduct/viewProductEdit/".$page."/DRINKS/".$eid."/".$qr; ?>">
                 <img class="ui centered fluid image" src="<?php echo base_url('assets/images/drinks.svg')?>">
               </a>
               <div class="content">
-                <a class="header" href="<?php echo site_url()."/CProduct/viewProductEdit/".$page."/DRINKS/".$eid; ?>">DRINKS</a>
+                <a class="header" href="<?php echo site_url()."/CProduct/viewProductEdit/".$page."/DRINKS/".$eid."/".$qr; ?>">DRINKS</a>
                 <div class="meta">
                   <a>Category</a>
                 </div>
@@ -75,11 +75,11 @@
             </div>
 
             <div class="ui card">
-              <a class="image" href="<?php echo site_url()."/CProduct/viewProductEdit/".$page."/SOUP/".$eid; ?>">
+              <a class="image" href="<?php echo site_url()."/CProduct/viewProductEdit/".$page."/SOUP/".$eid."/".$qr; ?>">
                 <img class="ui centered fluid image" src="<?php echo base_url('assets/images/soup.png')?>">
               </a>
               <div class="content">
-                <a class="header" href="<?php echo site_url()."/CProduct/viewProductEdit/".$page."/SOUP/".$eid; ?>">SOUP</a>
+                <a class="header" href="<?php echo site_url()."/CProduct/viewProductEdit/".$page."/SOUP/".$eid."/".$qr; ?>">SOUP</a>
                 <div class="meta">
                   <a>Category</a>
                 </div>
@@ -87,11 +87,11 @@
             </div>
 
             <div class="ui card">
-              <a class="image" href="<?php echo site_url()."/CProduct/viewProductEdit/".$page."/MAIN COURSE/".$eid; ?>">
+              <a class="image" href="<?php echo site_url()."/CProduct/viewProductEdit/".$page."/MAIN COURSE/".$eid."/".$qr; ?>">
                 <img class="ui centered fluid image" src="<?php echo base_url('assets/images/meals.svg')?>">
               </a>
               <div class="content">
-                <a class="header" href="<?php echo site_url()."/CProduct/viewProductEdit/".$page."/MAIN COURSE/".$eid; ?>">MAIN COURSE</a>
+                <a class="header" href="<?php echo site_url()."/CProduct/viewProductEdit/".$page."/MAIN COURSE/".$eid."/".$qr; ?>">MAIN COURSE</a>
                 <div class="meta">
                   <a>Category</a>
                 </div>
@@ -99,11 +99,11 @@
             </div>
 
             <div class="ui card">
-              <a class="image" href="<?php echo site_url()."/CProduct/viewProductEdit/".$page."/EXTRAS/".$eid; ?>">
+              <a class="image" href="<?php echo site_url()."/CProduct/viewProductEdit/".$page."/EXTRAS/".$eid."/".$qr; ?>">
                 <img class="ui centered fluid image" src="<?php echo base_url('assets/images/extras.svg')?>">
               </a>
               <div class="content">
-                <a class="header" href="<?php echo site_url()."/CProduct/viewProductEdit/".$page."/EXTRAS/".$eid; ?>">EXTRAS</a>
+                <a class="header" href="<?php echo site_url()."/CProduct/viewProductEdit/".$page."/EXTRAS/".$eid."/".$qr; ?>">EXTRAS</a>
                 <div class="meta">
                   <a>Category</a>
                 </div>
@@ -120,29 +120,5 @@
 </div>
 </body>
 </html>
-<script>
-//  $(document).ready(function(){
-   
-//     var ordered_id = $('#ordered_id').val();
-   
-//     var dataSet = "ordered_id="+ordered_id;
-//     $.ajax({
-//         type: "POST",
-//         url: '<?php //echo site_url()?>/COrderItem/displayOrderListFromQR',
-//         data: dataSet,
-//         cache: false,
-//         success: function(result){
-//             if(result){
-//                $('#vEditOrder').html(result);
-//             }else{
-//                 alert("Error");
-//             }                         
-//         },
-//         error: function(jqXHR, errorThrown){
-//             console.log(errorThrown);
-//         }
-//     });
-// });
-    
-</script>
+
 

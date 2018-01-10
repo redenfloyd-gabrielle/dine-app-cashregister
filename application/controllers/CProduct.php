@@ -137,7 +137,7 @@
 
 			// print_r($data);
 		}
-		public function viewProductEdit($page,$cat,$id)
+		public function viewProductEdit($page,$cat,$id,$qr)
 		{
 			$cat = urldecode($cat);
 			$result = $this->MProduct->getProductsByCategory($cat);
@@ -200,6 +200,7 @@
 			}
 			
 			$data['eid'] = $id;
+			$data['qr'] = $qr;
 			$this->load->view('imports/vPosHeader');
 			$this->load->view('pos/vProductEdit',$data);
 

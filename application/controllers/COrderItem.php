@@ -55,7 +55,7 @@
 		// 	echo $res;
 		// }
 
-		public function viewEdit($page,$id)
+		public function viewEdit($page,$id,$qr)
 		{
 			$order_item = new MOrderItem();
 			$receipt_item = new MReceiptItem();
@@ -68,6 +68,7 @@
 				if($result){
 					foreach ($result as $value) {
 						$arr= new stdClass;
+						$arr->product_id = $value->product_id;
 						$arr->product_name = $value->product_name;
 						$arr->item_id = $value->order_item_id;
 						$arr->product_price = $value->product_price;
@@ -101,6 +102,7 @@
 			}
 			$data['page'] = $page;
 			$data['eid'] = $id;
+			$data['qr'] = $qr;
 			
 			$this->load->view('pos/vEditOrder',$data);
 			
@@ -236,68 +238,7 @@
 			echo $q->product_name."|".$q->product_price."|".$qty."|".$q->product_price; 
 
 		}
-		public function addOrderItem($page,$product_id,$eid)
-		{
-			$qty = 1;
-			$product = $this->MProduct->getProductDetailsById($product_id);
-			
-			foreach ($product as $p) {}
-
-			if($page == 'qr') {
-
-				$checker = $this->MOrderItem->getOrderItemDetailsByProduct($product_id,$eid);
-				
-				if(empty($checker)){
-					 $insertData = array('order_item_id' => null,
-		   				       'order_item_subtotal' => $p->product_price,
-		   				       'order_item_qty' => 1,
-		   				       'order_item_product_id' => $product_id,
-		   				       'order_item_ordered_id' => $eid,
-		   				       'order_item_status' => 'pending'
-						);
-					  $o = $this->MOrderItem->insert($insertData);
-				 }else{
-					foreach ($checker as $check) {}
-						$qty += $check->order_item_qty;
-					    $id = $check->order_item_id;
-						$subtotal = $qty * $p->product_price;
-					    
-						$updateField = array('order_item_qty'=> $qty,
-										'order_item_subtotal' => $subtotal);
-						$o = $this->MOrderItem->update($id,$updateField);
-				} 
-			}else{
-			       
-				$checker = $this->MReceiptItem->getReceiptItemDetailsByProduct($product_id,$eid);
 		
-				if(empty($checker)){
-					 $insertData = array('receipt_item_id' => null,
-		   				       'receipt_item_subtotal' => $p->product_price,
-		   				       'receipt_item_quantity' => 1,
-		   				       'receipt_item_product_id' => $product_id,
-		   				       'receipt_item_receipt_id' => $eid
-						);
-					  $o = $this->MReceiptItem->insert($insertData);
-				 }else{
-					
-					foreach ($checker as $check) {}
-						$qty += $check->receipt_item_quantity;
-					    $id = $check->receipt_item_id;
-						$subtotal = $qty * $p->product_price;
-					    
-						$updateField = array('receipt_item_quantity'=> $qty,
-										'receipt_item_subtotal' => $subtotal);
-						$o = $this->MReceiptItem->update($id,$updateField);  
-				}	
-		    }
-			$cat = $p->product_category;
-			 if ($o){
-				redirect('CProduct/viewProductEdit/'.$page.'/'.$cat.'/'.$eid);
-			} else {
-				print_r('SOMETHING WENT WRONG;');
-			}
-
-		}
 		function viewOrderInfo()
 		{
 			$this->load->view('imports/vAdminHeader');
@@ -305,7 +246,7 @@
 			$this->load->view('imports/vAdminFooter');
 		}
 
-		public function removeToList($id,$page,$eid)
+		public function removeToList($id,$page,$eid,$qr)
 		{
 			// print_r('deleting..');
 			// $order_item_id = $this->input->post('order_item');
@@ -317,27 +258,49 @@
 			}
 			
 			if($result){
-				 redirect('COrderItem/viewEdit/'.$page.'/'.$eid);
+				redirect('COrderItem/viewEdit/'.$page.'/'.$eid.'/'.$qr);
 			}
 		}
 
-		public function updateList($order_item_id,$page,$eid)
+		public function updateList($item_id,$page,$eid,$qr)
 		{
-			if($this->input->post('qty'."$order_item_id") > 0){
-			
-				$data = array('receipt_item_quantity' => $this->input->post('qty'."$order_item_id"),
-						  'receipt_item_subtotal' => $this->input->post('prod_total')
-						  );
-				$result = $this->MReceiptItem->update($order_item_id,$data);
-				if($result){
-					 redirect('COrderItem/viewEdit/'.$page.'/'.$eid);
+			$qty = $this->input->post('qty'."$item_id"); 
+			$price = $this->input->post('prod_price');
+			$subtotal = $price * $qty;
+			if($page == "manual"){
+				if($qty > 0){
+					$data = array('receipt_item_quantity' => $qty,
+							  'receipt_item_subtotal' => $subtotal
+							  );
+					$result = $this->MReceiptItem->update($item_id,$data);
+					if($result){
+						 redirect('COrderItem/viewEdit/'.$page.'/'.$eid.'/'.$qr);
+					}
+				} else {
+					$result = $this->MReceiptItem->delete($item_id);
+					if($result){
+						 redirect('COrderItem/viewEdit/'.$page.'/'.$eid.'/'.$qr);
+					}
 				}
-			} else {
-				$result = $this->MReceiptItem->delete($order_item_id);
-				if($result){
-					 redirect('COrderItem/viewEdit/'.$page.'/'.$eid);
+			}else{
+				if($qty > 0){
+					$data = array('order_item_qty' => $qty,
+							  'order_item_subtotal' => $subtotal
+							  );
+					$result = $this->MOrderItem->update($item_id,$data);
+					if($result){
+						 redirect('COrderItem/viewEdit/'.$page.'/'.$eid.'/'.$qr);
+					}
+				} else {
+					$result = $this->MOrderItem->delete($item_id);
+					if($result){
+						 redirect('COrderItem/viewEdit/'.$page.'/'.$eid.'/'.$qr);
+					}
 				}
 			}
+			
+			print_r($qty);
+
 		}
-	}
+ 	}
 ?>

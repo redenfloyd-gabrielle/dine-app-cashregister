@@ -20,21 +20,6 @@
 		}
 
 
-		public function updateReceiptItemStatus($id,$page,$eid)
-		{
-			if($page == 'manual'){
-				$data = array('receipt_item_status' => 'INACTIVE');
-				$query = $this->MReceiptItem->update($id,$data);
-			}else{
-				$data = array('order_item_status' => 'INACTIVE');
-				 $query = $this->MOrderItem->update($id,$data);
-			}
-			
-		    if ($query) {
-		       redirect('COrderItem/viewEdit/'.$page.'/'.$eid);
-		    }
-		}
-
 		public function addReceiptItem($product_id,$receipt_id)
 		{
 			$qty = 1;
@@ -73,43 +58,68 @@
 
 		}
 
-		public function editReceiptItem($page,$product_id,$receipt_id)
+		public function editItems($page,$product_id,$eid,$qr)
 		{
 			$qty = 1;
-
-			$checker = $this->MReceiptItem->getReceiptItemDetailsByProduct($product_id,$receipt_id);
-			
 			$product = $this->MProduct->getProductDetailsById($product_id);
 			
 			foreach ($product as $p) {}
 
-			if(empty($checker)){
-				 $insertData = array('receipt_item_id' => null,
-	   				       'receipt_item_subtotal' => $p->product_price,
-	   				       'receipt_item_quantity' => 1,
-	   				       'receipt_item_product_id' => $product_id,
-	   				       'receipt_item_receipt_id' => $receipt_id
-					);
-				  $r = $this->MReceiptItem->insert($insertData);
-			 }else{
+			if($page == 'qr') {
+
+				$checker = $this->MOrderItem->getOrderItemDetailsByProduct($product_id,$eid);
 				
-				foreach ($checker as $check) {}
-					$qty += $check->receipt_item_quantity;
-				    $id = $check->receipt_item_id;
-					$subtotal = $qty * $p->product_price;
-				    
-					$updateField = array('receipt_item_quantity'=> $qty,
-									'receipt_item_subtotal' => $subtotal);
-					$r = $this->MReceiptItem->update($id,$updateField);  
-			}	
+				if(empty($checker)){
+					 $insertData = array('order_item_id' => null,
+		   				       'order_item_subtotal' => $p->product_price,
+		   				       'order_item_qty' => 1,
+		   				       'order_item_product_id' => $product_id,
+		   				       'order_item_ordered_id' => $eid,
+		   				       'order_item_status' => 'pending'
+						);
+					  $o = $this->MOrderItem->insert($insertData);
+				 }else{
+					foreach ($checker as $check) {}
+						$qty += $check->order_item_qty;
+					    $id = $check->order_item_id;
+						$subtotal = $qty * $p->product_price;
+					    
+						$updateField = array('order_item_qty'=> $qty,
+										'order_item_subtotal' => $subtotal);
+						$o = $this->MOrderItem->update($id,$updateField);
+				} 
+			}else{
+			       
+				$checker = $this->MReceiptItem->getReceiptItemDetailsByProduct($product_id,$eid);
+		
+				if(empty($checker)){
+					 $insertData = array('receipt_item_id' => null,
+		   				       'receipt_item_subtotal' => $p->product_price,
+		   				       'receipt_item_quantity' => 1,
+		   				       'receipt_item_product_id' => $product_id,
+		   				       'receipt_item_receipt_id' => $eid
+						);
+					  $o = $this->MReceiptItem->insert($insertData);
+				 }else{
+					
+					foreach ($checker as $check) {}
+						$qty += $check->receipt_item_quantity;
+					    $id = $check->receipt_item_id;
+						$subtotal = $qty * $p->product_price;
+					    
+						$updateField = array('receipt_item_quantity'=> $qty,
+										'receipt_item_subtotal' => $subtotal);
+						$o = $this->MReceiptItem->update($id,$updateField);  
+				}	
+		    }
 			$cat = $p->product_category;
-			 if ($r) {
-				redirect('CProduct/viewProductEdit/'.$page.'/'.$cat.'/'.$receipt_id);
+			 if ($o){
+				redirect('CProduct/viewProductEdit/'.$page.'/'.$cat.'/'.$eid.'/'.$qr);
 			} else {
 				print_r('SOMETHING WENT WRONG;');
 			}
 
-}
+		}
 		public function displayOrderListManual()
 		{
 			$receipt_id = $_POST['receipt_id'];
