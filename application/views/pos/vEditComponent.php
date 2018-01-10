@@ -50,7 +50,7 @@
                     </button>
                   </td>
                   <td>P<span class="subtotal" id="subtotal" name='sub<?php echo $order->item_id; ?>'><?php echo $order->order_item_subtotal; ?></span></td>
-                  <td ><button class="ibtn"><i class="red remove icon"></i></button></td>
+                  <td ><button class="ibtn confirmRemove"><i class="red remove icon"></i></button></td>
                   <input type="hidden" id="order_item" name ="order_item" value="<?php $order->item_id?>">
               </tr>
              </form>
@@ -78,13 +78,13 @@
   <div class="ui grid orderOptions">
     <div class="row"></div>
 
-    <div class="row orderOptions">
-      <div class="seven wide column"></div>
+    <div class="row">
+      <div class="column"></div>
       <div class="four wide column">
       <?php if($page == 'manual'){
-        echo '<a href="'.site_url().'/CProduct/viewMDashboard" class="lft lbtn" align="center" ><h4 class="lbtnlabel">Back</h4></a>';
+        echo '<a href="'.site_url().'/CProduct/viewMDashboard" class="ui floated right blue button" align="center" ><h4 class="lbtnlabel">Back</h4></a>';
         }else{
-        echo '<a href="'.site_url().'/COrdered/displayOrderFromEditPage/'.$qr.'" class="lft lbtn" align="center" ><h4 class="lbtnlabel">Back</h4></a>';
+        echo '<a href="'.site_url().'/COrdered/displayOrderFromEditPage/'.$qr.'" class="ui floated right blue button" align="center" ><h4 class="lbtnlabel">Back</h4></a>';
         }
         ?>
       </div>
