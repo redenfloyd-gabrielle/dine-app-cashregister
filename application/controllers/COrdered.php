@@ -65,7 +65,42 @@
 				
 			}
 			if($data == null){
-				echo "<script>alert('INVALID QR CODE')</script>";
+				// echo "<script>alert('INVALID QR CODE')</script>";
+			}else{
+				$res = $this->load->view('pos/vQrOrder',$data,TRUE);
+				echo $res;	
+			}
+			
+		}
+
+		public function displayOrderFromEditPage($qr)
+		{
+			$result = $this->MOrdered->getOrderByQR($qr);
+			if($result){
+				foreach ($result as $q) {}
+				$id = $q->ordered_id;
+				$total = $q->ordered_total;
+				$result1 = $this->MOrdered->displayOrderItemsByOrder($id);
+			   
+			    $qty = 0;
+			
+				$data['order_info'] = null;
+				if($result1){
+					foreach ($result1 as $r) {
+					$qty += $r->order_item_qty;
+				    }
+					$data['order_info'] = $result1;
+				}
+				$data['total'] = $total;
+				$data['qty'] = $qty;
+				$data['id'] = $id;
+				$data['qr'] = $qr;
+			}else{
+				$data = null;
+				
+			}
+			if($data == null){
+				// echo "<script>alert('INVALID QR CODE')</script>";
 			}else{
 				$res = $this->load->view('pos/vQrOrder',$data,TRUE);
 				echo $res;	

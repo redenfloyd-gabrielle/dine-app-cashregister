@@ -13,7 +13,7 @@
       </div>
       <div class="three wide column">
     <!--   <button class="ibtn" id="ibtn"><i class="huge blue edit icon"></i></button> -->
-        <a href="<?php echo site_url()?>/COrderItem/viewEdit/manual/<?php echo $this->session->userdata['receiptSession']['receipt_id']?>"><i class="huge blue edit icon"></i></a>
+        <a href="<?php echo site_url()?>/COrderItem/viewEdit/manual/<?php echo $this->session->userdata['receiptSession']['receipt_id'].'/1';?>"><i class="huge blue edit icon"></i></a>
       </div>
     </div>
     <div class="row">
@@ -35,7 +35,7 @@
               <tr class="trow" id="trow">
                 <td class="name"><?php echo $item->product_name ?></td>
                 <td><?php echo $item->product_price ?></td>
-                <td><?php echo $item->receipt_item_quantity?></td>
+                <td ><?php echo $item->receipt_item_quantity?></td>
                 <td class="subtotal"><?php echo $item->receipt_item_subtotal?></td>
 
               </tr>

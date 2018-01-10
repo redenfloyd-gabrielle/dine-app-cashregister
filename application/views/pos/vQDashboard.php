@@ -23,11 +23,10 @@
 				</div>
 			</div>
 		</div>
-		 <div id="vOrder" class="column">
+		<!--  <div id="vOrder" class="column"> -->
 	    </div>
 	</div>
 </div>
-<!-- <div class="vdivide"></div> -->
 </body>
 </html>
 <script type="text/javascript"> 
@@ -50,7 +49,7 @@
 			cache: false,
 			success: function(result){
 				if(result){
-					$('#vOrder').html(result);
+					$('body').html(result);
 				 }else{
 					alert("Error");
 				 }                 
