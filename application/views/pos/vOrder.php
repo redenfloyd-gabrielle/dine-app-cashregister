@@ -100,16 +100,18 @@
 
   <div class="ui grid">
     <div class="row"></div>
-
+    <div class="row"></div>
     <div class="row">
+      <div class="column"></div>
       <div class="three wide column">
-        <a href="<?php echo site_url();?>/CLogin/viewPosNoSession" class="lft lbtn" align="center" ><h4 class="lbtnlabel">Back</h4></a>
+        <a href="<?php echo site_url();?>/CLogin/viewPosNoSession" class="ui right floated blue button" align="center" ><h4 class="lbtnlabel">Back</h4></a>
       </div>
-      <div class="ten wide column">
-       <button class="rght rbtn" id="rbtn" align="center"><h4 class="rbtnlabel">Charge/No Receipt</h4></button>
+      <div class="five wide column"></div>
+      <div class="three wide column">
+       <button class="ui floated blue button" id="rbtn" align="center"><h4 class="rbtnlabel">Charge/No Receipt</h4></button>
       </div>
       <div class="three wide column">
-        <a href="<?php echo site_url();?>/CReceipt/viewReceipt" class="rght rbtn" align="center""><h4 class="rbtnlabel">Charge & Print</h4></a>
+         <button class="ui right floated blue button" id="rbtn" align="center"><h4 class="rbtnlabel">Charge & Print</h4></button>
       </div>
       
       <div class="column"></div>

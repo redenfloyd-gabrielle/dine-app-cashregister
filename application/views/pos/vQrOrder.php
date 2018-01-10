@@ -62,14 +62,15 @@
           <div class="row">
             <div class="column"></div>
             <div class="fourteen wide column">
-            <div class="ui breadcrumb">
-              <a class="section" href="<?php echo site_url()?>/CLogin/viewPos?>">Home</a>
-              <i class="right chevron icon divider"></i>
-              <div class="active section">QR SCANNER</div>
-            </div> 
-            <div class="mid">
-              
-            </div>
+              <div class="ui breadcrumb">
+                <a class="section" href="<?php echo site_url()?>/CLogin/viewPos?>">Home</a>
+                <i class="right chevron icon divider"></i>
+                <div class="active section">QR SCANNER</div>
+              </div> 
+              <div class="column"></div>
+              <div class="mid">
+                <img src='<?php echo base_url("assets/images/disable.jpg")?>' class="disabled ui fluid image">
+              </div>
             </div>
             <div class="column"></div>    
           </div>
@@ -181,16 +182,18 @@
 
   <div class="ui grid ">
     <div class="row"></div>
-
+    <div class="row"></div>
     <div class="row">
+      <div class="column"></div>
       <div class="three wide column">
-        <a href="<?php echo site_url();?>/CLogin/viewPosNoSession" class="lft lbtn" align="center" ><h4 class="lbtnlabel">Back</h4></a>
+        <a href="<?php echo site_url();?>/CLogin/viewPosNoSession" class="ui floated right blue button" align="center" ><h4 class="lbtnlabel">Back</h4></a>
       </div>
-      <div class="ten wide column">
-        <button class="rght rbtn" id="rbtn" align="center"><h4 class="rbtnlabel">Charge/No Receipt</h4></button>
+      <div class="five wide column"></div>
+      <div class="three wide column">
+        <button class="ui floated blue button" id="rbtn" align="center"><h4 class="rbtnlabel">Charge/No Receipt</h4></button>
       </div>
       <div class="three wide column">
-        <a href="<?php echo site_url();?>/CReceipt/viewReceipt" class="rght rbtn" align="center" "><h4 class="rbtnlabel">Charge & Print</h4></a>
+         <button class="ui floated right blue button" id="rbtn" align="center"><h4 class="rbtnlabel">Charge/No Receipt</h4></button>
       </div>
       
       <div class="column"></div>
