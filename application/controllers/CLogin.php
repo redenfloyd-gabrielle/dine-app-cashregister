@@ -16,7 +16,18 @@
 
 		public function index()
 		{
-			$this->load->view('vLogin');
+			if ($this->session->userdata('userSession') == FALSE) {
+				$this->load->view('vLogin');
+			} elseif ($this->session->userdata['userSession']['user_type'] == 'ADMIN') {
+			    redirect('CLogin/viewAdminDashboard');
+			} else if ($this->session->userdata['userSession']['user_type'] == 'REGULAR') {
+			    redirect('CLogin/viewPos');
+			} else if ($this->session->userdata['userSession']['user_type'] == 'SUPERADMIN') {
+			    redirect('CLogin/viewSuperadminDashboard');
+			} else {
+			    redirect('CInitialize');
+			}
+
 		}
 
 		function viewAdminDashboard()
@@ -53,45 +64,53 @@
 			$this->load->view('pos/index');
 		}
 		function userLogin(){
-			
-			$this->form_validation->set_rules('user_id','User ID','required');
-			$this->form_validation->set_rules('password','Password','required');
-			if($this->form_validation->run()){
-				$userID = $this->input->post('user_id');
-				$password =	hash('sha512',$this->input->post('password')) ;
-				$this->MUser->setUser_id($this->input->post('user_id'));
-				$this->MUser->setUser_password(hash('sha512',$this->input->post('password')));
-				$result = $this->MUser->attemptLogin();
-				// print_r($result);
-				if ($result) {
+			if ($this->session->userdata('userSession') == FALSE) {
+
+				$this->form_validation->set_rules('user_id','User ID','required');
+				$this->form_validation->set_rules('password','Password','required');
+				if($this->form_validation->run()){
+					$userID = $this->input->post('user_id');
+					$password =	hash('sha512',$this->input->post('password')) ;
+					$this->MUser->setUser_id($this->input->post('user_id'));
+					$this->MUser->setUser_password(hash('sha512',$this->input->post('password')));
+					$result = $this->MUser->attemptLogin();
 					// print_r($result);
-					$this->createSession($result);
-					// print_r($this->session->userdata['userSession']['user_type']);
-					if ($result[0]->user_type == 'ADMIN') {
-						redirect('CLogin/viewAdminDashboard');
-					} elseif ($result[0]->user_type == 'SUPERADMIN') {
-						redirect('CLogin/viewSuperadminDashboard');
-					} else if ($result[0]->user_type == 'REGULAR') {
-						redirect('CLogin/viewPos');
+					if ($result) {
+						// print_r($result);
+						$this->createSession($result);
+						// print_r($this->session->userdata['userSession']['user_type']);
+						if ($result[0]->user_type == 'ADMIN') {
+							redirect('CLogin/viewAdminDashboard');
+						} elseif ($result[0]->user_type == 'SUPERADMIN') {
+							redirect('CLogin/viewSuperadminDashboard');
+						} else if ($result[0]->user_type == 'REGULAR') {
+							redirect('CLogin/viewPos');
+						} else {
+							$data['errors'] = "Invalid Login Attemp!";
+							$data['msg'] = "Check User ID and Password.";
+
+							$this->load->view('vLogin',$data);
+						}
 					} else {
 						$data['errors'] = "Invalid Login Attemp!";
 						$data['msg'] = "Check User ID and Password.";
 
 						$this->load->view('vLogin',$data);
-						// redirect('CLogin',$data);
-					
 					}
-				} else {
-					$data['errors'] = "Invalid Login Attemp!";
-					$data['msg'] = "Check User ID and Password.";
-
-					$this->load->view('vLogin',$data);
+				}else{
+					$data['errors'] = "Empty Login!";
+					$data['msg'] = "Enter User ID and Password.";
+					
+					$this->load->view('vLogin',$data);	
 				}
-			}else{
-				$data['errors'] = "Empty Login!";
-				$data['msg'] = "Enter User ID and Password.";
-
-				$this->load->view('vLogin',$data);	
+			} elseif ($this->session->userdata['userSession']['user_type'] == 'ADMIN') {
+			    redirect('CLogin/viewAdminDashboard');
+			} else if ($this->session->userdata['userSession']['user_type'] == 'REGULAR') {
+			    redirect('CLogin/viewPos');
+			} else if ($this->session->userdata['userSession']['user_type'] == 'SUPERADMIN') {
+			    redirect('CLogin/viewSuperadminDashboard');
+			} else {
+			    redirect('CInitialize');
 			}
 		}
 

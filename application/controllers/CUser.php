@@ -33,7 +33,7 @@
 			}
 		}
 
-		public function addUser($value='')
+		public function addUser()
 		{
 			$now = new DateTime(NULL, new DateTimeZone('Asia/Manila'));
 

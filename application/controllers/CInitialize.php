@@ -1,4 +1,4 @@
-<?php
+	<?php
 	defined('BASEPATH') OR exit('No direct script access allowed');
 
 	class CInitialize extends CI_Controller {
@@ -20,8 +20,9 @@
 		 */
 
 		public function __Construct(){
-	      parent::__Construct ();
-	 	    $this->load->helper('url');
+	      	parent::__Construct ();
+	 	 	$this->load->helper('url');
+	 	    $this->load->library('session');
 	  }
 
 		public function index() 
