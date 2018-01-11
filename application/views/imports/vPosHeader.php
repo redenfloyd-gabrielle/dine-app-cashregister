@@ -26,6 +26,37 @@
 	</div>
 
 	<script>
+		
+	var qr = new Instascan.Scanner({
+		video: $('#qrcam')[0]
+	});
+	qr.addListener('scan',function(data){
+		
+		dataSet = "qr="+data;
+		$.ajax({
+			type: "POST",
+			url: '<?php echo site_url()?>/COrdered/displayOrderFromQR',
+			data: dataSet,
+			cache: false,
+			success: function(result){
+				if(result){
+					$('body').html(result);
+					
+				 }else{
+					alert("Error");
+				 }                 
+			},
+			error: function(jqXHR, errorThrown){
+				console.log(errorThrown);
+			}
+		});
+	});
+	Instascan.Camera.getCameras().then(function(cams){
+		qr.start(cams[0]);
+	}).catch(function(err){
+		console.log(err);
+	});
+
 
 		function updateClock()
 	    {
