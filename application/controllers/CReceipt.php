@@ -28,14 +28,12 @@
 			$receipt_total = $_POST['total'];
 			$receipt_cash = $_POST['cash'];
 			$receipt_change = $_POST['change'];
-			$receipt_cashier = $this->session->userdata['userSession']['user_id'];
 			$receipt_id = $this->session->userdata['receiptSession']['receipt_id'];
 			$now = new DateTime(NULL, new DateTimeZone('Asia/Manila'));
 			$receipt_date = $now->format('Y-m-d H:i:s');
 
 			$data = array('receipt_date' => $receipt_date,
 						  'receipt_total' => $receipt_total,
-						  'receipt_cashier' => $receipt_cashier,
 						  'receipt_cash' => $receipt_cash,
 						  'receipt_change' => $receipt_change
 			);
@@ -51,6 +49,7 @@
 				$result1 = $this->MReceiptItem->insert($data1);
 			}
 			if($result1){
+				$this->session->unset_userdata('receiptSession');
 				redirect('CLogin/viewPos');
 			}else{
 				print_r("SOMETHING WENT WRONG.");
@@ -63,20 +62,19 @@
 			$receipt_total = $_POST['total'];
 			$receipt_cash = $_POST['cash'];
 			$receipt_change = $_POST['change'];
-			$receipt_cashier = $this->session->userdata['userSession']['user_id'];
 			$receipt_id = $this->session->userdata['receiptSession']['receipt_id'];
 			$now = new DateTime(NULL, new DateTimeZone('Asia/Manila'));
 			$receipt_date = $now->format('Y-m-d H:i:s');
 
 			$data = array('receipt_date' => $receipt_date,
 						  'receipt_total' => $receipt_total,
-						  'receipt_cashier' => $receipt_cashier,
 						  'receipt_cash' => $receipt_cash,
 						  'receipt_change' => $receipt_change
 			);
 			$result = $this->MReceipt->update($receipt_id,$data);
 
 			if($result){
+				$this->session->unset_userdata('receiptSession');
 				redirect('CLogin/viewPos');
 			}else{
 				print_r("SOMETHING WENT WRONG.");

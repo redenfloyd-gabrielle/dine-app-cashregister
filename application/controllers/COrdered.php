@@ -8,6 +8,7 @@
 	      $this->load->helper('url');
 	      $this->load->database(); // load database
 	      $this->load->model('MOrdered');
+	       $this->load->model('MReceipt');
 	      $this->load->helper('url');
 	      $this->load->library('session');
 	  	}
@@ -22,6 +23,17 @@
 			$this->load->view('admin/vOrderList');
 			$this->load->view('imports/vAdminFooter');
  		}
+
+ 		public function createReceiptSession()
+		{
+			$data = array('receipt_id'=>null,
+					"receipt_cashier" => $this->session->userdata['userSession']['user_id']);
+			$this->MReceipt->insert($data);
+			$id = $this->db->insert_id();
+			$this->MReceipt->setReceipt_id($id);
+			$sessionReceipt = array("receipt_id" =>$id);
+			$this->session->set_userdata('receiptSession',$sessionReceipt);
+		}
 		
 		public function viewQDashboard($id){
 			$result = $this->MOrdered->getOrderById($id);
@@ -67,6 +79,7 @@
 			if($data == null){
 				// echo "<script>alert('INVALID QR CODE')</script>";
 			}else{
+				$this->createReceiptSession();
 				$res = $this->load->view('pos/vQrOrder',$data,TRUE);
 				echo $res;	
 			}
