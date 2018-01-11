@@ -69,7 +69,7 @@
               </div> 
               <div class="column"></div>
               <div class="mid">
-                <img src='<?php echo base_url("assets/images/disable.jpg")?>' class="disabled ui fluid image">
+                <img src='<?php echo base_url("assets/images/disable.jpg")?>' class="disabled ui vid image">
               </div>
             </div>
             <div class="column"></div>    
@@ -131,12 +131,12 @@
       <div class="four wide right aligned column">
       </div>
       <div class="nine wide column">
-        <form class="ui form">
+        <div class="ui form">
         <div class="field">
           <label for="amount">Cash Amount</label>
           <input type="number" placeholder="Enter Cash Amount" id="amount">
         </div>
-      </form>
+      </div>
       </div>
       <div class="column"></div>
     </div>
@@ -186,7 +186,7 @@
     <div class="row">
       <div class="column"></div>
       <div class="three wide column">
-        <a href="<?php echo site_url();?>/CLogin/viewPosNoSession" class="ui floated right blue button" align="center" ><h4 class="lbtnlabel">Back</h4></a>
+        <a href="<?php echo site_url();?>/CLogin/viewPos" class="ui floated right blue button" align="center" ><h4 class="lbtnlabel">Back</h4></a>
       </div>
       <div class="five wide column"></div>
       <div class="three wide column">
@@ -218,7 +218,7 @@
             }else{
               $("#change").css("color","black");
               $('#peso').css("color","black");
-            }
+            } 
         });
 
        var sum = 0;

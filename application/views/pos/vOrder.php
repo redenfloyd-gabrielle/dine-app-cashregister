@@ -19,7 +19,6 @@
     <div class="row">
       <div class="column"></div>
       <div class="fourteen wide column">
-        <form>
           <table class="ui single line table itemLabels" id="myTable">
             <thead>
               <tr>
@@ -44,19 +43,18 @@
             </tbody>
           </table>
            <input type="hidden" value="<?php echo $this->session->userdata['receiptSession']['receipt_id']?>" name="eid" id="eid">
-        </form>
       </div>
     </div>
     <div class="row">
       <div class="four wide right aligned column">
       </div>
       <div class="nine wide column">
-        <form class="ui form">
+        <div class="ui form">
         <div class="field">
           <label for="amount">Cash Amount</label>
           <input type="number" placeholder="Enter Cash Amount" id="amount">
         </div>
-      </form>
+      </div>
       </div>
       <div class="column"></div>
     </div>
@@ -104,7 +102,7 @@
     <div class="row">
       <div class="column"></div>
       <div class="three wide column">
-        <a href="<?php echo site_url();?>/CLogin/viewPosNoSession" class="ui right floated blue button" align="center" ><h4 class="lbtnlabel">Back</h4></a>
+        <a href="<?php echo site_url();?>/CLogin/viewPos" class="ui right floated blue button" align="center" ><h4 class="lbtnlabel">Back</h4></a>
       </div>
       <div class="five wide column"></div>
       <div class="three wide column">

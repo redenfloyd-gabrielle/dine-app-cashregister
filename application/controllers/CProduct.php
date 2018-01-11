@@ -11,6 +11,7 @@
 	      $this->load->model('MOrdered');
 	      $this->load->model('MOrderItem');
 	      $this->load->model('MReceiptItem');
+	      $this->load->model('MReceipt');
 	      $this->load->helper('url');
 	      $this->load->library('session');
 	  	}
@@ -103,12 +104,21 @@
 			}
 		}
 
+		public function createReceiptSession()
+		{
+			$data = array('receipt_id'=>null, 'receipt_cashier' => $this->session->userdata['userSession']['user_id']);
+			$this->MReceipt->insert($data);
+			$id = $this->db->insert_id();
+			$this->MReceipt->setReceipt_id($id);
+			$sessionReceipt = array("receipt_id" =>$id);
+			$this->session->set_userdata('receiptSession',$sessionReceipt);
+		}
         public function viewMDashboard(){
+        	$this->createReceiptSession();
 			$this->load->view('imports/vPosHeader');
 			$this->load->view('pos/vMDashboard');
 		}
 
-		
 		public function viewProduct($cat)
 		{
 			$cat = urldecode($cat);
