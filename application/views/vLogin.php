@@ -1,3 +1,4 @@
+<?php if ($this->session->userdata('userSession') == FALSE) { ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -60,3 +61,15 @@ $(document).ready(function(){
     });
 });
 </script>
+
+<?php 
+} elseif ($this->session->userdata['userSession']['user_type'] == 'ADMIN') {
+    redirect('CLogin/viewAdminDashboard');
+} else if ($this->session->userdata['userSession']['user_type'] == 'REGULAR') {
+    redirect('CLogin/viewPos');
+} else if ($this->session->userdata['userSession']['user_type'] == 'SUPERADMIN') {
+    redirect('CLogin/viewSuperadminDashboard');
+} else {
+    redirect('CInitialize');
+}
+?>

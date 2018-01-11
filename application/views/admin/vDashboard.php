@@ -22,9 +22,9 @@
         <!-- content -->
         <div class='ui segment'> 
             <div class='ui labeled three icon item menu'>
-                <a href='<?php echo site_url()?>/CProduct/viewCategoryList?>' class='item'><i class='food icon'></i>PRODUCTS</a>
-                <a href='<?php echo site_url()?>/COrdered/viewOrderList?>' class='item'><i class='shop icon'></i>ORDERS</a>
-                <a href='<?php echo site_url()?>/CReports/viewReports?>' class='item'><i class='calculator icon'></i>REPORTS</a>
+                <a href='<?php echo site_url()?>/CProduct/viewCategoryList' class='item'><i class='food icon'></i>PRODUCTS</a>
+                <a href='<?php echo site_url()?>/COrdered/viewOrderList' class='item'><i class='shop icon'></i>ORDERS</a>
+                <a href='<?php echo site_url()?>/CReports/viewReports' class='item'><i class='calculator icon'></i>REPORTS</a>
             </div> 
             <div class='ui stackable padded grid'>
                 <div class='row'>

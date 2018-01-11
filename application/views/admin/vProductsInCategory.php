@@ -93,33 +93,15 @@
                                         <a href='<?php echo site_url()?>/CProduct/viewProductInfo/<?php echo $prod->product_id; ?>'><button class="ui inverted blue icon button">
                                             <i class="unhide icon"></i>
                                         </button></a>
-                                        <a id='deleteItem'><button class="ui inverted red icon button">
+                                        <a id='deleteItem' class="ui inverted red icon button deleteItem" data-id="<?php echo $prod->product_id; ?>">
                                             <i class="trash icon"></i>
-                                        </button></a>
+                                        </a>
                                     </td>
                                 </tr>
                             <?php } ?>
                             </tbody>
                         </table>
                     </div>
-                    <div class='row'>
-                        <div class='sixteen wide column'>
-                            <div class='ui five stackable cards'>
-                                <?php if (isset($products)) { ?>
-                                <?php foreach($products as $prod) { ?>
-                                <a class='ui small card' href='<?php echo site_url()?>/CProduct/viewProductInfo/<?php echo $prod->product_id; ?>'>
-                                    <div class='image'></div>
-                                    <div class='content' id='superadmin-card'>
-                                        <div class='header' id='userHeader'>
-                                            <?php echo $prod->product_name; ?>
-                                        </div>
-                                    </div>
-                                </a> <!-- meal card -->
-                                <?php } ?>
-                                <?php } ?>
-                            </div> <!-- five cards -->
-                        </div> <!-- sixteen wide column -->
-                    </div> <!-- row -->
 
                     <div class='row'></div> <!-- row -->
 
@@ -164,7 +146,7 @@
   <div class="content">
 <form class='ui form' method='POST' action='<?php echo site_url()?>/CProduct/deleteProduct?>'>
     <center><p style='font-size: 1.5em;'>Are you sure you want to remove this item?</p></center>
-    <input hidden='' type='text' name='product_id' id='product_id' value='<?php echo $prod->product_id?>'>
+    <input type='hidden' name='product_id' id='product_id' value="">
   </div>
   <div class="actions">
     <div class="ui gray basic cancel inverted button">
@@ -186,8 +168,12 @@
 
 <script> 
 $(document).ready(function(){
-    $('#deleteItem').click(function(){
+    $('.deleteItem').click(function(){
+         var id = $(this).data("id");
+         alert(id);
+        $('#product_id').val(id);
         $('#confirmDelete').modal('show');
+        
     });
 });
 </script>
