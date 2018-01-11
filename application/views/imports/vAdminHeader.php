@@ -13,6 +13,7 @@
     <script src='<?php echo base_url("assets/semantic/semantic.min.js")?>'></script>
     <script type="text/javascript" src="<?php echo base_url('assets/jquery/tablesort.js')?>"></script>
     <script type="text/javascript" src="<?php echo base_url('assets/jquery/instascan.min.js')?>"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script src='<?php echo base_url("assets/jquery/sha.js")?>'></script>
 </head>
 <body class="pushable" >  
