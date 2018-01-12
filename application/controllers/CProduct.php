@@ -407,6 +407,35 @@
 			$this->load->view('pos/vMDashboard');
 		}
 
+		public function backToMDashboard($receipt_id){
+        	
+			$result = $this->MReceiptItem->getReceiptItemDetailsByReceipt($receipt_id);
+ 
+			if(isset($result)){
+				$qty = 0;
+				$array = array();
+				foreach ($result as $value) {
+					$arr= new stdClass;
+					$arr->product_id = $value->product_id;
+					$arr->product_name = $value->product_name;
+					$arr->product_price = $value->product_price;
+					$arr->receipt_item_quantity = $value->receipt_item_quantity;
+					$arr->receipt_item_subtotal = $value->receipt_item_subtotal;
+					$array[] = $arr;
+					$qty += $value->receipt_item_quantity;
+			    }
+
+			    $data['receipt_item'] = $array;
+			    $data['total'] = 0;
+				$data['qty'] = $qty;
+				$data['id'] = $receipt_id;
+			}else{
+				$data = null;
+			}
+			$this->load->view('imports/vPosHeader');
+			$this->load->view('pos/vMDashboard',$data);
+		}
+
 		public function viewProduct($cat)
 		{
 			$cat = urldecode($cat);
