@@ -46,6 +46,15 @@
 </body>
 </html>
 <script type="text/javascript"> 
+	Instascan.Camera.getCameras().then(function (cameras) {
+        if (cameras.length > 0) {
+          qr.start(cameras[0]);
+        } else {
+          console.error('No cameras found.');
+        }
+      }).catch(function (e) {
+        console.error(e);
+      });
 
 
 	var qr = new Instascan.Scanner({
@@ -62,6 +71,7 @@
 			success: function(result){
 				if(result){
 					$('body').html(result);
+					qr.stop($('#qrcam')[0]);
 					
 				 }else{
 					alert("Error");
@@ -72,11 +82,7 @@
 			}
 		});
 	});
-	Instascan.Camera.getCameras().then(function(cams){
-		qr.start(cams[0]);
-	}).catch(function(err){
-		console.log(err);
-	});
+	
 
 	$('#ok').on('click', function() {
 	          var qr = $("#ref").val();
@@ -89,7 +95,7 @@
 				success: function(result){
 					if(result){
 						$('body').html(result);
-						
+						qr.stop($('#qrcam')[0]);
 					 }else{
 						alert("Error");
 					 }                 

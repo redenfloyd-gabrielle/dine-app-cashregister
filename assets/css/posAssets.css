@@ -1,4 +1,7 @@
-
+@media print
+  {
+  .yourheader, .yourfooter {display:none;}
+  }
 body{background-color: white !important;max-width: 100%;}
 /* For Firefox */
 input[type='number'] { -moz-appearance:textfield;}
