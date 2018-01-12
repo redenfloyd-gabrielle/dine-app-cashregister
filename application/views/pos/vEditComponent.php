@@ -34,6 +34,7 @@
                   <td><?php echo $order->product_name; ?></td>
                   <td>P<span class="price" name='prod_price'><?php echo $order->product_price; ?></span></td>
                   <input type='hidden' value='<?php echo $order->product_price; ?>' name='prod_price'>
+                  <input type="hidden" id="order_item" name ="order_item" value="<?php echo $order->item_id?>">
 
                   <td class="qtytd">
                     <button class='ui tiny basic left attached icon button minus' id='minus' data-id='<?php echo $order->product_id; ?>'>
@@ -51,7 +52,7 @@
                   </td>
                   <td>P<span class="subtotal" id="subtotal" name='sub<?php echo $order->item_id; ?>'><?php echo $order->order_item_subtotal; ?></span></td>
                   <td ><button class="ibtn confirmRemove"><i class="red remove icon"></i></button></td>
-                  <input type="hidden" id="order_item" name ="order_item" value="<?php $order->item_id?>">
+                  
               </tr>
              </form>
               <?php } ?>
@@ -82,7 +83,7 @@
       <div class="column"></div>
       <div class="four wide column">
       <?php if($page == 'manual'){
-        echo '<a href="'.site_url().'/CProduct/viewMDashboard" class="ui floated right blue button" align="center" ><h4 class="lbtnlabel">Back</h4></a>';
+        echo '<a href="'.site_url().'/CProduct/backToMDashboard/'.$eid.'" class="ui floated right blue button" align="center" ><h4 class="lbtnlabel">Back</h4></a>';
         }else{
         echo '<a href="'.site_url().'/COrdered/displayOrderFromEditPage/'.$qr.'" class="ui floated right blue button" align="center" ><h4 class="lbtnlabel">Back</h4></a>';
         }
