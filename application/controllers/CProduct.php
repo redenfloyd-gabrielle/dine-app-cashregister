@@ -14,6 +14,10 @@
 	      $this->load->model('MReceipt');
 	      $this->load->helper('url');
 	      $this->load->library('session');
+	      $url = $this->config->site_url();
+	      $burl = $this->config->base_url();
+	      $this->link = $burl;
+     	  $this->urlSite = $url.'/CProduct/viewProductInfo/';
 	  	}
 
 		public function index()
@@ -103,6 +107,290 @@
 				print_r('SOMETHING WENT WRONG;');
 			}
 		}
+
+		public function getRiceMeals()
+		{
+			// Datatables Variables
+	        $draw = intval($this->input->get("draw"));
+	        $start = intval($this->input->get("start"));
+	        $length = intval($this->input->get("length"));
+
+
+	        $cat = 'RICE MEAL';
+			$products = $this->MProduct->getItemsByCategory($cat);
+         	$data = array();
+
+			foreach($products->result() as $prod) {
+				if ($prod->product_availability == 'AVAILABLE') {
+					$actions = 	'<a href="'.$this->urlSite.''.$prod->product_id.'">
+									<button class="ui inverted blue icon button">
+                                		<i class="unhide icon"></i>
+                                	</button>
+                               	</a>
+	                           	<a id="deleteItem" class="ui inverted red icon button deleteItem" data-id="'.$prod->product_id.'">
+	                           		<i class="trash icon"></i>
+	                           	</a>';
+				} else {
+					$actions = 	'<a href="'.$this->urlSite.''.$prod->product_id.'">
+									<button class="ui inverted blue icon button">
+                                		<i class="unhide icon"></i>
+                                	</button>
+                               	</a>
+                               	<a id="" class="ui inverted orange icon button" data-id="'.$prod->product_id.'">
+                               		<i class="add icon"></i>
+                               	</a>
+	                           	<a id="deleteItem" class="ui inverted red icon button deleteItem" data-id="'.$prod->product_id.'">
+	                           		<i class="trash icon"></i>
+	                           	</a>';
+				}
+			   	$data[] = array(
+			        '<img src="'.$this->link.''.$prod->product_image.'" class="ui small image">',
+			        $prod->product_name,
+			        $prod->product_price,
+			        $prod->product_availability,
+			        $actions,
+			        
+			   	);
+			}
+
+			$output = array(
+			  	"draw" => $draw,
+			    "recordsTotal" => $products->num_rows(),
+			    "recordsFiltered" => $products->num_rows(),
+			    "data" => $data
+			);
+			echo json_encode($output);
+			exit();
+
+		}
+
+
+		public function getMainCourse()
+		{
+			// Datatables Variables
+	        $draw = intval($this->input->get("draw"));
+	        $start = intval($this->input->get("start"));
+	        $length = intval($this->input->get("length"));
+
+
+	        $cat = 'MAIN COURSE';
+			$products = $this->MProduct->getItemsByCategory($cat);
+         	$data = array();
+
+			foreach($products->result() as $prod) {
+				if ($prod->product_availability == 'AVAILABLE') {
+					$actions = 	'<a href="'.$this->urlSite.''.$prod->product_id.'">
+									<button class="ui inverted blue icon button">
+                                		<i class="unhide icon"></i>
+                                	</button>
+                               	</a>
+	                           	<a id="deleteItem" class="ui inverted red icon button deleteItem" data-id="'.$prod->product_id.'">
+	                           		<i class="trash icon"></i>
+	                           	</a>';
+				} else {
+					$actions = 	'<a href="'.$this->urlSite.''.$prod->product_id.'">
+									<button class="ui inverted blue icon button">
+                                		<i class="unhide icon"></i>
+                                	</button>
+                               	</a>
+                               	<a id="" class="ui inverted orange icon button" data-id="'.$prod->product_id.'">
+                               		<i class="add icon"></i>
+                               	</a>
+	                           	<a id="deleteItem" class="ui inverted red icon button deleteItem" data-id="'.$prod->product_id.'">
+	                           		<i class="trash icon"></i>
+	                           	</a>';
+				}
+			   	$data[] = array(
+			        '<img src="'.$this->link.''.$prod->product_image.'" class="ui small image">',
+			        $prod->product_name,
+			        $prod->product_price,
+			        $prod->product_availability,
+			        $actions,
+			        
+			   	);
+			}
+
+			$output = array(
+			  	"draw" => $draw,
+			    "recordsTotal" => $products->num_rows(),
+			    "recordsFiltered" => $products->num_rows(),
+			    "data" => $data
+			);
+			echo json_encode($output);
+			exit();
+
+		}
+
+		public function getDrinks()
+		{
+			// Datatables Variables
+	        $draw = intval($this->input->get("draw"));
+	        $start = intval($this->input->get("start"));
+	        $length = intval($this->input->get("length"));
+
+
+	        $cat = 'DRINKS';
+			$products = $this->MProduct->getItemsByCategory($cat);
+         	$data = array();
+
+			foreach($products->result() as $prod) {
+				if ($prod->product_availability == 'AVAILABLE') {
+					$actions = 	'<a href="'.$this->urlSite.''.$prod->product_id.'">
+									<button class="ui inverted blue icon button">
+                                		<i class="unhide icon"></i>
+                                	</button>
+                               	</a>
+	                           	<a id="deleteItem" class="ui inverted red icon button deleteItem" data-id="'.$prod->product_id.'">
+	                           		<i class="trash icon"></i>
+	                           	</a>';
+				} else {
+					$actions = 	'<a href="'.$this->urlSite.''.$prod->product_id.'">
+									<button class="ui inverted blue icon button">
+                                		<i class="unhide icon"></i>
+                                	</button>
+                               	</a>
+                               	<a id="" class="ui inverted orange icon button" data-id="'.$prod->product_id.'">
+                               		<i class="add icon"></i>
+                               	</a>
+	                           	<a id="deleteItem" class="ui inverted red icon button deleteItem" data-id="'.$prod->product_id.'">
+	                           		<i class="trash icon"></i>
+	                           	</a>';
+				}
+			   	$data[] = array(
+			        '<img src="'.$this->link.''.$prod->product_image.'" class="ui small image">',
+			        $prod->product_name,
+			        $prod->product_price,
+			        $prod->product_availability,
+			        $actions,
+			        
+			   	);
+			}
+
+			$output = array(
+			  	"draw" => $draw,
+			    "recordsTotal" => $products->num_rows(),
+			    "recordsFiltered" => $products->num_rows(),
+			    "data" => $data
+			);
+			echo json_encode($output);
+			exit();
+
+		}
+
+		public function getExtras()
+		{
+			// Datatables Variables
+	        $draw = intval($this->input->get("draw"));
+	        $start = intval($this->input->get("start"));
+	        $length = intval($this->input->get("length"));
+
+
+	        $cat = 'EXTRAS';
+			$products = $this->MProduct->getItemsByCategory($cat);
+         	$data = array();
+
+			foreach($products->result() as $prod) {
+				if ($prod->product_availability == 'AVAILABLE') {
+					$actions = 	'<a href="'.$this->urlSite.''.$prod->product_id.'">
+									<button class="ui inverted blue icon button">
+                                		<i class="unhide icon"></i>
+                                	</button>
+                               	</a>
+	                           	<a id="deleteItem" class="ui inverted red icon button deleteItem" data-id="'.$prod->product_id.'">
+	                           		<i class="trash icon"></i>
+	                           	</a>';
+				} else {
+					$actions = 	'<a href="'.$this->urlSite.''.$prod->product_id.'">
+									<button class="ui inverted blue icon button">
+                                		<i class="unhide icon"></i>
+                                	</button>
+                               	</a>
+                               	<a id="" class="ui inverted orange icon button" data-id="'.$prod->product_id.'">
+                               		<i class="add icon"></i>
+                               	</a>
+	                           	<a id="deleteItem" class="ui inverted red icon button deleteItem" data-id="'.$prod->product_id.'">
+	                           		<i class="trash icon"></i>
+	                           	</a>';
+				}
+			   	$data[] = array(
+			        '<img src="'.$this->link.''.$prod->product_image.'" class="ui small image">',
+			        $prod->product_name,
+			        $prod->product_price,
+			        $prod->product_availability,
+			        $actions,
+			        
+			   	);
+			}
+
+			$output = array(
+			  	"draw" => $draw,
+			    "recordsTotal" => $products->num_rows(),
+			    "recordsFiltered" => $products->num_rows(),
+			    "data" => $data
+			);
+			echo json_encode($output);
+			exit();
+
+		}
+
+		public function getSoup()
+		{
+			// Datatables Variables
+	        $draw = intval($this->input->get("draw"));
+	        $start = intval($this->input->get("start"));
+	        $length = intval($this->input->get("length"));
+
+
+	        $cat = 'SOUP';
+			$products = $this->MProduct->getItemsByCategory($cat);
+         	$data = array();
+
+			foreach($products->result() as $prod) {
+				if ($prod->product_availability == 'AVAILABLE') {
+					$actions = 	'<a href="'.$this->urlSite.''.$prod->product_id.'">
+									<button class="ui inverted blue icon button">
+                                		<i class="unhide icon"></i>
+                                	</button>
+                               	</a>
+	                           	<a id="deleteItem" class="ui inverted red icon button deleteItem" data-id="'.$prod->product_id.'">
+	                           		<i class="trash icon"></i>
+	                           	</a>';
+				} else {
+					$actions = 	'<a href="'.$this->urlSite.''.$prod->product_id.'">
+									<button class="ui inverted blue icon button">
+                                		<i class="unhide icon"></i>
+                                	</button>
+                               	</a>
+                               	<a id="" class="ui inverted orange icon button" data-id="'.$prod->product_id.'">
+                               		<i class="add icon"></i>
+                               	</a>
+	                           	<a id="deleteItem" class="ui inverted red icon button deleteItem" data-id="'.$prod->product_id.'">
+	                           		<i class="trash icon"></i>
+	                           	</a>';
+				}
+			   	$data[] = array(
+			        '<img src="'.$this->link.''.$prod->product_image.'" class="ui small image">',
+			        $prod->product_name,
+			        $prod->product_price,
+			        $prod->product_availability,
+			        $actions,
+			        
+			   	);
+			}
+
+			$output = array(
+			  	"draw" => $draw,
+			    "recordsTotal" => $products->num_rows(),
+			    "recordsFiltered" => $products->num_rows(),
+			    "data" => $data
+			);
+			echo json_encode($output);
+			exit();
+
+		}
+
+
+
 
 		public function createReceiptSession()
 		{
@@ -233,20 +521,35 @@
 			
             $array = array();
 			if($result){
-				foreach ($result as $value) {
-						$arrObj = new stdClass;
-						$arrObj->product_id = $value->product_id;
-						$arrObj->product_image = $value->product_image;
-						$arrObj->product_name = $value->product_name;
-						$arrObj->product_availability = $value->product_availability;
-						$array[] = $arrObj;
-				}
-			$data['products']  = $array;
+				$data['products']  = '1';
+			} else {
+				$data['products'] = null;
 			}
 
-			$this->load->view('imports/vAdminHeader'); 
-			$this->load->view('admin/vProductsInCategory',$data);
-			$this->load->view('imports/vAdminFooter');
+			if ($cat == 'RICE MEAL') {
+				$this->load->view('imports/vAdminHeader'); 
+				$this->load->view('admin/category/vRiceMeals',$data);
+				$this->load->view('imports/vAdminFooter');
+			} else if ($cat == 'SOUP'){
+				$this->load->view('imports/vAdminHeader'); 
+				$this->load->view('admin/category/vSoup',$data);
+				$this->load->view('imports/vAdminFooter');
+			} else if ($cat == 'MAIN COURSE'){
+				$this->load->view('imports/vAdminHeader'); 
+				$this->load->view('admin/category/vMainCourse',$data);
+				$this->load->view('imports/vAdminFooter');
+			} else if ($cat == 'DRINKS'){
+				$this->load->view('imports/vAdminHeader'); 
+				$this->load->view('admin/category/vDrinks',$data);
+				$this->load->view('imports/vAdminFooter');
+			} else {
+				$this->load->view('imports/vAdminHeader'); 
+				$this->load->view('admin/category/vExtras',$data);
+				$this->load->view('imports/vAdminFooter');
+			}
+			
+
+			
 		}
 
 		function addNewProduct()
