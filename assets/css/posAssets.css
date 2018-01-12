@@ -20,7 +20,6 @@ input::-webkit-outer-spin-button,input::-webkit-inner-spin-button { display: non
 .ltext{text-align: left;}
 .receipttbl{width: 100%;}
 .noOfItems{font-size: 20px;}
-/*.orderOptions{position: fixed;bottom: 0;right: 0;}*/
 .rbtnlabel{color: white;font-size: 14px;padding:9px 12px; margin: 0px;}
 .lbtnlabel{color: white; font-size: 15px; padding:15px; margin: 0px;}
 .pbtn{ border: 1px solid gray; background-color:gray; color: white}
@@ -38,10 +37,6 @@ font-weight: bold;}
 .sign {color: white;}
 .vid {width: 500px;height: 350px;}
 
-/*.ui.modal{position: absolute; visibility: hidden; max-width: 40%; max-height: 40%; overflow: auto;}
-.close{ border: none; background: none; right: 25px; color: #000; font-size: 25px;font-weight: bold;}
-.close:hover{color: red; cursor: pointer;}
-.close:focus{ outline:0;box-shadow:none;border:0px;-moz-border-radius:2px; border-radius: 2px;}*/
 
 
 
