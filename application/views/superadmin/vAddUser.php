@@ -43,11 +43,12 @@
                             <h3 class='ui horizontal divider header'><i class='user icon'></i>User Account Information</h3>
 
                             <label>POSITION</label><br>
-                            <select class="ui dropdown" name="position">
+                            <input type="hidden" name="position" id="position" value="">
+                            <select class="ui dropdown" name="pos" id="pos">
                               <option value="">Choose position</option>
-                              <option value="1">Superadmin</option>
-                              <option value="2">Admin</option>
-                              <option value="3">Employee</option>
+                              <option value="SUPERADMIN">Superadmin</option>
+                              <option value="ADMIN">Admin</option>
+                              <option value="REGULAR">Employee</option>
                             </select> <!-- position dropdown -->
                         </div>
                     </div> <!-- row -->
@@ -68,3 +69,10 @@
 
 </body>
 </html>
+<script type="text/javascript">
+    $(document).ready(function(){
+        $(document).on('change','#pos',function() {
+            $('#position').val($('#pos').val());
+        });
+    });
+</script>       

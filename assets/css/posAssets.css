@@ -1,4 +1,7 @@
-
+@media print
+  {
+  .yourheader, .yourfooter {display:none;}
+  }
 body{background-color: white !important;max-width: 100%;}
 /* For Firefox */
 input[type='number'] { -moz-appearance:textfield;}
@@ -18,12 +21,8 @@ input::-webkit-outer-spin-button,input::-webkit-inner-spin-button { display: non
 .receipttbl{width: 100%;}
 .noOfItems{font-size: 20px;}
 /*.orderOptions{position: fixed;bottom: 0;right: 0;}*/
-.lbtn{ width: 100px; margin:50px 110px 0px 0px; height: 55px; background-color: #3886c9;border: 1px solid #3886c9;
-    color: white;font-size: 20px;}
-.rbtn{ width: 100px; margin:50px; height: 55px;background-color: #336699;border: 1px solid #336699;}
 .rbtnlabel{color: white;font-size: 14px;padding:9px 12px; margin: 0px;}
 .lbtnlabel{color: white; font-size: 15px; padding:15px; margin: 0px;}
-.rtn:hover, .lbtn:hover{background-color:#44749D;border: 1px solid #44749D;}
 .pbtn{ border: 1px solid gray; background-color:gray; color: white}
 .pbtn:hover,.pbtn:focus {border: 1px solid #B0B0B0;background-color:#B0B0B0;outline:0;}
 .receiptbox{ height: 600px;width: 280px;margin:0px 30px;}
@@ -36,7 +35,8 @@ font-weight: bold;}
 .itemRow{margin: 5px !important;padding: 5px !important;}
 .ibtn{border: none; background:none;}
 .error {color:gray; font-size:20px;text-align: center;font-family: 'SLight', Fallback, sans-serif; }
-.sign {color: white}
+.sign {color: white;}
+.vid {width: 500px;height: 350px;}
 
 /*.ui.modal{position: absolute; visibility: hidden; max-width: 40%; max-height: 40%; overflow: auto;}
 .close{ border: none; background: none; right: 25px; color: #000; font-size: 25px;font-weight: bold;}

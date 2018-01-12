@@ -48,8 +48,8 @@
                                 <div class='nine wide  required field'><label>FOOD PRICE</label><input name='price' type='number' placeholder='Enter food price' value='<?php echo $prod->product_price;  ?>'></div>
 
                                 <label>CATEGORY</label><br>
-                                <select class="ui dropdown" name='category'>
-                                    <option value="<?php echo $prod->product_category;  ?>" selected='selected'><?php echo $prod->product_category;  ?></option>
+                                <input type="hidden" name="category" id="category" value="<?php echo $prod->product_category;  ?>">
+                                <select class="ui dropdown" name='cat' id="cat">
                                     <option value="DRINKS">Drinks</option>
                                     <option value="RICE MEAL">Rice Meal</option>
                                     <option value="SOUP">Soup</option>
@@ -60,9 +60,8 @@
                                 <div class='ui hidden divider'></div>
 
                                 <label>AVAILABILITY</label><br>
-                                <select class="ui dropdown" name='availability'>
-                                    <option value="<?php echo $prod->product_availability;  ?>" selected='selected'>  <?php echo $prod->product_availability;  ?></option>
-                                    <option value="">Choose availability</option>
+                                <input type="hidden" name="availability" id="availability" value="<?php echo $prod->product_availability;  ?>">
+                                <select class="ui dropdown" name='avail' id="avail">
                                     <option value="AVAILABLE">Available</option>
                                     <option value="NOT AVAILABLE">Not Available</option>
                                 </select> <!-- availability dropdown -->
@@ -92,3 +91,17 @@
                     
 </body>
 </html>
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('#cat').val($('#category').val());
+        $(document).on('change','#cat',function() {
+            $('#category').val($('#cat').val());
+        });
+
+        $('#avail').val($('#availability').val());
+        $(document).on('change','#avail',function() {
+            $('#availability').val($('#avail').val());
+        });
+    });
+</script> 

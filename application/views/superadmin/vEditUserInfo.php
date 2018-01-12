@@ -39,17 +39,17 @@
 
                             <div class='required field'><label>MIDDLE NAME</label><input type='text' placeholder='Enter middle name' name="mname" value="<?php echo $u->user_mi;?>"></div>
 
-                            <div class='required field'><label>LAST NAME</label><input type='text' placeholder='Enter last name' name="lname" value="<?php echo $u->user_last_name;?>"></div>
+                            <div class='required field'><label>LAST NAME</label><input type='text' placeholder='Enter last name' name="lname" value="<?php echo $u->user_last_name; ?>"></div>
                         </div>
                         <div class='eight wide column'>
                             <h3 class='ui horizontal divider header'><i class='user icon'></i>User Account Information</h3>
 
                             <label>POSITION</label><br>
-                            <select class="ui dropdown" >
-                              <option value="">Choose position</option>
-                              <option value="1">Superadmin</option>
-                              <option value="2">Admin</option>
-                              <option value="3">Employee</option>
+                            <input type="hidden" name="position" id="position" value="<?php echo $u->user_type; ?>">
+                            <select class="ui dropdown" name="pos" id="pos" >
+                              <option value="SUPERADMIN">Superadmin</option>
+                              <option value="ADMIN">Admin</option>
+                              <option value="REGULAR">Employee</option>
                             </select> <!-- position dropdown -->
 
                         </div>
@@ -74,3 +74,11 @@
 
 </body>
 </html>
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('#pos').val($('#position').val());
+        $(document).on('change','#pos',function() {
+            $('#position').val($('#pos').val());
+        });
+    });
+</script> 

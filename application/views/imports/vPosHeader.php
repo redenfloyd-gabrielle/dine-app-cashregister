@@ -26,7 +26,8 @@
 	</div>
 
 	<script>
-
+		
+	
 		function updateClock()
 	    {
 	        var date = new Date();

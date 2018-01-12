@@ -75,7 +75,7 @@
   <div class="content">
 <form class='ui form' method='POST' action='<?php echo site_url()?>/CUser/deleteUser?>'>
     <center><p style='font-size: 1.5em;'>Are you sure you want to remove this user?</p></center>
-    <input hidden='' name='user_id' id="user_id">
+    <input type="hidden" name='user_id' id="user_id" value="">
   </div>
   <div class="actions">
     <div class="ui gray basic cancel inverted button">
