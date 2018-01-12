@@ -36,6 +36,7 @@
                 <td><?php echo $item->product_price ?></td>
                 <td ><?php echo $item->receipt_item_quantity?></td>
                 <td class="subtotal"><?php echo $item->receipt_item_subtotal?></td>
+                <input type="hidden" id="prod_id" value="<?php echo $item->product_id ?>">
 
               </tr>
               <?php } ?>
@@ -109,7 +110,7 @@
        <button class="ui floated blue button" id="rbtn" align="center"><h4 class="rbtnlabel">Charge/No Receipt</h4></button>
       </div>
       <div class="three wide column">
-         <button class="ui right floated blue button" id="rbtn" align="center"><h4 class="rbtnlabel">Charge & Print</h4></button>
+         <button class="ui right floated blue button" id="print" align="center"><h4 class="rbtnlabel">Charge & Print</h4></button>
       </div>
       
       <div class="column"></div>
@@ -168,37 +169,14 @@
 
     })
 
-    //   $('#ibtn').on('click', function() {
-    //     var eid = $("#eid").val();
-    //     var page = "manual";
-    //     var dataSet = "eid="+eid+"&page="+page;
-
-    //     $.ajax({
-    //       type: "POST",
-    //       url: '<?php //echo site_url()?>/COrderItem/viewEditOrder',
-    //       data: dataSet,
-    //       cache: false,
-    //       success: function(result){
-    //           if(result){
-    //              $('body').html(result);
-
-    //           }else{
-    //               alert("Error");
-    //           }                         
-    //       },
-    //       error: function(jqXHR, errorThrown){
-    //           console.log(errorThrown);
-
-    //       }
-    //   });
-    // });
-
+    
     function storeTblValues(){
 
         var tableData = new Array();
         $("#myTable tr").each(function(row,tr){
             tableData[row] = {
-              "qty" :$(tr).find('td:eq(2)').text()
+              "name" : $(tr).find('td:eq(0)').text()
+            ,  "qty" :$(tr).find('td:eq(2)').text()
             , "subtotal" :$(tr).find('td:eq(3)').text()
             , "prod_id" : $(tr).find('#prod_id').val()
             }
@@ -235,6 +213,36 @@
       });
 
     });
+    $('#print').on('click',function(){
+
+        var tableData;
+        var total = $("#due").text();
+        var cash = $("#cash").text();
+        var change = $("#change").text();
+        tableData = storeTblValues();
+
+        tableData = $.toJSON(tableData);
+        var data =  "pTableData=" + tableData+"&total="+total+"&cash="+cash+"&change="+change;
+
+        $.ajax({
+          type: "POST",
+          url: "<?php echo site_url()?>/CReceipt/printReceipt",
+          data: data,
+          cache: false,
+          success: function(result){
+             // alert(result);
+             $('body').html(result);
+             window.print();
+             document.location.href = "<?php echo site_url()?>/CLogin/viewPos"; 
+          },
+          error: function(jqXHR, errorThrown){
+              console.log(errorThrown);
+
+          }
+
+        });
+
+      });
 
 
 

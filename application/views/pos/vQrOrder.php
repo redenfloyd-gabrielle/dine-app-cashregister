@@ -193,7 +193,7 @@
         <button class="ui floated blue button" id="rbtn" align="center"><h4 class="rbtnlabel">Charge/No Receipt</h4></button>
       </div>
       <div class="three wide column">
-         <button class="ui floated right blue button" id="rbtn" align="center"><h4 class="rbtnlabel">Charge/No Receipt</h4></button>
+         <button class="ui floated right blue button" id="print" align="center"><h4 class="rbtnlabel">Charge & Print</h4></button>
       </div>
       
       <div class="column"></div>
@@ -235,7 +235,8 @@
           var tableData = new Array();
           $("#myTable tr").each(function(row,tr){
               tableData[row] = {
-                "qty" :$(tr).find('td:eq(2)').text()
+                "name" : $(tr).find('td:eq(0)').text()
+              , "qty" :$(tr).find('td:eq(2)').text()
               , "subtotal" :$(tr).find('td:eq(3)').text()
               , "prod_id" : $(tr).find('#prod_id').val()
               }
@@ -272,6 +273,37 @@
         });
 
       })
+
+      $('#print').on('click',function(){
+
+        var tableData;
+        var total = $("#due").text();
+        var cash = $("#cash").text();
+        var change = $("#change").text();
+        tableData = storeTblValues();
+
+        tableData = $.toJSON(tableData);
+        var data =  "pTableData=" + tableData+"&total="+total+"&cash="+cash+"&change="+change;
+
+        $.ajax({
+          type: "POST",
+          url: "<?php echo site_url()?>/CReceipt/printReceipt",
+          data: data,
+          cache: false,
+          success: function(result){
+             // alert(result);
+             $('body').html(result);
+             window.print();
+             document.location.href = "<?php echo site_url()?>/CLogin/viewPos"; 
+          },
+          error: function(jqXHR, errorThrown){
+              console.log(errorThrown);
+
+          }
+
+        });
+
+      });
         
   });
   </script>
