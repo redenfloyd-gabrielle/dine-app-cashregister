@@ -15,15 +15,19 @@
    
 <div align = "center">
 	<!-- <form class='ui form' method='POST' action='<?php echo site_url()?>/CReports/downloadToExcel'> -->
-		<table>
+  <div class='row'>
+		<table class='ui sortable stackable celled table'>
+      <thead>
 	 		<tr>
 	 			<td><b>Product Name</b></td>
 	 			<td><b>Product Quantity</b></td>	
 	 			<td><b>Product Total</b></td>
 	 		</tr>
-
+    </thead>
  		<?php
+ 		$flag = '0';
  			foreach($data as $row){
+ 				$flag = '1';
  				?>
  				<tr>
  					<td><?php echo $row->product_name; ?></td>
@@ -32,10 +36,17 @@
  				</tr>
  				<?php
  			}
+
+ 			if($flag == 0){
+ 				?>
+ 				<h1>Nothing to display. . .</h1>
+ 				<?php
+ 			}
  		?>
  	</table>
+ </div>
 
- 	<a href='<?php echo site_url()?>/CReports/downloadToExcel'><button class='ui circular blue icon button' title='Edit product information'><i class='pencil icon'></i>Edit item</button></a> <!-- Edit product information -->
+ 	<a href='<?php echo site_url()?>/CReports/downloadToExcel'><button class='ui circular blue icon button' title='Edit product information'>Download to Excel</button></a> <!-- Edit product information -->
  	 <!-- <button class='ui submit brown button' type='submit'>Download to Excel</button>
  	</form> -->
 </div>
@@ -60,7 +71,7 @@
         ]);
 
         var options = {
-          title: 'Number of Users'
+          title: 'chart'
         };
 
         var chart = new google.visualization.PieChart(document.getElementById('piechart'));

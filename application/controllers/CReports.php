@@ -19,7 +19,9 @@
 		function viewReports()
  		{
  			$this->load->model("MReports");
+ 			$this->load->model("MProduct");
  			$data["data"] = $this->MReports->get_data();
+ 			$data["product"] = $this->MProduct->getAllProducts();
  			$this->load->view('imports/vAdminHeader');
 			$this->load->view('admin/vReports',$data);
 			$this->load->view('imports/vAdminFooter');
@@ -27,7 +29,9 @@
 
  		public function getData(){
  			$this->load->model("MReports");
+ 			$this->load->model("MProduct");
  			$data["data"] = $this->MReports->get_data();
+ 			$data["product"] = $this->MProduct->getAllProducts();
  			$this->load->view('imports/vAdminHeader');
 			$this->load->view('admin/vReports',$data);
 			$this->load->view('imports/vAdminFooter');
@@ -37,6 +41,7 @@
 
  			$this->load->model("MReports");
  			$data["data"] = $this->MReports->get_data();
+ 			
  			// $this->load->view('imports/vAdminHeader');
 			$this->load->view('admin/vDownload',$data);
 			// $this->load->view('imports/vAdminFooter');
