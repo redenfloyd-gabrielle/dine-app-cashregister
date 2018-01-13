@@ -53,7 +53,7 @@
         <div class="ui form">
         <div class="field">
           <label for="amount">Cash Amount</label>
-          <input type="number" placeholder="Enter Cash Amount" id="amount">
+          <input type="number" placeholder="Enter Cash Amount" id="amount" value="0">
         </div>
       </div>
       </div>
@@ -107,10 +107,10 @@
       </div>
       <div class="five wide column"></div>
       <div class="three wide column">
-       <button class="ui floated blue button" id="rbtn" align="center"><h4 class="rbtnlabel">Charge/No Receipt</h4></button>
+       <button class="ui floated blue button disabled" id="rbtn" align="center"><h4 class="rbtnlabel">Charge/No Receipt</h4></button>
       </div>
       <div class="three wide column">
-         <button class="ui right floated blue button" id="print" align="center"><h4 class="rbtnlabel">Charge & Print</h4></button>
+         <button class="ui right floated blue button disabled" id="print" align="center"><h4 class="rbtnlabel">Charge & Print</h4></button>
       </div>
       
       <div class="column"></div>
@@ -134,11 +134,15 @@
           var change = parseFloat(cash)-parseFloat(due)+'.00';
           $("#cash").html(cash); 
           $("#change").html(change);
+
           if(change < 0){
             $("#change").css("color","red");
             $('#peso').css("color","red");
+           }else{
             $("#change").css("color","black");
             $('#peso').css("color","black");
+            $("#print").removeClass("disabled");
+            $("#rbtn").removeClass("disabled");
           }
         });
   
@@ -224,7 +228,10 @@
         tableData = $.toJSON(tableData);
         var data =  "pTableData=" + tableData+"&total="+total+"&cash="+cash+"&change="+change;
 
-        $.ajax({
+        if(cash ==0 || change < 0){
+          alert("hahhaha");
+        }else{
+          $.ajax({
           type: "POST",
           url: "<?php echo site_url()?>/CReceipt/printReceipt",
           data: data,
@@ -241,6 +248,9 @@
           }
 
         });
+        }
+
+        
 
       });
 

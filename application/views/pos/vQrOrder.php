@@ -213,12 +213,14 @@
           $("#cash").html(cash); 
           $("#change").html(change);
           if(change < 0){
-              $("#change").css("color","red");
-              $('#peso').css("color","red");
-            }else{
-              $("#change").css("color","black");
-              $('#peso').css("color","black");
-            } 
+            $("#change").css("color","red");
+            $('#peso').css("color","red");
+           }else{
+            $("#change").css("color","black");
+            $('#peso').css("color","black");
+            $("#print").removeClass("disabled");
+            $("#rbtn").removeClass("disabled");
+          }
         });
 
        var sum = 0;
