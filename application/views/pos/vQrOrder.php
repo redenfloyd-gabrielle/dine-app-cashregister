@@ -206,6 +206,21 @@
   <script>
     $(document).ready(function(){
       function storeTblValues(){
+        $('#amount').on('keyup', function() {
+          var amt = $("#amount").val();
+          var due = $("#due").text();
+          var cash = amt+'.00';
+          var change = parseFloat(cash)-parseFloat(due)+'.00';
+          $("#cash").html(cash); 
+          $("#change").html(change);
+          if(change < 0){
+              $("#change").css("color","red");
+              $('#peso').css("color","red");
+            }else{
+              $("#change").css("color","black");
+              $('#peso').css("color","black");
+            } 
+        });
 
         var tableData = new Array();
         $("#myTable tr").each(function(row,tr){
