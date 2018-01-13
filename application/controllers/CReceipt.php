@@ -69,11 +69,9 @@
 			$receipt_date = $now->format('Y-m-d H:i:s');
 			$array = array();
 			$name = $this->session->userdata['userSession']['user_id'].'-'.$this->session->userdata['userSession']['user_last_name'];
-			// $date = date('Y-m-d',strtotime($now));
-			// $time = date('H:i:s',strtotime($now));
-
+			
 			$date = $now->format('Y-m-d');
-			$time = $now->format('H:i:s');
+			$time = $now->format('H:i A');
 
 			$item = array('receipt_date' => $receipt_date,
 						  'receipt_total' => $receipt_total,

@@ -205,49 +205,57 @@
   </div>
   <script>
     $(document).ready(function(){
-        $('#amount').on('keyup', function() {
-          var amt = $("#amount").val();
-          var due = $("#due").text();
-          var cash = amt+'.00';
-          var change = parseFloat(cash)-parseFloat(due)+'.00';
-          $("#cash").html(cash); 
-          $("#change").html(change);
-          if(change < 0){
-            $("#change").css("color","red");
-            $('#peso').css("color","red");
-           }else{
+      function storeTblValues(){
+
+        var tableData = new Array();
+        $("#myTable tr").each(function(row,tr){
+            tableData[row] = {
+              "name" : $(tr).find('td:eq(0)').text()
+            , "qty" :$(tr).find('td:eq(2)').text()
+            , "subtotal" :$(tr).find('td:eq(3)').text()
+            , "prod_id" : $(tr).find('#prod_id').val()
+            }
+        });
+
+       tableData.shift();
+       return tableData;
+      }
+
+      $('#amount').on('keyup', function() {
+        var tableData = storeTblValues();
+        var amt = $("#amount").val();
+        var due = $("#due").text();
+        var cash = amt+'.00';
+        var change = parseFloat(cash)-parseFloat(due)+'.00';
+        $("#cash").html(cash); 
+        $("#change").html(change);
+
+        if(change < 0){
+          $("#change").css("color","red");
+          $('#peso').css("color","red");
+         }else if(change == 0 && cash != 0){
+          $("#print").removeClass("disabled");
+          $("#rbtn").removeClass("disabled");
+         }else{
+          if(tableData.length != 0){
             $("#change").css("color","black");
             $('#peso').css("color","black");
             $("#print").removeClass("disabled");
             $("#rbtn").removeClass("disabled");
           }
-        });
-
-       var sum = 0;
-        $(".subtotal").each(function() {
-            var value = $(this).text();
-            if(!isNaN(value) && value.length != 0) {
-                sum += parseFloat(value);
-            }
-            $("#due").html(sum); 
-        });
-
-        function storeTblValues(){
-
-          var tableData = new Array();
-          $("#myTable tr").each(function(row,tr){
-              tableData[row] = {
-                "name" : $(tr).find('td:eq(0)').text()
-              , "qty" :$(tr).find('td:eq(2)').text()
-              , "subtotal" :$(tr).find('td:eq(3)').text()
-              , "prod_id" : $(tr).find('#prod_id').val()
-              }
-          });
-
-         tableData.shift();
-         return tableData;
         }
+      });
 
+     var sum = 0;
+      $(".subtotal").each(function() {
+          var value = $(this).text();
+          if(!isNaN(value) && value.length != 0) {
+              sum += parseFloat(value);
+          }
+          $("#due").html(sum); 
+      });
+
+        
       $('#rbtn').on('click',function(){
 
         var tableData;
