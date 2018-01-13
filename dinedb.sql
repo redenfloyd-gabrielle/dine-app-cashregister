@@ -345,7 +345,7 @@ ALTER TABLE `ordered`
 -- Constraints for table `order_item`
 --
 ALTER TABLE `order_item`
-  ADD CONSTRAINT `order_item_ibfk_1` FOREIGN KEY (`order_item_ordered_id`) REFERENCES `order_item` (`order_item_id`),
+  ADD CONSTRAINT `order_item_ibfk_1` FOREIGN KEY (`order_item_ordered_id`) REFERENCES `ordered` (`ordered_id`),
   ADD CONSTRAINT `order_item_ibfk_2` FOREIGN KEY (`order_item_product_id`) REFERENCES `product` (`product_id`);
 
 --
