@@ -5,7 +5,7 @@
 		private $receipt_item_quantity;
 		private $receipt_item_product_id;
 		private $receipt_item_receipt_id;
-		private $receipt_item_status;
+	
 		
 
     	const DB_TABLE = "receipt_item";
@@ -28,8 +28,7 @@
 			$this->db->select('*');
 			$this->db->from($this::DB_TABLE);
 			$this->db->join('product',$this::DB_TABLE.'.receipt_item_product_id= product_id' );
-			$this->db->where(array($this::DB_TABLE.'_receipt_id' => $id,
-								   $this::DB_TABLE.'_status !=' => 'INACTIVE'));
+			$this->db->where(array($this::DB_TABLE.'_receipt_id' => $id));
 			$query = $this->db->get();
 			return $query->result();
 		}
@@ -75,13 +74,6 @@
 			$this->receipt_item_receipt_id = $receipt_item_receipt_id;
 		}
 
-		public function getReceipt_item_status(){
-			return $this->receipt_item_status;
-		}
-
-		public function setReceipt_item_status($receipt_item_status){
-			$this->receipt_item_status = $receipt_item_status;
-		}
-
+		
 	}
 ?>

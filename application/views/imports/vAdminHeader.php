@@ -9,11 +9,16 @@
     <link rel='stylesheet' href='<?php echo base_url("assets/css/adminAssets.css")?>'>
     <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/posAssets.css')?>">
     <link rel='stylesheet' href='<?php echo base_url("assets/semantic/semantic.min.css")?>'>
+    <link rel='stylesheet' href='<?php echo base_url("assets/semantic/datatables.min.css")?>'>
     <script src='<?php echo base_url("assets/jquery.min.js")?>'></script>
     <script src='<?php echo base_url("assets/semantic/semantic.min.js")?>'></script>
     <script type="text/javascript" src="<?php echo base_url('assets/jquery/tablesort.js')?>"></script>
     <script type="text/javascript" src="<?php echo base_url('assets/jquery/instascan.min.js')?>"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script src='<?php echo base_url("assets/jquery/sha.js")?>'></script>
+    <script src='<?php echo base_url("assets/jquery/datatables.min.js")?>'></script>
+    <script src='<?php echo base_url("assets/jquery/dataTables.semanticui.js")?>'></script>
+
 </head>
 <body class="pushable" >  
 
@@ -41,7 +46,7 @@
     <a class='item' href='<?php echo site_url()?>/COrdered/viewOrderList?>'>
         <i class='shop icon'></i> Orders
     </a>
-    <a class='item' href='<?php echo site_url()?>/CUser/viewReports?>'>
+    <a class='item' href='<?php echo site_url()?>/CReports/viewReports'>
         <i class='bar chart icon'></i> Reports
     </a>
     <a class='item' href=''>

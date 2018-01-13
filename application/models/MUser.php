@@ -25,7 +25,7 @@
 			$this->db->select("*");
 			$this->db->from($this::DB_TABLE);
 			$this->db->where('user_status', 'ACTIVE');
-			// $this->db->where('user_id !=' , $this->session->userdata['empSession']['userID']);
+			$this->db->where('user_id !=' , $this->session->userdata['userSession']['user_id']);
 			$query = $this->db->get();
 			
 			return $query->result();

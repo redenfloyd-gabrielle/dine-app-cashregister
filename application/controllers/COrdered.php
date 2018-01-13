@@ -8,6 +8,7 @@
 	      $this->load->helper('url');
 	      $this->load->database(); // load database
 	      $this->load->model('MOrdered');
+	       $this->load->model('MReceipt');
 	      $this->load->helper('url');
 	      $this->load->library('session');
 	  	}
@@ -22,6 +23,17 @@
 			$this->load->view('admin/vOrderList');
 			$this->load->view('imports/vAdminFooter');
  		}
+
+ 		public function createReceiptSession()
+		{
+			$data = array('receipt_id'=>null,
+					"receipt_cashier" => $this->session->userdata['userSession']['user_id']);
+			$this->MReceipt->insert($data);
+			$id = $this->db->insert_id();
+			$this->MReceipt->setReceipt_id($id);
+			$sessionReceipt = array("receipt_id" =>$id);
+			$this->session->set_userdata('receiptSession',$sessionReceipt);
+		}
 		
 		public function viewQDashboard($id){
 			$result = $this->MOrdered->getOrderById($id);
@@ -38,7 +50,7 @@
 
 		public function displayOrderFromQR()
 		{
-			$qr = $_POST['qr'];
+			$qr = $this->input->post('qr');
 
 			$result = $this->MOrdered->getOrderByQR($qr);
 			if($result){
@@ -65,9 +77,45 @@
 				
 			}
 			if($data == null){
-				echo "<script>alert('INVALID QR CODE')</script>";
+				// echo "<script>alert('INVALID QR CODE')</script>";
 			}else{
-				$res = $this->load->view('pos/vQROrder',$data,TRUE);
+				$this->createReceiptSession();
+				$res = $this->load->view('pos/vQrOrder',$data,TRUE);
+				echo $res;	
+			}
+			
+		}
+
+		public function displayOrderFromEditPage($qr)
+		{
+			$result = $this->MOrdered->getOrderByQR($qr);
+			if($result){
+				foreach ($result as $q) {}
+				$id = $q->ordered_id;
+				$total = $q->ordered_total;
+				$result1 = $this->MOrdered->displayOrderItemsByOrder($id);
+			   
+			    $qty = 0;
+			
+				$data['order_info'] = null;
+				if($result1){
+					foreach ($result1 as $r) {
+					$qty += $r->order_item_qty;
+				    }
+					$data['order_info'] = $result1;
+				}
+				$data['total'] = $total;
+				$data['qty'] = $qty;
+				$data['id'] = $id;
+				$data['qr'] = $qr;
+			}else{
+				$data = null;
+				
+			}
+			if($data == null){
+				// echo "<script>alert('INVALID QR CODE')</script>";
+			}else{
+				$res = $this->load->view('pos/vQrOrder',$data,TRUE);
 				echo $res;	
 			}
 			

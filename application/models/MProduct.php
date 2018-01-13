@@ -74,9 +74,20 @@
 		}
 
 		public function getProductsByCategory($cat){
-		   $where = array('product_category' =>$cat);
+		   $where = array('product_category' => $cat);
 		   $query = $this->read_where($where);
 		   return $query;
+		}
+
+		public function getItemsByCategory($cat)
+		{
+			$this->db->select("*");
+			$this->db->from($this::DB_TABLE);
+			$this->db->where('product_category', $cat);
+			$query = $this->db->get();
+			return $query;
+
+			# code...
 		}
 
 		public function getProduct_id(){

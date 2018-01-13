@@ -5,7 +5,6 @@
 		private $order_item_subtotal;
 		private $order_item_product_id;
 		private $order_item_ordered_id;
-		private $order_item_status;
 		
 
     	const DB_TABLE = "order_item";
@@ -20,8 +19,7 @@
 			$this->db->select('*');
 			$this->db->from($this::DB_TABLE);
 			$this->db->join('product',$this::DB_TABLE.'.order_item_product_id= product_id' );
-			$this->db->where(array($this::DB_TABLE.'_ordered_id' => $id,
-		 						   $this::DB_TABLE.'_status !=' => 'INACTIVE'));
+			$this->db->where(array($this::DB_TABLE.'_ordered_id' => $id));
 			$query = $this->db->get();
 			return $query->result();
 		}
