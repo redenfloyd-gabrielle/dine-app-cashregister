@@ -119,57 +119,6 @@
     
 <script type="text/javascript">
    $(document).ready(function(){
-      var sum = 0;
-      $(".subtotal").each(function() {
-          var value = $(this).text();
-          if(!isNaN(value) && value.length != 0) {
-              sum += parseFloat(value);
-          }
-          $("#due").html(sum); 
-      });
-        $('#amount').on('keyup', function() {
-          var amt = $("#amount").val();
-          var due = $("#due").text();
-          var cash = amt+'.00';
-          var change = parseFloat(cash)-parseFloat(due)+'.00';
-          $("#cash").html(cash); 
-          $("#change").html(change);
-          if(change < 0){
-            $("#change").css("color","red");
-            $('#peso').css("color","red");
-            $("#change").css("color","black");
-            $('#peso').css("color","black");
-          }
-        });
-  
-     
-
-       $('#rbtn').on('click',function(){
-
-      var total = $("#due").text();
-      var cash = $("#cash").text();
-      var change = $("#change").text();
-    
-      var dataSet =  "total="+total+"&cash="+cash+"&change="+change;
-
-      $.ajax({
-        type: "POST",
-        url: "<?php echo site_url()?>/CReceipt/addManualOrderToReceipt",
-        data: dataSet,
-        cache: false,
-        success: function(result){
-           // alert(result);
-           $('body').html(result);
-        },
-        error: function(jqXHR, errorThrown){
-            console.log(errorThrown);
-        }
-
-      });
-
-    })
-
-    
     function storeTblValues(){
 
         var tableData = new Array();
@@ -185,6 +134,69 @@
        tableData.shift();
        return tableData;
       }
+      var sum = 0;
+      $(".subtotal").each(function() {
+          var value = $(this).text();
+          if(!isNaN(value) && value.length != 0) {
+              sum += parseFloat(value);
+          }
+          $("#due").html(sum); 
+      });
+        $('#amount').on('keyup', function() {
+          var tableData = storeTblValues();
+          var amt = $("#amount").val();
+          var due = $("#due").text();
+          var cash = amt+'.00';
+          var change = parseFloat(cash)-parseFloat(due)+'.00';
+          $("#cash").html(cash); 
+          $("#change").html(change);
+          if(change < 0){
+            $("#change").css("color","red");
+            $('#peso').css("color","red");
+
+           }else if(change == 0 && cash != 0){
+            $("#print").removeClass("disabled");
+            $("#rbtn").removeClass("disabled");
+           }else{
+            if(tableData.length != 0){
+              $("#change").css("color","black");
+              $('#peso').css("color","black");
+              $("#print").removeClass("disabled");
+              $("#rbtn").removeClass("disabled");
+            }
+
+          }
+        });
+  
+     
+
+    //    $('#rbtn').on('click',function(){
+
+    //   var total = $("#due").text();
+    //   var cash = $("#cash").text();
+    //   var change = $("#change").text();
+    
+    //   var dataSet =  "total="+total+"&cash="+cash+"&change="+change;
+
+    //   $.ajax({
+    //     type: "POST",
+    //     url: "<?php //echo site_url()?>/CReceipt/addManualOrderToReceipt",
+    //     data: dataSet,
+    //     cache: false,
+    //     success: function(result){
+    //        // alert(result);
+    //        $('body').html(result);
+    //     },
+    //     error: function(jqXHR, errorThrown){
+    //         console.log(errorThrown);
+    //     }
+
+    //   });
+
+    // })
+
+    
+    
 
     $('#rbtn').on('click',function(){
 

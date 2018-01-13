@@ -205,6 +205,7 @@
   </div>
   <script>
     $(document).ready(function(){
+      function storeTblValues(){
         $('#amount').on('keyup', function() {
           var amt = $("#amount").val();
           var due = $("#due").text();
@@ -221,31 +222,55 @@
             } 
         });
 
-       var sum = 0;
-        $(".subtotal").each(function() {
-            var value = $(this).text();
-            if(!isNaN(value) && value.length != 0) {
-                sum += parseFloat(value);
+        var tableData = new Array();
+        $("#myTable tr").each(function(row,tr){
+            tableData[row] = {
+              "name" : $(tr).find('td:eq(0)').text()
+            , "qty" :$(tr).find('td:eq(2)').text()
+            , "subtotal" :$(tr).find('td:eq(3)').text()
+            , "prod_id" : $(tr).find('#prod_id').val()
             }
-            $("#due").html(sum); 
         });
 
-        function storeTblValues(){
+       tableData.shift();
+       return tableData;
+      }
 
-          var tableData = new Array();
-          $("#myTable tr").each(function(row,tr){
-              tableData[row] = {
-                "name" : $(tr).find('td:eq(0)').text()
-              , "qty" :$(tr).find('td:eq(2)').text()
-              , "subtotal" :$(tr).find('td:eq(3)').text()
-              , "prod_id" : $(tr).find('#prod_id').val()
-              }
-          });
+      $('#amount').on('keyup', function() {
+        var tableData = storeTblValues();
+        var amt = $("#amount").val();
+        var due = $("#due").text();
+        var cash = amt+'.00';
+        var change = parseFloat(cash)-parseFloat(due)+'.00';
+        $("#cash").html(cash); 
+        $("#change").html(change);
 
-         tableData.shift();
-         return tableData;
+        if(change < 0){
+          $("#change").css("color","red");
+          $('#peso').css("color","red");
+         }else if(change == 0 && cash != 0){
+          $("#print").removeClass("disabled");
+          $("#rbtn").removeClass("disabled");
+         }else{
+          if(tableData.length != 0){
+            $("#change").css("color","black");
+            $('#peso').css("color","black");
+            $("#print").removeClass("disabled");
+            $("#rbtn").removeClass("disabled");
+          }
         }
+      });
 
+     var sum = 0;
+      $(".subtotal").each(function() {
+          var value = $(this).text();
+          if(!isNaN(value) && value.length != 0) {
+              sum += parseFloat(value);
+          }
+          $("#due").html(sum); 
+      });
+
+        
       $('#rbtn').on('click',function(){
 
         var tableData;
