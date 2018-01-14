@@ -8,6 +8,7 @@
 	      $this->load->helper('url');
 	      $this->load->database(); // load database
 	      $this->load->model('MReceipt');
+	      $this->load->model('MOrdered');
 	      $this->load->model('MReceiptItem');
 	      $this->load->library('session');
 	  	}
@@ -17,45 +18,6 @@
 			
 		}
    
-		public function viewReceipt(){
-			$this->load->view('pos/vReceipt');
-		}
-
-		public function addQROrderToReceipt()
-		{
-			$tableData = stripcslashes($_POST['pTableData']);
-			$tableData = json_decode($tableData,TRUE);
-			$receipt_total = $_POST['total'];
-			$receipt_cash = $_POST['cash'];
-			$receipt_change = $_POST['change'];
-			$receipt_id = $this->session->userdata['receiptSession']['receipt_id'];
-			$now = new DateTime(NULL, new DateTimeZone('Asia/Manila'));
-			$receipt_date = $now->format('Y-m-d H:i:s');
-
-			$data = array('receipt_date' => $receipt_date,
-						  'receipt_total' => $receipt_total,
-						  'receipt_cash' => $receipt_cash,
-						  'receipt_change' => $receipt_change
-			);
-			$result = $this->MReceipt->update($receipt_id,$data);
-
-			foreach ($tableData as $table) {
-				$data1 = array('receipt_item_id' => null,
-						  'receipt_item_subtotal' => $table['subtotal'],
-						  'receipt_item_quantity' => $table['qty'],
-						  'receipt_item_product_id' =>$table['prod_id'],
-						  'receipt_item_receipt_id' => $receipt_id
-				);
-				$result1 = $this->MReceiptItem->insert($data1);
-			}
-			if($result1){
-				$this->session->unset_userdata('receiptSession');
-				redirect('CLogin/viewPos');
-			}else{
-				print_r("SOMETHING WENT WRONG.");
-			}
-			
-		}
 
 		public function printReceipt()
 		{
@@ -123,14 +85,31 @@
 			
 		}
 
-		public function addManualOrderToReceipt()
+		public function addOrderToReceipt()
 		{
+
+			$page =  $_POST['page'];
+			$tableData = stripcslashes($_POST['pTableData']);
+			$tableData = json_decode($tableData,TRUE);
 			$receipt_total = $_POST['total'];
 			$receipt_cash = $_POST['cash'];
 			$receipt_change = $_POST['change'];
 			$receipt_id = $this->session->userdata['receiptSession']['receipt_id'];
 			$now = new DateTime(NULL, new DateTimeZone('Asia/Manila'));
 			$receipt_date = $now->format('Y-m-d H:i:s');
+
+			if($page == 'qr'){
+				$eid = $_POST['eid'];
+				foreach ($tableData as $table) {
+					$data1 = array('receipt_item_id' => null,
+							  'receipt_item_subtotal' => $table['subtotal'],
+							  'receipt_item_quantity' => $table['qty'],
+							  'receipt_item_product_id' =>$table['prod_id'],
+							  'receipt_item_receipt_id' => $receipt_id
+					);
+					$result1 = $this->MReceiptItem->insert($data1);
+				}
+			}
 
 			$data = array('receipt_date' => $receipt_date,
 						  'receipt_total' => $receipt_total,
@@ -140,13 +119,35 @@
 			$result = $this->MReceipt->update($receipt_id,$data);
 
 			if($result){
+				if($page == 'qr'){
+					$status = array('ordered_status' => 'scanned');
+					$query = $this->MOrdered->update($eid, $status);
+				}
 				$this->session->unset_userdata('receiptSession');
 				redirect('CLogin/viewPos');
 			}else{
 				print_r("SOMETHING WENT WRONG.");
 			}
+
 			
 		}
+
+         
+
+           
+			
+
+			
+
+
+
+
+
+
+
+
+
+
 			
 	}
 
