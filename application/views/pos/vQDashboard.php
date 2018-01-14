@@ -74,9 +74,6 @@
       }).catch(function (e) {
         console.error(e);
       });
-
-
-
 	
 	qr.addListener('scan',function(data){
 		
