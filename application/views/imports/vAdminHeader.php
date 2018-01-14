@@ -52,9 +52,9 @@
     <a class='item' href='<?php echo site_url()?>/CReports/viewReports'>
         <i class='bar chart icon'></i> Reports
     </a>
-    <a class='item' href='<?php echo site_url()?>/CLogin/viewPos'>
+<!--     <a class='item' href='<?php //echo site_url()?>/CLogin/viewPos'>
         <i class='calculator icon'></i> POS
-    </a>
+    </a> -->
 </div>
 <!-- end of sidebar -->
 
@@ -64,20 +64,21 @@
         <i class="sidebar icon"></i>
     </a>
     <a class='borderless item' href='<?php echo site_url()?>/CUser/viewAdminDashboard?>'>DINE</a>
+    <div class="ui inverted transparent left icon action input borderless item">
+        <input type="text" placeholder="Enter keyword..." name="search">
+        <i class="search icon"></i>
+        <button class='ui brown button'>Search</button>
+    </div>
     <div class='right menu'>
-        <div class="ui inverted transparent left icon action input borderless item">
-            <input type="text" placeholder="Enter keyword..." name="search">
-            <i class="search icon"></i>
-            <button class='ui brown button'>Search</button>
-        </div>
+        <a class="item" href="<?php echo site_url()?>/CLogin/viewPos"><i class="calculator icon"></i>SWITCH TO POS</a> 
         <div class='ui simple dropdown item' tabindex='0'>
-        <i class='user icon'></i>Profile
+        <i class='user icon'></i>PROFILE
         <i class='dropdown icon' tabindex='0'>
             <div class='menu' tabindex='-1'></div>
         </i>
         <div class='menu' tabindex='-1'>
-            <a class='item' id='changePass'><i class='lock icon'></i>Change Password</a>
-            <a class='item' href='<?php echo site_url()?>/CLogin/userLogout?>' ><i class='power icon'></i>Logout</a>
+            <a class='item' id='changePass'><i class='lock icon'></i>CHANGE PASSWORD</a>
+            <a class='item' href='<?php echo site_url()?>/CLogin/userLogout?>' ><i class='power icon'></i>LOGOUT</a>
         </div>
     </div>
     </div>
