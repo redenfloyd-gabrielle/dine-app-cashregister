@@ -120,12 +120,12 @@
     <a href="<?php echo site_url();?>/CLogin/viewPos" class="item"><div class="ui teal button">BACK</div></a>
     <div class="hidden item"></div>
     <div class="hidden item"></div>
-    <a class="item"><button class="ui disabled teal button" id="rbtn">CHARGE/NO RECEIPT</button></a>
-    <a class="item"><button class="ui disabled teal button" id="print">CHARGE & PRINT</button></a>
+    <a class="item"><button class="ui teal disabled button" id="rbtn">CHECKOUT</button></a>
+    <a class="item"><button class="ui teal disabled button" id="print">CHECKOUT w/RECEIPT</button></a>
   </div>
 </div>
 </div> 
-
+<input type="hidden" name="page" id="page" value="<?php echo $page; ?>">
 </body>
 </html>
     
@@ -161,7 +161,7 @@
           $("#due").html(sum); 
       });
       $('#amount').on('keyup', function() {
-        var tableData = storeTblValues();
+        //var tableData = storeTblValues();
         var amt = $("#amount").val();
         var due = $("#due").text();
         var cash = amt+'.00';
@@ -176,18 +176,12 @@
           $("#change").css("color","red");
           $('#peso').css("color","red");
          }else{
-          $("#change").css("color","black");
-          $('#peso').css("color","black");
           $("#print").removeClass("disabled");
           $("#rbtn").removeClass("disabled");
-         }//else{
-        //   if(tableData.length != 0){
-        //     $("#change").css("color","black");
-        //     $('#peso').css("color","black");
-        //     $("#print").removeClass("disabled");
-        //     $("#rbtn").removeClass("disabled");
-        //   }
-        // }
+          $("#change").css("color","black");
+          $('#peso').css("color","black");
+         
+         }
       });
 
     $('#rbtn').on('click',function(){
@@ -196,14 +190,16 @@
       var total = $("#due").text();
       var cash = $("#cash").text();
       var change = $("#change").text();
+      var page = $('#page').val();
+      var eid = $('#eid').val();
       tableData = storeTblValues();
 
       tableData = $.toJSON(tableData);
-      var dataSet =  "pTableData=" + tableData+"&total="+total+"&cash="+cash+"&change="+change;
+      var dataSet =  "pTableData=" + tableData+"&total="+total+"&cash="+cash+"&change="+change+"&page="+page+"&eid="+eid;
 
       $.ajax({
         type: "POST",
-        url: "<?php echo site_url()?>/CReceipt/addManualOrderToReceipt",
+        url: "<?php echo site_url()?>/CReceipt/addOrderToReceipt",
         data: dataSet,
         cache: false,
         success: function(result){
