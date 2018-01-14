@@ -15,7 +15,8 @@
 		}
 
 		public function getOrderByQR($qr){
-			$where = array('ordered_qr_code' =>$qr);
+			$where = array('ordered_qr_code' =>$qr,
+						   'ordered_status' => 'pending');
 			$query = $this->read_where($where);
 			return $query;
 		}

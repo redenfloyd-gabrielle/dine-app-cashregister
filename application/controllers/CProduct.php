@@ -403,8 +403,10 @@
 		}
         public function viewMDashboard(){
         	$this->createReceiptSession();
+        	$data['page'] = 'manual';
+        	$data['id'] = $this->session->userdata['receiptSession']['receipt_id'];
 			$this->load->view('imports/vPosHeader');
-			$this->load->view('pos/vMDashboard');
+			$this->load->view('pos/vMDashboard',$data);
 		}
 
 		public function backToMDashboard($receipt_id){
@@ -419,16 +421,17 @@
 					$arr->product_id = $value->product_id;
 					$arr->product_name = $value->product_name;
 					$arr->product_price = $value->product_price;
-					$arr->receipt_item_quantity = $value->receipt_item_quantity;
-					$arr->receipt_item_subtotal = $value->receipt_item_subtotal;
+					$arr->item_quantity = $value->receipt_item_quantity;
+					$arr->item_subtotal = $value->receipt_item_subtotal;
 					$array[] = $arr;
 					$qty += $value->receipt_item_quantity;
 			    }
 
-			    $data['receipt_item'] = $array;
+			    $data['order_info'] = $array;
 			    $data['total'] = 0;
 				$data['qty'] = $qty;
 				$data['id'] = $receipt_id;
+				$data['page'] = 'manual';
 			}else{
 				$data = null;
 			}
@@ -459,6 +462,8 @@
 			}
 			////////////STOPS HERE///////////////////////////////////////////////////
 			$data['prod_cat']  = $cat;
+			$data['page'] = 'manual';
+			$data['id'] = $this->session->userdata['receiptSession']['receipt_id'];
 			$this->load->view('imports/vPosHeader');
 			$this->load->view('pos/vProducts',$data);
 
@@ -494,6 +499,7 @@
 				if($result){
 					foreach ($result as $value) {
 						$arr= new stdClass;
+						$arr->product_id = $value->product_id;
 						$arr->product_name = $value->product_name;
 						$arr->item_id = $value->order_item_id;
 						$arr->product_price = $value->product_price;

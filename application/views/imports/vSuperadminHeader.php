@@ -21,6 +21,9 @@
                 <?php echo $this->session->userdata['userSession']['user_first_name'];?> 
             </strong>
         </span><br>
+        <span style='color:white; text-transform: uppercase;'>
+            <?php echo $this->session->userdata['userSession']['user_position'];?> 
+        </span><br>
         <span style='color:white;'>
             ID: <?php echo $this->session->userdata['userSession']['user_id'];?> 
         </span>
