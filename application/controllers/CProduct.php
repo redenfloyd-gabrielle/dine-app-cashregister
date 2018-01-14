@@ -403,8 +403,10 @@
 		}
         public function viewMDashboard(){
         	$this->createReceiptSession();
+        	$data['page'] = 'manual';
+        	$data['id'] = $this->session->userdata['receiptSession']['receipt_id'];
 			$this->load->view('imports/vPosHeader');
-			$this->load->view('pos/vMDashboard');
+			$this->load->view('pos/vMDashboard',$data);
 		}
 
 		public function backToMDashboard($receipt_id){
@@ -459,6 +461,8 @@
 			}
 			////////////STOPS HERE///////////////////////////////////////////////////
 			$data['prod_cat']  = $cat;
+			$data['page'] = 'manual';
+			$data['id'] = $this->session->userdata['receiptSession']['receipt_id'];
 			$this->load->view('imports/vPosHeader');
 			$this->load->view('pos/vProducts',$data);
 

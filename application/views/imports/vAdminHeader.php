@@ -31,6 +31,9 @@
             <strong style='font-style: italic;'>
                 <?php echo $this->session->userdata['userSession']['user_first_name'];?> 
             </strong>
+        </span><br> 
+        <span style='color:white; text-transform: uppercase;'>
+            <?php echo $this->session->userdata['userSession']['user_position'];?> 
         </span><br>
         <span style='color:white;'>
             ID: <?php echo $this->session->userdata['userSession']['user_id'];?> 
@@ -49,7 +52,7 @@
     <a class='item' href='<?php echo site_url()?>/CReports/viewReports'>
         <i class='bar chart icon'></i> Reports
     </a>
-    <a class='item' href=''>
+    <a class='item' href='<?php echo site_url()?>/CLogin/viewPos'>
         <i class='calculator icon'></i> POS
     </a>
 </div>

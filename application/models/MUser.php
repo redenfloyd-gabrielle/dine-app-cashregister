@@ -5,6 +5,7 @@
 	 	private $user_mi;
 	 	private $user_last_name;
 	 	private $user_password;
+	 	private $user_position;
 	 	private $user_type;
 	 	private $user_status;
 	 	private $user_created_by;
@@ -92,6 +93,14 @@
 
 		public function setUser_password($user_password){
 			$this->user_password = $user_password;
+		}
+
+		public function getUser_position(){
+			return $this->user_position;
+		}
+
+		public function setUser_position($user_position){
+			$this->user_position= $user_position;
 		}
 
 		public function getUser_type(){
