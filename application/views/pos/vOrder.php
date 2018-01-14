@@ -132,6 +132,7 @@
 <script type="text/javascript">
    $(document).ready(function(){
     function storeTblValues(){
+<<<<<<< HEAD
       var tableData = new Array();
       $("#myTable tr").each(function(row,tr){
           tableData[row] = {
@@ -152,6 +153,22 @@
          $("#cashinput").addClass("disabled");
       }
       
+=======
+
+        var tableData = new Array();
+        $("#myTable tr").each(function(row,tr){
+            tableData[row] = {
+              "name" : $(tr).find('td:eq(0)').text()
+            ,  "qty" :$(tr).find('td:eq(2)').text()
+            , "subtotal" :$(tr).find('td:eq(3)').text()
+            , "prod_id" : $(tr).find('#prod_id').val()
+            }
+        });
+
+       tableData.shift();
+       return tableData;
+      }
+>>>>>>> 42a906cf880623c2b3c235b47a48764b3fc6d290
       var sum = 0;
       $(".subtotal").each(function() {
           var value = $(this).text();
@@ -160,6 +177,7 @@
           }
           $("#due").html(sum); 
       });
+<<<<<<< HEAD
       $('#amount').on('keyup', function() {
         var tableData = storeTblValues();
         var amt = $("#amount").val();
@@ -190,6 +208,63 @@
         // }
       });
  
+=======
+        $('#amount').on('keyup', function() {
+          var tableData = storeTblValues();
+          var amt = $("#amount").val();
+          var due = $("#due").text();
+          var cash = amt+'.00';
+          var change = parseFloat(cash)-parseFloat(due)+'.00';
+          $("#cash").html(cash); 
+          $("#change").html(change);
+          if(change < 0){
+            $("#change").css("color","red");
+            $('#peso').css("color","red");
+
+           }else if(change == 0 && cash != 0){
+            $("#print").removeClass("disabled");
+            $("#rbtn").removeClass("disabled");
+           }else{
+            if(tableData.length != 0){
+              $("#change").css("color","black");
+              $('#peso').css("color","black");
+              $("#print").removeClass("disabled");
+              $("#rbtn").removeClass("disabled");
+            }
+
+          }
+        });
+  
+     
+
+    //    $('#rbtn').on('click',function(){
+
+    //   var total = $("#due").text();
+    //   var cash = $("#cash").text();
+    //   var change = $("#change").text();
+    
+    //   var dataSet =  "total="+total+"&cash="+cash+"&change="+change;
+
+    //   $.ajax({
+    //     type: "POST",
+    //     url: "<?php //echo site_url()?>/CReceipt/addManualOrderToReceipt",
+    //     data: dataSet,
+    //     cache: false,
+    //     success: function(result){
+    //        // alert(result);
+    //        $('body').html(result);
+    //     },
+    //     error: function(jqXHR, errorThrown){
+    //         console.log(errorThrown);
+    //     }
+
+    //   });
+
+    // })
+
+    
+    
+>>>>>>> 42a906cf880623c2b3c235b47a48764b3fc6d290
 
     $('#rbtn').on('click',function(){
 
