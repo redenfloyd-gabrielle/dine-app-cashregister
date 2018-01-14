@@ -85,9 +85,8 @@
 				$data = null;
 				
 			}
-			if($data == null){
-				// echo "<script>alert('INVALID QR CODE')</script>";
-			}else{
+			if($data != null){
+				
 				$this->createReceiptSession();
 				$res = $this->load->view('pos/vOrder',$data,TRUE);
 				echo $res;	

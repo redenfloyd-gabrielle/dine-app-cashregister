@@ -45,6 +45,18 @@
 	<div class="row"></div>
 </div> <!-- closing grid -->
 
+ <div class='ui mini modal' id='invalidQR'>
+    <div class='header' style='background-color: #800000; color: white;'>INVALID QR Code</div> 
+    <div class='content'>
+          <p>QR Code cannot be used. </p>
+          <div class='actions'>
+         	<div class='ui right floated cancel button'  type='submit' style='background-color: #800000; color: white;'>Okay</div>
+          </div>
+        </div>
+    </div>
+  </div>
+
+
 </body>
 </html>
 
@@ -64,6 +76,7 @@
       });
 
 
+
 	
 	qr.addListener('scan',function(data){
 		
@@ -77,10 +90,9 @@
 				if(result){
 					$('body').html(result);
 					qr.stop($('#qrcam')[0]);
-					
 				 }else{
-					alert("Error");
-				 }                 
+					 $('#invalidQR').modal('show');
+				 }              
 			},
 			error: function(jqXHR, errorThrown){
 				console.log(errorThrown);
@@ -88,6 +100,9 @@
 		});
 	});
 	
+	$('.okay').on('click',function () {
+		$('#invalidQR').modal('hide');
+	})
 
 	$('#ok').on('click', function() {
 	  var qr = $("#ref").val();
@@ -102,7 +117,7 @@
 				$('body').html(result);
 				qr.stop($('#qrcam')[0]);
 			 }else{
-				alert("Error");
+				 $('#invalidQR').modal('show');
 			 }                 
 		},
 		error: function(jqXHR, errorThrown){
@@ -110,5 +125,7 @@
 			console.log(dataSet);
 		}
 	  });
+         
+   
 });
 </script>	
