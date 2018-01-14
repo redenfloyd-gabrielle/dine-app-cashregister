@@ -74,8 +74,7 @@
 		   				       'order_item_subtotal' => $p->product_price,
 		   				       'order_item_qty' => 1,
 		   				       'order_item_product_id' => $product_id,
-		   				       'order_item_ordered_id' => $eid,
-		   				       'order_item_status' => 'pending'
+		   				       'order_item_ordered_id' => $eid
 						);
 					  $o = $this->MOrderItem->insert($insertData);
 				 }else{

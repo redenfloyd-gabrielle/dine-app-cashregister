@@ -29,7 +29,12 @@
           ORDER LIST
         </div>
         <div class="six wide column">
-          <a href="<?php echo site_url().'/COrderItem/viewEdit/'.$page.'/'.$id.'/1';?>" ><button class="fluid ui labeled icon button"><i class="pencil icon"></i>EDIT ORDER</button></a>
+          <?php if($page == "manual"){
+                echo '<a href="'.site_url().'/COrderItem/viewEdit/'.$page.'/'.$id.'/1" ><button class="fluid ui labeled icon button"><i class="pencil icon"></i>EDIT ORDER</button></a>';
+          }else{
+                echo '<a href="'.site_url().'/COrderItem/viewEdit/'.$page.'/'.$id.'/'.$qr.'" ><button class="fluid ui labeled icon button"><i class="pencil icon"></i>EDIT ORDER</button></a>';
+          }
+          ?>
         </div>
       </div>
 
@@ -69,7 +74,7 @@
         </div>
         <div class="eight wide column">
           <div class="ui form">
-            <div class="field">
+            <div class="field disabled" id="cashinput">
               <input type="text" placeholder="Enter Cash Amount" id="amount" value="0">
             </div>
           </div>
@@ -140,6 +145,12 @@
      //tableData.shift();
      return tableData;
     }
+     var tableData = storeTblValues();
+      if(tableData.length != 0){
+         $("#cashinput").removeClass("disabled");
+      }else{
+         $("#cashinput").addClass("disabled");
+      }
       
       var sum = 0;
       $(".subtotal").each(function() {
@@ -157,12 +168,14 @@
         var change = parseFloat(cash)-parseFloat(due)+'.00';
         $("#cash").html(cash); 
         $("#change").html(change);
+
+        
         if(change < 0){
           $("#print").addClass("disabled");
           $("#rbtn").addClass("disabled");
           $("#change").css("color","red");
           $('#peso').css("color","red");
-         }else if(change >= 0 && cash != 0){
+         }else{
           $("#change").css("color","black");
           $('#peso').css("color","black");
           $("#print").removeClass("disabled");

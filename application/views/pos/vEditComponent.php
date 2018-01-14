@@ -28,7 +28,7 @@
         <tbody>
           <?php if(isset($order_info)) { ?>
                <?php foreach ($order_info as $order){ ?>
-               <form class='' id='form' method='POST' action='<?php echo site_url()?>/COrderItem/updateList/<?php echo  $order->item_id.'/'.$page.'/'.$eid.'/'.$qr; ?>'>
+               <form class='' id='form' method='POST' action='<?php echo site_url().'/COrderItem/updateList/'.$order->item_id.'/'.$page.'/'.$eid.'/'.$qr; ?>'>
               <tr id="myTR">
                   <td class="five wide"><?php echo $order->product_name; ?></td>
                   <td class="two wide">P<span class="price" name='prod_price'><?php echo $order->product_price; ?></span></td>
@@ -50,7 +50,7 @@
                     </button>
                   </td>
                   <td>P<span class="subtotal" id="subtotal" name='sub<?php echo $order->item_id; ?>'><?php echo $order->order_item_subtotal; ?></span></td>
-                  <td><a class="confirmRemove" style="cursor: pointer;"><i class="red remove icon"></i></a></td>
+                  <td><a class="confirmRemove" style="cursor: pointer;" data-id='<?php echo $order->item_id; ?>'><i class="red remove icon"></i></a></td>
                   
               </tr>
             </form>
@@ -97,11 +97,15 @@
 </div> 
 </div>
 
-
   <div class='ui mini modal' id='removeItem'>
     <div class='header'>Remove Item </div> 
     <div class='content'>
-      <form method="POST" action="<?php echo site_url().'/COrderItem/removeToList/'.$order->item_id.'/'.$page.'/'.$eid.'/'.$qr; ?>" >
+      <?php if(isset($prod_cat)){
+         echo '<form method="POST" action="'.site_url().'/COrderItem/removeToList/'.$page.'/'.$eid.'/'.$qr.'/'.$prod_cat.'" >';
+       }else{
+        echo '<form method="POST" action="'.site_url().'/COrderItem/removeToList/'.$page.'/'.$eid.'/'.$qr.'/NONE" >';
+       }
+       ?>
         <input type='hidden' name='order_item_id' id='order_item_id' value=''>
         <p>Are you sure you want to remove this item?</p>
         <div class='actions'>
@@ -115,6 +119,7 @@
       </form>
     </div>
   </div>
+
 
 </body>
 </html>
@@ -134,6 +139,7 @@
       $('.confirmRemove').click(function(){
         $('#removeItem').modal('show');
         $('#order_item_id').val($(this).data("id"));
+
       });
     var value = 0 ;
     $(document).on('click','#plus',function() {
@@ -165,45 +171,7 @@
     });
 
     $('.ui.modal').modal('setting', 'closable', false);
-          // $(".btn").on("click", function() {
-
-          // var $button = $(this);
-          // var oldValue = $button.parent().find("input").val();
-          // var price = $button.closest("tr").find('.price').text();
-          // var eid = $("#order_id").val();
-          // var dataSet = "eid="+eid+"&qty="+newVal;
-
-
-          // if ($button.text() == "+") {
-          //   var newVal = parseFloat(oldValue) + 1;
-
-          // } else {
-          //  // Don't allow decrementing below zero
-          //   if (oldValue > 0) {
-          //     var newVal = parseFloat(oldValue) - 1;
-          //   } else {
-          //     newVal = 0;
-          //   }
-          // }
-
-          // $button.parent().find("input").val(newVal);
-          // sub = newVal * price;
-
-          // $button.closest("tr").find(".subtotal").html(sub);
-
-          // var due = 0;
-          //  $(".subtotal").each(function() {
-          //   var value = $(this).text();
-          //   if(value.length != 0) {
-          //      due += parseFloat(value);
-          //   }
-          //   $("#due").html(due); 
-          //   });
-
-     //   });
-
-
-
+         
     });
 
 
