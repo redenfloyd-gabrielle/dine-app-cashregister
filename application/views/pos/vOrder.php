@@ -171,13 +171,13 @@
 
         
         if(change < 0){
-          $("#print").addClass("disabled");
-          $("#rbtn").addClass("disabled");
+          $("#print").toggleClass("disabled");
+          $("#rbtn").toggleClass("disabled");
           $("#change").css("color","red");
           $('#peso').css("color","red");
          }else{
-          $("#print").removeClass("disabled");
-          $("#rbtn").removeClass("disabled");
+          $("#print").toggleClass("disabled");
+          $("#rbtn").toggleClass("disabled");
           $("#change").css("color","black");
           $('#peso').css("color","black");
          
