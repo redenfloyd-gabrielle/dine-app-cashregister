@@ -45,16 +45,23 @@
 	<div class="row"></div>
 </div> <!-- closing grid -->
 
- <div class='ui mini modal' id='invalidQR'>
-    <div class='header' style='background-color: #800000; color: white;'>INVALID QR Code</div> 
-    <div class='content'>
-          <p>QR Code cannot be used. </p>
-          <div class='actions'>
-         	<div class='ui right floated cancel button'  type='submit' style='background-color: #800000; color: white;'>Okay</div>
-          </div>
-        </div>
+
+  <div class="ui basic modal">
+  <i class="close icon"></i>
+  <div class="ui icon tiny header">
+    <i class="warning sign icon">  QR Code Failed</i>
+   
+  </div>
+  <div class="content">
+   <p align="center">Please try again. Make sure you are scanning a valid code. </p>
+  </div>
+  <div class="actions">
+    <div class="ui blue ok inverted button">
+      <i class="checkmark icon"></i>
+      Okay
     </div>
   </div>
+</div>
 
 
 </body>
@@ -96,10 +103,7 @@
 			}
 		});
 	});
-	
-	$('.okay').on('click',function () {
-		$('#invalidQR').modal('hide');
-	})
+
 
 	$('#ok').on('click', function() {
 	  var qr = $("#ref").val();
@@ -114,7 +118,9 @@
 				$('body').html(result);
 				qr.stop($('#qrcam')[0]);
 			 }else{
-				 $('#invalidQR').modal('show');
+				$('.ui.basic.modal')
+				  .modal('show')
+				;
 			 }                 
 		},
 		error: function(jqXHR, errorThrown){

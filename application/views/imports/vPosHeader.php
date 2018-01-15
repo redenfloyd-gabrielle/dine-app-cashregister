@@ -32,9 +32,6 @@
 </div>
 <div class="ui grid">
 	
-
-
-
 <script> 
 	
 
@@ -62,6 +59,7 @@
        var date = moment().format("MM/DD/YYYY");
 	   // var time = moment().format("h:mm A");
 	   $('#date').append(date);
+	   $('body').removeClass('dimmable');
     });
 
 </script>
