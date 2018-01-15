@@ -4,3 +4,15 @@ input[type='number'] { -moz-appearance:textfield;}
 /* Webkit browsers like Safari and Chrome */
 input::-webkit-outer-spin-button,input::-webkit-inner-spin-button { display: none;-webkit-appearance: none; margin: 0;}
 .vid {max-width: 70%;max-height: 100%;}
+.receipttbl{width: 100%;}
+.receiptbox{ width: 325px;margin:0px 5px;}
+.receipthead{font-size: 21px;font-family: "Courier New", Courier, monospace;margin: 0px;}
+.receiptcontent{font-size: 13px;font-family: "Lucida Console", Monaco, monospace;margin: 0px;}
+.info{font-size: 12px;font-family: "Lucida Console", Monaco, monospace;}
+.receiptdivide{border-width: 1px;border-top-style:solid;}
+.receiptamt{font-size: 19px;font-family: "Lucida Console", Monaco, monospace; margin-top : 10px; text-transform: uppercase;
+font-weight: bold;}
+.itemRow{margin: 5px !important;padding: 5px !important;}
+.rght{ float:right;}
+.lft{ float: left;}
+.trline { line-height: 150%; }

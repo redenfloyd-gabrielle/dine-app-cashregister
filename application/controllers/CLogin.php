@@ -27,7 +27,6 @@
 			} else {
 			    redirect('CInitialize');
 			}
-
 		}
 
 		function viewAdminDashboard()
@@ -46,6 +45,11 @@
 
 		function viewPos()
 		{
+			$this->createReceiptSession();
+			$this->load->view('imports/vPosHeader');
+			$this->load->view('pos/index');
+		}
+		function viewPosNoReceipt(){
 			$this->load->view('imports/vPosHeader');
 			$this->load->view('pos/index');
 		}
@@ -115,6 +119,18 @@
 			$this->session->set_userdata('userSession', $sessionData);
 			}
 		}
+
+		public function createReceiptSession()
+		{
+			$data = array('receipt_id'=>null,
+					"receipt_cashier" => $this->session->userdata['userSession']['user_id']);
+			$this->MReceipt->insert($data);
+			$id = $this->db->insert_id();
+			$this->MReceipt->setReceipt_id($id);
+			$sessionReceipt = array("receipt_id" =>$id);
+			$this->session->set_userdata('receiptSession',$sessionReceipt);
+		}
+		
 		
 		public function userLogout()
 		{

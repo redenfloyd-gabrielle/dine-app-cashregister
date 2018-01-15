@@ -51,7 +51,7 @@
 			}	
 			$cat = $p->product_category;
 			 if ($r) {
-				redirect('CProduct/viewProduct/'.$cat);
+				redirect('CProduct/viewMDashboard/'.$cat);
 			} else {
 				print_r('SOMETHING WENT WRONG;');
 			}
@@ -113,7 +113,7 @@
 		    }
 			$cat = $p->product_category;
 			 if ($o){
-				redirect('CProduct/viewProductEdit/'.$page.'/'.$cat.'/'.$eid.'/'.$qr);
+				redirect('COrderItem/viewEdit/'.$page.'/'.$eid.'/'.$qr);
 			} else {
 				print_r('SOMETHING WENT WRONG;');
 			}
@@ -150,7 +150,6 @@
 		    $res = $this->load->view('pos/vOrder',$data,TRUE);
 
 		    echo $res;
-		    
 		}
 
 		// public function displayOrderListManual()

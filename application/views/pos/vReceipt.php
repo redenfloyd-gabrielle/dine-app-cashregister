@@ -14,10 +14,11 @@
 <body>
 <div class="receiptbox" id="receiptbox">
    <br>
-   <p class="mid receipthead"><strong>Mameng's Seafoods and BBQ Hauz</strong></p>
-   <p class="mid receiptcontent">Barangay 24 Imadejas</p>
-   <p class="mid receiptcontent">along J.C. Aquino Ave. Butuan City</p>
-   <p class="mid receiptcontent">(085)-300-3307</p><br>
+   <p class="receipthead" align="center"><strong>Mameng's Seafoods and </strong></p>
+   <p class="receipthead" align="center"><strong>BBQ Hauz</strong></p>
+   <p class="receiptcontent" align="center">Barangay 24 Imadejas</p>
+   <p class="receiptcontent" align="center">along J.C. Aquino Ave. Butuan City</p>
+   <p class="receiptcontent" align="center">(085)-300-3307</p><br>
    <div class="receiptdivide"> </div>
    <span class="lft info">
       Cashier : <strong><?php echo $cashier ?></strong> 
@@ -40,7 +41,7 @@
      </tr>
      <?php if( isset($receipt_item)){ ?>
       <?php foreach ($receipt_item as $item) { ?>
-     <tr>
+     <tr class="trline">
        <td class="lft receiptcontent"><?php echo $item->qty; ?></td>
        <td class="receiptcontent"><?php echo $item->name; ?></td>
        <td class="rght receiptcontent">P<?php echo $item->subtotal; ?>.00</td>
@@ -59,8 +60,9 @@
     <span class="rght ">P<?php echo $change ?></span>
   </span><br><br><br><br>
   <div class="receiptdivide"> </div>
-  <div class="mid receiptamt">THANK YOU!</div>
-  <div class="mid receiptamt">PLEASE COME AGAIN</div>
+  <div class=" receiptamt" align="center">THANK YOU!</div>
+  <div class="receiptamt" align="center">PLEASE COME AGAIN</div>
+  <br>
   
 </body>
 </html>
