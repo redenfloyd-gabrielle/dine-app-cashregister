@@ -224,8 +224,196 @@
         chart.draw(data, options);
       }
     </script>
+
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Day', 'Sales'],
+          <?php
+            foreach($daily as $row){
+              echo "['".$row->receipt_date."',".$row->receipt_total."],";
+            }          
+          ?>
+        ]);
+    
+
+        var options = {
+          title: 'Daily Sales',
+          curveType: 'function',
+          legend: { position: 'bottom' }
+        };
+
+        var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
+
+        chart.draw(data, options);
+      }
+    </script>
+
+
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Day', 'Sales'],
+          <?php
+          if($weekly3 != 0){
+            foreach($weekly3 as $row){
+              echo "['1st Week',".$row->total."],";
+            }
+          }
+
+          if($weekly2 != 0){
+            if($weekly3 != 0){
+              foreach($weekly2 as $row){
+                echo "['2nd Week',".$row->total."],";
+              }
+            }else{
+              foreach($weekly2 as $row){
+                echo "['1st Week',".$row->total."],";
+              }
+            }
+          }
+
+          if($weekly1 != 0){
+            if($weekly2 != 0){
+              if($weekly3 != 0){
+                foreach($weekly1 as $row){
+                  echo "['1st Week',".$row->total."],";
+                }
+              }else{
+                foreach($weekly1 as $row){
+                  echo "['2nd Week',".$row->total."],";
+                }
+              }
+            }else{
+              foreach($weekly1 as $row){
+                  echo "['3rd Week',".$row->total."],";
+                }
+            }
+          }
+
+          foreach($weekly as $row){
+            echo "['Current Week',".$row->total."],";
+          }
+
+          ?>
+        ]);
+    
+
+        var options = {
+          title: 'Weekly Sales',
+          curveType: 'function',
+          legend: { position: 'bottom' }
+        };
+
+        var chart = new google.visualization.LineChart(document.getElementById('curve_chart2'));
+
+        chart.draw(data, options);
+      }
+    </script>
+
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Day', 'Sales'],
+          <?php
+          if($monthly11 != 0){
+            foreach($monthly11 as $row){
+              echo "['November',".$row->total."],";
+            }
+          }
+
+          if($monthly10 != 0){
+            foreach($monthly10 as $row){
+              echo "['October',".$row->total."],";
+            }
+          }
+
+          if($monthly9 != 0){
+            foreach($monthly9 as $row){
+              echo "['September',".$row->total."],";
+            }
+          }
+
+          if($monthly8 != 0){
+            foreach($monthly8 as $row){
+              echo "['Aguast',".$row->total."],";
+            }
+          }
+
+          if($monthly7 != 0){
+            foreach($monthly7 as $row){
+              echo "['July',".$row->total."],";
+            }
+          }
+
+          if($monthly6 != 0){
+            foreach($monthly6 as $row){
+              echo "['June',".$row->total."],";
+            }
+          }
+
+          if($monthly5 != 0){
+            foreach($monthly5 as $row){
+              echo "['May',".$row->total."],";
+            }
+          }
+
+          if($monthly4 != 0){
+            foreach($monthly4 as $row){
+              echo "['April',".$row->total."],";
+            }
+          }
+
+          if($monthly3 != 0){
+            foreach($monthly3 as $row){
+              echo "['March',".$row->total."],";
+            }
+          }
+          if($monthly2 != 0){
+            foreach($monthly2 as $row){
+              echo "['February',".$row->total."],";
+            }
+          }
+
+          if($monthly1 != 0){
+            foreach($monthly1 as $row){
+              echo "['January',".$row->total."],";
+            }
+          }
+
+          foreach($monthly as $row){
+            echo "['".date('F')."',".$row->total."],";
+          }
+
+          ?>
+        ]);
+    
+
+        var options = {
+          title: 'Monthly Sales',
+          curveType: 'function',
+          legend: { position: 'bottom' }
+        };
+
+        var chart = new google.visualization.LineChart(document.getElementById('curve_chart3'));
+
+        chart.draw(data, options);
+      }
+    </script>
 <div align = "center">
 	<div id="piechart" style="width: 1000px; height: 500px;"></div>
+  <div id="curve_chart" style="width: 900px; height: 500px"></div>
+  <div id="curve_chart2" style="width: 900px; height: 500px"></div>
+  <div id="curve_chart3" style="width: 900px; height: 500px"></div>
 </div>
 </body>
 </html>
