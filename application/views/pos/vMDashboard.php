@@ -14,53 +14,28 @@
           <h4 style="color: gray;"><i class="left arrow grey icon"></i>BACK TO HOME</h4>
         </a>
 
-        <h3 class="ui header"><i class="cubes icon"></i>CATEGORIES</h3>
-        <div class="ui three stackable cards">
-          <a class='ui small card' href='<?php echo site_url()?>/CProduct/viewProduct/RICE MEAL'> 
-            <div class='center aligned middle aligned content'>
-                <img src='<?php echo base_url("assets/images/ricemeal.png")?>' class='ui small image'>
-                <div class='header' id='userHeader'>
-                    RICE MEAL
-                </div>
-            </div>
-          </a> <!-- category card -->
-
-          <a class='ui small card' href="<?php echo site_url();?>/CProduct/viewProduct/DRINKS"> 
-            <div class='center aligned middle aligned content'>
-                <img src="<?php echo base_url('assets/images/drinks.svg')?>" class='ui small image'>
-                <div class='header' id='userHeader'>
-                    DRINKS
-                </div>
-            </div>
-          </a> <!-- category card -->
-
-          <a class='ui small card' href="<?php echo site_url();?>/CProduct/viewProduct/SOUP"> 
-            <div class='center aligned middle aligned content'>
-                <img src="<?php echo base_url('assets/images/soup.png')?>" class='ui small image'>
-                <div class='header' id='userHeader'>
-                    SOUP
-                </div>
-            </div>
-          </a> <!-- category card -->
-
-          <a class='ui small card' href="<?php echo site_url();?>/CProduct/viewProduct/MAIN COURSE"> 
-            <div class='center aligned middle aligned content'>
-                <img src="<?php echo base_url('assets/images/meals.svg')?>" class='ui small image'>
-                <div class='header' id='userHeader'>
-                    MAIN COURSE
-                </div>
-            </div>
-          </a> <!-- category card -->
-
-          <a class='ui small card' href="<?php echo site_url();?>/CProduct/viewProduct/EXTRAS"> 
-            <div class='center aligned middle aligned content'>
-                <img src="<?php echo base_url('assets/images/extras.svg')?>" class='ui small image'>
-                <div class='header' id='userHeader'>
-                    EXTRAS
-                </div>
-            </div>
-          </a> <!-- category card -->
-        </div>
+       <div class="ui top attached fluid tabular menu">
+        <a class="item active" data-tab="ricemeal" >RICE MEAL</a>
+        <a class="item" data-tab="drinks">DRINKS</a>
+        <a class="item" data-tab="soup">SOUP</a>
+        <a class="item" data-tab="maincourse">MAIN COURSE</a>
+        <a class="item" data-tab="extras">EXTRAS</a>
+      </div>
+      <div class="ui bottom attached tab segment active" data-tab="ricemeal" id="RICEMEAL">
+        <font style="font-size:0px">RICEMEAL</font>
+      </div>
+      <div class="ui bottom attached tab segment" data-tab="drinks" id="DRINKS">
+         <font style="font-size:0px">DRINKS</font>
+      </div>
+      <div class="ui bottom attached tab segment" data-tab="soup" id="SOUP">
+         <font style="font-size:0px">SOUP</font>
+      </div>
+      <div class="ui bottom attached tab segment" data-tab="maincourse" id="MAINCOURSE">
+         <font style="font-size:0px">MAINCOURSE</font>
+      </div>
+      <div class="ui bottom attached tab segment" data-tab="extras" id="EXTRAS">
+         <font style="font-size:0px">EXTRAS</font>
+      </div>
 
     </div>
     <div class="two wide column"></div>
@@ -72,14 +47,9 @@
 
 <script>
   $(document).ready(function(){
-   
-    var receipt_id = $('#receipt_id').val().trim();
-   
-    var dataSet = "receipt_id="+receipt_id;
-    $.ajax({
+     $.ajax({
         type: "POST",
         url: '<?php echo site_url()?>/CReceiptItem/displayOrderListManual',
-        data: dataSet,
         cache: false,
         success: function(result){
             if(result){
@@ -92,6 +62,43 @@
             console.log(errorThrown);
         }
     });
-});
+     $.ajax({
+        type: "POST",
+        url: "<?php echo site_url()?>/CProduct/viewProduct/RICEMEAL",
+        cache: false,
+        success: function(result){
+          $('#RICEMEAL').html(result);  
+        },
+        error: function(jqXHR, errorThrown){
+            console.log(errorThrown);
+        }
+
+      });
+   $('.menu .item')
+      .tab({'onVisible':function(){
+      var cat = $(this).text();
+      //cat = cat.replace(/ /g,'');
+      cat = $.trim(cat.replace(/[\t\n]+/g,' '));
+        $.ajax({
+        type: "POST",
+        url: "<?php echo site_url()?>/CProduct/viewProduct/"+cat,
+        cache: false,
+        success: function(result){
+         
+          cat = cat.replace(/ /g,'');
+
+          $('#'+cat).html(result);
+       
+        },
+        error: function(jqXHR, errorThrown){
+            console.log(errorThrown);
+        }
+
+      });
+      }
+    });
+
+   
+  });
 
 </script>

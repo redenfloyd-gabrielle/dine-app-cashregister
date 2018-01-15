@@ -117,7 +117,7 @@
 <div class="ui borderless bottom fixed menu">
   <div class="right menu">
     <div class="hidden item"></div>
-    <a href="<?php echo site_url();?>/CLogin/viewPos" class="item"><div class="ui teal button">BACK</div></a>
+    <a href="<?php echo site_url();?>/CLogin/viewPosNoReceipt" class="item"><div class="ui teal button">BACK</div></a>
     <div class="hidden item"></div>
     <div class="hidden item"></div>
     <a class="item"><button class="ui teal disabled button" id="rbtn">CHECKOUT</button></a>
@@ -216,13 +216,15 @@
     $('#print').on('click',function(){
 
         var tableData;
+        var eid = $('#eid').val();
         var total = $("#due").text();
         var cash = $("#cash").text();
         var change = $("#change").text();
+        var page = $('#page').val();
         tableData = storeTblValues();
 
         tableData = $.toJSON(tableData);
-        var data =  "pTableData=" + tableData+"&total="+total+"&cash="+cash+"&change="+change;
+        var data =  "pTableData=" + tableData+"&total="+total+"&cash="+cash+"&change="+change+"&page="+page+"&eid="+eid;
 
         $.ajax({
           type: "POST",

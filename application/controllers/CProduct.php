@@ -390,19 +390,7 @@
 		}
 
 
-
-
-		public function createReceiptSession()
-		{
-			$data = array('receipt_id'=>null, 'receipt_cashier' => $this->session->userdata['userSession']['user_id']);
-			$this->MReceipt->insert($data);
-			$id = $this->db->insert_id();
-			$this->MReceipt->setReceipt_id($id);
-			$sessionReceipt = array("receipt_id" =>$id);
-			$this->session->set_userdata('receiptSession',$sessionReceipt);
-		}
         public function viewMDashboard(){
-        	$this->createReceiptSession();
         	$data['page'] = 'manual';
         	$data['id'] = $this->session->userdata['receiptSession']['receipt_id'];
 			$this->load->view('imports/vPosHeader');
@@ -442,8 +430,15 @@
 		public function viewProduct($cat)
 		{
 			$cat = urldecode($cat);
-			$result = $this->MProduct->getProductsByCategory($cat);
-
+			$cat = str_replace(' ', '', $cat);
+			if($cat == 'MAINCOURSE'){
+				$cat = 'MAIN COURSE';
+			}else if($cat == 'RICEMEAL'){
+				$cat = 'RICE MEAL';
+			}
+			//print_r($cat);
+			 $result = $this->MProduct->getProductsByCategory($cat);
+          
             $array = array();
 			if($result){
 				foreach ($result as $value) {
@@ -464,14 +459,19 @@
 			$data['prod_cat']  = $cat;
 			$data['page'] = 'manual';
 			$data['id'] = $this->session->userdata['receiptSession']['receipt_id'];
-			$this->load->view('imports/vPosHeader');
+			//$this->load->view('imports/vPosHeader');
 			$this->load->view('pos/vProducts',$data);
-
-			// print_r($data);
+		
 		}
 		public function viewProductEdit($page,$cat,$id,$qr)
 		{
 			$cat = urldecode($cat);
+			$cat = str_replace(' ', '', $cat);
+			if($cat == 'MAINCOURSE'){
+				$cat = 'MAIN COURSE';
+			}else if($cat == 'RICEMEAL'){
+				$cat = 'RICE MEAL';
+			}
 			$result = $this->MProduct->getProductsByCategory($cat);
 
 
@@ -534,7 +534,6 @@
 			
 			$data['eid'] = $id;
 			$data['qr'] = $qr;
-			$this->load->view('imports/vPosHeader');
 			$this->load->view('pos/vProductEdit',$data);
 
 			
