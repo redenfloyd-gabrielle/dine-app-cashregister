@@ -1,4 +1,4 @@
-F<?php
+<?php
 	defined('BASEPATH') OR exit('No direct script access allowed');
 
 	class COrderItem extends CI_Controller {
@@ -19,41 +19,6 @@ F<?php
 		{
 			
 		}
-
-		// public function viewEditOrder(){
-			
-  //          $order = new MOrdered();
-
-		// 	$page = $_POST['page'];
-		// 	$id = $_POST['eid'];
-
-		// 	$result = $order->displayOrderItemsByOrder($id);
-		// 	if($result){
-		// 		foreach ($result as $q) {}
-		// 		$id = $q->ordered_id;
-		// 		$total = $q->ordered_total;
-		// 		$qr = $q->ordered_qr_code;
-		// 		$result1 = $order->displayOrderItemsByOrder($id);
-			   
-		// 	    $qty = 0;
-			
-		// 		$data['order_info'] = null;
-		// 		if($result1){
-		// 			foreach ($result1 as $r) {
-		// 			$qty += $r->order_item_qty;
-		// 		    }
-		// 			$data['order_info'] = $result1;
-		// 		}
-		// 		$data['total'] = $total;
-		// 	}else{
-		// 		$data = null;
-		// 	}
-		// 	$data['eid'] = $id;
-		// 	$data['page'] = $page;
-
-		// 	$res = $this->load->view('pos/vEditOrder',$data,TRUE);
-		// 	echo $res;
-		// }
 
 		public function viewEdit($page,$id,$qr)
 		{
@@ -175,9 +140,7 @@ F<?php
 					}
 				}
 			}
-			
-			print_r($qty);
-
+		
 		}
  	}
 ?>

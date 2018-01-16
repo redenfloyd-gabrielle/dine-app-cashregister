@@ -18,8 +18,7 @@
     <input type="hidden" name="page" value="<?php echo $page ?>" id="page">
     <input type="hidden" name="eid" value="<?php echo $eid ?>" id="eid">
 
-
-         <div class="ui top attached fluid tabular menu">
+      <div class="ui top attached fluid tabular menu">
         <a class="item active" data-tab="ricemeal" >RICE MEAL</a>
         <a class="item" data-tab="drinks">DRINKS</a>
         <a class="item" data-tab="soup">SOUP</a>
@@ -34,7 +33,7 @@
       </div>
       <div class="ui bottom attached tab segment" data-tab="soup" id="SOUP">
          <font style="font-size:0px">SOUP</font>
-      </div>x
+      </div>
       <div class="ui bottom attached tab segment" data-tab="maincourse" id="MAINCOURSE">
          <font style="font-size:0px">MAINCOURSE</font>
       </div>
@@ -76,7 +75,7 @@
       var qr = $('#qr').val();
      
       //cat = cat.replace(/ /g,'');
-      cat = $.trim(cat.replace(/[\t\n]+/g,' '));
+        cat = $.trim(cat.replace(/[\t\n]+/g,' '));
         $.ajax({
         type: "POST",
         url: "<?php echo site_url()?>/CProduct/viewProductEdit/"+page+"/"+cat+"/"+eid+"/"+qr,
