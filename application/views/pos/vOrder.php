@@ -117,7 +117,7 @@
 <div class="ui borderless bottom fixed menu">
   <div class="right menu">
     <div class="hidden item"></div>
-    <a href="<?php echo site_url();?>/CLogin/viewPosNoReceipt" class="item"><div class="ui teal button">BACK</div></a>
+    <a href="<?php echo site_url();?>/CLogin/viewPos" class="item"><div class="ui teal button">BACK</div></a>
     <div class="hidden item"></div>
     <div class="hidden item"></div>
     <a class="item"><button class="ui teal disabled button" id="rbtn">CHECKOUT</button></a>
@@ -171,13 +171,13 @@
 
         
         if(change < 0){
-          $("#print").addClass("disabled");
-          $("#rbtn").addClass("disabled");
+          $("#print").toggleClass("disabled");
+          $("#rbtn").toggleClass("disabled");
           $("#change").css("color","red");
           $('#peso').css("color","red");
          }else{
-          $("#print").removeClass("disabled");
-          $("#rbtn").removeClass("disabled");
+          $("#print").toggleClass("disabled");
+          $("#rbtn").toggleClass("disabled");
           $("#change").css("color","black");
           $('#peso').css("color","black");
          

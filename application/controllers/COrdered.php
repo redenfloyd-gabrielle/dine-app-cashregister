@@ -23,9 +23,21 @@
 			$this->load->view('admin/vOrderList');
 			$this->load->view('imports/vAdminFooter');
  		}
+ 		public function createReceiptSession()
+		{
+			$data = array('receipt_id'=>null,
+					"receipt_cashier" => $this->session->userdata['userSession']['user_id']);
+			$this->MReceipt->insert($data);
+			$id = $this->db->insert_id();
+			$this->MReceipt->setReceipt_id($id);
+			$sessionReceipt = array("receipt_id" =>$id);
+			$this->session->set_userdata('receiptSession',$sessionReceipt);
+		}
+		
 
  		
 		public function viewQDashboard($id){
+			
 			$result = $this->MOrdered->getOrderById($id);
 			if($result){
 				foreach ($result as $key) {}
@@ -76,6 +88,9 @@
 				
 			}
 			if($data != null){
+				if(!$this->session->userdata('receiptSession')){
+					$this->createReceiptSession();
+				}
 				$res = $this->load->view('pos/vOrder',$data,TRUE);
 				echo $res;	
 			}

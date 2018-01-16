@@ -98,6 +98,7 @@
 					$status = array('ordered_status' => 'scanned');
 					$query = $this->MOrdered->update($eid, $status);
 				}
+				$this->session->unset_userdata('receiptSession');
 				$res = $this->load->view('pos/vReceipt',$data,TRUE);
 		  	    echo $res;	
 			}else{
