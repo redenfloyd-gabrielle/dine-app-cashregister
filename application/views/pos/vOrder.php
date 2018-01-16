@@ -24,11 +24,11 @@
     <div class="six wide column">
       <div id="vOrder">
       <div class="ui grid">
-        <div class="column"></div>
-        <div class="nine wide center aligned middle aligned grey column" style="margin-left: -20px;">
+         <div class="hidden item"></div> <div class="hidden item"></div>
+         <div class="ten wide center aligned middle aligned grey column" style="margin-left: -40px;">
           ORDER LIST
         </div>
-        <div class="six wide column">
+        <div class="five wide column " style="margin-left: 20px;">
           <?php if($page == "manual"){
                 echo '<a href="'.site_url().'/COrderItem/viewEdit/'.$page.'/'.$id.'/1" ><button class="fluid ui labeled icon button"><i class="pencil icon"></i>EDIT ORDER</button></a>';
           }else{
@@ -75,9 +75,18 @@
         <div class="eight wide column">
           <div class="ui form">
             <div class="field disabled" id="cashinput">
-              <input type="text" placeholder="Enter Cash Amount" id="amount" value="0">
+              <input type="number" placeholder="Enter Cash Amount" id="amount" value="0">
             </div>
           </div>
+          <div id="error">
+            <div class="ui negative message">
+              <i class="close icon"></i>
+              <div class="header">
+                Invalid amount
+              </div>
+              <p>Please add amount to proceed
+            </p></div>
+           </div>
         </div>
 
         <!-- AMOUNT DUE -->
@@ -116,12 +125,15 @@
 </div> <!-- closing grid -->
 <div class="ui borderless bottom fixed menu">
   <div class="right menu">
-    <div class="hidden item"></div>
+   
     <a href="<?php echo site_url();?>/CLogin/viewPos" class="item"><div class="ui teal button">BACK</div></a>
     <div class="hidden item"></div>
     <div class="hidden item"></div>
-    <a class="item"><button class="ui teal disabled button" id="rbtn">CHECKOUT</button></a>
-    <a class="item"><button class="ui teal disabled button" id="print">CHECKOUT w/RECEIPT</button></a>
+    <div class="hidden item"></div>
+    <a class="item"><button class="ui teal button" id="rbtn">CHECKOUT</button></a>
+    <a class="item"><button class="ui teal button" id="print">CHECKOUT w/RECEIPT</button></a>
+    <div class="hidden item"></div>
+    <div class="hidden item"></div>
   </div>
 </div>
 </div> 
@@ -130,7 +142,17 @@
 </html>
     
 <script type="text/javascript">
+  
    $(document).ready(function(){
+    var cash = $("#cash").text();
+    if(cash == 0){
+     $('#error').hide();
+    }
+
+    $(".close.icon").click(function(){
+     $('#error').hide();
+   });
+      
     function storeTblValues(){
       var tableData = new Array();
       $("#myTable tr").each(function(row,tr){
@@ -151,7 +173,8 @@
       }else{
          $("#cashinput").addClass("disabled");
       }
-      
+
+
       var sum = 0;
       $(".subtotal").each(function() {
           var value = $(this).text();
@@ -171,15 +194,16 @@
 
         
         if(change < 0){
-          $("#print").toggleClass("disabled");
-          $("#rbtn").toggleClass("disabled");
+          // $("#print").addClass("disabled");
+          // $("#rbtn").addClass("disabled");
           $("#change").css("color","red");
           $('#peso').css("color","red");
          }else{
-          $("#print").toggleClass("disabled");
-          $("#rbtn").toggleClass("disabled");
+          // $("#print").removeClass("disabled");
+          // $("#rbtn").removeClass("disabled");
           $("#change").css("color","black");
           $('#peso').css("color","black");
+          $('#error').hide();
          
          }
       });
@@ -196,21 +220,24 @@
 
       tableData = $.toJSON(tableData);
       var dataSet =  "pTableData=" + tableData+"&total="+total+"&cash="+cash+"&change="+change+"&page="+page+"&eid="+eid;
+      if(cash != 0){
+        $.ajax({
+          type: "POST",
+          url: "<?php echo site_url()?>/CReceipt/addOrderToReceipt",
+          data: dataSet,
+          cache: false,
+          success: function(result){
+             // alert(result);
+             $('body').html(result);
+          },
+          error: function(jqXHR, errorThrown){
+              console.log(errorThrown);
+          }
 
-      $.ajax({
-        type: "POST",
-        url: "<?php echo site_url()?>/CReceipt/addOrderToReceipt",
-        data: dataSet,
-        cache: false,
-        success: function(result){
-           // alert(result);
-           $('body').html(result);
-        },
-        error: function(jqXHR, errorThrown){
-            console.log(errorThrown);
-        }
-
-      });
+        });
+      }else{
+        $('#error').show();        
+      }
 
     });
     $('#print').on('click',function(){
@@ -225,25 +252,27 @@
 
         tableData = $.toJSON(tableData);
         var data =  "pTableData=" + tableData+"&total="+total+"&cash="+cash+"&change="+change+"&page="+page+"&eid="+eid;
+        if(cash != 0){
+           $.ajax({
+            type: "POST",
+            url: "<?php echo site_url()?>/CReceipt/printReceipt",
+            data: data,
+            cache: false,
+            success: function(result){
+               // alert(result);
+               $('body').html(result);
+               window.print();
+               document.location.href = "<?php echo site_url()?>/CLogin/viewPos"; 
+            },
+            error: function(jqXHR, errorThrown){
+                console.log(errorThrown);
 
-        $.ajax({
-          type: "POST",
-          url: "<?php echo site_url()?>/CReceipt/printReceipt",
-          data: data,
-          cache: false,
-          success: function(result){
-             // alert(result);
-             $('body').html(result);
-             window.print();
-             document.location.href = "<?php echo site_url()?>/CLogin/viewPos"; 
-          },
-          error: function(jqXHR, errorThrown){
-              console.log(errorThrown);
+            }
+          });
 
-          }
-
-        });
-
+        }else{
+          $('#error').show();        
+        }
       });
 
    });

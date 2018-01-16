@@ -26,5 +26,4 @@
       </div>
     <?php } ?>
   <?php }else{  echo "<i class='circle warning icon error'></i><span> No items to display.</span>" ;} ?> 
-
 </div>
