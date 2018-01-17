@@ -36,18 +36,10 @@
 		
 
  		
-		public function viewQDashboard($id){
+		public function viewQDashboard(){
 			
-			$result = $this->MOrdered->getOrderById($id);
-			if($result){
-				foreach ($result as $key) {}
-				$data['qr'] = $key->ordered_qr_code;
-			}else{
-				$data['qr'] = null;
-			}
-			// print_r($data);
 			$this->load->view('imports/vPosHeader');
-			$this->load->view('pos/vQDashboard',$data);
+			$this->load->view('pos/vQDashboard');
 		}
 
 		public function displayOrderFromQR()
@@ -132,9 +124,7 @@
 				$data = null;
 				
 			}
-			if($data == null){
-				// echo "<script>alert('INVALID QR CODE')</script>";
-			}else{
+			if($data != null){
 				$res = $this->load->view('pos/vOrder',$data,TRUE);
 				echo $res;	
 			}

@@ -18,8 +18,8 @@
         </a>
         <div class="ui hidden divider"></div>
         <img src="'.base_url().'assets/images/disable.jpg" class="disabled ui vid image">
-    </div>
-    <div class="two wide column"></div>'; } ?>
+    </div>'; } ?>
+    <div class="two wide column"></div>
 
     <div class="six wide column">
       <div id="vOrder">

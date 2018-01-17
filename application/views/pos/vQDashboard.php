@@ -25,7 +25,6 @@
 
 		    <center>
 		    	<video id="qrcam" class="ui fluid item vid"></video> 
-		    	<input type="hidden" name="qr" id="qr" value="<?php echo $qr ?>">
 		    	<div class="ui hidden divider"></div>
 				<div class="ui form">
 				    <div class="inline field">
