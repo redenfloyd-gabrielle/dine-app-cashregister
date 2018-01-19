@@ -11,7 +11,7 @@
         </div>
       </h1>
       <div class="ui hidden divider"></div>
-      <div class="ui info visible floating message">
+      <div class="ui info visible floating message msg">
         <ul class="list">
           <li>To retrieve order from guest device, choose <strong>SCAN QR CODE</strong></li>
           <li>To manually input order, choose <strong>INPUT ORDER</strong></li>

@@ -28,13 +28,13 @@
         <input type="hidden" name="eid" value="<?php echo $eid ?>" id="eid">
 
       <div class="ui top attached fluid tabular menu">
-        <a class="item active" data-tab="ricemeal" >RICE MEAL</a>
+        <a class="item active" data-tab="pancit">PANCIT</a>
         <a class="item" data-tab="drinks">DRINKS</a>
         <a class="item" data-tab="soup">SOUP</a>
         <a class="item" data-tab="maincourse">MAIN COURSE</a>
         <a class="item" data-tab="extras">EXTRAS</a>
       </div>
-      <div class="ui bottom attached tab segment active" data-tab="ricemeal" id="RICEMEAL">
+      <div class="ui bottom attached tab segment active" data-tab="pancit" id="PANCIT">
         <font style="font-size:0px">RICEMEAL</font>
       </div>
       <div class="ui bottom attached tab segment" data-tab="drinks" id="DRINKS">
@@ -67,9 +67,9 @@
   $.ajax({
 
         type: "POST",
-        url: "<?php echo site_url()?>/CProduct/viewProductEdit/"+page+"/RICEMEAL/"+eid+"/"+qr,
+        url: "<?php echo site_url()?>/CProduct/viewProductEdit/"+page+"/PANCITSSSS/"+eid+"/"+qr,
         success: function(result){
-          $('#RICEMEAL').html(result);  
+          $('#PANCIT').html(result);  
         },
         error: function(jqXHR, errorThrown){
             console.log(errorThrown);
