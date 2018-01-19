@@ -8,7 +8,7 @@ input::-webkit-outer-spin-button,input::-webkit-inner-spin-button { display: non
 .receiptbox{ width: 320px;margin:20px 0px;}
 .receipthead{font-size: 22px;font-family: "Lucida Console", Monaco, monospace;margin: 0px;}
 .receiptcontent{font-size: 14px;font-family: "Lucida Console", Monaco, monospace;margin: 0px;}
-.info{font-size: 13px;font-family: "Lucida Console", Monaco, monospace;margin: 0px;}
+.msg{font-size: 13px;font-family: "Lucida Console", Monaco, monospace;margin: 0px;}
 .receiptdivide{border-width: 1px;border-top-style:solid;}
 .receiptamt{font-size: 20px;font-family: "Lucida Console", Monaco, monospace;margin-top: 10px;text-transform: uppercase;
 font-weight: bold;}

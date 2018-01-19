@@ -16,10 +16,10 @@
 
 		    <div class="ui hidden divider"></div>
 
-		    <div class="ui info visible message">
+		    <div class="ui info visible message msg">
 				<p>To retrieve guest order, place QR Code from mobile in front of the camera (web-cam).</p>
 			</div>
-			<div class="ui warning visible message">
+			<div class="ui warning visible message msg">
 				<p>If the scanner does not appear, or if the scanner failed to retrieve the order, enter the <strong>Reference Number</strong> below.</p>
 			</div>
 

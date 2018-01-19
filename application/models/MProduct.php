@@ -92,7 +92,6 @@
 
 			# code...
 		}
-
 		public function getProduct_id(){
 			return $this->product_id;
 		}

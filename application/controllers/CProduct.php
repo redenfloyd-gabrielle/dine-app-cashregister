@@ -116,7 +116,7 @@
 	        $length = intval($this->input->get("length"));
 
 
-	        $cat = 'RICE MEAL';
+	        $cat = 'PANCIT';
 			$products = $this->MProduct->getItemsByCategory($cat);
          	$data = array();
 
@@ -448,8 +448,6 @@
 			$cat = str_replace(' ', '', $cat);
 			if($cat == 'MAINCOURSE'){
 				$cat = 'MAIN COURSE';
-			}else if($cat == 'RICEMEAL'){
-				$cat = 'RICE MEAL';
 			}
 			//print_r($cat);
 			 $result = $this->MProduct->getProductsByCategory($cat);
@@ -484,8 +482,6 @@
 			$cat = str_replace(' ', '', $cat);
 			if($cat == 'MAINCOURSE'){
 				$cat = 'MAIN COURSE';
-			}else if($cat == 'RICEMEAL'){
-				$cat = 'RICE MEAL';
 			}
 			$result = $this->MProduct->getProductsByCategory($cat);
 
@@ -575,7 +571,7 @@
 				$data['products'] = null;
 			}
 
-			if ($cat == 'RICE MEAL') {
+			if ($cat == 'PANCIT') {
 				$this->load->view('imports/vAdminHeader'); 
 				$this->load->view('admin/category/vRiceMeals',$data);
 				$this->load->view('imports/vAdminFooter');

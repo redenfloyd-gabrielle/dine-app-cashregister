@@ -15,14 +15,14 @@
         </a>
 
        <div class="ui top attached fluid tabular menu">
-        <a class="item active" data-tab="ricemeal" >RICE MEAL</a>
+        <a class="item active" data-tab="pancit">PANCIT</a>
         <a class="item" data-tab="drinks">DRINKS</a>
         <a class="item" data-tab="soup">SOUP</a>
         <a class="item" data-tab="maincourse">MAIN COURSE</a>
         <a class="item" data-tab="extras">EXTRAS</a>
       </div>
-      <div class="ui bottom attached tab segment active" data-tab="ricemeal" id="RICEMEAL">
-        <font style="font-size:0px">RICEMEAL</font>
+      <div class="ui bottom attached tab segment active" data-tab="pancit" id="PANCIT">
+        <font style="font-size:0px">PANCITS</font>
       </div>
       <div class="ui bottom attached tab segment" data-tab="drinks" id="DRINKS">
          <font style="font-size:0px">DRINKS</font>
@@ -64,7 +64,7 @@
     });
      $.ajax({
         type: "POST",
-        url: "<?php echo site_url()?>/CProduct/viewProduct/RICEMEAL",
+        url: "<?php echo site_url()?>/CProduct/viewProduct/PANCIT",
         cache: false,
         success: function(result){
           $('#RICEMEAL').html(result);  
