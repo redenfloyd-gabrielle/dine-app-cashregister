@@ -45,11 +45,13 @@
                             <h3 class='ui horizontal divider header'><i class='user icon'></i>User Account Information</h3>
 
                             <label>POSITION</label><br>
-                            <input type="hidden" name="position" id="position" value="<?php echo $u->user_type; ?>">
+                            <input type="hidden" name="position" id="position" value="<?php echo $u->user_position; ?>">
                             <select class="ui dropdown" name="pos" id="pos" >
-                              <option value="SUPERADMIN">Superadmin</option>
-                              <option value="ADMIN">Admin</option>
-                              <option value="REGULAR">Employee</option>
+                              <option value="">Choose position</option>
+                              <option value="Manager">Manager</option>
+                              <option value="Supervisor">Supervisor</option>
+                              <option value="Cashier">Cashier</option>
+                              <option value="Owner">Owner</option>
                             </select> <!-- position dropdown -->
 
                         </div>

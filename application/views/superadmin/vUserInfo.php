@@ -49,7 +49,7 @@
                                     </tr>
                                     <tr>
                                         <td>POSITION</td>
-                                        <td><?php echo $u->user_type; ?> </td>
+                                        <td><?php echo $u->user_position; ?> </td>
                                     </tr>
                                 </tbody>
                             </table>

@@ -36,11 +36,20 @@
 		public function addUser()
 		{
 			$now = new DateTime(NULL, new DateTimeZone('Asia/Manila'));
+			$type = null;
+			if($this->input->post('position') == 'Manager' ){
+				$type = 'ADMIN';
+			} else if ($this->input->post('position') == 'Owner' || $this->input->post('position') == 'Supervisor'){
+				$type = 'SUPERADMIN';
+			} else {
+				$type = 'REGULAR';
+			}
 
 			$data = array('user_first_name' => $this->input->post('fname'),
 						  'user_mi' => $this->input->post('mname'),
 			  			  'user_last_name' => $this->input->post('lname'),
-						  'user_type' => $this->input->post('position'),
+			  			  'user_position' => $this->input->post('position'),
+						  'user_type' => $type,
 						  'user_created_by' => $this->session->userdata['userSession']['user_id'],
 						  'user_created_on' => $now->format('Y-m-d H:i:s'),
 						  'user_modified_by' => $this->session->userdata['userSession']['user_id'],
@@ -48,7 +57,6 @@
 						 );
 			$result = $this->MUser->insert($data);
 			if ($result) {
-				// $this->viewUsersList();
 				redirect('CUser/viewUsersList');
 			} else {
 				print_r('SOMETHING WENT WRONG;');
@@ -60,10 +68,20 @@
 		{
 			$now = new DateTime(NULL, new DateTimeZone('Asia/Manila'));
 
+			$type = null;
+			if($this->input->post('position') == 'Manager' ){
+				$type = 'ADMIN';
+			} else if ($this->input->post('position') == 'Owner' || $this->input->post('position') == 'Supervisor'){
+				$type = 'SUPERADMIN';
+			} else {
+				$type = 'REGULAR';
+			}
+
 			$data = array('user_first_name' => $this->input->post('fname'),
 						  'user_mi' => $this->input->post('mname'),
 			  			  'user_last_name' => $this->input->post('lname'),
-						  'user_type' => $this->input->post('position'),
+						  'user_position' => $this->input->post('position'),
+						  'user_type' => $type,
 						  'user_modified_by' => $this->session->userdata['userSession']['user_id'],
 						  'user_modified_on' => $now->format('Y-m-d H:i:s'),
 						 );
