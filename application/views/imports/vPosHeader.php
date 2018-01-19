@@ -10,7 +10,7 @@
     <script src='<?php echo base_url("assets/semantic/semantic.min.js")?>'></script>
     <script type="text/javascript" src="<?php echo base_url('assets/jquery/instascan.min.js')?>"></script>
     <script type="text/javascript" src="<?php echo base_url('assets/jquery/jquery.json-2.4.min.js')?>"></script>
-     <script type="text/javascript" src="<?php echo base_url('assets/jquery/moment.min.js')?>"></script>
+    <script type="text/javascript" src="<?php echo base_url('assets/jquery/moment.min.js')?>"></script>
 
     
 </head>
@@ -57,7 +57,7 @@
     {
        setInterval('updateClock()', 1000);
        var date = moment().format("MM/DD/YYYY");
-	   // var time = moment().format("h:mm A");
+	   
 	   $('#date').append(date);
 	   $('body').removeClass('dimmable');
     });

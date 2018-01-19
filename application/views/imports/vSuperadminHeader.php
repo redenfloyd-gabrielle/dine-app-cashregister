@@ -5,7 +5,7 @@
     <title>DINE | Admin Module</title>
     <link rel='stylesheet' href='<?php echo base_url("assets/css/superadminAssets.css")?>'>
     <link rel='stylesheet' href='<?php echo base_url("assets/semantic/semantic.min.css")?>'>
-    <script src='<?php echo base_url("assets/jquery.min.js")?>'></script>
+    <script src='<?php echo base_url("assets/jquery/jquery.min.js")?>'></script>
     <script src='<?php echo base_url("assets/semantic/semantic.min.js")?>'></script>
     <script src='<?php echo base_url("assets/jquery/sha.js")?>'></script>
 </head>

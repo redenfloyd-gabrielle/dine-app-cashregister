@@ -94,7 +94,9 @@
 					$('body').html(result);
 					qr.stop($('#qrcam')[0]);
 				 }else{
-					 $('#invalidQR').modal('show');
+					$('.ui.basic.modal')
+					  .modal('show')
+					;
 				 }              
 			},
 			error: function(jqXHR, errorThrown){

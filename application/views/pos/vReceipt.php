@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,6 +13,7 @@
   <script src="main.js"></script>
 </head>
 <body>
+<div class="new-page">
 <div class="receiptbox" id="receiptbox">
    <br>
    <p class="receipthead" align="center"><strong>Mameng's Seafoods and </strong></p>
@@ -59,13 +61,20 @@
   <span class="lft receipttbl receiptcontent">Change
     <span class="rght ">P<?php echo $change ?></span>
   </span><br><br><br><br>
-  <div class="receiptdivide"> </div>
+  <div class="receiptdivide"> </div><br><br>
   <div class=" receiptamt" align="center">THANK YOU!</div>
   <div class="receiptamt" align="center">PLEASE COME AGAIN</div>
   <br>
-  
+</div>
+</div>
+
+   
 </body>
 </html>
+
+
+
+
  
   
   

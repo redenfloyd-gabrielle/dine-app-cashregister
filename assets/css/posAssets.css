@@ -5,7 +5,7 @@ input[type='number'] { -moz-appearance:textfield;}
 input::-webkit-outer-spin-button,input::-webkit-inner-spin-button { display: none;-webkit-appearance: none; margin: 0;}
 .vid {max-width: 70%;max-height: 100%;}
 .receipttbl{width: 100%;}
-.receiptbox{ width: 330px;margin:20px 0px;}
+.receiptbox{ width: 320px;margin:20px 0px;}
 .receipthead{font-size: 22px;font-family: "Lucida Console", Monaco, monospace;margin: 0px;}
 .receiptcontent{font-size: 14px;font-family: "Lucida Console", Monaco, monospace;margin: 0px;}
 .info{font-size: 13px;font-family: "Lucida Console", Monaco, monospace;margin: 0px;}
@@ -16,3 +16,9 @@ font-weight: bold;}
 .rght{ float:right;}
 .lft{ float: left;}
 .trline { line-height: 150%; }
+@media print{
+.new-page{
+  display: block;
+  page-break-before: always;
+}
+}
