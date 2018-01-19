@@ -1,9 +1,9 @@
 <div class="pusher">
-    <div class='ui hidden segment'></div>
+    <div class='ui hidden divider'></div>
     <div class='ui padded segment'>
         <!-- header -->
         <div class='ui basic segment'>
-            <h1 class="ui blue dividing header">
+            <h1 class="ui teal dividing header">
                 <i class="dashboard icon"></i>
                 <div class="content">
                   USERS
