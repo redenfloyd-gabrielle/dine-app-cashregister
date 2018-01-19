@@ -16,14 +16,14 @@
 <div class="new-page">
    <table class="receipttbl">
      <tr>
-       <th class="lft ltext receiptcontent">Qty</th>
-       <th class="ltext receiptcontent">Item</th>
+       <th class="lft ltext rqty">Qty</th>
+       <th class="ltext rqty">Item</th>
      </tr>
      <?php if( isset($receipt_item)){ ?>
       <?php foreach ($receipt_item as $item) { ?>
      <tr class="trline">
-       <td class="lft receiptcontent"><?php echo $item->qty; ?></td>
-       <td class="receiptcontent"><?php echo $item->name; ?></td>
+       <td class="lft rqty"><?php echo $item->qty; ?></td>
+       <td class="rqty"><?php echo $item->name; ?></td>
      </tr>
       <?php } ?>
     <?php } ?>

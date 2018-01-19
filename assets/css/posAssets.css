@@ -16,9 +16,5 @@ font-weight: bold;}
 .rght{ float:right;}
 .lft{ float: left;}
 .trline { line-height: 150%; }
-@media print{
-.new-page{
-  display: block;
-  page-break-before: always;
-}
-}
+.rqty{font-size: 20px;font-family: "Lucida Console", Monaco, monospace;margin: 0px;}
+

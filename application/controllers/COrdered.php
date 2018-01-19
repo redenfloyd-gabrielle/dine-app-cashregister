@@ -48,10 +48,12 @@
 			$qr = $this->input->post('qr');
 
 			$result = $this->MOrdered->getOrderByQR($qr);
+
 			if($result){
 				foreach ($result as $q) {}
 				$id = $q->ordered_id;
 				$total = $q->ordered_total;
+				$status = $q->ordered_status;
 				$result1 = $this->MOrdered->displayOrderItemsByOrder($id);
 				$time = $q->ordered_time;
 				$date_now =new DateTime(NULL, new DateTimeZone('Asia/Manila'));
@@ -91,6 +93,13 @@
 						$array[] = $arr;	
 				    }  
 				}
+				// if($status == "scanned"){
+				// 	$data['error'] = "Please try again. Code has been scanned.";
+				// }else if($status == "expired"){
+				// 	$data['error'] = "Please try again. Code has expired.";
+				// }else{
+				// 	$data['error'] = "Please try again. Make sure you are scanning a valid code. ";
+				// }
 				$data['order_info'] = $array;
 				$data['total'] = $total;
 				$data['qty'] = $qty;
@@ -105,8 +114,6 @@
 				if(!$this->session->userdata('receiptSession')){
 					$this->createReceiptSession();
 				}
-				$status = array('ordered_status' => 'scanned');
-				$query = $this->MOrdered->update($id, $status);
 				$res = $this->load->view('pos/vOrder',$data,TRUE);
 				echo $res;	
 			 }
