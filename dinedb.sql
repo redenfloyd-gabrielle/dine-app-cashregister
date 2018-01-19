@@ -28,20 +28,20 @@ SET time_zone = "+00:00";
 -- Stand-in structure for view `cart`
 -- (See below for the actual view)
 --
--- CREATE TABLE `cart` (
--- `order_item_id` int(11)
--- ,`order_item_qty` int(11)
--- ,`order_item_subtotal` float
--- ,`product_id` int(11)
--- ,`product_image` varchar(30)
--- ,`product_name` varchar(30)
--- ,`product_description` varchar(50)
--- ,`product_price` float
--- ,`ordered_id` int(11)
--- ,`ordered_time` timestamp
--- ,`ordered_qr_code` int(11)
--- ,`ordered_total` float
--- );
+CREATE TABLE `cart` (
+`order_item_id` int(11)
+,`order_item_qty` int(11)
+,`order_item_subtotal` float
+,`product_id` int(11)
+,`product_image` varchar(30)
+,`product_name` varchar(30)
+,`product_description` varchar(50)
+,`product_price` float
+,`ordered_id` int(11)
+,`ordered_time` timestamp
+,`ordered_qr_code` int(11)
+,`ordered_total` float
+);
 
 -- --------------------------------------------------------
 
@@ -105,11 +105,6 @@ CREATE TABLE `product` (
 --
 -- Dumping data for table `product`
 --
-
-
-
-
-
 -- --------------------------------------------------------
 
 --
