@@ -1,9 +1,9 @@
 <div class="pusher">
-    <div class='ui hidden segment'></div>
+    <div class='ui hidden divider'></div>
     <div class='ui padded segment'>
         <!-- header -->
         <div class='ui basic segment'>
-            <h1 class="ui brown dividing header">
+            <h1 class="ui brown dividing header"> 
                 <i class="food icon"></i>
                 <div class="content">
                   PRODUCTS
@@ -62,9 +62,6 @@
                                     <th>Actions</th>
                                 </tr>
                             </thead>
-                            <tbody>
-                        
-                            </tbody>
                         </table>
                     </div>
 
