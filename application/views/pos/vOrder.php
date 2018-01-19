@@ -229,6 +229,7 @@
           success: function(result){
              $('body').html(result);
               window.print();
+              document.location.href = "<?php echo site_url()?>/CLogin/viewPos"; 
           },
           error: function(jqXHR, errorThrown){
               console.log(errorThrown);
