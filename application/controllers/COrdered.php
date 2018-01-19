@@ -114,8 +114,6 @@
 				if(!$this->session->userdata('receiptSession')){
 					$this->createReceiptSession();
 				}
-				$status = array('ordered_status' => 'scanned');
-				$query = $this->MOrdered->update($id, $status);
 				$res = $this->load->view('pos/vOrder',$data,TRUE);
 				echo $res;	
 			 }
