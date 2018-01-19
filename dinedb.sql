@@ -176,9 +176,9 @@ INSERT INTO `user` (`user_id`, `user_first_name`, `user_mi`, `user_last_name`, `
 --
 -- Structure for view `cart`
 --
--- DROP TABLE IF EXISTS `cart`;
+DROP TABLE IF EXISTS `cart`;
 
--- CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `cart`  AS  select `order_item`.`order_item_id` AS `order_item_id`,`order_item`.`order_item_qty` AS `order_item_qty`,`order_item`.`order_item_subtotal` AS `order_item_subtotal`,`product`.`product_id` AS `product_id`,`product`.`product_image` AS `product_image`,`product`.`product_name` AS `product_name`,`product`.`product_description` AS `product_description`,`product`.`product_price` AS `product_price`,`ordered`.`ordered_id` AS `ordered_id`,`ordered`.`ordered_time` AS `ordered_time`,`ordered`.`ordered_qr_code` AS `ordered_qr_code`,`ordered`.`ordered_total` AS `ordered_total` from ((`order_item` join `product` on((`order_item`.`order_item_product_id` = `product`.`product_id`))) join `ordered` on((`order_item`.`order_item_ordered_id` = `ordered`.`ordered_id`))) ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `cart`  AS  select `order_item`.`order_item_id` AS `order_item_id`,`order_item`.`order_item_qty` AS `order_item_qty`,`order_item`.`order_item_subtotal` AS `order_item_subtotal`,`product`.`product_id` AS `product_id`,`product`.`product_image` AS `product_image`,`product`.`product_name` AS `product_name`,`product`.`product_description` AS `product_description`,`product`.`product_price` AS `product_price`,`ordered`.`ordered_id` AS `ordered_id`,`ordered`.`ordered_time` AS `ordered_time`,`ordered`.`ordered_qr_code` AS `ordered_qr_code`,`ordered`.`ordered_total` AS `ordered_total` from ((`order_item` join `product` on((`order_item`.`order_item_product_id` = `product`.`product_id`))) join `ordered` on((`order_item`.`order_item_ordered_id` = `ordered`.`ordered_id`))) ;
 
 --
 -- Indexes for dumped tables
