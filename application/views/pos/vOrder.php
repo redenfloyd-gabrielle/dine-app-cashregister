@@ -227,8 +227,8 @@
           data: dataSet,
           cache: false,
           success: function(result){
-             // alert(result);
              $('body').html(result);
+              window.print();
           },
           error: function(jqXHR, errorThrown){
               console.log(errorThrown);
@@ -252,7 +252,7 @@
 
         tableData = $.toJSON(tableData);
         var data =  "pTableData=" + tableData+"&total="+total+"&cash="+cash+"&change="+change+"&page="+page+"&eid="+eid;
-        if(cash != 0){
+        if(cash != 0 && change >=0){
            $.ajax({
             type: "POST",
             url: "<?php echo site_url()?>/CReceipt/printReceipt",
@@ -261,7 +261,11 @@
             success: function(result){
                // alert(result);
                $('body').html(result);
-               window.print();
+                window.print();
+             // $('body').load("<?php echo base_url()?>/CReceipt/printReceipt2/"+eid+"/"+page);
+               
+                window.print();
+               // console.log(result);
                document.location.href = "<?php echo site_url()?>/CLogin/viewPos"; 
             },
             error: function(jqXHR, errorThrown){

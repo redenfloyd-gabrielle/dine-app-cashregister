@@ -25,7 +25,6 @@
 
 		    <center>
 		    	<video id="qrcam" class="ui fluid item vid"></video> 
-		    	<input type="hidden" name="qr" id="qr" value="<?php echo $qr ?>">
 		    	<div class="ui hidden divider"></div>
 				<div class="ui form">
 				    <div class="inline field">
@@ -95,7 +94,9 @@
 					$('body').html(result);
 					qr.stop($('#qrcam')[0]);
 				 }else{
-					 $('#invalidQR').modal('show');
+					$('.ui.basic.modal')
+					  .modal('show')
+					;
 				 }              
 			},
 			error: function(jqXHR, errorThrown){

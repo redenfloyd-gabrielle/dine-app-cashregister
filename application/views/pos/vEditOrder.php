@@ -10,13 +10,22 @@
               <div class="sub header">Create new order</div>
             </div>  
         </h1>
-
-        <a href="<?php echo site_url()?>/CLogin/viewPos?>">
-          <h4 style="color: gray;"><i class="left arrow grey icon"></i>BACK TO HOME</h4>
-        </a>
+        <?php if($page == 'manual'){
+            echo '
+              <a href="'.site_url().'/CProduct/backToMDashboard/'.$eid.'" class="item">
+                <h4 style="color: gray;"><i class="left arrow grey icon"></i>BACK TO HOME</h4>
+              </a>
+            ';
+         }else{
+            echo '
+              <a href="'.site_url().'/COrdered/displayOrderFromEditPage/'.$qr.'" class="item">
+                <h4 style="color: gray;"><i class="left arrow grey icon"></i>BACK TO HOME</h4>
+              </a>
+            ';
+         }?>
         <input type="hidden" name="qr" value="<?php echo $qr ?>" id="qr">
-    <input type="hidden" name="page" value="<?php echo $page ?>" id="page">
-    <input type="hidden" name="eid" value="<?php echo $eid ?>" id="eid">
+        <input type="hidden" name="page" value="<?php echo $page ?>" id="page">
+        <input type="hidden" name="eid" value="<?php echo $eid ?>" id="eid">
 
       <div class="ui top attached fluid tabular menu">
         <a class="item active" data-tab="ricemeal" >RICE MEAL</a>
