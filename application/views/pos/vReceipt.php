@@ -21,17 +21,18 @@
    <p class="receiptcontent" align="center">Barangay 24 Imadejas</p>
    <p class="receiptcontent" align="center">along J.C. Aquino Ave. Butuan City</p>
    <p class="receiptcontent" align="center">(085)-300-3307</p><br>
+   <h3 align="center"><strong>NOT AN OFFICIAL RECEIPT</strong></h3>
    <div class="receiptdivide"> </div>
-   <span class="lft info">
+   <span class="lft msg">
       Cashier : <strong><?php echo $cashier ?></strong> 
    </span>
-   <span class="rght info">
+   <span class="rght msg">
       Order No. : <strong><?php echo $order_id ?></strong>
    </span><br>
-   <span class="lft info">
+   <span class="lft msg">
       Date : <strong><?php echo $date ?></strong> 
    </span>
-   <span class="rght info">
+   <span class="rght msg">
       Time : <strong> <?php echo $time ?></strong>
    </span><br>
    <div class="receiptdivide"> </div>

@@ -5,7 +5,6 @@
     <div class="eight wide column">
     <form method="POST" action="<?php echo site_url().'/CReceiptItem/editItems/'.$page.'/'. $prod->product_id.'/'.$eid.'/'.$qr;?>">
       <div class='ui segment'>
-          <img class='ui centered small image' src= "<?php echo base_url($prod->product_image)?>">
           <span style='font-family: "Roboto"; font-size:1.2em; color: black;'>
             <?php echo $prod->product_name; ?>
           </span>
@@ -25,5 +24,17 @@
       </div>
       </div>
     <?php } ?>
-  <?php }else{  echo "<i class='circle warning icon error'></i><span> No items to display.</span>" ;} ?> 
+  <?php }else{  echo "
+    <div class='row'></div>
+    <div class='row'></div>
+    <div class='row'></div>
+    <div class='sixteen wide column center aligned middle aligned grid'>
+      <h3><i class='circle warning icon error'></i> No items to display.</h3>
+    </div>
+    <div class='row'></div>
+    <div class='row'></div>
+    <div class='row'></div>
+      
+
+      ";} ?> 
 </div>
