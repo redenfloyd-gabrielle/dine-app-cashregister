@@ -6,7 +6,6 @@
           <div class="eight wide column">
           <form method="POST" action="<?php echo site_url()?>/CReceiptItem/addReceiptItem/<?php echo $prod->product_id.'/'.$this->session->userdata['receiptSession']['receipt_id'];?>">
             <div class='ui segment'>
-              <img class='ui centered small image' src= "<?php echo base_url($prod->product_image)?>">
               <span style='font-family: "Roboto"; font-size:1.2em; color: black;'>
                 <?php echo $prod->product_name; ?>
               </span>
@@ -26,7 +25,17 @@
             </div>
           </div>
           <?php } ?>
-        <?php } ?> 
+        <?php  }else{  echo "
+            <div class='row'></div>
+            <div class='row'></div>
+            <div class='row'></div>
+            <div class='sixteen wide column center aligned middle aligned grid'>
+              <h3><i class='circle warning icon error'></i> No products to display.</h3>
+            </div>
+            <div class='row'></div>
+            <div class='row'></div>
+            <div class='row'></div>
+        ";} ?> 
 </div>
       
 

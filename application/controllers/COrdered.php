@@ -57,24 +57,16 @@
 				$result1 = $this->MOrdered->displayOrderItemsByOrder($id);
 				$time = $q->ordered_time;
 				$date_now =new DateTime(NULL, new DateTimeZone('Asia/Manila'));
-				$date = date('Y-m-d');
 				$dt = $date_now->format('Y-m-d H:i:s');
+				$date = date_create_from_format('Y-m-d H:i:s', $time);
+				$date->getTimestamp();
 
-				// $comp = ''.$date;
-				// // $comp =''.$dt;
+				
+  //   $interval = date_diff($dt,$date);
+		// print_r($interval);
 
-				// if($dt - $time > ){
-				// 	print_r('true');
-				// }else{
-				// 	print_r('false');
-				// }
-				// foreach ($date_now as $d) {
-				// 	# code...
-				// }
-
-		// print_r($dt);
 // print_r($time );
-			// 	if()
+			
 
 			   
 			    $qty = 0;

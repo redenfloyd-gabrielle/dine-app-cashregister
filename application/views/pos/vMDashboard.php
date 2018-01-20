@@ -15,14 +15,14 @@
         </a>
 
        <div class="ui top attached fluid tabular menu">
-        <a class="item active" data-tab="pancit">PANCIT</a>
+        <a class="item active" data-tab="maincourse">MAIN COURSE</a>
         <a class="item" data-tab="drinks">DRINKS</a>
         <a class="item" data-tab="soup">SOUP</a>
-        <a class="item" data-tab="maincourse">MAIN COURSE</a>
+        <a class="item" data-tab="pancit">PANCIT</a>
         <a class="item" data-tab="extras">EXTRAS</a>
       </div>
-      <div class="ui bottom attached tab segment active" data-tab="pancit" id="PANCIT">
-        <font style="font-size:0px">PANCITS</font>
+      <div class="ui bottom attached tab segment active" data-tab="maincourse" id="MAINCOURSE">
+        <font style="font-size:0px">MAIN COURSE</font>
       </div>
       <div class="ui bottom attached tab segment" data-tab="drinks" id="DRINKS">
          <font style="font-size:0px">DRINKS</font>
@@ -30,8 +30,8 @@
       <div class="ui bottom attached tab segment" data-tab="soup" id="SOUP">
          <font style="font-size:0px">SOUP</font>
       </div>
-      <div class="ui bottom attached tab segment" data-tab="maincourse" id="MAINCOURSE">
-         <font style="font-size:0px">MAINCOURSE</font>
+      <div class="ui bottom attached tab segment" data-tab="pancit" id="PANCIT">
+         <font style="font-size:0px">PANCIT</font>
       </div>
       <div class="ui bottom attached tab segment" data-tab="extras" id="EXTRAS">
          <font style="font-size:0px">EXTRAS</font>
@@ -64,10 +64,10 @@
     });
      $.ajax({
         type: "POST",
-        url: "<?php echo site_url()?>/CProduct/viewProduct/PANCIT",
+        url: "<?php echo site_url()?>/CProduct/viewProduct/MAINCOURSE",
         cache: false,
         success: function(result){
-          $('#RICEMEAL').html(result);  
+          $('#MAINCOURSE').html(result);  
         },
         error: function(jqXHR, errorThrown){
             console.log(errorThrown);
