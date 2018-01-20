@@ -89,8 +89,6 @@
 			$this->db->where('product_category', $cat);
 			$query = $this->db->get();
 			return $query;
-
-			# code...
 		}
 		public function getProduct_id(){
 			return $this->product_id;
