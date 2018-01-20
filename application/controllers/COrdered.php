@@ -58,12 +58,15 @@
 				$time = $q->ordered_time;
 				$date_now =new DateTime(NULL, new DateTimeZone('Asia/Manila'));
 				$dt = $date_now->format('Y-m-d H:i:s');
-				$date = date_create_from_format('Y-m-d H:i:s', $time);
+			    $date = date_create_from_format('Y-m-d H:i:s', $time);
+				//$date = date('Y-m-d H:i:s',strtotime($time));
 				$date->getTimestamp();
 
+
 				
-  //   $interval = date_diff($dt,$date);
+     //$interval = date_diff($dt);
 		// print_r($interval);
+				
 
 // print_r($time );
 			
