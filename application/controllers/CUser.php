@@ -9,6 +9,8 @@
 	      $this->load->helper('url');
 	      $this->load->database(); // load database
 	      $this->load->model('MUser');
+	      $url = $this->config->site_url();
+     	  $this->urlSite = $url.'/CUser/editUserInfo/';
 	  	}
 
 		public function index()
@@ -31,6 +33,40 @@
 			} else {
 				redirect('CLogin/viewSuperadminDashboard');
 			}
+		}
+
+		public function resetPassword()
+		{
+			$now = new DateTime(NULL, new DateTimeZone('Asia/Manila'));
+			$id = $this->input->post('ruser_id');
+			$data = array('user_password' => hash('sha512','123456'),
+						  'user_modified_by' => $this->session->userdata['userSession']['user_id'],
+						  'user_modified_on' => $now->format('Y-m-d H:i:s')
+						 );
+			$result = $this->MUser->update($id, $data);
+			if ($result) {
+				redirect('CUser/viewUsersList');
+			} else {
+				print_r('SOMETHING WENT WRONG;');
+			}
+			
+		}
+
+		public function activateUser()
+		{
+			$now = new DateTime(NULL, new DateTimeZone('Asia/Manila'));
+			$id = $this->input->post('auser_id');
+			$data = array('user_status' => 'ACTIVE',
+						  'user_modified_by' => $this->session->userdata['userSession']['user_id'],
+						  'user_modified_on' => $now->format('Y-m-d H:i:s')
+						 );
+			$result = $this->MUser->update($id, $data);
+			if ($result) {
+				redirect('CUser/viewUsersList');
+			} else {
+				print_r('SOMETHING WENT WRONG;');
+			}
+			# code...
 		}
 
 		public function addUser()
@@ -113,6 +149,62 @@
 
 		}
 
+
+		public function getUsers()
+		{
+			// Datatables Variables
+	        $draw = intval($this->input->get("draw"));
+	        $start = intval($this->input->get("start"));
+	        $length = intval($this->input->get("length"));
+
+			$users = $this->MUser->getUsers();
+         	$data = array();
+
+			foreach($users->result() as $us) {
+				if ($us->user_status == 'ACTIVE') {
+					$reset = '<a class="ui inverted orange icon disabled button" data-tooltip="Reset Password">
+                               	<i class="refresh icon"></i> 
+                              </a>';
+					if($us->user_type != 'REGULAR'){
+						$reset = ' <a id="reset" class="ui inverted orange icon button resetPassword" data-id="'.$us->user_id.'" data-tooltip="Reset Password">
+                               			<i class="refresh icon"></i> 
+                               	    </a>';
+					} 
+					$actions = 	'<a href="'.$this->urlSite.''.$us->user_id.'" >
+									<div class="ui inverted blue icon button" data-tooltip="Edit User">
+										<i class="edit icon"></i> 
+									</div>	
+                               	</a>'.$reset.'
+	                           	<a id="deleteUser" class="ui inverted red icon button deleteUser" data-id="'.$us->user_id.'" data-tooltip="Delete User">
+                                    <i class="trash icon"></i> 
+                                </a>';
+				} else {
+					$actions = 	'<a class="ui inverted green icon button activateUser" data-id="'.$us->user_id.'" data-tooltip="Activate User">
+                                    <i class="power icon"></i> 
+                                </a>';
+				}
+			   	$data[] = array(
+			        $us->user_id,
+			        $us->user_first_name.' '.$us->user_mi.'. '.$us->user_last_name,
+			        $us->user_position,
+			        $us->user_type,
+			        $us->user_status,
+			        $actions,
+			        
+			   	);
+			}
+
+			$output = array(
+			  	"draw" => $draw,
+			    "recordsTotal" => $users->num_rows(),
+			    "recordsFiltered" => $users->num_rows(),
+			    "data" => $data
+			);
+			echo json_encode($output);
+			exit();
+		}
+
+
 		function viewAdminDashboard()
 		{
 			$this->load->view('imports/vAdminHeader');
@@ -130,7 +222,9 @@
 
 		function viewUsersList()
 		{
-			$data['users'] = $this->MUser->getUsers();
+			$result = $this->MUser->getUsers();
+
+			$data['users'] = ($result)? $result->result() : null;
 
 			$this->load->view('imports/vSuperadminHeader');
 			$this->load->view('superadmin/vUsersList',$data);	

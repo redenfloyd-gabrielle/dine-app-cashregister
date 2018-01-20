@@ -30,26 +30,6 @@
             
                 <div class='ui stackable padded grid'>
                     <?php if (isset($products)) { ?>
-                        <div class='right aligned column'>
-                            <div class='ui floating dropdown labeled gray basic icon button'>
-                                <i class='filter icon'></i>
-                                <span class='text'>Filter products</span>
-                                <div class='menu'>
-                                    <div class='item'>
-                                        <div class='ui blue empty circular label'></div>
-                                        All
-                                    </div>
-                                    <div class='item'>
-                                        <div class='ui green empty circular label'></div>
-                                        Available
-                                    </div>
-                                    <div class='item'>
-                                        <div class='ui red empty circular label'></div>
-                                        Not Available
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                     <div class='row'>
                         <table class='ui sortable stackable celled table' id="ricemeal">
