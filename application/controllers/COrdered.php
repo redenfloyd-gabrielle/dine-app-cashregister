@@ -54,23 +54,20 @@
 				$id = $q->ordered_id;
 				$total = $q->ordered_total;
 				$status = $q->ordered_status;
-				$result1 = $this->MOrdered->displayOrderItemsByOrder($id);
 				$time = $q->ordered_time;
 				$date_now =new DateTime(NULL, new DateTimeZone('Asia/Manila'));
 				$dt = $date_now->format('Y-m-d H:i:s');
 			    $date = date_create_from_format('Y-m-d H:i:s', $time);
-				//$date = date('Y-m-d H:i:s',strtotime($time));
-				$date->getTimestamp();
-
-
+				$datenow = date_create_from_format('Y-m-d H:i:s', $dt);
 				
-     //$interval = date_diff($dt);
-		// print_r($interval);
-				
+                $interval = date_diff($datenow,$date);
+		        if($interval ->h >= 4){
+		        	$status = array('ordered_status' => 'expired');
+					$query = $this->MOrdered->update($id, $status);
+		        }
 
-// print_r($time );
-			
-
+		        $result1 = $this->MOrdered->displayOrderItemsByOrder($id);
+ 
 			   
 			    $qty = 0;
 			
@@ -87,6 +84,9 @@
 						$arr->item_subtotal = $value->order_item_subtotal;
 						$array[] = $arr;	
 				    }  
+				    $data['order_info'] = $array;
+				}else{
+					$data['order_info'] = null;
 				}
 				// if($status == "scanned"){
 				// 	$data['error'] = "Please try again. Code has been scanned.";
@@ -95,7 +95,7 @@
 				// }else{
 				// 	$data['error'] = "Please try again. Make sure you are scanning a valid code. ";
 				// }
-				$data['order_info'] = $array;
+				
 				$data['total'] = $total;
 				$data['qty'] = $qty;
 				$data['id'] = $id;
