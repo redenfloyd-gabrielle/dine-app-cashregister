@@ -51,7 +51,7 @@
 			}	
 			$cat = $p->product_category;
 			 if ($r) {
-				redirect('CProduct/viewProduct/'.$cat);
+				redirect('CProduct/viewMDashboard/'.$cat);
 			} else {
 				print_r('SOMETHING WENT WRONG;');
 			}
@@ -74,8 +74,7 @@
 		   				       'order_item_subtotal' => $p->product_price,
 		   				       'order_item_qty' => 1,
 		   				       'order_item_product_id' => $product_id,
-		   				       'order_item_ordered_id' => $eid,
-		   				       'order_item_status' => 'pending'
+		   				       'order_item_ordered_id' => $eid
 						);
 					  $o = $this->MOrderItem->insert($insertData);
 				 }else{
@@ -114,7 +113,7 @@
 		    }
 			$cat = $p->product_category;
 			 if ($o){
-				redirect('CProduct/viewProductEdit/'.$page.'/'.$cat.'/'.$eid.'/'.$qr);
+				redirect('COrderItem/viewEdit/'.$page.'/'.$eid.'/'.$qr);
 			} else {
 				print_r('SOMETHING WENT WRONG;');
 			}
@@ -122,7 +121,7 @@
 		}
 		public function displayOrderListManual()
 		{
-			$receipt_id = $_POST['receipt_id'];
+			$receipt_id = $this->session->userdata['receiptSession']['receipt_id'];
 			$result = $this->MReceiptItem->getReceiptItemDetailsByReceipt($receipt_id);
  
 			if(isset($result)){
@@ -133,16 +132,17 @@
 					$arr->product_id = $value->product_id;
 					$arr->product_name = $value->product_name;
 					$arr->product_price = $value->product_price;
-					$arr->receipt_item_quantity = $value->receipt_item_quantity;
-					$arr->receipt_item_subtotal = $value->receipt_item_subtotal;
+					$arr->item_quantity = $value->receipt_item_quantity;
+					$arr->item_subtotal = $value->receipt_item_subtotal;
 					$array[] = $arr;
 					$qty += $value->receipt_item_quantity;
 			    }
 
-			    $data['receipt_item'] = $array;
+			    $data['order_info'] = $array;
 			    $data['total'] = 0;
 				$data['qty'] = $qty;
 				$data['id'] = $receipt_id;
+				$data['page'] = 'manual';
 			}else{
 				$data = null;
 			}
@@ -150,7 +150,6 @@
 		    $res = $this->load->view('pos/vOrder',$data,TRUE);
 
 		    echo $res;
-		    
 		}
 
 		// public function displayOrderListManual()

@@ -3,7 +3,7 @@
     <div class='ui padded segment'>
         <!-- header -->
         <div class='ui basic segment'>
-            <h1 class="ui blue dividing header">
+            <h1 class="ui teal dividing header">
                 <i class="dashboard icon"></i>
                 <div class="content">
                   USERS
@@ -49,7 +49,7 @@
                                     </tr>
                                     <tr>
                                         <td>POSITION</td>
-                                        <td><?php echo $u->user_type; ?> </td>
+                                        <td><?php echo $u->user_position; ?> </td>
                                     </tr>
                                 </tbody>
                             </table>

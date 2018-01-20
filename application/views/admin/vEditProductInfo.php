@@ -1,5 +1,5 @@
 <div class="pusher">
-    <div class='ui hidden segment'></div>
+    <div class='ui hidden divider'></div>
     <div class='ui padded segment'>
         <!-- header -->
         <div class='ui basic segment'>
@@ -51,7 +51,7 @@
                                 <input type="hidden" name="category" id="category" value="<?php echo $prod->product_category;  ?>">
                                 <select class="ui dropdown" name='cat' id="cat">
                                     <option value="DRINKS">Drinks</option>
-                                    <option value="RICE MEAL">Rice Meal</option>
+                                    <option value="PANCIT">Pancit</option>
                                     <option value="SOUP">Soup</option>
                                     <option value="MAIN COURSE">Main Course</option>  
                                     <option value="EXTRAS">Extras</option>

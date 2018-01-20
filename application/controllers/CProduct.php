@@ -116,7 +116,7 @@
 	        $length = intval($this->input->get("length"));
 
 
-	        $cat = 'RICE MEAL';
+	        $cat = 'PANCIT';
 			$products = $this->MProduct->getItemsByCategory($cat);
          	$data = array();
 
@@ -389,22 +389,27 @@
 
 		}
 
-
-
-
 		public function createReceiptSession()
 		{
-			$data = array('receipt_id'=>null, 'receipt_cashier' => $this->session->userdata['userSession']['user_id']);
+			$data = array('receipt_id'=>null,
+					"receipt_cashier" => $this->session->userdata['userSession']['user_id']);
 			$this->MReceipt->insert($data);
 			$id = $this->db->insert_id();
 			$this->MReceipt->setReceipt_id($id);
 			$sessionReceipt = array("receipt_id" =>$id);
 			$this->session->set_userdata('receiptSession',$sessionReceipt);
 		}
+		
+
+
         public function viewMDashboard(){
-        	$this->createReceiptSession();
+        	if(!$this->session->userdata('receiptSession')){
+				$this->createReceiptSession();
+			}
+        	$data['page'] = 'manual';
+        	$data['id'] = $this->session->userdata['receiptSession']['receipt_id'];
 			$this->load->view('imports/vPosHeader');
-			$this->load->view('pos/vMDashboard');
+			$this->load->view('pos/vMDashboard',$data);
 		}
 
 		public function backToMDashboard($receipt_id){
@@ -419,16 +424,17 @@
 					$arr->product_id = $value->product_id;
 					$arr->product_name = $value->product_name;
 					$arr->product_price = $value->product_price;
-					$arr->receipt_item_quantity = $value->receipt_item_quantity;
-					$arr->receipt_item_subtotal = $value->receipt_item_subtotal;
+					$arr->item_quantity = $value->receipt_item_quantity;
+					$arr->item_subtotal = $value->receipt_item_subtotal;
 					$array[] = $arr;
 					$qty += $value->receipt_item_quantity;
 			    }
 
-			    $data['receipt_item'] = $array;
+			    $data['order_info'] = $array;
 			    $data['total'] = 0;
 				$data['qty'] = $qty;
 				$data['id'] = $receipt_id;
+				$data['page'] = 'manual';
 			}else{
 				$data = null;
 			}
@@ -439,8 +445,13 @@
 		public function viewProduct($cat)
 		{
 			$cat = urldecode($cat);
-			$result = $this->MProduct->getProductsByCategory($cat);
-
+			$cat = str_replace(' ', '', $cat);
+			if($cat == 'MAINCOURSE'){
+				$cat = 'MAIN COURSE';
+			}
+			//print_r($cat);
+			 $result = $this->MProduct->getProductsByCategory($cat);
+          
             $array = array();
 			if($result){
 				foreach ($result as $value) {
@@ -459,14 +470,19 @@
 			}
 			////////////STOPS HERE///////////////////////////////////////////////////
 			$data['prod_cat']  = $cat;
-			$this->load->view('imports/vPosHeader');
+			$data['page'] = 'manual';
+			$data['id'] = $this->session->userdata['receiptSession']['receipt_id'];
+			//$this->load->view('imports/vPosHeader');
 			$this->load->view('pos/vProducts',$data);
-
-			// print_r($data);
+		
 		}
 		public function viewProductEdit($page,$cat,$id,$qr)
 		{
 			$cat = urldecode($cat);
+			$cat = str_replace(' ', '', $cat);
+			if($cat == 'MAINCOURSE'){
+				$cat = 'MAIN COURSE';
+			}
 			$result = $this->MProduct->getProductsByCategory($cat);
 
 
@@ -494,6 +510,7 @@
 				if($result){
 					foreach ($result as $value) {
 						$arr= new stdClass;
+						$arr->product_id = $value->product_id;
 						$arr->product_name = $value->product_name;
 						$arr->item_id = $value->order_item_id;
 						$arr->product_price = $value->product_price;
@@ -528,7 +545,6 @@
 			
 			$data['eid'] = $id;
 			$data['qr'] = $qr;
-			$this->load->view('imports/vPosHeader');
 			$this->load->view('pos/vProductEdit',$data);
 
 			
@@ -555,7 +571,7 @@
 				$data['products'] = null;
 			}
 
-			if ($cat == 'RICE MEAL') {
+			if ($cat == 'PANCIT') {
 				$this->load->view('imports/vAdminHeader'); 
 				$this->load->view('admin/category/vRiceMeals',$data);
 				$this->load->view('imports/vAdminFooter');

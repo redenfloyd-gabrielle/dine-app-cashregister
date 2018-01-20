@@ -4,13 +4,13 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Dine-Admin Module</title>
+    <title>DINE | Admin Module</title>
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <link rel='stylesheet' href='<?php echo base_url("assets/css/adminAssets.css")?>'>
     <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/posAssets.css')?>">
     <link rel='stylesheet' href='<?php echo base_url("assets/semantic/semantic.min.css")?>'>
     <link rel='stylesheet' href='<?php echo base_url("assets/semantic/datatables.min.css")?>'>
-    <script src='<?php echo base_url("assets/jquery.min.js")?>'></script>
+    <script src='<?php echo base_url("assets/jquery/jquery.min.js")?>'></script>
     <script src='<?php echo base_url("assets/semantic/semantic.min.js")?>'></script>
     <script type="text/javascript" src="<?php echo base_url('assets/jquery/tablesort.js')?>"></script>
     <script type="text/javascript" src="<?php echo base_url('assets/jquery/instascan.min.js')?>"></script>
@@ -31,6 +31,9 @@
             <strong style='font-style: italic;'>
                 <?php echo $this->session->userdata['userSession']['user_first_name'];?> 
             </strong>
+        </span><br> 
+        <span style='color:white; text-transform: uppercase;'>
+            <?php echo $this->session->userdata['userSession']['user_position'];?> 
         </span><br>
         <span style='color:white;'>
             ID: <?php echo $this->session->userdata['userSession']['user_id'];?> 
@@ -49,9 +52,9 @@
     <a class='item' href='<?php echo site_url()?>/CReports/viewReports'>
         <i class='bar chart icon'></i> Reports
     </a>
-    <a class='item' href=''>
+<!--     <a class='item' href='<?php //echo site_url()?>/CLogin/viewPos'>
         <i class='calculator icon'></i> POS
-    </a>
+    </a> -->
 </div>
 <!-- end of sidebar -->
 
@@ -61,20 +64,21 @@
         <i class="sidebar icon"></i>
     </a>
     <a class='borderless item' href='<?php echo site_url()?>/CUser/viewAdminDashboard?>'>DINE</a>
+<!--     <div class="ui inverted transparent left icon action input borderless item">
+        <input type="text" placeholder="Enter keyword..." name="search">
+        <i class="search icon"></i>
+        <button class='ui brown button'>Search</button>
+    </div> -->
     <div class='right menu'>
-        <div class="ui inverted transparent left icon action input borderless item">
-            <input type="text" placeholder="Enter keyword..." name="search">
-            <i class="search icon"></i>
-            <button class='ui brown button'>Search</button>
-        </div>
+        <a class="item" href="<?php echo site_url()?>/CLogin/viewPos"><i class="calculator icon"></i>SWITCH TO POS</a> 
         <div class='ui simple dropdown item' tabindex='0'>
-        <i class='user icon'></i>Profile
+        <i class='user icon'></i>PROFILE
         <i class='dropdown icon' tabindex='0'>
             <div class='menu' tabindex='-1'></div>
         </i>
         <div class='menu' tabindex='-1'>
-            <a class='item' id='changePass'><i class='lock icon'></i>Change Password</a>
-            <a class='item' href='<?php echo site_url()?>/CLogin/userLogout?>' ><i class='power icon'></i>Logout</a>
+            <a class='item' id='changePass'><i class='lock icon'></i>CHANGE PASSWORD</a>
+            <a class='item' href='<?php echo site_url()?>/CLogin/userLogout?>' ><i class='power icon'></i>LOGOUT</a>
         </div>
     </div>
     </div>

@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,23 +13,26 @@
   <script src="main.js"></script>
 </head>
 <body>
+<div class="new-page">
 <div class="receiptbox" id="receiptbox">
    <br>
-   <p class="mid receipthead"><strong>Mameng's Seafoods and BBQ Hauz</strong></p>
-   <p class="mid receiptcontent">Barangay 24 Imadejas</p>
-   <p class="mid receiptcontent">along J.C. Aquino Ave. Butuan City</p>
-   <p class="mid receiptcontent">(085)-300-3307</p><br>
+   <p class="receipthead" align="center"><strong>Mameng's Seafoods and </strong></p>
+   <p class="receipthead" align="center"><strong>BBQ Hauz</strong></p>
+   <p class="receiptcontent" align="center">Barangay 24 Imadejas</p>
+   <p class="receiptcontent" align="center">along J.C. Aquino Ave. Butuan City</p>
+   <p class="receiptcontent" align="center">(085)-300-3307</p><br>
+   <h3 align="center"><strong>NOT AN OFFICIAL RECEIPT</strong></h3>
    <div class="receiptdivide"> </div>
-   <span class="lft info">
+   <span class="lft msg">
       Cashier : <strong><?php echo $cashier ?></strong> 
    </span>
-   <span class="rght info">
+   <span class="rght msg">
       Order No. : <strong><?php echo $order_id ?></strong>
    </span><br>
-   <span class="lft info">
+   <span class="lft msg">
       Date : <strong><?php echo $date ?></strong> 
    </span>
-   <span class="rght info">
+   <span class="rght msg">
       Time : <strong> <?php echo $time ?></strong>
    </span><br>
    <div class="receiptdivide"> </div>
@@ -40,7 +44,7 @@
      </tr>
      <?php if( isset($receipt_item)){ ?>
       <?php foreach ($receipt_item as $item) { ?>
-     <tr>
+     <tr class="trline">
        <td class="lft receiptcontent"><?php echo $item->qty; ?></td>
        <td class="receiptcontent"><?php echo $item->name; ?></td>
        <td class="rght receiptcontent">P<?php echo $item->subtotal; ?>.00</td>
@@ -58,12 +62,20 @@
   <span class="lft receipttbl receiptcontent">Change
     <span class="rght ">P<?php echo $change ?></span>
   </span><br><br><br><br>
-  <div class="receiptdivide"> </div>
-  <div class="mid receiptamt">THANK YOU!</div>
-  <div class="mid receiptamt">PLEASE COME AGAIN</div>
-  
+  <div class="receiptdivide"> </div><br><br>
+  <div class=" receiptamt" align="center">THANK YOU!</div>
+  <div class="receiptamt" align="center">PLEASE COME AGAIN</div>
+  <br>
+</div>
+</div>
+
+   
 </body>
 </html>
+
+
+
+
  
   
   

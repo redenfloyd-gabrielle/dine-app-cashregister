@@ -2,12 +2,16 @@
  <!DOCTYPE html>
 <html>
 <head>
-    <title>Dine-Admin Module</title>
+    <title>DINE | Admin Module</title>
     <link rel='stylesheet' href='<?php echo base_url("assets/css/superadminAssets.css")?>'>
     <link rel='stylesheet' href='<?php echo base_url("assets/semantic/semantic.min.css")?>'>
-    <script src='<?php echo base_url("assets/jquery.min.js")?>'></script>
+    <script src='<?php echo base_url("assets/jquery/jquery.min.js")?>'></script>
     <script src='<?php echo base_url("assets/semantic/semantic.min.js")?>'></script>
     <script src='<?php echo base_url("assets/jquery/sha.js")?>'></script>
+    <script src="<?php echo base_url('assets/jquery/tablesort.js')?>"></script>
+    <script src='<?php echo base_url("assets/jquery/sha.js")?>'></script>
+    <script src='<?php echo base_url("assets/jquery/datatables.min.js")?>'></script>
+    <script src='<?php echo base_url("assets/jquery/dataTables.semanticui.js")?>'></script>
 </head>
 <body class='pushable'>
 
@@ -20,6 +24,9 @@
             <strong style='font-style: italic;'>
                 <?php echo $this->session->userdata['userSession']['user_first_name'];?> 
             </strong>
+        </span><br>
+        <span style='color:white; text-transform: uppercase;'>
+            <?php echo $this->session->userdata['userSession']['user_position'];?> 
         </span><br>
         <span style='color:white;'>
             ID: <?php echo $this->session->userdata['userSession']['user_id'];?> 
@@ -40,24 +47,24 @@
 
 <!-- top menu -->
 <div class='ui fixed inverted menu'>
-    <a class="borderless item toggleMenu">
+    <a class=" item toggleMenu">
         <i class="sidebar icon"></i>
     </a> 
-    <a class='borderless item' href='<?php echo site_url()?>/CUser/viewSuperadminDashboard?>'>DINE</a>
+    <a class=' item' href='<?php echo site_url()?>/CUser/viewSuperadminDashboard?>'>DINE</a>
+    <!-- <div class="ui inverted transparent left icon action input hidden item">
+        <input type="text" placeholder="Enter keyword..." name="search">
+        <i class="search icon"></i>
+        <button class='ui teal button'>Search</button>
+    </div> -->
     <div class='right menu'>
-        <div class="ui inverted transparent left icon action input borderless item">
-            <input type="text" placeholder="Enter keyword..." name="search">
-            <i class="search icon"></i>
-            <button class='ui teal button'>Search</button>
-        </div>
         <div class='ui simple dropdown item' tabindex='0'>
-        <i class='user icon'></i>Profile
+        <i class='user icon'></i>PROFILE
         <i class='dropdown icon' tabindex='0'>
             <div class='menu' tabindex='-1'></div>
         </i>
         <div class='menu' tabindex='-1'>
-            <a class='item' id='changePass'><i class='lock icon'></i>Change Password</a>
-            <a class='item' href='<?php echo site_url()?>/CLogin/userLogout?>' ><i class='power icon'></i>Logout</a>
+            <a class='item' id='changePass'><i class='lock icon'></i>CHANGE PASSWORD</a>
+            <a class='item' href='<?php echo site_url()?>/CLogin/userLogout?>' ><i class='power icon'></i>LOGOUT</a>
         </div>
     </div>
     </div>

@@ -1,5 +1,5 @@
 <div class="pusher">
-    <div class='ui hidden segment'></div>
+    <div class='ui hidden divider'></div>
     <div class='ui padded segment'>
         <!-- header -->
         <div class='ui basic segment'>
@@ -33,11 +33,11 @@
                     <div class='row'>
                         <div class='sixteen wide column'>
                             <div class='ui three stackable centered cards'>
-                                <a class='ui small card' href='<?php echo site_url()?>/CProduct/viewProductsInCategory/RICE MEAL'> 
+                                <a class='ui small card' href='<?php echo site_url()?>/CProduct/viewProductsInCategory/PANCIT'> 
                                     <div class='center aligned middle aligned content' id='superadmin-card'>
                                         <img src='<?php echo base_url("assets/images/ricemeal.png")?>' class='ui small image'>
                                         <div class='header' id='userHeader'>
-                                            RICE MEAL
+                                            PANCIT
                                         </div>
                                     </div>
                                 </a> <!-- category card -->

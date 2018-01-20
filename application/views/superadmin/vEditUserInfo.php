@@ -1,9 +1,9 @@
 <div class="pusher">
-    <div class='ui hidden segment'></div>
+    <div class='ui hidden divider'></div>
     <div class='ui padded segment'>
         <!-- header -->
         <div class='ui basic segment'>
-            <h1 class="ui blue dividing header">
+            <h1 class="ui teal dividing header">
                 <i class="dashboard icon"></i>
                 <div class="content">
                   USERS
@@ -45,11 +45,13 @@
                             <h3 class='ui horizontal divider header'><i class='user icon'></i>User Account Information</h3>
 
                             <label>POSITION</label><br>
-                            <input type="hidden" name="position" id="position" value="<?php echo $u->user_type; ?>">
+                            <input type="hidden" name="position" id="position" value="<?php echo $u->user_position; ?>">
                             <select class="ui dropdown" name="pos" id="pos" >
-                              <option value="SUPERADMIN">Superadmin</option>
-                              <option value="ADMIN">Admin</option>
-                              <option value="REGULAR">Employee</option>
+                              <option value="">Choose position</option>
+                              <option value="Manager">Manager</option>
+                              <option value="Supervisor">Supervisor</option>
+                              <option value="Cashier">Cashier</option>
+                              <option value="Owner">Owner</option>
                             </select> <!-- position dropdown -->
 
                         </div>
