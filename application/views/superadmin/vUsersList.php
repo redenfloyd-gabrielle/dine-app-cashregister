@@ -23,6 +23,15 @@
                 <h5 class='ui header teal ribbon label'><i class='users icon'></i>
                     Users List
                 </h5> 
+                <?php if($this->session->flashdata('response')){ ?>
+                  <div class="ui positive message">
+                    <i class="close icon"></i>
+                    <div class="header">
+                      Your process was successful.
+                    </div>
+                    <p><?php echo $this->session->flashdata('response');?></p>
+                  </div>
+                <?php } ?>
                 <div class='ui stackable padded grid'>
                     <div class='row'>
                         <div class='right aligned column'>
@@ -130,6 +139,7 @@
   </div>
 </div>
 
+
 </body>
 </html>
 <script>
@@ -151,6 +161,12 @@ $(document).ready(function(){
         $('#auser_id').val(id);
         $('#activateUser').modal('show');
     });
+
+    $('.message .close').on('click', function() {
+        $(this).closest('.message').transition('fade');
+    });
+
+    
 });
 
 
