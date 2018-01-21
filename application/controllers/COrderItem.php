@@ -83,7 +83,7 @@
 	 			
 			$data['orders'] = $this->MOrdered->getOrderById($id);
 			$data['items'] = $this->MOrdered->getOrderItemsByOrder($id);
-			// print_r($data);
+			
 			$this->load->view('imports/vAdminHeader');
 			$this->load->view('admin/vOrderInfo',$data);
 			$this->load->view('imports/vAdminFooter');
@@ -93,9 +93,8 @@
 
 		public function removeToList($page,$eid,$qr,$cat)
 		{
-			// print_r('deleting..');
+			
 			$id = $this->input->post('order_item_id');
-			// print_r($order_item_id);
 			
 			if($page == 'qr'){
 				$result = $this->MOrderItem->delete($id);
@@ -108,7 +107,6 @@
 			}else{
 				redirect('COrderItem/viewEdit/'.$page.'/'.$eid.'/'.$qr);
 			}
-			//print_r($id);
 		}
 
 		public function updateList($item_id,$page,$eid,$qr)

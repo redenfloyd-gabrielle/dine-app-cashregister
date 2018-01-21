@@ -264,7 +264,7 @@
                $('body').html(data[0]);
 
                 window.print();
-             // $('body').load("<?php echo base_url()?>/CReceipt/printReceipt2/"+eid+"/"+page);
+             
                $('body').html(data[1]);
                 window.print();
                // console.log(result);

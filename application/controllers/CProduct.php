@@ -449,8 +449,7 @@
 			if($cat == 'MAINCOURSE'){
 				$cat = 'MAIN COURSE';
 			}
-			//print_r($cat);
-			 $result = $this->MProduct->getProductsByCategory($cat);
+			$result = $this->MProduct->getProductsByCategory($cat);
           
             $array = array();
 			if($result){
@@ -472,7 +471,6 @@
 			$data['prod_cat']  = $cat;
 			$data['page'] = 'manual';
 			$data['id'] = $this->session->userdata['receiptSession']['receipt_id'];
-			//$this->load->view('imports/vPosHeader');
 			$this->load->view('pos/vProducts',$data);
 		
 		}
@@ -591,10 +589,7 @@
 				$this->load->view('imports/vAdminHeader'); 
 				$this->load->view('admin/category/vExtras',$data);
 				$this->load->view('imports/vAdminFooter');
-			}
-			
-
-			
+			}	
 		}
 
 		function addNewProduct()

@@ -27,10 +27,9 @@ $(document).ready(function(){
  
  	// Shows sidebar
     $('.ui.sidebar').sidebar({ 
-    					context: $('.pushable'),
-    					dimPage: false
-    				})
-                    .sidebar('attach events', '.toggleMenu')
+		context: $('.pushable'),
+		dimPage: false
+	}).sidebar('attach events', '.toggleMenu')
     ;
 
 }); 

@@ -18,8 +18,6 @@
 		{
 			
 		}
-
-
 		public function addReceiptItem($product_id,$receipt_id)
 		{
 			$qty = 1;
@@ -55,7 +53,6 @@
 			} else {
 				print_r('SOMETHING WENT WRONG;');
 			}
-
 		}
 
 		public function editItems($page,$product_id,$eid,$qr)
@@ -151,34 +148,6 @@
 
 		    echo $res;
 		}
-
-		// public function displayOrderListManual()
-		// {
-		// 	$tableData = stripcslashes($_POST['pTableData']);
-		// 	$tableData = json_decode($tableData,TRUE);
-		// 	$array = array();
-
-		// 	foreach ($tableData as $value) {
-		// 		if($tableData){
-		// 		$arr= new stdClass;
-		// 		$arr->product_id = $table['prod_id'];
-		// 		$arr->product_name = $table['name'];
-		// 		$arr->product_price = $table['price'];
-		// 		$arr->receipt_item_quantity = $table['qty'];
-		// 		$arr->receipt_item_subtotal =  $table['subtotal'];
-		// 		$array[] = $arr;
-		// 		}else{
-		// 			$array[] = null;
-		// 		}
-		//     }
-		// 	$data['receipt_item'] = $array;
-			
-		//     $res = $this->load->view('pos/vOrder',$data,TRUE);
-
-		//     echo $res;
-		    
-		// }
-	
 	}
 
 ?>
