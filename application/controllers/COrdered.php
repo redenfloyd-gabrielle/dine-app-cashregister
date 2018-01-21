@@ -106,7 +106,6 @@
 				$data['page'] = 'qr';
 			}else{
 				$data = null;
-				
 			}
 			if($data != null){
 				if(!$this->session->userdata('receiptSession')){

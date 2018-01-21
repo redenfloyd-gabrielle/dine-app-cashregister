@@ -20,8 +20,8 @@
    <p class="receipthead" align="center"><strong>BBQ Hauz</strong></p>
    <p class="receiptcontent" align="center">Barangay 24 Imadejas</p>
    <p class="receiptcontent" align="center">along J.C. Aquino Ave. Butuan City</p>
-   <p class="receiptcontent" align="center">(085)-300-3307</p><br>
-   <h3 align="center"><strong>NOT AN OFFICIAL RECEIPT</strong></h3>
+   <p class="receiptcontent" align="center">(085)-300-3307</p>
+   <h2 class="receipttype"><strong>NOT AN OFFICIAL RECEIPT</strong></h2>
    <div class="receiptdivide"> </div>
    <span class="lft msg">
       Cashier : <strong><?php echo $cashier ?></strong> 
@@ -68,6 +68,7 @@
   <br>
 </div>
 </div>
+<h3 style="color: white;">`</h3>
 
    
 </body>

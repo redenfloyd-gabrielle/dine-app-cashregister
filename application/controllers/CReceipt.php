@@ -18,50 +18,7 @@
 		{
 			
 		}
-		public function printReceipt2($id, $page)
-		{
-			
-
-			
-			 if($page == 'qr'){
-			 	$result = $this->MOrderItem->getOrderItemDetailsByOrder($id);
-			 	if ($result) {
-			 	foreach ($result as $value) {
-			 		$arrObj = new stdClass;
-					$arrObj->name = $value->product_name;
-					$arrObj->qty= $value->order_item_qty;
-					$array[] = $arrObj;	
-			 	}
-			 	
-			 }
-				
-			 }else{
-				$result = $this->MReceiptItem->getReceiptItemDetailsByReceipt($id);
-				if ($result) {
-				 	foreach ($result as $value) {
-				 		$arrObj = new stdClass;
-						$arrObj->name = $value->product_name;
-						$arrObj->qty= $value->receipt_item_quantity;
-						$array[] = $arrObj;	
-				 	}
-			 	}
-			 }
-
-			 
-			 $data['receipt_item'] = $array;
-				
-			if($result){
-				
-				$res = $this->load->view('pos/vChef',$data,TRUE);	
-			}else{
-				print_r("SOMETHING WENT WRONG.");
-			}
-
-			
-			
-		}
-   
-
+	
 		public function printReceipt()
 		{
 			$page =  $_POST['page'];
@@ -77,7 +34,7 @@
 			$fname = $this->session->userdata['userSession']['user_first_name'];
 			$name = $fname[0].'. '.$this->session->userdata['userSession']['user_last_name'];
 			
-			$date = $now->format('Y-m-d');
+			$date = $now->format('M d, Y');
 			$time = $now->format('h:i A');
 
 			$item = array('receipt_date' => $receipt_date,
@@ -141,9 +98,10 @@
 					$status = array('ordered_status' => 'scanned');
 					$query = $this->MOrdered->update($eid, $status);
 				}
-				$this->session->unset_userdata('receiptSession');
 				$res = $this->load->view('pos/vReceipt',$data,TRUE);
-		  	    echo $res;	
+				$chef = $this->load->view('pos/vChef',$data,TRUE);
+				$this->session->unset_userdata('receiptSession');
+		  	    echo $res.'|'.$chef;	
 			}else{
 				print_r("SOMETHING WENT WRONG.");
 			}
@@ -164,6 +122,8 @@
 			$receipt_id = $this->session->userdata['receiptSession']['receipt_id'];
 			$now = new DateTime(NULL, new DateTimeZone('Asia/Manila'));
 			$receipt_date = $now->format('Y-m-d H:i:s');
+			$date = $now->format('M d, Y');
+			$time = $now->format('h:i A');
 
 			if($page == 'qr'){
 				$eid = $_POST['eid'];
@@ -193,14 +153,18 @@
 	 			}
 				
 				$data1['receipt_item'] = $array;
+				$data1['date'] = $date;
+				$data1['time'] = $time;
 
 			if($result){
 				if($page == 'qr'){
 					$status = array('ordered_status' => 'scanned');
 					$query = $this->MOrdered->update($eid, $status);
 				}
-				$this->session->unset_userdata('receiptSession');
 				$res = $this->load->view('pos/vChef',$data1,TRUE);
+
+				$this->session->unset_userdata('receiptSession');
+				
 				echo $res;
 				
 			}else{

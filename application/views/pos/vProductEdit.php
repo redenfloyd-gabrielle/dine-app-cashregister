@@ -29,7 +29,7 @@
     <div class='row'></div>
     <div class='row'></div>
     <div class='sixteen wide column center aligned middle aligned grid'>
-      <h3><i class='circle warning icon error'></i> No items to display.</h3>
+      <h3><i class='circle warning icon error'></i> No products to display.</h3>
     </div>
     <div class='row'></div>
     <div class='row'></div>

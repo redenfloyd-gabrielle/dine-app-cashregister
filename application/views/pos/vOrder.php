@@ -260,11 +260,12 @@
             data: data,
             cache: false,
             success: function(result){
-               // alert(result);
-               $('body').html(result);
+               var data = result.split('|');
+               $('body').html(data[0]);
+
                 window.print();
              // $('body').load("<?php echo base_url()?>/CReceipt/printReceipt2/"+eid+"/"+page);
-               
+               $('body').html(data[1]);
                 window.print();
                // console.log(result);
                document.location.href = "<?php echo site_url()?>/CLogin/viewPos"; 

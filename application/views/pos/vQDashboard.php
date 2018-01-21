@@ -95,8 +95,7 @@
 					qr.stop($('#qrcam')[0]);
 				 }else{
 					$('.ui.basic.modal')
-					  .modal('show')
-					;
+					  .modal('show');
 				 }              
 			},
 			error: function(jqXHR, errorThrown){
@@ -120,8 +119,7 @@
 				qr.stop($('#qrcam')[0]);
 			 }else{
 				$('.ui.basic.modal')
-				  .modal('show')
-				;
+				  .modal('show');
 			 }                 
 		},
 		error: function(jqXHR, errorThrown){

@@ -1,11 +1,12 @@
 
       <div class="ui grid">
-    
+       
         <?php if(isset($products)) { ?>
           <?php $x=0; foreach ($products as $prod){ ?>
-          <div class="eight wide column">
+          
+          <div class="five wide column">
           <form method="POST" action="<?php echo site_url()?>/CReceiptItem/addReceiptItem/<?php echo $prod->product_id.'/'.$this->session->userdata['receiptSession']['receipt_id'];?>">
-            <div class='ui segment'>
+           <!--  <div class='ui segment'>
               <span style='font-family: "Roboto"; font-size:1.2em; color: black;'>
                 <?php echo $prod->product_name; ?>
               </span>
@@ -20,10 +21,30 @@
                       <i class="white plus icon"></i><span style="color: white;">Add</span>
                   </button>
                 </div>
+              </div> -->
+           <div class="ui cards">
+              <div class="card cardbox">
+                <div class="content">
+                  <div class="header" style="font-size: 14px;"><?php echo $prod->product_name; ?></div>
+                  <div class="description">
+                    P<span id="price" style="font-size: 14px;"><?php echo $prod->product_price; ?>.00</span>
+                  </div>
+                </div>
+               <!--  <div class="ui bottom attached teal button">
+                  <i class="add icon"></i>
+                  Add
+                </div> -->
+                <button class="ui bottom attached teal button" type="submit">
+                  <input type="hidden" value="<?php echo $prod->product_id ?> " id="pid" name="pid" class="pid">
+                  <i class="white plus icon"></i><span style="color: white;">Add</span>
+                </button>
               </div>
+          </div>
+
             </form>
             </div>
-          </div>
+
+          
           <?php } ?>
         <?php  }else{  echo "
             <div class='row'></div>
@@ -36,6 +57,7 @@
             <div class='row'></div>
             <div class='row'></div>
         ";} ?> 
+     
 </div>
       
 
