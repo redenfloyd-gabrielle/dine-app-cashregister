@@ -35,7 +35,7 @@
 
                             <div class='required field'><label>FIRST NAME</label><input type='text' placeholder='Enter first name' name="fname"></div>
 
-                            <div class='required field'><label>MIDDLE NAME</label><input type='text' placeholder='Enter middle name' name="mname"></div>
+                            <div class='field'><label>MIDDLE NAME</label><input type='text' placeholder='Enter middle name' name="mname"></div>
 
                             <div class='required field'><label>LAST NAME</label><input type='text' placeholder='Enter last name' name="lname"></div>
                         </div>

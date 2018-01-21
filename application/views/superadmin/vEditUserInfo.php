@@ -37,7 +37,7 @@
 
                             <div class='required field'><label>FIRST NAME</label><input type='text' placeholder='Enter first name' name="fname" value="<?php echo $u->user_first_name;?>"></div>
 
-                            <div class='required field'><label>MIDDLE NAME</label><input type='text' placeholder='Enter middle name' name="mname" value="<?php echo $u->user_mi;?>"></div>
+                            <div class='field'><label>MIDDLE NAME</label><input type='text' placeholder='Enter middle name' name="mname" value="<?php echo $u->user_mi;?>"></div>
 
                             <div class='required field'><label>LAST NAME</label><input type='text' placeholder='Enter last name' name="lname" value="<?php echo $u->user_last_name; ?>"></div>
                         </div>
