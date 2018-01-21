@@ -81,7 +81,7 @@
                                             <?php 
                                                 if (isset($sales)) {
                                                     foreach ($sales as $s) {}
-                                                        echo $s->total;
+                                                        echo number_format($s->total,2);
                                                 } 
                                             ?>    
                                         </div>
@@ -89,7 +89,7 @@
                                     </div>
                                 </div> 
                                 <div class='right aligned middle aligned column'>
-                                    <i class='blue very huge dollar icon'></i>
+                                    <i class='blue very huge icon'>₱</i>
                                 </div>
                             </div>
                         </div>
