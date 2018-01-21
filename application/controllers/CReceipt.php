@@ -105,9 +105,6 @@
 			}else{
 				print_r("SOMETHING WENT WRONG.");
 			}
-
-			
-			
 		}
 
 		public function addOrderToReceipt()
@@ -170,8 +167,6 @@
 			}else{
 				print_r("SOMETHING WENT WRONG.");
 			}
-
-			
 		}
 
          

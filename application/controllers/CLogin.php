@@ -56,7 +56,7 @@
 		function viewPos()
 		{
 			$this->load->view('imports/vPosHeader');
-			$this->load->view('pos/index');
+			$this->load->view('pos/POSHome');
 		}
 	
 		function userLogin(){
@@ -125,7 +125,6 @@
 			}
 		}
 
-		
 		
 		public function userLogout()
 		{

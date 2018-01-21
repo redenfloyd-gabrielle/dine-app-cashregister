@@ -52,7 +52,6 @@
 			} else {
 				print_r('SOMETHING WENT WRONG;');
 			}
-			
 		}
 
 		public function activateUser()
@@ -69,7 +68,6 @@
 			} else {
 				print_r('SOMETHING WENT WRONG;');
 			}
-			# code...
 		}
 
 		public function addUser()
@@ -100,7 +98,6 @@
 			} else {
 				print_r('SOMETHING WENT WRONG;');
 			}
-
 		}
 
 		public function updateUser($user_id)
@@ -126,12 +123,10 @@
 						 );
 			$result = $this->MUser->update($user_id,$data);
 			if ($result) {
-				// $this->viewUsersList();
 				redirect('CUser/viewUserInfo/'.$user_id);
 			} else {
 				print_r('SOMETHING WENT WRONG;');
 			}
-			# code...
 		}
 
 		public function deleteUser()
@@ -144,7 +139,6 @@
 						 );
 			$result = $this->MUser->update($user_id, $data);
 			if ($result) {
-				// $this->viewUsersList();
 				redirect('CUser/viewUsersList');
 			} else {
 				print_r('SOMETHING WENT WRONG;');

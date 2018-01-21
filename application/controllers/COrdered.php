@@ -37,8 +37,6 @@
 			$this->session->set_userdata('receiptSession',$sessionReceipt);
 		}
 		
-
- 		
 		public function viewQDashboard(){
 			
 			$this->load->view('imports/vPosHeader');
@@ -56,22 +54,20 @@
 				foreach ($result as $q) {}
 				$id = $q->ordered_id;
 				$total = $q->ordered_total;
-				$status = $q->ordered_status;
 				$time = $q->ordered_time;
 				$date_now =new DateTime(NULL, new DateTimeZone('Asia/Manila'));
 				$dt = $date_now->format('Y-m-d H:i:s');
 			    $date = date_create_from_format('Y-m-d H:i:s', $time);
 				$datenow = date_create_from_format('Y-m-d H:i:s', $dt);
+				$status = $q->ordered_status;
 				
                 $interval = date_diff($datenow,$date);
-		        if($interval ->h >= 4){
-		        	$status = array('ordered_status' => 'expired');
-					$query = $this->MOrdered->update($id, $status);
+		        if($status == 'pending' && $interval ->h >= 4){
+		        	$stat = array('ordered_status' => 'expired');
+					$query = $this->MOrdered->update($id, $stat);
+					$status = 'expired';
 		        }
-
 		        $result1 = $this->MOrdered->displayOrderItemsByOrder($id);
- 
-			   
 			    $qty = 0;
 			
 				$data['order_info'] = null;
@@ -91,13 +87,6 @@
 				}else{
 					$data['order_info'] = null;
 				}
-				// if($status == "scanned"){
-				// 	$data['error'] = "Please try again. Code has been scanned.";
-				// }else if($status == "expired"){
-				// 	$data['error'] = "Please try again. Code has expired.";
-				// }else{
-				// 	$data['error'] = "Please try again. Make sure you are scanning a valid code. ";
-				// }
 				
 				$data['total'] = $total;
 				$data['qty'] = $qty;
@@ -107,14 +96,16 @@
 			}else{
 				$data = null;
 			}
-			if($data != null){
+			if($data != null && $status == "pending"){
 				if(!$this->session->userdata('receiptSession')){
 					$this->createReceiptSession();
 				}
 				$res = $this->load->view('pos/vOrder',$data,TRUE);
-				echo $res;	
-			 }
-			
+				echo $status.'*'.$res;	
+			}else if($data != null && $status != "pending"){
+				$res = '0';
+				echo $status.'*'.$res;	
+			}
 		}
 
 		public function displayOrderFromEditPage($qr)
@@ -156,10 +147,7 @@
 				$res = $this->load->view('pos/vOrder',$data,TRUE);
 				echo $res;	
 			}
-			
-			
 		}
-
 
 		public function getOrders()
 		{

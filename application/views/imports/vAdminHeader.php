@@ -52,9 +52,6 @@
     <a class='item' href='<?php echo site_url()?>/CReports/viewReports'>
         <i class='bar chart icon'></i> Reports
     </a>
-<!--     <a class='item' href='<?php //echo site_url()?>/CLogin/viewPos'>
-        <i class='calculator icon'></i> POS
-    </a> -->
 </div>
 <!-- end of sidebar -->
 
@@ -64,11 +61,6 @@
         <i class="sidebar icon"></i>
     </a>
     <a class='borderless item' href='<?php echo site_url()?>/CUser/viewAdminDashboard?>'>DINE</a>
-<!--     <div class="ui inverted transparent left icon action input borderless item">
-        <input type="text" placeholder="Enter keyword..." name="search">
-        <i class="search icon"></i>
-        <button class='ui brown button'>Search</button>
-    </div> -->
     <div class='right menu'>
         <a class="item" href="<?php echo site_url()?>/CLogin/viewPos"><i class="calculator icon"></i>SWITCH TO POS</a> 
         <div class='ui simple dropdown item' tabindex='0'>

@@ -52,7 +52,7 @@
    
   </div>
   <div class="content">
-   <p align="center">Please try again. Make sure you are scanning a valid code. </p>
+   <p align="center" id="error">Please try again. Make sure you are scanning a valid code. </p>
   </div>
   <div class="actions">
     <div class="ui blue ok inverted button">
@@ -91,12 +91,24 @@
 			cache: false,
 			success: function(result){
 				if(result){
-					$('body').html(result);
-					qr.stop($('#qrcam')[0]);
-				 }else{
+					var data = result.split('*');
+					if(data[0]== 'pending'){
+					 	$('body').html(data[1]);
+						qr.stop($('#qrcam')[0]);
+					}else{
+						var msg = '';
+						if(data[0] == 'expired'){
+							msg = 'Please try again. QR Code has expired.';
+						}else{
+							msg = 'Please try again. QR Code has already been scanned.';
+						}
+						$('#error').html(msg);
+						$('.ui.basic.modal').modal('show');
+					}
+				}else{
 					$('.ui.basic.modal')
 					  .modal('show');
-				 }              
+				}
 			},
 			error: function(jqXHR, errorThrown){
 				console.log(errorThrown);
@@ -115,12 +127,24 @@
 		cache: false,
 		success: function(result){
 			if(result){
-				$('body').html(result);
-				qr.stop($('#qrcam')[0]);
-			 }else{
+				var data = result.split('*');
+				if(data[0] == 'pending'){
+				 	$('body').html(data[1]);
+					qr.stop($('#qrcam')[0]);
+				}else{
+					var msg = '';
+					if(data[0] == 'expired'){
+						msg = 'Please try again. QR Code has expired.';
+					}else{
+						msg = 'Please try again. QR Code has already been scanned.';
+					}
+					$('#error').html(msg);
+					$('.ui.basic.modal').modal('show');
+				}
+			}else{
 				$('.ui.basic.modal')
 				  .modal('show');
-			 }                 
+			}     
 		},
 		error: function(jqXHR, errorThrown){
 			console.log(errorThrown);

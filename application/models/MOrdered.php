@@ -15,8 +15,7 @@
 		}
 
 		public function getOrderByQR($qr){
-			$where = array('ordered_qr_code' =>$qr,
-						   'ordered_status' => 'pending');
+			$where = array('ordered_qr_code' =>$qr);
 			$query = $this->read_where($where);
 			return $query;
 		}
@@ -37,7 +36,6 @@
 			'ordered_status' => 'pending' ));
 			$query = $this->db->get();
 			return $query->result();
-			// SELECT * FROM `order_item` JOIN ordered ON ordered_id = order_item_ordered_id WHERE ordered_id = 1
 		}
 
 		public function getOrderItemsByOrder($id){
@@ -49,7 +47,6 @@
 			$this->db->where(array($this::DB_TABLE.'_id' => $id));
 			$query = $this->db->get();
 			return $query->result();
-			// SELECT * FROM `order_item` JOIN ordered ON ordered_id = order_item_ordered_id WHERE ordered_id = 1
 		}
 
 		public function getOrders()
