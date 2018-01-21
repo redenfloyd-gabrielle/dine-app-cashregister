@@ -535,13 +535,10 @@
 			$data['eid'] = $id;
 			$data['qr'] = $qr;
 			$this->load->view('pos/vProductEdit',$data);
-
-			
 		}
 
 		function viewCategoryList()
 		{
-
 			$this->load->view('imports/vAdminHeader');
 			$this->load->view('admin/vCategoryList');
 			$this->load->view('imports/vAdminFooter');
@@ -585,7 +582,6 @@
 
 			
 		}
-
 		function addNewProduct()
 		{
 			$this->load->view('imports/vAdminHeader');
@@ -600,7 +596,6 @@
 			if($result){
 				$data['product'] = $result;
 			}
-			
 			$this->load->view('imports/vAdminHeader');
 			$this->load->view('admin/vProductInfo',$data);
 			$this->load->view('imports/vAdminFooter');

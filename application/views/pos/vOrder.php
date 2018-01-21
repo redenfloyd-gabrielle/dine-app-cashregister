@@ -109,7 +109,7 @@
           CHANGE
         </div>
         <div class="eight wide middle aligned compact column">
-          <strong><span id="peso" style="font-size: 1.3em; font-style: italic;">P</span><span id="change">0.00</span></strong>
+          <strong><span id="peso" style="font-size: 1.3em;">P</span><span id="change">0.00</span></strong>
         </div>
       </div>
     </div>

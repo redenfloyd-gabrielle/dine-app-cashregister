@@ -18,7 +18,6 @@
                     </button>
                   </div>
               </div>
-              +
             </form>
           </div>
     <?php } ?>
