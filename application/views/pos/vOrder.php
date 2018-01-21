@@ -5,7 +5,7 @@
   <div class="row"></div>
   <div class="row">
     <div class="column"></div>
-    <div class="six wide column">
+    <div class="seven wide column">
       <h1 class="ui grey dividing header">
             <img class="ui big image" src="'.base_url().'/assets/images/qrcode.png">
             <div class="content">
@@ -19,7 +19,7 @@
         <div class="ui hidden divider"></div>
         <img src="'.base_url().'assets/images/disable.jpg" class="disabled ui vid image">
     </div>
-    <div class="two wide column"></div>'; } ?>
+    <div class="column"></div>'; } ?>
 
     <div class="six wide column">
       <div id="vOrder">
@@ -37,7 +37,6 @@
           ?>
         </div>
       </div>
-
       <table class="ui inverted teal basic table">
         <thead>
           <tr>
@@ -97,7 +96,6 @@
           <strong><p style="font-size: 1.3em;">P<span id="due">0</span>.00</p></strong>
         </div>
 
-
         <!-- CASH -->
         <div class="eight wide middle aligned  column">
          CASH
@@ -106,7 +104,6 @@
           <p style="font-size: 1.3em;">P<span id="cash">0.00</span></p>
         </div>
 
-
         <!-- CHANGE -->
         <div class="eight wide middle aligned column">
           CHANGE
@@ -114,9 +111,7 @@
         <div class="eight wide middle aligned compact column">
           <strong><span id="peso" style="font-size: 1.3em; font-style: italic;">P</span><span id="change">0.00</span></strong>
         </div>
-
       </div>
-      
     </div>
     <div class="column"></div>
   </div>

@@ -1,7 +1,7 @@
   <div class="row"></div>
   <div class="row">
     <div class="column"></div>
-    <div class="six wide column">
+    <div class="seven wide column">
       <h1 class="ui grey dividing header">
             <img class="ui big image" src="<?php echo base_url("assets/images/hand.png")?>">
             <div class="content">
@@ -38,7 +38,7 @@
       </div>
 
     </div>
-    <div class="two wide column"></div>
+    <div class="column"></div>
     <?php $this->view("pos/vOrder");?> 
 
 </body>

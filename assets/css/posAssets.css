@@ -19,4 +19,5 @@ font-weight: bold;}
 .rqty{font-size: 19px;font-family: "Lucida Console", Monaco, monospace;margin: 0px;}
 .tagline{font-size:20px;font-weight: bold; font-family: "Lucida Console", Monaco, monospace; margin: 2px 0px ;text-transform: uppercase; text-align: center;}
 .receipttype{margin: 20px 0px; text-align: center;}
+.prodname{min-height: 35px;}
 

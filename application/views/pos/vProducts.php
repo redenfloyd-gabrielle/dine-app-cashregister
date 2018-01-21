@@ -6,9 +6,9 @@
           <div class="five wide column">
             <form method="POST" action="<?php echo site_url()?>/CReceiptItem/addReceiptItem/<?php echo $prod->product_id.'/'.$this->session->userdata['receiptSession']['receipt_id'];?>">
                <div class="ui cards">
-                  <div class="card cardbox">
+                  <div class="card">
                     <div class="content">
-                      <div class="header" style="font-size: 14px;"><?php echo $prod->product_name; ?></div>
+                      <div class="header prodname" style="font-size: 14px;"><?php echo $prod->product_name; ?></div>
                       <div class="description">
                         P<span id="price" style="font-size: 14px;"><?php echo $prod->product_price; ?>.00</span>
                       </div>
@@ -19,7 +19,6 @@
                     </button>
                   </div>
               </div>
-              +
             </form>
           </div>
           <?php } ?>

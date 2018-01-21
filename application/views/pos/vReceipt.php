@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -51,7 +50,6 @@
      </tr>
       <?php } ?>
     <?php } ?>
-     
    </table>
    <div class="receiptdivide"> </div>
   <span class="lft receiptamt">Amount Due</span>
@@ -68,9 +66,7 @@
   <br>
 </div>
 </div>
-<h3 style="color: white;">`</h3>
-
-   
+<h3>`</h3> 
 </body>
 </html>
 

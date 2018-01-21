@@ -8,9 +8,6 @@
           ORDER LIST
         </div>
         <div class="row"></div>
-        <!-- <div class="six wide column">
-          <a href="<?php //echo site_url().'/COrderItem/viewEdit/'.$page.'/'.$id.'/1';?>" ><button class="fluid ui labeled icon button"><i class="pencil icon"></i>EDIT ORDER</button></a>
-        </div> -->
       </div>
 
       <table class="ui inverted teal basic table">
