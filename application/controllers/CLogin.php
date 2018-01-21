@@ -8,6 +8,8 @@
 	      $this->load->helper('url');
 	      $this->load->database(); // load database
 	      $this->load->model('MUser');
+	      $this->load->model('MReceipt');
+	      $this->load->model('MProduct');
 	      $this->load->library('session');
 	      $this->load->library('form_validation');
 		  $this->load->helper('url'); 
