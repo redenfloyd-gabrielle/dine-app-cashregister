@@ -49,7 +49,7 @@
     <a class='item' href='<?php echo site_url()?>/COrdered/viewOrderList?>'>
         <i class='shop icon'></i> Orders
     </a>
-    <a class='item' href='<?php echo site_url()?>/CReports/viewReports'>
+    <a class='item' href='<?php echo site_url()?>/CReports/getData'>
         <i class='bar chart icon'></i> Reports
     </a>
 <!--     <a class='item' href='<?php //echo site_url()?>/CLogin/viewPos'>
