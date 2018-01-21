@@ -77,11 +77,18 @@
 		}
 
 	
-		function viewOrderInfo()
-		{
+		function viewOrderInfo($id)
+		{	
+			
+	 			
+			$data['orders'] = $this->MOrdered->getOrderById($id);
+			$data['items'] = $this->MOrdered->getOrderItemsByOrder($id);
+			// print_r($data);
 			$this->load->view('imports/vAdminHeader');
-			$this->load->view('admin/vOrderInfo');
+			$this->load->view('admin/vOrderInfo',$data);
 			$this->load->view('imports/vAdminFooter');
+			
+			
 		}
 
 		public function removeToList($page,$eid,$qr,$cat)

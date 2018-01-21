@@ -55,6 +55,32 @@
 			}
 		}
 
+		public function countUsers()
+		{
+			$this->db->select('count(*) as users');
+			$this->db->from($this::DB_TABLE);
+			$query = $this->db->get();
+			return $query->result();
+		}
+
+		public function countInactiveUsers()
+		{
+			$this->db->select('count(*) as inactive');
+			$this->db->from($this::DB_TABLE);
+			$this->db->where('user_status', 'DELETED');
+			$query = $this->db->get();
+			return $query->result();
+		}
+
+		public function countActiveUsers()
+		{
+			$this->db->select('count(*) as active');
+			$this->db->from($this::DB_TABLE);
+			$this->db->where('user_status', 'ACTIVE');
+			$query = $this->db->get();
+			return $query->result();
+		}
+
 		public function getUser_id(){
 			return $this->user_id;
 		}

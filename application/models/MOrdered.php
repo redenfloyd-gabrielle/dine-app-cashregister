@@ -40,6 +40,28 @@
 			// SELECT * FROM `order_item` JOIN ordered ON ordered_id = order_item_ordered_id WHERE ordered_id = 1
 		}
 
+		public function getOrderItemsByOrder($id){
+
+			$this->db->select('*');
+			$this->db->from('order_item');
+			$this->db->join($this::DB_TABLE,'order_item'.'.order_item_ordered_id= ordered_id ' );
+			$this->db->join('product','order_item'.'.order_item_product_id= product_id ' );
+			$this->db->where(array($this::DB_TABLE.'_id' => $id));
+			$query = $this->db->get();
+			return $query->result();
+			// SELECT * FROM `order_item` JOIN ordered ON ordered_id = order_item_ordered_id WHERE ordered_id = 1
+		}
+
+		public function getOrders()
+		{
+			$this->db->select("*");
+			$this->db->from($this::DB_TABLE);
+			$this->db->where('ordered_status', 'scanned');
+			$query = $this->db->get();
+			
+			return $query;
+		}
+
 		public function getOrdered_id(){
 			return $this->ordered_id;
 		}

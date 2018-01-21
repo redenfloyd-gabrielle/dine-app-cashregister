@@ -90,7 +90,31 @@
   </div>
 </div>
 
+<div class="ui basic modal" id="confirmRestock">
+  <div class="ui icon header">
+    <i class="remove icon"></i>
+    Restock Item
+  </div>
+  <div class="content">
+<form class='ui form' method='POST' action='<?php echo site_url()?>/CProduct/restockProduct'>
+    <center><p style='font-size: 1.5em;'>Are you sure you want to restock this item?</p></center>
+    <input type='hidden' name='rproduct_id' id='rproduct_id' value="">
+  </div>
+  <div class="actions">
+    <div class="ui gray basic cancel inverted button">
+      <i class="remove icon"></i>
+      No
+    </div>
+    <button class="ui basic brown ok inverted button" type="submit">
+      <i class="checkmark icon"></i>
+      Yes
+    </button>
+</form>
+  </div>
+</div>
 
+
+</body>
 
 </body>
 </html> 
@@ -98,10 +122,16 @@
 <script> 
 $(document).ready(function(){
     $(document).on('click','.deleteItem',function() {
-         var id = $(this).data("id");
-         alert(id);
+        var id = $(this).data("id");
         $('#product_id').val(id);
         $('#confirmDelete').modal('show');
+        
+    });
+
+    $(document).on('click','.restockProduct',function() {
+        var id = $(this).data("id");
+        $('#rproduct_id').val(id);
+        $('#confirmRestock').modal('show');
         
     });
 });

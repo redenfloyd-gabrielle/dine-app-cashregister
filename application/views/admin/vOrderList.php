@@ -23,65 +23,23 @@
                     Orders List
                 </h5> 
                 <div class='ui stackable padded grid'>
-                    <div class='two column row'>
-                        <div class='column'>
-                            <label>
-                                Show 
-                                <select class='ui compact dropdown'>
-                                    <option value='10'>10</option>
-                                    <option value='20'>20</option>
-                                    <option value='30'>30</option>
-                                </select>
-                                entries
-                            </label>
-                        </div>
-                        <div class='right aligned column'></div>
-                    </div>
                     <div class='row'>
-                        <table class='ui sortable stackable celled table'>
+                        <table class='ui sortable stackable celled table' id="orders">
                             <thead>
                                 <tr>
-                                    <th class='sortable sorted ascending'>Order ID</th>
-                                    <th class='sortable'>Order Date</th>
-                                    <th class='sortable'>Total</th>
-                                    <th class='sortable'>QR Code</th>
-                                    <th>Action</th>
+                                    <th>Order ID</th>
+                                    <th>Order Date</th>
+                                    <th>Total</th>
+                                    <th>Reference Number</th> 
+                                    <th>Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
-                           
-                                <tr class='item'>
-                                    <td>1</td>
-                                    <td>2018-01-02</td>
-                                    <td>P 300</td>
-                                    <td>----</td>
-                                    <td>
-                                        <a href='<?php echo site_url()?>/COrderItem/viewOrderInfo?>'><button class="ui inverted blue icon button">
-                                            <i class="unhide icon"></i>
-                                        </button></a>
-                                    </td>
-                                </tr>
-                            
+                        
                             </tbody>
                         </table>
                     </div>
                     <div class='row'></div> <!-- row -->
-
-                    <!-- pagination -->
-                    <div class='two column row'>
-                        <div class='middle aligned column'>
-                            Showing 1 to 5 of 5 entries.
-                        </div>
-                        <div class='right aligned column'>
-                            <div class='ui pagination menu'>
-                                <a class='previous item'>Previous</a>
-                                <a class='active item'>1</a>
-                                <a class='next item' >Next</a>
-                            </div> <!-- pagination -->
-                        </div>
-                    </div> <!-- two column row -->
-
-                    <!-- end of pagination -->
                 </div> <!-- ui grid -->
             </div> <!-- segment -->
         </div> <!-- segments -->
@@ -91,3 +49,14 @@
 
 </body>
 </html>
+<script type="text/javascript">
+    $(document).ready(function() {
+   
+        $('#orders').DataTable({
+            "ajax" : {
+                url: "<?php echo site_url();?>/COrdered/getOrders",
+                type : 'GET',
+            },
+        });
+    } );
+</script>

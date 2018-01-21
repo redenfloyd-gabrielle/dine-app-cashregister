@@ -87,9 +87,19 @@
 			$this->db->select("*");
 			$this->db->from($this::DB_TABLE);
 			$this->db->where('product_category', $cat);
+			$this->db->order_by('product_name','ASC');
 			$query = $this->db->get();
 			return $query;
 		}
+
+		public function countProducts()
+		{
+			$this->db->select('count(*) as products');
+			$this->db->from($this::DB_TABLE);
+			$query = $this->db->get();
+			return $query->result();
+		}
+
 		public function getProduct_id(){
 			return $this->product_id;
 		}

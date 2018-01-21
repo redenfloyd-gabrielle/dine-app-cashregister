@@ -23,6 +23,8 @@
         <!-- content -->
         <div class='ui segments'>
             <div class='ui basic segment'>
+                <?php if (isset($orders)) { ?>
+                    <?php foreach($orders as $o) {} ?>  
                 <h5 class='ui header brown ribbon label'><i class='info icon'></i>
                     Orders Information
                 </h5> 
@@ -30,13 +32,15 @@
                     <div class='row'>
                         <div class='two wide column'></div>
                         <div class='twelve wide column'>
-                            <p>ORDER ID: <strong style='font-style: italic;'>00001</strong></p>
+                            <p>ORDER ID: <strong style='font-style: italic;'><?php echo $o->ordered_id; ?></strong></p>
+                            <?php  $date = date_create_from_format('Y-m-d H:i:s', $o->ordered_time); ?>
+                            <p>ORDER DATE: <strong style='font-style: italic;'><?php echo $date->format('F d, Y H:i a'); ?></strong></p>
 
-                            <p>ORDER DATE: <strong style='font-style: italic;'>01/20/18</strong></p>
-
-                            <p>CASHIER: <strong style='font-style: italic;'>Lowis</strong></p>
+                            <!-- <p>CASHIER: <strong style='font-style: italic;'><?php echo $o->ordered_guest_id; ?></strong></p> -->
                             <div class='ui hidden divider'></div> 
-
+                 
+                <?php if (isset($items)) { ?>
+                      
                             <table class='ui very basic table'>
                                 <thead>
                                     <tr>
@@ -47,18 +51,22 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>Porksilog</td>
-                                        <td>P 70.00</td>
-                                        <td>3</td>
-                                        <td>P 210.00</td>
-                                    </tr>
+                                    <?php $total = 0; ?>
+                                    <?php foreach($items as $i) { ?>
+                                        <tr>
+                                            <td><?php echo $i->product_name; ?></td>
+                                            <td>P <?php echo $i->product_price; ?>.00</td>
+                                            <td><?php echo $i->order_item_qty; ?></td>
+                                            <td>P <?php echo $i->order_item_subtotal; ?>.00</td>
+                                            <?php $total += $i->order_item_subtotal ; ?>
+                                        </tr>
+                                    <?php } ?>
                                 </tbody>
                             </table>
                             <div class='ui hidden divider'></div>
-                            <p>TOTAL (P): <strong style='font-style: italic;'>200.00</strong></p>
-                            <p>CASH (P): <strong style='font-style: italic;'>200.00</strong></p>
-                            <p>CHANGE (P): <strong style='font-style: italic;'>200.00</strong></p>
+                            <p>TOTAL (P): <strong style='font-style: italic;'><?php echo $total; ?></strong></p>
+                           <!--  <p>CASH (P): <strong style='font-style: italic;'>200.00</strong></p>
+                            <p>CHANGE (P): <strong style='font-style: italic;'>200.00</strong></p> -->
                             <div class='ui hidden divider'></div>
                         </div>
                         <div class='two wide column'></div>
@@ -69,7 +77,8 @@
         </div> <!-- segments -->
     </div> <!-- segment -->
 </div> <!-- pusher -->
-
+<?php } ?>
+<?php } ?>
 
 </body>
 </html>
