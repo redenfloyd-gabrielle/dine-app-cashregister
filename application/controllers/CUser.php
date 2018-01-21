@@ -32,7 +32,10 @@
 
 			$result = $this->MUser->update($id, $data);
 			if ($result) {
-				redirect('CLogin/userLogout');
+				$this->session->unset_userdata('userSession');
+				$this->session->set_flashdata('msg',"Successfully changed your password!");
+				$this->session->set_flashdata('msg2',"Please login using your new password.");
+				redirect('CLogin');
 			} else {
 				redirect('CLogin/viewSuperadminDashboard');
 			}
@@ -48,6 +51,7 @@
 						 );
 			$result = $this->MUser->update($id, $data);
 			if ($result) {
+				$this->session->set_flashdata('response',"Successfully reset user password!");
 				redirect('CUser/viewUsersList');
 			} else {
 				print_r('SOMETHING WENT WRONG;');
@@ -64,6 +68,7 @@
 						 );
 			$result = $this->MUser->update($id, $data);
 			if ($result) {
+				$this->session->set_flashdata('response',"Successfully activated user!");
 				redirect('CUser/viewUsersList');
 			} else {
 				print_r('SOMETHING WENT WRONG;');
@@ -72,32 +77,43 @@
 
 		public function addUser()
 		{
-			$now = new DateTime(NULL, new DateTimeZone('Asia/Manila'));
-			$type = null;
-			if($this->input->post('position') == 'Manager' ){
-				$type = 'ADMIN';
-			} else if ($this->input->post('position') == 'Owner' || $this->input->post('position') == 'Supervisor'){
-				$type = 'SUPERADMIN';
-			} else {
-				$type = 'REGULAR';
-			}
-
-			$data = array('user_first_name' => $this->input->post('fname'),
-						  'user_mi' => $this->input->post('mname'),
-			  			  'user_last_name' => $this->input->post('lname'),
-			  			  'user_position' => $this->input->post('position'),
-						  'user_type' => $type,
-						  'user_created_by' => $this->session->userdata['userSession']['user_id'],
-						  'user_created_on' => $now->format('Y-m-d H:i:s'),
-						  'user_modified_by' => $this->session->userdata['userSession']['user_id'],
-						  'user_modified_on' => $now->format('Y-m-d H:i:s'),
-						 );
-			$result = $this->MUser->insert($data);
-			if ($result) {
+			$where = array('user_first_name' => $this->input->post('fname'),
+						   'user_mi' => $this->input->post('mname'),
+			  			   'user_last_name' => $this->input->post('lname')
+						   );
+			$user = $this->MUser->read_where($where);
+			if($user){
+				$this->session->set_flashdata('error',"User already exists!");
 				redirect('CUser/viewUsersList');
 			} else {
-				print_r('SOMETHING WENT WRONG;');
+				$now = new DateTime(NULL, new DateTimeZone('Asia/Manila'));
+				$type = null;
+				if($this->input->post('position') == 'Manager' ){
+					$type = 'ADMIN';
+				} else if ($this->input->post('position') == 'Owner' || $this->input->post('position') == 'Supervisor'){
+					$type = 'SUPERADMIN';
+				} else {
+					$type = 'REGULAR';
+				}
+				$data = array('user_first_name' => $this->input->post('fname'),
+							  'user_mi' => $this->input->post('mname'),
+				  			  'user_last_name' => $this->input->post('lname'),
+				  			  'user_position' => $this->input->post('position'),
+							  'user_type' => $type,
+							  'user_created_by' => $this->session->userdata['userSession']['user_id'],
+							  'user_created_on' => $now->format('Y-m-d H:i:s'),
+							  'user_modified_by' => $this->session->userdata['userSession']['user_id'],
+							  'user_modified_on' => $now->format('Y-m-d H:i:s'),
+							 );
+				$result = $this->MUser->insert($data);
+				if ($result) {
+					$this->session->set_flashdata('response',"Successfully added new user!");
+					redirect('CUser/viewUsersList');
+				} else {
+					print_r('SOMETHING WENT WRONG;');
+				}
 			}
+			
 		}
 
 		public function updateUser($user_id)
@@ -123,7 +139,8 @@
 						 );
 			$result = $this->MUser->update($user_id,$data);
 			if ($result) {
-				redirect('CUser/viewUserInfo/'.$user_id);
+				$this->session->set_flashdata('response',"Successfully edited user information!");
+				redirect('CUser/viewUsersList');
 			} else {
 				print_r('SOMETHING WENT WRONG;');
 			}
@@ -139,6 +156,7 @@
 						 );
 			$result = $this->MUser->update($user_id, $data);
 			if ($result) {
+				$this->session->set_flashdata('response',"Successfully deleted user!");
 				redirect('CUser/viewUsersList');
 			} else {
 				print_r('SOMETHING WENT WRONG;');

@@ -61,7 +61,6 @@
 	
 		function userLogin(){
 			if ($this->session->userdata('userSession') == FALSE) {
-
 				$this->form_validation->set_rules('user_id','User ID','required');
 				$this->form_validation->set_rules('password','Password','required');
 				if($this->form_validation->run()){
@@ -82,22 +81,19 @@
 						} else if ($result[0]->user_type == 'REGULAR') {
 							redirect('CLogin/viewPos');
 						} else {
-							$data['errors'] = "Invalid Login Attemp!";
-							$data['msg'] = "Check User ID and Password.";
-
-							$this->load->view('vLogin',$data);
+							$this->session->set_flashdata('response',"Invalid Login Attempt!");
+							$this->session->set_flashdata('error',"Check User ID and Password.");
+							redirect('CInitialize');
 						}
 					} else {
-						$data['errors'] = "Invalid Login Attemp!";
-						$data['msg'] = "Check User ID and Password.";
-
-						$this->load->view('vLogin',$data);
+						$this->session->set_flashdata('response',"Invalid Login Attempt!");
+						$this->session->set_flashdata('error',"Check User ID and Password.");
+						redirect('CInitialize');
 					}
 				}else{
-					$data['errors'] = "Empty Login!";
-					$data['msg'] = "Enter User ID and Password.";
-					
-					$this->load->view('vLogin',$data);	
+					$this->session->set_flashdata('response',"Empty Login!");
+					$this->session->set_flashdata('error',"Enter User ID and Password.");
+					redirect('CInitialize');
 				}
 			} elseif ($this->session->userdata['userSession']['user_type'] == 'ADMIN') {
 			    redirect('CLogin/viewAdminDashboard');
