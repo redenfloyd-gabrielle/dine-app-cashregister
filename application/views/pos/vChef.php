@@ -52,9 +52,7 @@
   <br>
 </div>
 </div>
-<h3 style="color: white;">`</h3>
-
-   
+<h3>`</h3>
 </body>
 </html>
 
