@@ -15,6 +15,22 @@
 
 		}
 
+		public function countOrders()
+		{
+			$this->db->select('count(*) as orders');
+			$this->db->from($this::DB_TABLE);
+			$query = $this->db->get();
+			return $query->result();
+		}
+
+		public function getTotal(){
+        	  $this->db->select('SUM(receipt_total) AS total');
+              $this->db->from($this::DB_TABLE);
+              $query = $this->db->get();
+
+			return $query->result();
+        }
+
 		public function getReceipt_id(){
 			return $this->receipt_id;
 		}

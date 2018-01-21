@@ -31,15 +31,23 @@
 
 		function viewAdminDashboard()
 		{
+			$data['count'] = $this->MReceipt->countOrders();
+			$data['product'] = $this->MProduct->countProducts();
+			$data['sales'] = $this->MReceipt->getTotal();
+
 			$this->load->view('imports/vAdminHeader');
-			$this->load->view('admin/vDashboard');
+			$this->load->view('admin/vDashboard',$data);
 			$this->load->view('imports/vAdminFooter');
 		}
 
 		function viewSuperadminDashboard()
 		{
+			$data['users'] = $this->MUser->countUsers();
+			$data['active'] =  $this->MUser->countActiveUsers();
+			$data['inactive'] =  $this->MUser->countInactiveUsers();
+
 			$this->load->view('imports/vSuperadminHeader');
-			$this->load->view('superadmin/vDashboard');
+			$this->load->view('superadmin/vDashboard', $data);
 			$this->load->view('imports/vSuperadminFooter');
 		}
 

@@ -9,6 +9,9 @@
 	      $this->load->helper('url');
 	      $this->load->database(); // load database
 	      $this->load->model('MUser');
+	      $this->load->model('MOrdered');
+	      $this->load->model('MProduct');
+	      $this->load->model('MReceipt');
 	      $url = $this->config->site_url();
      	  $this->urlSite = $url.'/CUser/editUserInfo/';
 	  	}
@@ -207,16 +210,25 @@
 
 		function viewAdminDashboard()
 		{
+			$data['count'] = $this->MReceipt->countOrders();
+			$data['product'] = $this->MProduct->countProducts();
+			$data['sales'] = $this->MReceipt->getTotal();
+
 			$this->load->view('imports/vAdminHeader');
-			$this->load->view('admin/vDashboard');
+			$this->load->view('admin/vDashboard',$data);
 			$this->load->view('imports/vAdminFooter');
 		}
 
+
+
 		function viewSuperadminDashboard()
 		{
+			$data['users'] = $this->MUser->countUsers();
+			$data['active'] =  $this->MUser->countActiveUsers();
+			$data['inactive'] =  $this->MUser->countInactiveUsers();
 
 			$this->load->view('imports/vSuperadminHeader');
-			$this->load->view('superadmin/vDashboard');
+			$this->load->view('superadmin/vDashboard', $data);
 			$this->load->view('imports/vSuperadminFooter');
 		}
 

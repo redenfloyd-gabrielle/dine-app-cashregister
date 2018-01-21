@@ -68,6 +68,23 @@
 				print_r('SOMETHING WENT WRONG;');
 			}
 		}
+
+		public function restockProduct()
+		{
+			$now = new DateTime(NULL, new DateTimeZone('Asia/Manila'));
+			$id = $this->input->post('rproduct_id');
+			$data = array('product_availability' => 'AVAILABLE',
+						  'product_modified_by' => $this->session->userdata['userSession']['user_id'],
+						  'product_modified_on' => $now->format('Y-m-d H:i:s a'),
+						  );
+			$result = $this->MProduct->update($id,$data);
+			
+			if ($result) {
+				redirect('CProduct/viewCategoryList');
+			} else {
+				print_r('SOMETHING WENT WRONG;');
+			}
+		}
 		
 
 		public function viewProducts()
@@ -108,7 +125,7 @@
 			}
 		}
 
-		public function getRiceMeals()
+		public function getPancit()
 		{
 			// Datatables Variables
 	        $draw = intval($this->input->get("draw"));
@@ -131,17 +148,9 @@
 	                           		<i class="trash icon"></i>
 	                           	</a>';
 				} else {
-					$actions = 	'<a href="'.$this->urlSite.''.$prod->product_id.'">
-									<button class="ui inverted blue icon button">
-                                		<i class="unhide icon"></i>
-                                	</button>
-                               	</a>
-                               	<a id="" class="ui inverted orange icon button" data-id="'.$prod->product_id.'">
+					$actions = 	'<a id="restock" class="ui inverted orange icon button restockProduct" data-id="'.$prod->product_id.'">
                                		<i class="add icon"></i>
-                               	</a>
-	                           	<a id="deleteItem" class="ui inverted red icon button deleteItem" data-id="'.$prod->product_id.'">
-	                           		<i class="trash icon"></i>
-	                           	</a>';
+                               	</a>';
 				}
 			   	$data[] = array(
 			        '<img src="'.$this->link.''.$prod->product_image.'" class="ui small image">',
@@ -188,17 +197,9 @@
 	                           		<i class="trash icon"></i>
 	                           	</a>';
 				} else {
-					$actions = 	'<a href="'.$this->urlSite.''.$prod->product_id.'">
-									<button class="ui inverted blue icon button">
-                                		<i class="unhide icon"></i>
-                                	</button>
-                               	</a>
-                               	<a id="" class="ui inverted orange icon button" data-id="'.$prod->product_id.'">
+					$actions = 	'<a id="restock" class="ui inverted orange icon button restockProduct" data-id="'.$prod->product_id.'">
                                		<i class="add icon"></i>
-                               	</a>
-	                           	<a id="deleteItem" class="ui inverted red icon button deleteItem" data-id="'.$prod->product_id.'">
-	                           		<i class="trash icon"></i>
-	                           	</a>';
+                               	</a>';
 				}
 			   	$data[] = array(
 			        '<img src="'.$this->link.''.$prod->product_image.'" class="ui small image">',
@@ -244,17 +245,9 @@
 	                           		<i class="trash icon"></i>
 	                           	</a>';
 				} else {
-					$actions = 	'<a href="'.$this->urlSite.''.$prod->product_id.'">
-									<button class="ui inverted blue icon button">
-                                		<i class="unhide icon"></i>
-                                	</button>
-                               	</a>
-                               	<a id="" class="ui inverted orange icon button" data-id="'.$prod->product_id.'">
+					$actions = 	'<a id="restock" class="ui inverted orange icon button restockProduct" data-id="'.$prod->product_id.'">
                                		<i class="add icon"></i>
-                               	</a>
-	                           	<a id="deleteItem" class="ui inverted red icon button deleteItem" data-id="'.$prod->product_id.'">
-	                           		<i class="trash icon"></i>
-	                           	</a>';
+                               	</a>';
 				}
 			   	$data[] = array(
 			        '<img src="'.$this->link.''.$prod->product_image.'" class="ui small image">',
@@ -300,17 +293,9 @@
 	                           		<i class="trash icon"></i>
 	                           	</a>';
 				} else {
-					$actions = 	'<a href="'.$this->urlSite.''.$prod->product_id.'">
-									<button class="ui inverted blue icon button">
-                                		<i class="unhide icon"></i>
-                                	</button>
-                               	</a>
-                               	<a id="" class="ui inverted orange icon button" data-id="'.$prod->product_id.'">
+					$actions = 	'<a id="restock" class="ui inverted orange icon button restockProduct" data-id="'.$prod->product_id.'">
                                		<i class="add icon"></i>
-                               	</a>
-	                           	<a id="deleteItem" class="ui inverted red icon button deleteItem" data-id="'.$prod->product_id.'">
-	                           		<i class="trash icon"></i>
-	                           	</a>';
+                               	</a>';
 				}
 			   	$data[] = array(
 			        '<img src="'.$this->link.''.$prod->product_image.'" class="ui small image">',
@@ -356,17 +341,9 @@
 	                           		<i class="trash icon"></i>
 	                           	</a>';
 				} else {
-					$actions = 	'<a href="'.$this->urlSite.''.$prod->product_id.'">
-									<button class="ui inverted blue icon button">
-                                		<i class="unhide icon"></i>
-                                	</button>
-                               	</a>
-                               	<a id="" class="ui inverted orange icon button" data-id="'.$prod->product_id.'">
+					$actions = 	'<a id="restock" class="ui inverted orange icon button restockProduct" data-id="'.$prod->product_id.'">
                                		<i class="add icon"></i>
-                               	</a>
-	                           	<a id="deleteItem" class="ui inverted red icon button deleteItem" data-id="'.$prod->product_id.'">
-	                           		<i class="trash icon"></i>
-	                           	</a>';
+                               	</a>';
 				}
 			   	$data[] = array(
 			        '<img src="'.$this->link.''.$prod->product_image.'" class="ui small image">',
@@ -573,7 +550,7 @@
 
 			if ($cat == 'PANCIT') {
 				$this->load->view('imports/vAdminHeader'); 
-				$this->load->view('admin/category/vRiceMeals',$data);
+				$this->load->view('admin/category/vPancit',$data);
 				$this->load->view('imports/vAdminFooter');
 			} else if ($cat == 'SOUP'){
 				$this->load->view('imports/vAdminHeader'); 

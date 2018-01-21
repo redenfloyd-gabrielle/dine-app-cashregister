@@ -28,7 +28,14 @@
                                 <div class='center aligned middle aligned column'>
                                     <div class='ui grey statistic'>
                                         <div class='value'> 
-                                            10   
+                                            <?php 
+                                                if (isset($users)) {
+                                                    foreach ($users as $u) {}
+                                                        echo $u->users;
+                                                } else {
+                                                    echo "0";
+                                                }
+                                            ?>     
                                         </div>
                                         <div class='label'>Users</div>
                                     </div>
@@ -45,7 +52,14 @@
                                 <div class='center aligned middle aligned column'>
                                     <div class='ui grey statistic'>
                                         <div class='value'> 
-                                            8  
+                                            <?php 
+                                                if (isset($active)) {
+                                                    foreach ($active as $a) {}
+                                                        echo $a->active;
+                                                } else {
+                                                    echo "0";
+                                                }
+                                            ?>    
                                         </div>
                                         <div class='label'>ACTIVE USERS</div>
                                     </div>
@@ -62,7 +76,14 @@
                                 <div class='center aligned middle aligned column'>
                                     <div class='ui grey statistic'>
                                         <div class='value'> 
-                                            2 
+                                            <?php 
+                                                if (isset($inactive)) {
+                                                    foreach ($inactive as $i) {}
+                                                        echo $i->inactive;
+                                                } else {
+                                                    echo "0";
+                                                }
+                                            ?>  
                                         </div>
                                         <div class='label'>INACTIVE USERS</div>
                                     </div>

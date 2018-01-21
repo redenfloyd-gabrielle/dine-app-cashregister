@@ -34,7 +34,12 @@
                                 <div class='center aligned middle aligned column'>
                                     <div class='ui grey statistic'>
                                         <div class='value'> 
-                                            23   
+                                            <?php 
+                                                if (isset($count)) {
+                                                    foreach ($count as $c) {}
+                                                        echo $c->orders;
+                                                } 
+                                            ?>   
                                         </div>
                                         <div class='label'>Orders</div>
                                     </div>
@@ -51,7 +56,12 @@
                                 <div class='center aligned middle aligned column'>
                                     <div class='ui grey statistic'>
                                         <div class='value'> 
-                                            40  
+                                            <?php 
+                                                if (isset($product)) {
+                                                    foreach ($product as $prod) {}
+                                                        echo $prod->products;
+                                                } 
+                                            ?>     
                                         </div>
                                         <div class='label'>PRODUCTS</div>
                                     </div>
@@ -68,13 +78,18 @@
                                 <div class='center aligned middle aligned column'>
                                     <div class='ui grey statistic'>
                                         <div class='value'> 
-                                            123,456  
+                                            <?php 
+                                                if (isset($sales)) {
+                                                    foreach ($sales as $s) {}
+                                                        echo $s->total;
+                                                } 
+                                            ?>    
                                         </div>
                                         <div class='label'>TOTAL SALES</div>
                                     </div>
                                 </div> 
                                 <div class='right aligned middle aligned column'>
-                                    <i class='blue huge dollar icon'></i>
+                                    <i class='blue very huge dollar icon'></i>
                                 </div>
                             </div>
                         </div>

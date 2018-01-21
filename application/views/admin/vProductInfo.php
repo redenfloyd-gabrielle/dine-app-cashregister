@@ -29,16 +29,6 @@
                     <?php foreach($product as $prod) {} ?>  
                         <div class='row'>
                             <div class='right aligned column'>
-                                <!-- <?php //if($prod->product_availability == "AVAILABLE"){
-                                        //echo "
-                                        //<a href='<?php echo site_url()?>/CProduct/editProductInfo/<?php //echo $prod->product_id; ?>'>
-                                            <div class='ui basic blue labeled icon button'>
-                                                Edit <i class='pencil icon'></i>
-                                            </div>
-                                        </a> 
-                                        ";
-                                    }
-                                ?>  -->
                                 <a href='<?php echo site_url()?>/CProduct/editProductInfo/<?php echo $prod->product_id; ?>'>
                                     <div class='ui basic blue labeled icon button'>
                                         Edit <i class='pencil icon'></i>
