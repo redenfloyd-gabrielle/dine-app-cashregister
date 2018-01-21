@@ -321,24 +321,17 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
- 		public function getData($str){
+ 		public function getData(){
  			$this->load->model("MReports");
 
- 			switch ($str) {
- 				case 'Daily':
- 					$data["data"] = $this->MReports->get_data_daily();
- 					break;
- 				case 'Weekly':
- 					$data["data"] = $this->MReports->get_data_weekly();
- 					break;
- 				case 'Monthly':
- 					$data["data"] = $this->MReports->get_data_monthly();
- 					break;
- 				default:
+
+ 					$data["datad"] = $this->MReports->get_data_daily();
+
+ 					$data["dataw"] = $this->MReports->get_data_weekly();
+
+ 					$data["datam"] = $this->MReports->get_data_monthly();
+
  					$data["data"] = $this->MReports->get_data();
- 					break;
- 			}
- 			
  			
  			//////////////////////////////////DAILY/////////////////////////////////////////////////
  			if(date('Y-m-d') >= date('Y-m-01')){
