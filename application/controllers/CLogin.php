@@ -14,6 +14,7 @@
 	      $this->load->library('form_validation');
 		  $this->load->helper('url'); 
 		  $this->load->model('MReceipt');
+		  $this->load->model('MOrdered');
 	  	}
 
 		public function index()
@@ -36,10 +37,40 @@
 			$data['count'] = $this->MReceipt->countOrders();
 			$data['product'] = $this->MProduct->countProducts();
 			$data['sales'] = $this->MReceipt->getTotal();
+			$result = $this->MOrdered->getPendingOrders();
+			$array = array();
+			if($result){
+				foreach($result as $value){
+					$arr = new stdClass;
+					$arr->ordered_id = $value->ordered_id;
+					$arr->ordered_total = $value->ordered_total;
+					$arr->ordered_qr_code = $value->ordered_qr_code;
+					$array[]=$arr;
+				}
+				$data['pending'] = $array;
+			}else{
+				$data['pending'] = null;
+			}
+
+			$result1 = $this->MOrdered->getScannedOrders();
+			$array = array();
+			if($result1){
+				foreach($result1 as $value){
+					$arr = new stdClass;
+					$arr->ordered_id = $value->ordered_id;
+					$arr->ordered_total = $value->ordered_total;
+					$arr->ordered_qr_code = $value->ordered_qr_code;
+					$array[]=$arr;
+				}$data['scanned'] = $array;
+			}else{
+				$data['scanned'] = null;
+			}
+
 
 			$this->load->view('imports/vAdminHeader');
 			$this->load->view('admin/vDashboard',$data);
 			$this->load->view('imports/vAdminFooter');
+			// $this->load->view('vError');
 		}
 
 		function viewSuperadminDashboard()
@@ -89,6 +120,7 @@
 						$this->session->set_flashdata('response',"Invalid Login Attempt!");
 						$this->session->set_flashdata('error',"Check User ID and Password.");
 						redirect('CInitialize');
+
 					}
 				}else{
 					$this->session->set_flashdata('response',"Empty Login!");

@@ -225,6 +225,36 @@
 			$data['count'] = $this->MReceipt->countOrders();
 			$data['product'] = $this->MProduct->countProducts();
 			$data['sales'] = $this->MReceipt->getTotal();
+			$result = $this->MOrdered->getPendingOrders();
+			$array = array();
+			if($result){
+				foreach($result as $value){
+					$arr = new stdClass;
+					$arr->ordered_id = $value->ordered_id;
+					$arr->ordered_total = $value->ordered_total;
+					$arr->ordered_qr_code = $value->ordered_qr_code;
+
+					$array[]=$arr;
+				}
+				$data['pending'] = $array;
+			}else{
+				$data['pending'] = null;
+			}
+
+			$result1 = $this->MOrdered->getScannedOrders();
+			$array = array();
+			if($result1){
+				foreach($result1 as $value){
+					$arr = new stdClass;
+					$arr->ordered_id = $value->ordered_id;
+					$arr->ordered_total = $value->ordered_total;
+					$arr->ordered_qr_code = $value->ordered_qr_code;
+					$array[]=$arr;
+				}$data['scanned'] = $array;
+			}else{
+				$data['scanned'] = null;
+			}
+			
 
 			$this->load->view('imports/vAdminHeader');
 			$this->load->view('admin/vDashboard',$data);

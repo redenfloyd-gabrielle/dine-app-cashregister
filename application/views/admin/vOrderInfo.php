@@ -1,6 +1,6 @@
 <div class="pusher">
     <div class='ui hidden divider'></div>
-    <div class='ui padded segment'>
+    <div class='ui padded basic segment'>
         <!-- header -->
         <div class='ui basic segment'>
             <h1 class="ui brown dividing header">
@@ -64,7 +64,7 @@
                                 </tbody>
                             </table>
                             <div class='ui hidden divider'></div>
-                            <p>TOTAL (P): <strong style='font-style: italic;'><?php echo $total; ?></strong></p>
+                            <p style="float: right;">TOTAL (P): <strong style='font-style: italic;'><?php echo $total; ?></strong></p>
                            <!--  <p>CASH (P): <strong style='font-style: italic;'>200.00</strong></p>
                             <p>CHANGE (P): <strong style='font-style: italic;'>200.00</strong></p> -->
                             <div class='ui hidden divider'></div>

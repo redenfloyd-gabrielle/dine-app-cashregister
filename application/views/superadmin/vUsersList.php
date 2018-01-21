@@ -35,7 +35,7 @@
                 <div class='ui stackable padded grid'>
                     <div class='row'>
                         <div class='right aligned column'>
-                            <a href='<?php echo site_url()?>/CUser/vAddUser'><button class='ui basic green labeled icon button addBut' data-tooltip='Add new user'><i class='plus icon'></i>Add user</div></a> <!-- Add new user -->
+                            <a href='<?php echo site_url()?>/CUser/vAddUser'><button class='ui basic green labeled icon button addBut'><i class='user icon'></i>Add new user</div></a> <!-- Add new user -->
                         </div>
                     </div> <!-- row -->
                     <?php if (isset($users)) { ?>

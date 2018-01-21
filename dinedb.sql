@@ -94,7 +94,7 @@ CREATE TABLE `product` (
   `product_name` varchar(50) NOT NULL,
   `product_description` varchar(50) NOT NULL,
   `product_price` float NOT NULL,
-  `product_availability` enum('AVAILABLE','NOT AVAILABLE') NOT NULL DEFAULT 'AVAILABLE',
+  `product_availability` enum('AVAILABLE','NOT AVAILABLE', 'DELETED') NOT NULL DEFAULT 'AVAILABLE',
   `product_category` enum('DRINKS','PANCIT','SOUP','MAIN COURSE','EXTRAS') NOT NULL,
   `product_created_by` int(11) NOT NULL,
   `product_created_on` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -313,6 +313,11 @@ ALTER TABLE `receipt_item`
 ALTER TABLE `user`
   ADD CONSTRAINT `user_ibfk_1` FOREIGN KEY (`user_created_by`) REFERENCES `user` (`user_id`),
   ADD CONSTRAINT `user_ibfk_2` FOREIGN KEY (`user_modified_by`) REFERENCES `user` (`user_id`);
+COMMIT;
+
+ALTER TABLE `product`
+  ADD CONSTRAINT `product_ibfk_1` FOREIGN KEY (`product_created_by`) REFERENCES `user` (`user_id`),
+  ADD CONSTRAINT `product_ibfk_2` FOREIGN KEY (`product_modified_by`) REFERENCES `user` (`user_id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
