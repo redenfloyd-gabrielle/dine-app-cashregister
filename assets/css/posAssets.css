@@ -1,5 +1,22 @@
+
+@font-face {
+    font-family: 'bpmonoregular';
+    src: url('../fonts/bpmono/bpmono-webfont.eot');
+    src: url('../fonts/bpmono/bpmono-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/bpmono/bpmono-webfont.woff2') format('woff2'),
+         url('../fonts/bpmono/bpmono-webfont.woff') format('woff'),
+         url('../fonts/bpmono/bpmono-webfont.ttf') format('truetype'),
+         url('../fonts/bpmono/bpmono-webfont.svg#bpmonoregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
 body{background-color: white !important; overflow-y: none;}
 /* For Firefox */
+.bpmono{font-family: 'bpmonoregular';}
+.size16{font-size:16px;}
+.size18{font-size:18px;}
+.bold {font-weight: bold;}
 input[type='number'] { -moz-appearance:textfield;}
 /* Webkit browsers like Safari and Chrome */
 input::-webkit-outer-spin-button,input::-webkit-inner-spin-button { display: none;-webkit-appearance: none; margin: 0;}
@@ -20,4 +37,35 @@ font-weight: bold;}
 .tagline{font-size:20px;font-weight: bold; font-family: "Lucida Console", Monaco, monospace; margin: 2px 0px ;text-transform: uppercase; text-align: center;}
 .receipttype{margin: 20px 0px; text-align: center;}
 .prodname{min-height: 35px;}
+
+.scrollbar
+{
+	float: left;
+	height: 410px;
+	width: 660px;
+	background: white;
+	overflow-y: scroll;
+	overflow-x: hidden;
+	margin-bottom: 25px;
+}
+
+#scroll::-webkit-scrollbar-track
+{
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	border-radius: 10px;
+	background-color: white;
+}
+
+#scroll::-webkit-scrollbar
+{
+	width: 12px;
+	background-color: #A0A0A0;
+}
+
+#scroll::-webkit-scrollbar-thumb
+{
+	border-radius: 10px;
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+	background-color: #A0A0A0;
+}
 

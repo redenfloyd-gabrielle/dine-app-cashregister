@@ -51,11 +51,6 @@
         <i class="sidebar icon"></i>
     </a> 
     <a class=' item' href='<?php echo site_url()?>/CUser/viewSuperadminDashboard?>'>DINE</a>
-    <!-- <div class="ui inverted transparent left icon action input hidden item">
-        <input type="text" placeholder="Enter keyword..." name="search">
-        <i class="search icon"></i>
-        <button class='ui teal button'>Search</button>
-    </div> -->
     <div class='right menu'>
         <div class='ui simple dropdown item' tabindex='0'>
         <i class='user icon'></i>PROFILE
