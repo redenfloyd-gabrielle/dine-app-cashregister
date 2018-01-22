@@ -146,6 +146,9 @@
 			if($data != null){
 				$res = $this->load->view('pos/vOrder',$data,TRUE);
 				echo $res;	
+			}else{
+				$res = $this->load->view('vError');
+				echo $res;
 			}
 		}
 
