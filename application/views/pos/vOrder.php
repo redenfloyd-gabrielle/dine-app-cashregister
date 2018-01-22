@@ -1,8 +1,7 @@
-
 <?php if($page == 'qr'){
   $this->view('imports/vPosHeader');
   echo '
-  <div class="row"></div>
+
   <div class="row">
     <div class="column"></div>
     <div class="seven wide column">
@@ -74,7 +73,7 @@
         <div class="eight wide column">
           <div class="ui form">
             <div class="field disabled" id="cashinput">
-              <input type="number" placeholder="Enter Cash Amount" id="amount" value="0">
+              <input type="number" placeholder="Enter Cash Amount" id="amount" value="0" id="cashbox">
             </div>
           </div>
           <div id="error">
@@ -137,16 +136,28 @@
 </html>
     
 <script type="text/javascript">
-  
-   $(document).ready(function(){
+  $(document).ready(function(){
+    $('#cashbox').on('focus', 'input[type=number]', function (e) {
+      $(this).on('mousewheel.disableScroll', function (e) {
+      e.preventDefault()
+      });
+    })
+    $('#cashbox').on('blur', 'input[type=number]', function (e) {
+     $(this).off('mousewheel.disableScroll')
+    })
+
     var cash = $("#cash").text();
     if(cash == 0){
      $('#error').hide();
     }
 
     $(".close.icon").click(function(){
-     $('#error').hide();
-   });
+      $('#error').hide();
+    });
+
+    $(':input[type=number]').on('mousewheel',function(e){
+      $(this).blur();
+    });
       
     function storeTblValues(){
       var tableData = new Array();
@@ -158,8 +169,6 @@
           , "prod_id" : $(tr).find('#prod_id').val()
           }
       });
-
-     //tableData.shift();
      return tableData;
     }
      var tableData = storeTblValues();
@@ -189,13 +198,9 @@
 
         
         if(change < 0){
-          // $("#print").addClass("disabled");
-          // $("#rbtn").addClass("disabled");
           $("#change").css("color","red");
           $('#peso').css("color","red");
          }else{
-          // $("#print").removeClass("disabled");
-          // $("#rbtn").removeClass("disabled");
           $("#change").css("color","black");
           $('#peso').css("color","black");
           $('#error').hide();
@@ -255,19 +260,15 @@
             data: data,
             cache: false,
             success: function(result){
-               var data = result.split('|');
-               $('body').html(data[0]);
-
-                window.print();
-             
-               $('body').html(data[1]);
-                window.print();
-               // console.log(result);
-               document.location.href = "<?php echo site_url()?>/CLogin/viewPos"; 
+              var data = result.split('|');
+              $('body').html(data[0]);
+              window.print();
+              $('body').html(data[1]);
+              window.print();
+              document.location.href = "<?php echo site_url()?>/CLogin/viewPos"; 
             },
             error: function(jqXHR, errorThrown){
-                console.log(errorThrown);
-
+              console.log(errorThrown);
             }
           });
 

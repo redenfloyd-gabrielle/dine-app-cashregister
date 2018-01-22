@@ -103,7 +103,8 @@
 				$this->session->unset_userdata('receiptSession');
 		  	    echo $res.'|'.$chef;	
 			}else{
-				print_r("SOMETHING WENT WRONG.");
+				$res = $this->load->view('vError');
+				echo $res;
 			}
 		}
 
@@ -165,7 +166,8 @@
 				echo $res;
 				
 			}else{
-				print_r("SOMETHING WENT WRONG.");
+				$res = $this->load->view('vError');
+				echo $res;
 			}
 		}
 

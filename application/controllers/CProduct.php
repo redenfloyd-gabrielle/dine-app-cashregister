@@ -428,8 +428,13 @@
 			}else{
 				$data = null;
 			}
-			$this->load->view('imports/vPosHeader');
-			$this->load->view('pos/vMDashboard',$data);
+			if($data != null){
+				$this->load->view('imports/vPosHeader');
+			    $this->load->view('pos/vMDashboard',$data);
+			}else{
+				$this->load->view('vError404');
+			}
+			
 		}
 
 		public function viewProduct($cat)
@@ -461,9 +466,8 @@
 			$data['prod_cat']  = $cat;
 			$data['page'] = 'manual';
 			$data['id'] = $this->session->userdata['receiptSession']['receipt_id'];
-			
+
 			$this->load->view('pos/vProducts',$data);
-		
 		}
 		public function viewProductEdit($page,$cat,$id,$qr)
 		{

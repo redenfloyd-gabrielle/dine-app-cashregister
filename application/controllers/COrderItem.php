@@ -71,9 +71,12 @@
 			$data['page'] = $page;
 			$data['eid'] = $id;
 			$data['qr'] = $qr;
-			
-			$this->load->view('pos/vEditOrder',$data);
-			
+			if($data != null){
+				$this->load->view('pos/vEditOrder',$data);
+			}else{
+				$res = $this->load->view('vError');
+				echo $res;
+			}
 		}
 
 	

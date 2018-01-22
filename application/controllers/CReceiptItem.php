@@ -51,7 +51,7 @@
 			 if ($r) {
 				redirect('CProduct/viewMDashboard/'.$cat);
 			} else {
-				print_r('SOMETHING WENT WRONG;');
+				$this->load->view('vError');
 			}
 		}
 
@@ -83,7 +83,7 @@
 						$updateField = array('order_item_qty'=> $qty,
 										'order_item_subtotal' => $subtotal);
 						$o = $this->MOrderItem->update($id,$updateField);
-				} 
+				    } 
 			}else{
 			       
 				$checker = $this->MReceiptItem->getReceiptItemDetailsByProduct($product_id,$eid);
@@ -112,7 +112,7 @@
 			 if ($o){
 				redirect('COrderItem/viewEdit/'.$page.'/'.$eid.'/'.$qr);
 			} else {
-				print_r('SOMETHING WENT WRONG;');
+			    $this->load->view('vError');
 			}
 
 		}
@@ -145,7 +145,6 @@
 			}
 			
 		    $res = $this->load->view('pos/vOrder',$data,TRUE);
-
 		    echo $res;
 		}
 	}

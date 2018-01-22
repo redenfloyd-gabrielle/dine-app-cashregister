@@ -40,17 +40,14 @@
 		</div>
 		<div class="column"></div>
 	</div>
-	<div class="row"></div>
-	<div class="row"></div>
 </div> <!-- closing grid -->
-
 <!-- INVALID QR MODAL -->
 <div class="ui tiny basic modal" id="invalid">
   <div class="ui icon tiny header">
     <i class="red warning sign icon">  QR Code Failed</i>
   </div>
   <div class="content">
-   <p align="center" id="error" class="size16">Please try again. Make sure you are <span class="size16" id="scantext">scanning</span> a valid code.  </p>
+   <p align="center" id="error" class="size16">Please try again. Make sure you are <span class="size16" id="scantext">scanning a valid code. </span></p>
   </div>
   <div class="actions">
     <div class="ui green ok inverted button">
@@ -158,7 +155,7 @@
 					$('#invalid').modal('show');
 				}
 			}else{
-				var msg = 'inputting';
+				var msg = 'inputting a valid reference number. ';
 				$('#scantext').html(msg);
 				$('#invalid')
 				  .modal('show');
