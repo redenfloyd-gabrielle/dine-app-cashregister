@@ -220,11 +220,15 @@
 		}
 
 
+	
 		function viewAdminDashboard()
 		{
 			$data['count'] = $this->MReceipt->countOrders();
 			$data['product'] = $this->MProduct->countProducts();
 			$data['sales'] = $this->MReceipt->getTotal();
+			$data['daily'] = $this->MReceipt->getDailySales();
+			$data['weekly'] = $this->MReceipt->getWeeklySales();
+			$data['monthly'] = $this->MReceipt->getMonthlySales();
 			$result = $this->MOrdered->getPendingOrders();
 			$array = array();
 			if($result){
@@ -233,7 +237,6 @@
 					$arr->ordered_id = $value->ordered_id;
 					$arr->ordered_total = $value->ordered_total;
 					$arr->ordered_qr_code = $value->ordered_qr_code;
-
 					$array[]=$arr;
 				}
 				$data['pending'] = $array;
@@ -255,10 +258,10 @@
 				$data['scanned'] = null;
 			}
 			
-
 			$this->load->view('imports/vAdminHeader');
 			$this->load->view('admin/vDashboard',$data);
 			$this->load->view('imports/vAdminFooter');
+			
 		}
 
 
