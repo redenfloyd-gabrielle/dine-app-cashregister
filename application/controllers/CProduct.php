@@ -29,14 +29,29 @@
 		{
 			$now = new DateTime(NULL, new DateTimeZone('Asia/Manila'));
 			$prod_id = $this->input->post('product_id');
-			$data = array('product_availability' => 'NOT AVAILABLE',
+
+			if($this->session->userdata['userSession']['user_type'] == 'SUPERADMIN'){
+				$availability = 'DELETED';
+			} else {
+				$availability = 'NOT AVAILABLE';
+			}
+
+
+			$data = array('product_availability' => $availability,
 						  'product_modified_by' => $this->session->userdata['userSession']['user_id'],
 			              'product_modified_on' => $now->format('Y-m-d H:i:s a'),
 						 );
 			$result = $this->MProduct->update($prod_id, $data);
 			if ($result) {
-				$this->session->set_flashdata('response',"Successfully deleted product!");
-				redirect('CProduct/viewCategoryList');
+				if($this->session->userdata['userSession']['user_type'] == 'SUPERADMIN'){
+					$this->session->set_flashdata('response',"Successfully deleted product!");
+					redirect('CProduct/viewAllProducts');
+				} else {
+					$this->session->set_flashdata('response',"Successfully deleted product!");
+					redirect('CProduct/viewCategoryList');
+					
+				}
+				
 			} else {
 				print_r('SOMETHING WENT WRONG;');
 			}
@@ -60,7 +75,7 @@
 				if($this->input->post('pic')){
 					$image = $this->MProduct->do_upload_product($id);
 					if(!$image){
-						$photo = $this->MProduct->insertPhotoProduct("rice.png",$prod_id);
+						$photo = $this->MProduct->insertPhotoProduct("noimage.jpg",$prod_id);
 					}
 				} 
 				$this->session->set_flashdata('response',"Successfully updated product information!");
@@ -100,7 +115,9 @@
 
 		public function addProduct()
 		{
-			$where = array('product_name' => $this->input->post('name'));
+			$where = array('product_name' => $this->input->post('name'),
+							'product_availability !=' => 'DELETED'
+						   );
 			$prod = $this->MProduct->read_where($where);
 
 			if ($prod) {
@@ -110,7 +127,7 @@
 			} else {
 				$now = new DateTime(NULL, new DateTimeZone('Asia/Manila'));
 			
-				$data = array('product_image' => 'rice.png',
+				$data = array('product_image' => 'noimage.jpg',
 							  'product_name' => $this->input->post('name'),
 							  'product_description' => $this->input->post('description'),
 							  'product_price' => $this->input->post('price'),
@@ -127,7 +144,7 @@
 					$prod_id = $this->MProduct->db->insert_id();
 					$image = $this->MProduct->do_upload_product($prod_id);
 					if(!$image){
-						$photo = $this->MProduct->insertPhotoProduct("rice.png",$prod_id);
+						$photo = $this->MProduct->insertPhotoProduct("noimage.jpg",$prod_id);
 					}
 					$this->session->set_flashdata('response',"Successfully add new product!");
 					redirect('CProduct/viewCategoryList');
@@ -136,6 +153,43 @@
 				}
 			}
 			
+		}
+
+		public function getAllProducts()
+		{
+			// Datatables Variables
+	        $draw = intval($this->input->get("draw"));
+	        $start = intval($this->input->get("start"));
+	        $length = intval($this->input->get("length"));
+
+			$products = $this->MProduct->getAllDataProducts();
+         	$data = array();
+
+			foreach($products->result() as $prod) {
+				$actions = 	'<a id="deleteItem" class="ui inverted red icon button deleteItem" data-id="'.$prod->product_id.'" data-tooltip="Delete Product" >
+	                           	<i class="trash icon"></i>
+	                         </a>';
+				
+			   	$data[] = array(
+			        '<img src="'.$this->link.''.$prod->product_image.'" class="ui small image">',
+			        $prod->product_name,
+			        $prod->product_category,
+			        $prod->product_price,
+			        $prod->product_availability,
+			        $actions,
+			        
+			   	);
+			}
+
+			$output = array(
+			  	"draw" => $draw,
+			    "recordsTotal" => $products->num_rows(),
+			    "recordsFiltered" => $products->num_rows(),
+			    "data" => $data
+			);
+			echo json_encode($output);
+			exit();
+
 		}
 
 		public function getPancit()
