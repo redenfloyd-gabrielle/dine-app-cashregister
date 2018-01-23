@@ -107,7 +107,8 @@
 					if ($result) {
 						// print_r($result);
 						$this->createSession($result);
-						// print_r($this->session->userdata['userSession']['user_type']);
+						$this->updateOrderStatus();
+						//print_r($this->session->userdata['userSession']['user_type']);
 						if ($result[0]->user_type == 'ADMIN') {
 							redirect('CLogin/viewAdminDashboard');
 						} elseif ($result[0]->user_type == 'SUPERADMIN') {
@@ -161,6 +162,30 @@
 		{
 			$this->session->unset_userdata('userSession');
 			redirect('CLogin');
+		}
+
+		public function updateOrderStatus()
+		{
+			$result = $this->MOrdered->getPendingOrdersResult();
+			 foreach ($result as $value) {
+			 	$id = $value->ordered_id;
+				$time = $value->ordered_time;
+				$date_now =new DateTime(NULL, new DateTimeZone('Asia/Manila'));
+				$dt = $date_now->format('Y-m-d H:i:s');
+			    $date = date_create_from_format('Y-m-d H:i:s', $time);
+				$datenow = date_create_from_format('Y-m-d H:i:s', $dt);
+				$interval = date_diff($datenow,$date);
+				$diff += $interval->h;
+				if($interval ->d > 0){
+					$diff = $interval->d * 24;
+				}
+		        if($diff >= 4){
+		        	$stat = array('ordered_status' => 'expired');
+					$query = $this->MOrdered->update($id, $stat);
+			    }
+		  }
+			
+		
 		}
 	}
 ?>

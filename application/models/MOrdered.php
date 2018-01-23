@@ -80,6 +80,16 @@
 			return $query;
 		}
 
+		public function getPendingOrdersResult()
+		{
+			$this->db->select("*");
+			$this->db->from($this::DB_TABLE);
+			$this->db->where('ordered_status', 'pending');
+			$query = $this->db->get();
+			
+			return $query->result();
+		}
+
 		public function getExpiredDataOrders()
 		{
 			$this->db->select("*");
