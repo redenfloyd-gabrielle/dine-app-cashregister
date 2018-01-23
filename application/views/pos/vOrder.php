@@ -24,10 +24,18 @@
       <div id="vOrder">
       <div class="ui grid">
          <div class="hidden item"></div> <div class="hidden item"></div>
-         <div class="ten wide center aligned middle aligned grey column" style="margin-left: -40px;">
-          ORDER LIST
+         <div class="sixteen wide left aligned middle aligned column">
+          <h1 class="ui grey dividing header">
+            <i class="unordered list icon"></i>
+            <div class="content">
+              ORDER LIST
+              <div class="sub header">List of order</div>
+            </div>  
+          </h1>
+
         </div>
-        <div class="five wide column " style="margin-left: 20px;">
+        <div class="ten wide column"></div>
+        <div class="six wide right aligned column ">
           <?php if($page == "manual"){
                 echo '<a href="'.site_url().'/COrderItem/viewEdit/'.$page.'/'.$id.'/1" ><button class="fluid ui labeled icon button"><i class="pencil icon"></i>EDIT ORDER</button></a>';
           }else{

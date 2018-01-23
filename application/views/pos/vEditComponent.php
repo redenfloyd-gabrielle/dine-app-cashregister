@@ -3,9 +3,15 @@
     <div class="six wide column">
       <div id="vOrder">
       <div class="ui grid">
-        <div class="column"></div>
-        <div class="nine wide center aligned middle aligned grey column" style="margin-left: -20px;">
-          ORDER LIST
+        <div class="sixteen wide left aligned middle aligned column">
+          <h1 class="ui grey dividing header">
+            <i class="unordered list icon"></i>
+            <div class="content">
+              ORDER LIST
+              <div class="sub header">List of order</div>
+            </div>  
+          </h1>
+
         </div>
         <div class="row"></div>
       </div>

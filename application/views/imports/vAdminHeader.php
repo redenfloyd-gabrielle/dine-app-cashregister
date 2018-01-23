@@ -95,24 +95,25 @@
   <div class="header">Update user credentials</div>
   <div class="content">
     <form class="ui form updatePassForm" action="<?php echo site_url();?>/CUser/changePassword" method="POST">
+
         <div class="required field">
             <label>Old Password</label>
-            <input type="password" name="old" id="old" required placeholder="Enter old password">
+            <input type="password" name="old" id="old" placeholder="Enter old password">
+            <input hidden='' type='password' name='pass' id='oldpass' value='<?php echo strtolower($this->session->userdata['changePassword']['user_password']);?>'>
         </div>
         <div class="required field">
             <label>New Password</label>
-            <input type="password" name="new" id="new" required placeholder="Enter new password">
+            <input type="password" name="new" id="new" placeholder="Enter new password">
         </div>
         <div class="required field">
             <label>Confirm New Password</label>
-            <input type="password" name="confirm" id="confirm" required placeholder="Confirm new password">
+            <input type="password" name="confirm" id="confirm" placeholder="Confirm new password">
         </div>
-        <div class="ui error message"></div>
-
+        <!-- <div class="ui error message"></div> -->
   </div>
   <div class="actions" >
-    <div class="ui cancel gray button">Cancel</div>
-    <button class="ui submit brown button" type="submit">Update</button>
+    <div class="ui cancel button gray">Cancel</div>
+    <button class="ui submit ok brown button" type="submit">Update</button>
     </form>
   </div>
 </div>
@@ -138,6 +139,99 @@
   </div>
 </div>
 
+
+<!-- <div class="ui basic modal" id="valid">
+    <div class="ui icon header">
+    <i class="check icon"></i>
+    Valid Submission
+  </div>
+  <div class="content">
+    <center><p style='font-size: 1.5em;'>Change password was successful. You will be logged out of your account and will be required to log in using your new password.</p></center>
+  </div>
+  <div class="actions">
+    <button class="ui basic brown ok inverted button">
+      <i class="checkmark icon"></i>
+      Okay
+    </button>
+  </div>
+</div> -->
+
+<script type="text/javascript">
+$(document).ready(function(){
+
+    $('.ui.modal').modal({
+            onApprove : function() {
+              //Submits the semantic ui form
+              //And pass the handling responsibilities to the form handlers,
+              // e.g. on form validation success
+              $('.ui.form').submit();
+              //Return false as to not close modal dialog
+              return false;
+            }
+        });
+
+    var formValidationRules =
+    {   //fields: { 
+            old_password: {
+                identifier: 'old',
+                rules:[
+                    {
+                        type: 'empty',
+                        prompt: 'This field must not be empty.'
+                    },
+                    {
+                        type: 'match[oldpass]',
+                        prompt: 'Password does not match with old password.' 
+                    }
+                ]
+            },
+            new_password: {
+                identifier: 'new',
+                rules:[
+                    {
+                        type: 'empty',
+                        prompt: 'This field must not be empty.'
+                    },
+                    {
+                        type: 'different[oldpass]',
+                        prompt: 'New password must be different from old password.'
+                    }
+                ]
+            },
+            confirm_password: {
+                identifier: 'confirm',
+                rules:[
+                    {
+                        type: 'empty',
+                        prompt: 'This field must not be empty.'
+                    },
+                    {
+                        type: 'match[new]',
+                        prompt: 'Password does not match with new password.'
+                    }
+                ]
+            }
+        // }
+    }
+   
+    $('.ui.form').form({
+        on: 'change',
+        inline: true,
+        fields: formValidationRules,
+        onSuccess : function() 
+        {
+          //Hides modal on validation success
+          $('.modal').modal('hide');
+          // $('#valid').modal('show');
+        }
+    });
+    // $('.ui.cancel.button').on('click', function(){
+    //     $('form').form('clear');
+    //     // $('.confirmUpdate').modal('hide');
+    // })
+});
+    
+</script>
 
 
 <?php 
