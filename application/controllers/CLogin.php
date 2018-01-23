@@ -108,6 +108,10 @@
 						// print_r($result);
 						$this->createSession($result);
 						$this->updateOrderStatus();
+						$sessionData = array(
+								 'user_password' => $this->input->post('password')
+	                     		);
+						$this->session->set_userdata('changePassword', $sessionData);
 						//print_r($this->session->userdata['userSession']['user_type']);
 						if ($result[0]->user_type == 'ADMIN') {
 							redirect('CLogin/viewAdminDashboard');

@@ -82,6 +82,7 @@
         <div class="required field">
             <label>Old Password</label>
             <input type="password" name="old" id="old" required placeholder="Enter old password">
+            <input hidden='' type='password' name='pass' id='oldpass' value='<?php echo strtolower($this->session->userdata['changePassword']['user_password']);?>'>
         </div>
         <div class="required field">
             <label>New Password</label>
@@ -125,7 +126,77 @@
 </div> 
 
 
+<script type="text/javascript">
+$(document).ready(function(){
+    $('.ui.modal').modal({
+            onApprove : function() {
+              //Submits the semantic ui form
+              //And pass the handling responsibilities to the form handlers,
+              // e.g. on form validation success
+              $('.ui.form').submit();
+              //Return false as to not close modal dialog
+              return false;
+            }
+        });
 
+    var formValidationRules =
+    {   //fields: { 
+            old_password: {
+                identifier: 'old',
+                rules:[
+                    {
+                        type: 'empty',
+                        prompt: 'This field must not be empty.'
+                    },
+                    {
+                        type: 'match[oldpass]',
+                        prompt: 'Password does not match with old password.' 
+                    }
+                ]
+            },
+            new_password: {
+                identifier: 'new',
+                rules:[
+                    {
+                        type: 'empty',
+                        prompt: 'This field must not be empty.'
+                    },
+                    {
+                        type: 'different[oldpass]',
+                        prompt: 'New password must be different from old password.'
+                    }
+                ]
+            },
+            confirm_password: {
+                identifier: 'confirm',
+                rules:[
+                    {
+                        type: 'empty',
+                        prompt: 'This field must not be empty.'
+                    },
+                    {
+                        type: 'match[new]',
+                        prompt: 'Password does not match with new password.'
+                    }
+                ]
+            }
+        // }
+    }
+   
+    $('.ui.form').form({
+        on: 'change',
+        inline: true,
+        fields: formValidationRules,
+        onSuccess : function() 
+        {
+          //Hides modal on validation success
+          alert("Valid Submission, modal will close.");
+          $('.modal').modal('hide');
+        }
+    });
+});
+    
+</script>
 
 <?php 
 } else if ($this->session->userdata['userSession']['user_type'] == 'REGULAR') {

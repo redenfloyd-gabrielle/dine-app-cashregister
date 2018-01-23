@@ -7,7 +7,7 @@
             <img class="ui big image" src="<?php echo base_url("assets/images/hand.png")?>">
             <div class="content">
               EDIT ORDER
-              <div class="sub header">Create new order</div>
+              <div class="sub header">Edit current order</div>
             </div>  
         </h1>
         <?php if($page == 'manual'){

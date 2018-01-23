@@ -3,12 +3,12 @@
     <div class="column"></div>
     <div class="seven wide column">
       <h1 class="ui grey dividing header">
-            <img class="ui big image" src="<?php echo base_url("assets/images/hand.png")?>">
-            <div class="content">
-              ORDER
-              <div class="sub header">Create new order</div>
-            </div>  
-        </h1>
+        <img class="ui big image" src="<?php echo base_url("assets/images/hand.png")?>">
+        <div class="content">
+          ORDER
+          <div class="sub header">Create new order</div>
+        </div>  
+      </h1>
 
         <a href="<?php echo site_url()?>/CLogin/viewPos?>">
           <h4 style="color: gray;"><i class="left arrow grey icon"></i>BACK TO HOME</h4>
