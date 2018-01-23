@@ -37,6 +37,9 @@
 			$data['count'] = $this->MReceipt->countOrders();
 			$data['product'] = $this->MProduct->countProducts();
 			$data['sales'] = $this->MReceipt->getTotal();
+			$data['daily'] = $this->MReceipt->getDailySales();
+			$data['weekly'] = $this->MReceipt->getWeeklySales();
+			$data['monthly'] = $this->MReceipt->getMonthlySales();
 			$result = $this->MOrdered->getPendingOrders();
 			$array = array();
 			if($result){
@@ -70,7 +73,7 @@
 			$this->load->view('imports/vAdminHeader');
 			$this->load->view('admin/vDashboard',$data);
 			$this->load->view('imports/vAdminFooter');
-			// $this->load->view('vError');
+			
 		}
 
 		function viewSuperadminDashboard()

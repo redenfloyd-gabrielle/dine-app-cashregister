@@ -31,6 +31,41 @@
 			return $query->result();
         }
 
+        public function getDailySales(){
+        	$now = new DateTime(NULL, new DateTimeZone('Asia/Manila'));
+	    	
+	    	$this->db->select('SUM(receipt_total) AS total');
+	        $this->db->from($this::DB_TABLE);
+	        $this->db->where('receipt_date >= "'.$now->format('Y-m-d 00:00:00').'" AND receipt_date <= "'.$now->format('Y-m-d H:i:s').'"');
+	        $query = $this->db->get();
+
+			return $query->result();
+        }
+
+     	public function getWeeklySales(){
+     		$now = new DateTime(NULL, new DateTimeZone('Asia/Manila'));
+     		$start = $now->format('Y-m-d'.strtotime('monday this week'));
+            $end = $now->format('Y-m-d '.strtotime('sunday this week'));
+
+    	  	$this->db->select('SUM(receipt_total) AS total');
+          	$this->db->from($this::DB_TABLE);
+           	$this->db->where('receipt_date >= "'.$start.'" AND receipt_date <= "'.$end.'"');
+          	$query = $this->db->get();
+
+			return $query->result();
+        }
+
+        public function getMonthlySales(){
+        	$now = new DateTime(NULL, new DateTimeZone('Asia/Manila'));
+
+    	  	$this->db->select('SUM(receipt_total) AS total');
+          	$this->db->from($this::DB_TABLE);
+           	$this->db->where('receipt_date >= "'. $now->format('Y-m-01').'" AND receipt_date <= "'.$now->format('Y-m-t').'"');
+          	$query = $this->db->get();
+
+			return $query->result();
+        }
+
 		public function getReceipt_id(){
 			return $this->receipt_id;
 		}

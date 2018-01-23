@@ -43,7 +43,7 @@
                                 <th>Order Date</th>
                                 <th>Total</th>
                                 <th>Reference Number</th> 
-                                <!-- <th>Status</th> -->
+                                <th>Status</th>
                                 <th>Actions</th>
                             </tr>
                         </thead>
@@ -84,7 +84,7 @@
                         </div>
                     </h3> <!-- header -->
                     <div class="ui hidden divider"></div>
-                    <table class='ui sortable stackable celled table' id="orders">
+                    <table class='ui sortable stackable celled table' id="scanned">
                         <thead>
                             <tr>
                                 <th>Order ID</th>
@@ -137,9 +137,9 @@
         var flag=0;
         $(document).on('click', '#third', function(){
             if(flag==0){
-                $('#orders').DataTable({
+                $('#scanned').DataTable({
                     "ajax" : {
-                        url: "<?php echo site_url();?>/COrdered/getOrders",
+                        url: "<?php echo site_url();?>/COrdered/getScannedOrders",
                         type : 'GET',
                     },
                 });
@@ -148,6 +148,44 @@
         });
 
         $('.menu .item').tab();
+    } );
+    $(document).ready(function() {
+        $('#all').DataTable({
+            "ajax" : {
+                url: "<?php echo site_url();?>/COrdered/getOrders",
+                type : 'GET',
+            },
+        });
+    } );
+
+    $(document).ready(function() {
+        var flag=0;
+        $(document).on('click', '#second', function(){
+            if(flag==0){
+                $('#pending').DataTable({
+                    "ajax" : {
+                        url: "<?php echo site_url();?>/COrdered/getPendingOrders",
+                        type : 'GET',
+                    },
+                });
+                flag++;
+            }
+        });
+    } );
+
+    $(document).ready(function() {
+        var flag=0;
+        $(document).on('click', '#fourth', function(){
+            if(flag==0){
+                $('#expired').DataTable({
+                    "ajax" : {
+                        url: "<?php echo site_url();?>/COrdered/getExpiredOrders",
+                        type : 'GET',
+                    },
+                });
+                flag++;
+            }
+        });
     } );
     
 </script>

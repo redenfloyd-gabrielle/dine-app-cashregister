@@ -53,7 +53,38 @@
 		{
 			$this->db->select("*");
 			$this->db->from($this::DB_TABLE);
+			// $this->db->where('ordered_status', 'scanned');
+			$query = $this->db->get();
+			
+			return $query;
+		}
+
+
+		public function getScannedDataOrders()
+		{
+			$this->db->select("*");
+			$this->db->from($this::DB_TABLE);
 			$this->db->where('ordered_status', 'scanned');
+			$query = $this->db->get();
+			
+			return $query;
+		}
+
+		public function getPendingDataOrders()
+		{
+			$this->db->select("*");
+			$this->db->from($this::DB_TABLE);
+			$this->db->where('ordered_status', 'pending');
+			$query = $this->db->get();
+			
+			return $query;
+		}
+
+		public function getExpiredDataOrders()
+		{
+			$this->db->select("*");
+			$this->db->from($this::DB_TABLE);
+			$this->db->where('ordered_status', 'expired');
 			$query = $this->db->get();
 			
 			return $query;
@@ -64,6 +95,7 @@
 			$this->db->select("*");
 			$this->db->from($this::DB_TABLE);
 			$this->db->where('ordered_status', 'scanned');
+			$this->db->limit(5);
 			$query = $this->db->get();
 			
 			return $query->result();
@@ -71,9 +103,13 @@
 
 		public function getPendingOrders()
 		{
+			$now = new DateTime(NULL, new DateTimeZone('Asia/Manila'));
+			
 			$this->db->select("*");
 			$this->db->from($this::DB_TABLE);
 			$this->db->where('ordered_status', 'pending');
+			$this->db->where('ordered_time >= "'.$now->format('Y-m-d 00:00:00').'" AND ordered_time <= "'.$now->format('Y-m-d H:i:s').'"');
+			$this->db->limit(5);
 			$query = $this->db->get();
 			
 			return $query->result();

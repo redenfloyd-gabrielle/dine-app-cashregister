@@ -79,7 +79,12 @@
                             <div class="center aligned middle aligned column">
                                 <div class="ui statistic">
                                     <div class="value">
-                                        2000.00 
+                                        <?php 
+                                             if (isset($sales)) {
+                                                foreach ($sales as $s) {}
+                                                     echo number_format($s->total,2);
+                                             } 
+                                        ?>    
                                     </div>
                                     <div class='label'>TOTAL SALES</div>
                                 </div>
@@ -97,7 +102,12 @@
                             <div class="center aligned middle aligned column">
                                 <div class="ui statistic">
                                     <div class="value">
-                                        0.00 
+                                        <?php 
+                                            if (isset($daily)) {
+                                                foreach ($daily as $d) {}
+                                                echo number_format($d->total,2);
+                                            } 
+                                        ?>
                                     </div>
                                     <div class='label'>DAILY SALES</div>
                                 </div>
@@ -114,7 +124,12 @@
                             <div class="center aligned middle aligned column">
                                 <div class="ui statistic">
                                     <div class="value">
-                                        0.00 
+                                        <?php 
+                                            if (isset($weekly)) {
+                                                foreach ($weekly as $w) {}
+                                                echo number_format($w->total,2);
+                                            } 
+                                        ?>
                                     </div>
                                     <div class='label'>WEEKLY SALES</div>
                                 </div>
@@ -131,7 +146,12 @@
                             <div class="center aligned middle aligned column">
                                 <div class="ui statistic">
                                     <div class="value">
-                                        0.00 
+                                        <?php 
+                                            if (isset($monthly)) {
+                                                foreach ($monthly as $w) {}
+                                                echo number_format($w->total,2);
+                                            } 
+                                        ?> 
                                     </div>
                                     <div class='label'>MONTHLY SALES</div>
                                 </div>
@@ -177,7 +197,7 @@
                         </table>
                         <a href="<?php echo site_url()?>/COrdered/viewOrderList" class="ui button">View pending orders</a>
                         <?php }else{ 
-                            echo "<p class='notice'>There are no pending orders at the moment.</p>";
+                            echo "<p class='notice'>There are no pending orders for today.</p>";
                             } ?>
                     </div>
                     <div class="column">
