@@ -60,9 +60,12 @@
 			    $date = date_create_from_format('Y-m-d H:i:s', $time);
 				$datenow = date_create_from_format('Y-m-d H:i:s', $dt);
 				$status = $q->ordered_status;
-				
                 $interval = date_diff($datenow,$date);
-		        if($status == 'pending' && $interval ->h >= 4){
+                $diff = $interval->h;
+				if($interval->d > 0){
+					$diff += $interval->d * 24;
+				}
+		        if($status == 'pending' && $diff >= 4){
 		        	$stat = array('ordered_status' => 'expired');
 					$query = $this->MOrdered->update($id, $stat);
 					$status = 'expired';
