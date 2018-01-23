@@ -174,7 +174,7 @@
 
 			   	$data[] = array(
 			        $o->ordered_id,
-			       	$date->format('F d, Y H:i a'),
+			       	$date->format('F d, Y g:i a'),
 			        $o->ordered_total,
 			        $o->ordered_qr_code,
 			        $actions,
@@ -211,7 +211,7 @@
 
 			   	$data[] = array(
 			        $o->ordered_id,
-			       	$date->format('F d, Y H:i a'),
+			       	$date->format('F d, Y g:i a'),
 			        $o->ordered_total,
 			        $o->ordered_qr_code,
 			        $actions,
@@ -248,7 +248,7 @@
 
 			   	$data[] = array(
 			        $o->ordered_id,
-			       	$date->format('F d, Y H:i a'),
+			       	$date->format('F d, Y g:i a'),
 			        $o->ordered_total,
 			        $o->ordered_qr_code,
 			        $actions,
@@ -285,7 +285,7 @@
 
 			   	$data[] = array(
 			        $o->ordered_id,
-			       	$date->format('F d, Y H:i a'),
+			       	$date->format('F d, Y g:i a'),
 			        $o->ordered_total,
 			        $o->ordered_qr_code,
 			        $o->ordered_status,
