@@ -108,6 +108,10 @@ $(document).ready(function() {
             type : 'GET',
         },
     });
+
+    $('.message .close').on('click', function() {
+        $(this).closest('.message').transition('fade');
+    });
 } );
 
 
