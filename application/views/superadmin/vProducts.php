@@ -23,28 +23,31 @@
                 <h5 class='ui header teal ribbon label'><i class='food icon'></i>
                     ALL PRODUCTS
                 </h5> 
+                <?php if($this->session->flashdata('response')){ ?>
+                  <div class="ui positive message">
+                    <i class="close icon"></i>
+                    <div class="header">
+                      Your process was successful.
+                    </div>
+                    <p><?php echo $this->session->flashdata('response');?></p>
+                  </div>
+                <?php } ?>
             
                 <div class='ui stackable padded grid'>
                   
                     <div class='row'>
-                        <table class='ui sortable stackable celled table' id="">
+                        <table class='ui sortable stackable celled table' id="products">
                             <thead>
                                 <tr>
                                     <th>Product Image</th>
                                     <th>Product Name</th>
+                                    <th>Product Category</th>
                                     <th>Product Price</th>
                                     <th>Availability</th> 
                                     <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                  <td>Sample</td>
-                                  <td>Sample</td>
-                                  <td>Sample</td>
-                                  <td>Sample</td>
-                                  <td><a class="ui button inverted red icon deleteItem"><i class="trash icon"></i></a></td>
-                                </tr>
                             </tbody>
                         </table>
                     </div>
@@ -98,12 +101,10 @@ $(document).ready(function(){
     });
 });
 
-
 $(document).ready(function() {
-   
-    $('#drinks').DataTable({
+    $('#products').DataTable({
         "ajax" : {
-            url: "<?php echo site_url();?>/CProduct/getDrinks",
+            url: "<?php echo site_url();?>/CProduct/getAllProducts",
             type : 'GET',
         },
     });
