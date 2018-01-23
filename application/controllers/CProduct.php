@@ -75,11 +75,11 @@
 				if($this->input->post('pic')){
 					$image = $this->MProduct->do_upload_product($id);
 					if(!$image){
-						$photo = $this->MProduct->insertPhotoProduct("noimage.jpg",$prod_id);
+						$photo = $this->MProduct->insertPhotoProduct("noimage.jpg",$id);
 					}
 				} 
 				$this->session->set_flashdata('response',"Successfully updated product information!");
-				redirect('CProduct/viewProductInfo/'.$prod_id);
+				redirect('CProduct/viewProductInfo/'.$id);
 			} else {
 				print_r('SOMETHING WENT WRONG;');
 			}
