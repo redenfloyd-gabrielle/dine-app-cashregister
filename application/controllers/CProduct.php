@@ -617,6 +617,12 @@
 			$this->load->view('admin/vEditProductInfo',$data);
 			$this->load->view('imports/vAdminFooter');
 		}
+		function viewAllProducts()
+		{
+			$this->load->view('imports/vSuperadminHeader');
+			$this->load->view('superadmin/vProducts');
+			$this->load->view('imports/vSuperadminFooter');
+		}
 	}
 
 ?>
