@@ -33,11 +33,14 @@
         </span>
         <input hidden='' type='text' name='pass' id='pass' value='<?php echo strtolower($this->session->userdata['userSession']['user_password']);?>'>
     </div> 
-    <a class='item' href='<?php echo site_url()?>/CUser/viewSuperadminDashboard?>'>
+    <a class='item' href='<?php echo site_url()?>/CUser/viewSuperadminDashboard'>
         <i class='dashboard icon'></i> Dashboard
     </a>
-    <a class='item' href='<?php echo site_url()?>/CUser/viewUsersList?>'>
+    <a class='item' href='<?php echo site_url()?>/CUser/viewUsersList'>
         <i class='users icon'></i> Users
+    </a>
+    <a class="item" href='<?php echo site_url()?>/CProduct/viewAllProducts'>
+        <i class="food icon"></i> Products
     </a>
 </div>
 <!-- end of sidebar -->
@@ -50,7 +53,7 @@
     <a class=" item toggleMenu">
         <i class="sidebar icon"></i>
     </a> 
-    <a class=' item' href='<?php echo site_url()?>/CUser/viewSuperadminDashboard?>'>DINE</a>
+    <a class=' item' href='<?php echo site_url()?>/CUser/viewSuperadminDashboard'>DINE</a>
     <div class='right menu'>
         <div class='ui simple dropdown item' tabindex='0'>
         <i class='user icon'></i>PROFILE
@@ -59,7 +62,7 @@
         </i>
         <div class='menu' tabindex='-1'>
             <a class='item' id='changePass'><i class='lock icon'></i>CHANGE PASSWORD</a>
-            <a class='item' href='<?php echo site_url()?>/CLogin/userLogout?>' ><i class='power icon'></i>LOGOUT</a>
+            <a class='item' href='<?php echo site_url()?>/CLogin/userLogout' ><i class='power icon'></i>LOGOUT</a>
         </div>
     </div>
     </div>

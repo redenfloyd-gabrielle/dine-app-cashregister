@@ -1,6 +1,6 @@
 <div class="pusher">
     <div class='ui hidden divider'></div>
-    <div class='ui padded segment'>
+    <div class='ui padded basic segment'>
         <!-- header -->
         <div class='ui basic segment'>
             <h1 class="ui teal dividing header">

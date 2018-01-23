@@ -51,6 +51,8 @@
                               <option value="Cashier">Cashier</option>
                               <option value="Owner">Owner</option>
                             </select> <!-- position dropdown -->
+
+                            <div class="ui error message"></div>
                         </div>
                     </div> <!-- row -->
                     <div class='row'>
@@ -71,9 +73,52 @@
 </body>
 </html>
 <script type="text/javascript">
-    $(document).ready(function(){
-        $(document).on('change','#pos',function() {
-            $('#position').val($('#pos').val());
-        });
+$(document).ready(function(){
+    $(document).on('change','#pos',function() {
+        $('#position').val($('#pos').val());
     });
+    // var aFunction = function(){
+    //     $('.modal').modal({
+    //         //detachable: true, 
+    //         transition: 'fade up',
+    //         closable: false,
+    //         onApprove : function() {
+    //             $('.ui.form').submit();
+    //                 return false;
+    //         }
+    //     });
+    // }
+    // $(document).ready(aFunction){
+    //     $('.ui.form').form({
+    //         fields:{
+    //             name: {
+    //                 identifier: 'fname',
+    //                 rules:[{
+    //                     type: 'regExp[^[a-zA-Z. -]+$]',
+    //                     prompt: 'First name must not be empty and must only contain letters.'
+    //                 }]
+    //             },
+    //             name: {
+    //                 identifier: 'lname',
+    //                 rules:[{
+    //                     type: 'regExp[^[a-zA-Z. -]+$]',
+    //                     prompt: 'Last name must not be empty and must only contain letters.'
+    //                 }]
+    //             },
+    //             position: {
+    //                 identifier: 'pos',
+    //                 rules:[{
+    //                     type: 'regExp[^[a-zA-Z. -]+$]',
+    //                     prompt: 'Position must not be empty.'
+    //                 }]
+    //             }
+    //         },
+    //         onSuccess: function(){
+    //             // alert("Valid submission. Modal will close.");
+    //             $('.modal').modal('hide');
+    //         }
+    //     });
+    // }
+
+});
 </script>       
