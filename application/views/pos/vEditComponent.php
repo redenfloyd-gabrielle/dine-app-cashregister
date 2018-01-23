@@ -94,7 +94,7 @@
           <a href="'.site_url().'/COrdered/displayOrderFromEditPage/'.$qr.'" class="item"><div class="ui teal button">BACK</div></a>
         ';
      }?>
-    <div class="hidden item"></div><div class="hidden item"></div><div class="hidden item"></div> <div class="hidden item"></div><div class="hidden item"></div><div class="hidden item"></div><div class="hidden item"></div><div class="hidden item"></div><div class="hidden item"></div><div class="hidden item"></div><div class="hidden item"></div><div class="hidden item"></div><div class="hidden item"></div><div class="hidden item"></div><div class="hidden item"></div><div class="hidden item"></div><div class="hidden item"></div>
+    </div><div class="hidden item"></div> <div class="hidden item"></div><div class="hidden item"></div><div class="hidden item"></div><div class="hidden item"></div><div class="hidden item"></div><div class="hidden item"></div><div class="hidden item"></div><div class="hidden item"></div><div class="hidden item"></div><div class="hidden item"></div><div class="hidden item"></div><div class="hidden item"></div><div class="hidden item"></div><div class="hidden item"></div>
   </div>
 </div>
 </div> 
