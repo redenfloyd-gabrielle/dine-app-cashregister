@@ -25,7 +25,7 @@
       function drawChart() {
 
         var data = google.visualization.arrayToDataTable([
-          ['Task', 'Hours per Day'],
+          ['Product', 'Quantity Sold'],
           // ['Basketball',50],
           // ['Dota',30],
           // ['Academics',20]
