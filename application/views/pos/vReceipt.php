@@ -22,17 +22,17 @@
    <p class="receiptcontent" align="center">(085)-300-3307</p>
    <h2 class="receipttype"><strong>NOT AN OFFICIAL RECEIPT</strong></h2>
    <div class="receiptdivide"> </div>
-   <span class="lft msg">
-      Cashier : <strong><?php echo $cashier ?></strong> 
-   </span>
-   <span class="rght msg">
-      Order No. : <strong><?php echo $order_id ?></strong>
-   </span><br>
-   <span class="lft msg">
+    <span class="lft msg">
       Date : <strong><?php echo $date ?></strong> 
    </span>
    <span class="rght msg">
       Time : <strong> <?php echo $time ?></strong>
+   </span><br>
+   <span class="msg">
+      Cashier : <strong><?php echo $cashier ?></strong> 
+   </span><br>
+   <span class="msg">
+      Order No. : <strong><?php echo $order_id ?></strong>
    </span><br>
    <div class="receiptdivide"> </div>
    <table class="receipttbl">

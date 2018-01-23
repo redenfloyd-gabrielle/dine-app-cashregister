@@ -9,7 +9,6 @@
 		          <div class="sub header">Retrieve order via QR Code</div>
 		        </div>  
 		    </h1>
-
 		    <a href="<?php echo site_url()?>/CLogin/viewPos?>">
 		    	<h4 style="color: gray;"><i class="left arrow grey icon"></i>BACK TO HOME</h4>
 		    </a>
@@ -22,7 +21,6 @@
 			<div class="ui warning visible message msg">
 				<p>If the scanner does not appear, or if the scanner failed to retrieve the order, enter the <strong>Reference Number</strong> below.</p>
 			</div>
-
 		    <center>
 		    	<video id="qrcam" class="ui fluid item vid"></video> 
 		    	<div class="ui hidden divider"></div>

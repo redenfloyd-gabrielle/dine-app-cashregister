@@ -1,7 +1,7 @@
 <?php if($page == 'qr'){
   $this->view('imports/vPosHeader');
   echo '
-
+ <div class="row"></div>
   <div class="row">
     <div class="column"></div>
     <div class="seven wide column">
@@ -127,10 +127,7 @@
 </div> <!-- closing grid -->
 <div class="ui borderless bottom fixed menu">
   <div class="right menu">
-   
     <a href="<?php echo site_url();?>/CLogin/viewPos" class="item"><div class="ui teal button">BACK</div></a>
-    <div class="hidden item"></div>
-    <div class="hidden item"></div>
     <div class="hidden item"></div>
     <a class="item"><button class="ui teal button" id="rbtn">CHECKOUT</button></a>
     <a class="item"><button class="ui teal button" id="print">CHECKOUT w/RECEIPT</button></a>
