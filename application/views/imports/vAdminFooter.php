@@ -1,6 +1,7 @@
 
 <script>
 $(document).ready(function(){
+
 	// Initializes dropdown
 	$('.ui.dropdown').dropdown();
 
@@ -19,6 +20,10 @@ $(document).ready(function(){
         $('#cancelModal').modal('show');
     });
 
+    $('.confirmCancelHome').click(function(){
+        $('#cancelModalHome').modal('show');
+    });
+
     // Prevents modal from closing when clicked outside
     $('.ui.modal').modal('setting', 'closable', false);
 
@@ -27,41 +32,41 @@ $(document).ready(function(){
  
  	// Shows sidebar
     $('.ui.sidebar').sidebar({ 
-    					context: $('.pushable'),
-    					dimPage: false
-    				})
-                    .sidebar('attach events', '.toggleMenu')
+		context: $('.pushable'),
+		dimPage: false
+	}).sidebar('attach events', '.toggleMenu')
     ;
 
-}); 
-
-$(document).ready(function(){
-	$(document).on('change','#old',function() {
-		var temp = $('#pass').val();
-		var shaObj = new jsSHA($('#old').val(), 'ASCII');
-		var hash = shaObj.getHash('SHA-512','HEX');
-		if (hash == temp){
-			alert('match');
-		} else {
-			alert('mismatch');
-		}
-		//classes sa if
-    });
-
-	$(document).on('change','#new',function() {
-		//put classes
-    });
-
-	$(document).on('keyup','#confirm',function() {
-		var newPass = $('#new').val();
-		var confirmPass = $('#confirm').val();
-		if (confirmPass == newPass){
-			alert('match');
-		} 
-		//classes sa if
-    });
 
 }); 
+
+// $(document).ready(function(){
+	// $(document).on('change','#old',function() {
+	// 	var temp = $('#pass').val();
+	// 	var shaObj = new jsSHA($('#old').val(), 'ASCII');
+	// 	var hash = shaObj.getHash('SHA-512','HEX');
+	// 	if (hash == temp){
+	// 		alert('match');
+	// 	} else {
+	// 		alert('mismatch');
+	// 	}
+	// 	//classes sa if
+ //    });
+
+	// $(document).on('change','#new',function() {
+	// 	//put classes
+ //    });
+
+	// $(document).on('keyup','#confirm',function() {
+	// 	var newPass = $('#new').val();
+	// 	var confirmPass = $('#confirm').val();
+	// 	if (confirmPass == newPass){
+	// 		alert('match');
+	// 	} 
+	// 	//classes sa if
+ //    });
+
+// }); 
 
 $(document).ready(function(){
 	$(document).on('change','#image',function(e) {

@@ -73,10 +73,20 @@
 			return $query;			             
 		}
 
+		public function getAllDataProducts(){
+			$this->db->select("*");
+		   	$this->db->from($this::DB_TABLE);
+		   	$this->db->where('product_availability !=', 'DELETED');
+		   	$this->db->order_by("product_name", "asc");
+		   	$query = $this->db->get();
+		   	return $query;			             
+		}
+
 		public function getProductsByCategory($cat){
 		   $this->db->select("*");
 		   $this->db->from($this::DB_TABLE);
 		   $this->db->where('product_category', $cat);
+		   $this->db->where('product_availability !=', 'DELETED');
 		   $this->db->order_by("product_name", "asc");
 		   $query = $this->db->get();
 		   return $query->result();
@@ -87,11 +97,21 @@
 			$this->db->select("*");
 			$this->db->from($this::DB_TABLE);
 			$this->db->where('product_category', $cat);
+			$this->db->where('product_availability !=', 'DELETED');
+			$this->db->order_by('product_name','ASC');
 			$query = $this->db->get();
 			return $query;
-
-			# code...
 		}
+
+		public function countProducts()
+		{
+			$this->db->select('count(*) as products');
+			$this->db->from($this::DB_TABLE);
+			$this->db->where('product_availability !=', 'DELETED');
+			$query = $this->db->get();
+			return $query->result();
+		}
+
 		public function getProduct_id(){
 			return $this->product_id;
 		}

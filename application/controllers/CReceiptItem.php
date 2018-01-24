@@ -18,8 +18,6 @@
 		{
 			
 		}
-
-
 		public function addReceiptItem($product_id,$receipt_id)
 		{
 			$qty = 1;
@@ -53,9 +51,8 @@
 			 if ($r) {
 				redirect('CProduct/viewMDashboard/'.$cat);
 			} else {
-				print_r('SOMETHING WENT WRONG;');
+				$this->load->view('vError');
 			}
-
 		}
 
 		public function editItems($page,$product_id,$eid,$qr)
@@ -86,7 +83,7 @@
 						$updateField = array('order_item_qty'=> $qty,
 										'order_item_subtotal' => $subtotal);
 						$o = $this->MOrderItem->update($id,$updateField);
-				} 
+				    } 
 			}else{
 			       
 				$checker = $this->MReceiptItem->getReceiptItemDetailsByProduct($product_id,$eid);
@@ -115,7 +112,7 @@
 			 if ($o){
 				redirect('COrderItem/viewEdit/'.$page.'/'.$eid.'/'.$qr);
 			} else {
-				print_r('SOMETHING WENT WRONG;');
+			    $this->load->view('vError');
 			}
 
 		}
@@ -143,42 +140,14 @@
 				$data['qty'] = $qty;
 				$data['id'] = $receipt_id;
 				$data['page'] = 'manual';
+				$data['edit'] = 'no';
 			}else{
 				$data = null;
 			}
 			
 		    $res = $this->load->view('pos/vOrder',$data,TRUE);
-
 		    echo $res;
 		}
-
-		// public function displayOrderListManual()
-		// {
-		// 	$tableData = stripcslashes($_POST['pTableData']);
-		// 	$tableData = json_decode($tableData,TRUE);
-		// 	$array = array();
-
-		// 	foreach ($tableData as $value) {
-		// 		if($tableData){
-		// 		$arr= new stdClass;
-		// 		$arr->product_id = $table['prod_id'];
-		// 		$arr->product_name = $table['name'];
-		// 		$arr->product_price = $table['price'];
-		// 		$arr->receipt_item_quantity = $table['qty'];
-		// 		$arr->receipt_item_subtotal =  $table['subtotal'];
-		// 		$array[] = $arr;
-		// 		}else{
-		// 			$array[] = null;
-		// 		}
-		//     }
-		// 	$data['receipt_item'] = $array;
-			
-		//     $res = $this->load->view('pos/vOrder',$data,TRUE);
-
-		//     echo $res;
-		    
-		// }
-	
 	}
 
 ?>

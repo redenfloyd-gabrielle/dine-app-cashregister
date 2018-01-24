@@ -1,14 +1,14 @@
   <div class="row"></div>
   <div class="row">
     <div class="column"></div>
-    <div class="six wide column">
+    <div class="seven wide column">
       <h1 class="ui grey dividing header">
-            <img class="ui big image" src="<?php echo base_url("assets/images/hand.png")?>">
-            <div class="content">
-              ORDER
-              <div class="sub header">Create new order</div>
-            </div>  
-        </h1>
+        <img class="ui big image" src="<?php echo base_url("assets/images/hand.png")?>">
+        <div class="content">
+          ORDER
+          <div class="sub header">Create new order</div>
+        </div>  
+      </h1>
 
         <a href="<?php echo site_url()?>/CLogin/viewPos?>">
           <h4 style="color: gray;"><i class="left arrow grey icon"></i>BACK TO HOME</h4>
@@ -21,24 +21,25 @@
         <a class="item" data-tab="pancit">PANCIT</a>
         <a class="item" data-tab="extras">EXTRAS</a>
       </div>
-      <div class="ui bottom attached tab segment active" data-tab="maincourse" id="MAINCOURSE">
-        <font style="font-size:0px">MAIN COURSE</font>
+      <div class="scrollbar" id='scroll'>
+        <div class="ui bottom attached tab segment active" data-tab="maincourse" id="MAINCOURSE">
+          <font style="font-size:0px">MAIN COURSE</font>
+        </div>
+        <div class="ui bottom attached tab segment" data-tab="drinks" id="DRINKS">
+           <font style="font-size:0px">DRINKS</font>
+        </div>
+        <div class="ui bottom attached tab segment" data-tab="soup" id="SOUP">
+           <font style="font-size:0px">SOUP</font>
+        </div>
+        <div class="ui bottom attached tab segment" data-tab="pancit" id="PANCIT">
+           <font style="font-size:0px">PANCIT</font>
+        </div>
+        <div class="ui bottom attached tab segment" data-tab="extras" id="EXTRAS">
+           <font style="font-size:0px">EXTRAS</font>
+        </div>
       </div>
-      <div class="ui bottom attached tab segment" data-tab="drinks" id="DRINKS">
-         <font style="font-size:0px">DRINKS</font>
-      </div>
-      <div class="ui bottom attached tab segment" data-tab="soup" id="SOUP">
-         <font style="font-size:0px">SOUP</font>
-      </div>
-      <div class="ui bottom attached tab segment" data-tab="pancit" id="PANCIT">
-         <font style="font-size:0px">PANCIT</font>
-      </div>
-      <div class="ui bottom attached tab segment" data-tab="extras" id="EXTRAS">
-         <font style="font-size:0px">EXTRAS</font>
-      </div>
-
     </div>
-    <div class="two wide column"></div>
+    <div class="column"></div>
     <?php $this->view("pos/vOrder");?> 
 
 </body>

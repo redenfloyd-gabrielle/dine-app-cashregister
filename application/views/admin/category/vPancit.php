@@ -3,7 +3,7 @@
     <div class='ui padded segment'>
         <!-- header -->
         <div class='ui basic segment'>
-            <h1 class="ui brown dividing header"> 
+            <h1 class="ui brown dividing header">
                 <i class="food icon"></i>
                 <div class="content">
                   PRODUCTS
@@ -30,29 +30,8 @@
             
                 <div class='ui stackable padded grid'>
                     <?php if (isset($products)) { ?>
-                        <div class='right aligned column'>
-                            <div class='ui floating dropdown labeled gray basic icon button'>
-                                <i class='filter icon'></i>
-                                <span class='text'>Filter products</span>
-                                <div class='menu'>
-                                    <div class='item'>
-                                        <div class='ui blue empty circular label'></div>
-                                        All
-                                    </div>
-                                    <div class='item'>
-                                        <div class='ui green empty circular label'></div>
-                                        Available
-                                    </div>
-                                    <div class='item'>
-                                        <div class='ui red empty circular label'></div>
-                                        Not Available
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                     <div class='row'>
-                        <table class='ui sortable stackable celled table' id="ricemeal">
+                        <table class='ui sortable stackable celled table' id="pancit">
                             <thead>
                                 <tr>
                                     <th>Product Image</th>
@@ -62,6 +41,9 @@
                                     <th>Actions</th>
                                 </tr>
                             </thead>
+                            <tbody>
+                        
+                            </tbody>
                         </table>
                     </div>
 
@@ -108,23 +90,62 @@
   </div>
 </div>
 
+<div class="ui basic modal" id="confirmRestock">
+  <div class="ui icon header">
+    <i class="remove icon"></i>
+    Restock Item
+  </div>
+  <div class="content">
+<form class='ui form' method='POST' action='<?php echo site_url()?>/CProduct/restockProduct'>
+    <center><p style='font-size: 1.5em;'>Are you sure you want to restock this item?</p></center>
+    <input type='hidden' name='rproduct_id' id='rproduct_id' value="">
+  </div>
+  <div class="actions">
+    <div class="ui gray basic cancel inverted button">
+      <i class="remove icon"></i>
+      No
+    </div>
+    <button class="ui basic brown ok inverted button" type="submit">
+      <i class="checkmark icon"></i>
+      Yes
+    </button>
+</form>
+  </div>
+</div>
 
+
+</body>
 
 </body>
 </html> 
 
 <script> 
 $(document).ready(function(){
-    $('.deleteItem').click(function(){
-         var id = $(this).data("id");
-         alert(id);
+    $(document).on('click','.deleteItem',function() {
+        var id = $(this).data("id");
         $('#product_id').val(id);
         $('#confirmDelete').modal('show');
         
     });
+
+    $(document).on('click','.restockProduct',function() {
+        var id = $(this).data("id");
+        $('#rproduct_id').val(id);
+        $('#confirmRestock').modal('show');
+        
+    });
 });
 
+
 $(document).ready(function() {
-    $('#ricemeal').DataTable();
+   
+    $('#pancit').DataTable({
+        "ajax" : {
+            url: "<?php echo site_url();?>/CProduct/getPancit",
+            type : 'GET',
+        },
+    });
 } );
+
+
 </script>

@@ -5,7 +5,7 @@
     <title>DINE | LOGIN</title>
     <link rel='stylesheet' href='<?php echo base_url("assets/css/loginAssets.css")?>'>
     <link rel='stylesheet' href='<?php echo base_url("assets/semantic/semantic.min.css")?>'>
-    <script src='<?php echo base_url("assets/jquery.min.js")?>'></script>
+    <script src='<?php echo base_url("assets/jquery/jquery.min.js")?>'></script>
      <script src='<?php echo base_url("assets/semantic/semantic.min.js")?>'></script>
 </head>
 <body>
@@ -25,15 +25,46 @@
                         Welcome!
                     </div> 
                 </h3>
-                <?php if(isset($errors)){ ?>
+                <?php 
+                    if($this->session->flashdata('response')){
+                ?>
                 <div class="ui negative message">
                     <i class="close icon"></i>
                     <div class="header">
-                        <?php echo $errors; ?>
+                        <?php 
+                            if($this->session->flashdata('response')){
+                                echo $this->session->flashdata('response');
+                            }
+                        ?>
                     </div>
-                    <p> <?php echo $msg; ?></p>
+                    <p> <?php 
+                        if($this->session->flashdata('error')){
+                          echo $this->session->flashdata('error');
+                        }
+                      ?>    
+                    </p>
                 </div>
-                <?php }?>
+                <?php  } ?>
+                <?php 
+                    if($this->session->flashdata('msg')){
+                ?>
+                <div class="ui positive message">
+                    <i class="close icon"></i>
+                    <div class="header">
+                        <?php 
+                            if($this->session->flashdata('msg')){
+                                echo $this->session->flashdata('msg');
+                            }
+                        ?>
+                    </div>
+                    <p> <?php 
+                        if($this->session->flashdata('msg2')){
+                          echo $this->session->flashdata('msg2');
+                        }
+                      ?>    
+                    </p>
+                </div>
+                <?php  } ?>
                 <div class='required field'>
                     <div class='ui left icon input'>
                         <i class='user icon'></i>

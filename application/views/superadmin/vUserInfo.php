@@ -1,5 +1,5 @@
 <div class="pusher">
-    <div class='ui hidden segment'></div>
+    <div class='ui hidden divider'></div>
     <div class='ui padded segment'>
         <!-- header -->
         <div class='ui basic segment'>

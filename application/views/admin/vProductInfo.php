@@ -1,6 +1,6 @@
 <div class="pusher">
     <div class='ui hidden divider'></div>
-    <div class='ui padded segment'>
+    <div class='ui padded basic segment'>
         <!-- header -->
         <div class='ui basic segment'>
             <h1 class="ui brown dividing header">
@@ -24,21 +24,20 @@
         <div class='ui segments'>
             <div class='ui basic segment'> 
                 <h5 class='ui header brown ribbon label'><i class='info icon'></i>Product Information</h5>
+                <?php if($this->session->flashdata('error')){ ?>
+                  <div class="ui negative message">
+                    <i class="close icon"></i>
+                    <div class="header">
+                      Your process was unsuccessful.
+                    </div>
+                    <p><?php echo $this->session->flashdata('error');?></p>
+                  </div>
+                <?php } ?>
                 <div class='ui stackable padded grid'>
                     <?php if (isset($product)) { ?>
                     <?php foreach($product as $prod) {} ?>  
                         <div class='row'>
                             <div class='right aligned column'>
-                                <!-- <?php //if($prod->product_availability == "AVAILABLE"){
-                                        //echo "
-                                        //<a href='<?php echo site_url()?>/CProduct/editProductInfo/<?php //echo $prod->product_id; ?>'>
-                                            <div class='ui basic blue labeled icon button'>
-                                                Edit <i class='pencil icon'></i>
-                                            </div>
-                                        </a> 
-                                        ";
-                                    }
-                                ?>  -->
                                 <a href='<?php echo site_url()?>/CProduct/editProductInfo/<?php echo $prod->product_id; ?>'>
                                     <div class='ui basic blue labeled icon button'>
                                         Edit <i class='pencil icon'></i>
@@ -48,7 +47,7 @@
                         </div>
                         <div class='two column row'>
                             <div class='center aligned middle aligned column'>
-                                <img src='<?php echo base_url($prod->product_image)?>'>
+                                <img class="ui large centered image" src='<?php echo base_url($prod->product_image)?>'>
                             </div>
                             <div class='column'>
                                 <p style='font-size: 1em;'>PRODUCT ID &nbsp &nbsp| &nbsp &nbsp <span style='font-size: 1.2em; font-style: italic; font-weight: bold;'><?php echo $prod->product_id; ?></span></p>
@@ -60,7 +59,7 @@
                                 <p style='font-size: 1em;'>PRODUCT DESCRIPTION &nbsp &nbsp| &nbsp &nbsp <span style='font-size: 1.2em; font-style: italic; font-weight: bold;'><?php echo $prod->product_description; ?></span></p>
                                 <div class='ui divider'></div>
 
-                                <p style='font-size: 1em;'>PRODUCT PRICE &nbsp &nbsp| &nbsp &nbsp P <span style='font-size: 1.2em; font-style: italic; font-weight: bold;'><?php echo $prod->product_price; ?></span></p>
+                                <p style='font-size: 1em;'>PRODUCT PRICE &nbsp &nbsp| &nbsp &nbsp P <span style='font-size: 1.2em; font-style: italic; font-weight: bold;'><?php echo $prod->product_price; ?>.00</span></p>
                                 <div class='ui divider'></div>
 
                                 <p style='font-size: 1em;'>PRODUCT CATEGORY &nbsp &nbsp| &nbsp &nbsp <span style='font-size: 1.2em; font-style: italic; font-weight: bold;'><?php echo $prod->product_category; ?></span></p>
@@ -116,6 +115,9 @@
 $(document).ready(function(){
     $('#deleteItem').click(function(){
         $('#confirmDelete').modal('show');
+    });
+    $('.message .close').on('click', function() {
+        $(this).closest('.message').transition('fade');
     });
 });
 </script>

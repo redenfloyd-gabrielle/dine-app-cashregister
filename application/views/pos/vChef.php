@@ -13,11 +13,26 @@
   <script src="main.js"></script>
 </head>
 <body>
-<div class="new-page">
+<div class="receiptbox" id="receiptbox">
+   <br>
+   <p class="receipthead" align="center"><strong>Mameng's Seafoods and </strong></p>
+   <p class="receipthead" align="center"><strong>BBQ Hauz</strong></p>
+   <p class="receiptcontent" align="center">Barangay 24 Imadejas</p>
+   <p class="receiptcontent" align="center">along J.C. Aquino Ave. Butuan City</p>
+   <p class="receiptcontent" align="center">(085)-300-3307</p>
+   <h2 class="receipttype"><strong>KITCHEN'S COPY</strong></h2>
+   <div class="receiptdivide"> </div>
+   <span class="lft msg" style="font-size: 14px;">
+      Date : <strong style="font-size: 14px;"><?php echo $date ?></strong> 
+   </span>
+   <span class="rght msg" style="font-size: 14px;">
+      Time : <strong style="font-size: 14px;"> <?php echo $time ?></strong>
+   </span><br>
+   <div class="receiptdivide"> </div>
    <table class="receipttbl">
      <tr>
-       <th class="lft ltext rqty">Qty</th>
-       <th class="ltext rqty">Item</th>
+       <th class="rqty" align="left">Qty</th>
+       <th class="lft rqty">Item</th>
      </tr>
      <?php if( isset($receipt_item)){ ?>
       <?php foreach ($receipt_item as $item) { ?>
@@ -27,10 +42,15 @@
      </tr>
       <?php } ?>
     <?php } ?>
-     
    </table>
+  <div class="receiptdivide"> </div>
+  <br><br>
+  <div class="tagline">Serving safe food </div>
+  <div class="tagline">is not an option <div>
+  <div class="tagline">it’s an obligation.</div>
+  <br>
 </div>
-   
+<h3>`</h3>
 </body>
 </html>
 

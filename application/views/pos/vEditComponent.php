@@ -3,14 +3,17 @@
     <div class="six wide column">
       <div id="vOrder">
       <div class="ui grid">
-        <div class="column"></div>
-        <div class="nine wide center aligned middle aligned grey column" style="margin-left: -20px;">
-          ORDER LIST
+        <div class="sixteen wide left aligned middle aligned column">
+          <h1 class="ui grey dividing header">
+            <i class="unordered list icon"></i>
+            <div class="content">
+              ORDER LIST
+              <div class="sub header">List of order</div>
+            </div>  
+          </h1>
+
         </div>
         <div class="row"></div>
-        <!-- <div class="six wide column">
-          <a href="<?php //echo site_url().'/COrderItem/viewEdit/'.$page.'/'.$id.'/1';?>" ><button class="fluid ui labeled icon button"><i class="pencil icon"></i>EDIT ORDER</button></a>
-        </div> -->
       </div>
 
       <table class="ui inverted teal basic table">
@@ -50,8 +53,7 @@
                     </button>
                   </td>
                   <td>P<span class="subtotal" id="subtotal" name='sub<?php echo $order->item_id; ?>'><?php echo $order->order_item_subtotal; ?></span></td>
-                  <td><a class="confirmRemove" style="cursor: pointer;" data-id='<?php echo $order->item_id; ?>'><i class="red remove icon"></i></a></td>
-                  
+                  <td><a class="confirmRemove" style="cursor: pointer;" data-id='<?php echo $order->item_id; ?>'><i class="red remove icon"></i></a></td>  
               </tr>
             </form>
             <?php } ?>
@@ -91,7 +93,7 @@
           <a href="'.site_url().'/COrdered/displayOrderFromEditPage/'.$qr.'" class="item"><div class="ui teal button">BACK</div></a>
         ';
      }?>
-    <div class="hidden item"></div><div class="hidden item"></div><div class="hidden item"></div> <div class="hidden item"></div><div class="hidden item"></div><div class="hidden item"></div><div class="hidden item"></div><div class="hidden item"></div><div class="hidden item"></div><div class="hidden item"></div><div class="hidden item"></div><div class="hidden item"></div><div class="hidden item"></div><div class="hidden item"></div><div class="hidden item"></div><div class="hidden item"></div><div class="hidden item"></div>
+    <div class="hidden item"></div> <div class="hidden item"></div> <div class="hidden item"></div> <div class="hidden item"></div><div class="hidden item"></div><div class="hidden item"></div><div class="hidden item"></div><div class="hidden item"></div><div class="hidden item"></div><div class="hidden item"></div><div class="hidden item"></div><div class="hidden item"></div><div class="hidden item"></div><div class="hidden item"></div><div class="hidden item"></div><div class="hidden item"></div><div class="hidden item"></div>
   </div>
 </div>
 </div> 

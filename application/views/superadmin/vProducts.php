@@ -1,48 +1,53 @@
 <div class="pusher">
     <div class='ui hidden divider'></div>
-    <div class='ui padded segment'>
+    <div class='ui padded basic segment'>
         <!-- header -->
         <div class='ui basic segment'>
-            <h1 class="ui brown dividing header">
-                <i class="food icon"></i>
+            <h1 class="ui teal dividing header">
+                <i class="dashboard icon"></i>
                 <div class="content">
                   PRODUCTS
-                  <div class="sub header">Shows the list of products under a category</div>
+                  <div class="sub header">Shows the list of products</div>
                 </div>
             </h1> <!-- header -->
             <div class='ui breadcrumb'>
-                <a class='section' href='<?php echo site_url()?>/CUser/viewAdminDashboard'>HOME</a>
+                <a class='section' href='<?php echo site_url()?>/CUser/viewSuperadminDashboard'>HOME</a>
                 <i class='right arrow icon divider'></i>
-                <a class='section' href='<?php echo site_url()?>/CProduct/viewCategoryList'>CATEGORIES</a>
-                <i class='right arrow icon divider'></i>
-                <div class='active section'>PRODUCT LIST</div>
+                <div class='active section'>PRODUCTS</div>
             </div> <!-- breadcrumb -->
         </div> <!-- segment -->
 
         <!-- content -->
         <div class='ui segments'>
             <div class='ui basic segment'>
-                <h5 class='ui header brown ribbon label'><i class='food icon'></i>
-                    <?php if (isset($prod_cat)) { 
-                        echo $prod_cat; 
-                    } ?>
+                <h5 class='ui header teal ribbon label'><i class='food icon'></i>
+                    ALL PRODUCTS
                 </h5> 
+                <?php if($this->session->flashdata('response')){ ?>
+                  <div class="ui positive message">
+                    <i class="close icon"></i>
+                    <div class="header">
+                      Your process was successful.
+                    </div>
+                    <p><?php echo $this->session->flashdata('response');?></p>
+                  </div>
+                <?php } ?>
             
                 <div class='ui stackable padded grid'>
-                    <?php if (isset($products)) { ?>
+                  
                     <div class='row'>
-                        <table class='ui sortable stackable celled table' id="ricemeal">
+                        <table class='ui sortable stackable celled table' id="products">
                             <thead>
                                 <tr>
                                     <th>Product Image</th>
                                     <th>Product Name</th>
+                                    <th>Product Category</th>
                                     <th>Product Price</th>
                                     <th>Availability</th> 
-                                    <th>Actions</th>
+                                    <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
-                        
                             </tbody>
                         </table>
                     </div>
@@ -50,14 +55,7 @@
                     <div class='row'></div> <!-- row -->
 
 
-                <?php }else{
-                    echo "<div class='row'></div>
-                          <p style='font-size: 1.2em;'><i class='warning circle icon'></i>There are no products in this category <i class='frown icon'></i></p>
-                          <div class='row'></div>
-                        ";
-                }
-
-                ?>
+                
                 </div> <!-- ui grid -->   
             
             </div> <!-- segment -->
@@ -82,7 +80,7 @@
       <i class="remove icon"></i>
       No
     </div>
-    <button class="ui basic brown ok inverted button" type="submit">
+    <button class="ui basic teal ok inverted button" type="submit">
       <i class="checkmark icon"></i>
       Yes
     </button>
@@ -90,30 +88,29 @@
   </div>
 </div>
 
-
-
 </body>
 </html> 
 
 <script> 
 $(document).ready(function(){
     $(document).on('click','.deleteItem',function() {
-         var id = $(this).data("id");
-         alert(id);
+        var id = $(this).data("id");
         $('#product_id').val(id);
         $('#confirmDelete').modal('show');
         
     });
 });
 
-
 $(document).ready(function() {
-   
-    $('#ricemeal').DataTable({
+    $('#products').DataTable({
         "ajax" : {
-            url: "<?php echo site_url();?>/CProduct/getRiceMeals",
+            url: "<?php echo site_url();?>/CProduct/getAllProducts",
             type : 'GET',
         },
+    });
+
+    $('.message .close').on('click', function() {
+        $(this).closest('.message').transition('fade');
     });
 } );
 

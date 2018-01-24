@@ -1,6 +1,6 @@
 <div class="pusher">
     <div class='ui hidden divider'></div>
-    <div class='ui padded segment'>
+    <div class='ui padded basic segment'>
         <!-- header -->
         <div class='ui basic segment'>
             <h1 class="ui brown dividing header">
@@ -22,6 +22,24 @@
         <div class='ui segments'>
             <div class='ui basic segment'> 
                 <h5 class='ui header brown ribbon label'><i class='cubes icon'></i>Categories</h5>
+                <?php if($this->session->flashdata('error')){ ?>
+                  <div class="ui negative message">
+                    <i class="close icon"></i>
+                    <div class="header">
+                      Your process was unsuccessful.
+                    </div>
+                    <p><?php echo $this->session->flashdata('error');?></p>
+                  </div>
+                <?php } ?>
+                <?php if($this->session->flashdata('response')){ ?>
+                  <div class="ui positive message">
+                    <i class="close icon"></i>
+                    <div class="header">
+                      Your process was successful.
+                    </div>
+                    <p><?php echo $this->session->flashdata('response');?></p>
+                  </div>
+                <?php } ?>
                 <div class='ui stackable padded grid'>
                     <div class='row'>
                         <div class='right aligned column'>
@@ -81,22 +99,6 @@
                         </div> <!-- sixteen wide column -->
                     </div> <!-- row -->
                     <div class='row'></div> <!-- row -->
-
-                    <!-- pagination -->
-                    <div class='two column row'>
-                        <div class='middle aligned column'>
-                            Showing 1 to 5 of 5 entries.
-                        </div>
-                        <div class='right aligned column'>
-                            <div class='ui pagination menu'>
-                                <a class='previous item'>Previous</a>
-                                <a class='active item'>1</a>
-                                <a class='next item' >Next</a>
-                            </div> <!-- pagination -->
-                        </div>
-                    </div> <!-- two column row -->
-
-                    <!-- end of pagination -->
                 </div> <!-- stackable padded grid -->
             
             </div> <!-- segment -->
@@ -109,3 +111,11 @@
 
 </body>
 </html> 
+<script>
+    $(document).ready(function(){
+        $('.message .close').on('click', function() {
+            $(this).closest('.message').transition('fade');
+        });
+
+    });
+</script>

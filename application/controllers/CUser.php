@@ -9,6 +9,11 @@
 	      $this->load->helper('url');
 	      $this->load->database(); // load database
 	      $this->load->model('MUser');
+	      $this->load->model('MOrdered');
+	      $this->load->model('MProduct');
+	      $this->load->model('MReceipt');
+	      $url = $this->config->site_url();
+     	  $this->urlSite = $url.'/CUser/editUserInfo/';
 	  	}
 
 		public function index()
@@ -27,41 +32,88 @@
 
 			$result = $this->MUser->update($id, $data);
 			if ($result) {
-				redirect('CLogin/userLogout');
+				$this->session->unset_userdata('userSession');
+				$this->session->set_flashdata('msg',"Successfully changed your password!");
+				$this->session->set_flashdata('msg2',"Please login using your new password.");
+				redirect('CLogin');
 			} else {
 				redirect('CLogin/viewSuperadminDashboard');
 			}
 		}
 
-		public function addUser()
+		public function resetPassword()
 		{
 			$now = new DateTime(NULL, new DateTimeZone('Asia/Manila'));
-			$type = null;
-			if($this->input->post('position') == 'Manager' ){
-				$type = 'ADMIN';
-			} else if ($this->input->post('position') == 'Owner' || $this->input->post('position') == 'Supervisor'){
-				$type = 'SUPERADMIN';
-			} else {
-				$type = 'REGULAR';
-			}
-
-			$data = array('user_first_name' => $this->input->post('fname'),
-						  'user_mi' => $this->input->post('mname'),
-			  			  'user_last_name' => $this->input->post('lname'),
-			  			  'user_position' => $this->input->post('position'),
-						  'user_type' => $type,
-						  'user_created_by' => $this->session->userdata['userSession']['user_id'],
-						  'user_created_on' => $now->format('Y-m-d H:i:s'),
+			$id = $this->input->post('ruser_id');
+			$data = array('user_password' => hash('sha512','123456'),
 						  'user_modified_by' => $this->session->userdata['userSession']['user_id'],
-						  'user_modified_on' => $now->format('Y-m-d H:i:s'),
+						  'user_modified_on' => $now->format('Y-m-d H:i:s')
 						 );
-			$result = $this->MUser->insert($data);
+			$result = $this->MUser->update($id, $data);
 			if ($result) {
+				$this->session->set_flashdata('response',"Successfully reset user password!");
 				redirect('CUser/viewUsersList');
 			} else {
 				print_r('SOMETHING WENT WRONG;');
 			}
+		}
 
+		public function activateUser()
+		{
+			$now = new DateTime(NULL, new DateTimeZone('Asia/Manila'));
+			$id = $this->input->post('auser_id');
+			$data = array('user_status' => 'ACTIVE',
+						  'user_modified_by' => $this->session->userdata['userSession']['user_id'],
+						  'user_modified_on' => $now->format('Y-m-d H:i:s')
+						 );
+			$result = $this->MUser->update($id, $data);
+			if ($result) {
+				$this->session->set_flashdata('response',"Successfully activated user!");
+				redirect('CUser/viewUsersList');
+			} else {
+				print_r('SOMETHING WENT WRONG;');
+			}
+		}
+
+		public function addUser()
+		{
+			$where = array('user_first_name' => $this->input->post('fname'),
+						   'user_mi' => $this->input->post('mname'),
+			  			   'user_last_name' => $this->input->post('lname')
+						   );
+			$user = $this->MUser->read_where($where);
+			if($user){
+				$this->session->set_flashdata('error',"User already exists!");
+				redirect('CUser/viewUsersList');
+			} else {
+				$now = new DateTime(NULL, new DateTimeZone('Asia/Manila'));
+				$type = null;
+				if($this->input->post('position') == 'Manager' ){
+					$type = 'ADMIN';
+				} else if ($this->input->post('position') == 'Owner' || $this->input->post('position') == 'Supervisor'){
+					$type = 'SUPERADMIN';
+				} else {
+					$type = 'REGULAR';
+				}
+				$data = array('user_first_name' => $this->input->post('fname'),
+							  'user_mi' => $this->input->post('mname'),
+				  			  'user_last_name' => $this->input->post('lname'),
+				  			  'user_position' => $this->input->post('position'),
+							  'user_type' => $type,
+							  'user_created_by' => $this->session->userdata['userSession']['user_id'],
+							  'user_created_on' => $now->format('Y-m-d H:i:s'),
+							  'user_modified_by' => $this->session->userdata['userSession']['user_id'],
+							  'user_modified_on' => $now->format('Y-m-d H:i:s'),
+							 );
+				$result = $this->MUser->insert($data);
+				if ($result) {
+					$this->session->set_flashdata('response',"Successfully added new user!");
+					redirect('CUser/viewUsersList');
+				} else {
+					print_r('SOMETHING WENT WRONG;');
+				}
+			}
+			
 		}
 
 		public function updateUser($user_id)
@@ -87,12 +139,11 @@
 						 );
 			$result = $this->MUser->update($user_id,$data);
 			if ($result) {
-				// $this->viewUsersList();
-				redirect('CUser/viewUserInfo/'.$user_id);
+				$this->session->set_flashdata('response',"Successfully edited user information!");
+				redirect('CUser/viewUsersList');
 			} else {
 				print_r('SOMETHING WENT WRONG;');
 			}
-			# code...
 		}
 
 		public function deleteUser()
@@ -105,7 +156,7 @@
 						 );
 			$result = $this->MUser->update($user_id, $data);
 			if ($result) {
-				// $this->viewUsersList();
+				$this->session->set_flashdata('response',"Successfully deleted user!");
 				redirect('CUser/viewUsersList');
 			} else {
 				print_r('SOMETHING WENT WRONG;');
@@ -113,24 +164,124 @@
 
 		}
 
+
+		public function getUsers()
+		{
+			// Datatables Variables
+	        $draw = intval($this->input->get("draw"));
+	        $start = intval($this->input->get("start"));
+	        $length = intval($this->input->get("length"));
+
+			$users = $this->MUser->getUsers();
+         	$data = array();
+
+			foreach($users->result() as $us) {
+				if ($us->user_status == 'ACTIVE') {
+					$reset = '<a class="ui inverted orange icon disabled button" data-tooltip="Reset Password">
+                               	<i class="refresh icon"></i> 
+                              </a>';
+					if($us->user_type != 'REGULAR'){
+						$reset = ' <a id="reset" class="ui inverted orange icon button resetPassword" data-id="'.$us->user_id.'" data-tooltip="Reset Password">
+                               			<i class="refresh icon"></i> 
+                               	    </a>';
+					} 
+					$actions = 	'<a href="'.$this->urlSite.''.$us->user_id.'" >
+									<div class="ui inverted blue icon button" data-tooltip="Edit User">
+										<i class="edit icon"></i> 
+									</div>	
+                               	</a>'.$reset.'
+	                           	<a id="deleteUser" class="ui inverted red icon button deleteUser" data-id="'.$us->user_id.'" data-tooltip="Delete User">
+                                    <i class="trash icon"></i> 
+                                </a>';
+				} else {
+					$actions = 	'<a class="ui inverted green icon button activateUser" data-id="'.$us->user_id.'" data-tooltip="Activate User">
+                                    <i class="power icon"></i> 
+                                </a>';
+				}
+			   	$data[] = array(
+			        $us->user_id,
+			        $us->user_first_name.' '.$us->user_mi.'. '.$us->user_last_name,
+			        $us->user_position,
+			        $us->user_type,
+			        $us->user_status,
+			        $actions,
+			        
+			   	);
+			}
+
+			$output = array(
+			  	"draw" => $draw,
+			    "recordsTotal" => $users->num_rows(),
+			    "recordsFiltered" => $users->num_rows(),
+			    "data" => $data
+			);
+			echo json_encode($output);
+			exit();
+		}
+
+
+	
 		function viewAdminDashboard()
 		{
+			$data['count'] = $this->MReceipt->countOrders();
+			$data['product'] = $this->MProduct->countProducts();
+			$data['sales'] = $this->MReceipt->getTotal();
+			$data['daily'] = $this->MReceipt->getDailySales();
+			$data['weekly'] = $this->MReceipt->getWeeklySales();
+			$data['monthly'] = $this->MReceipt->getMonthlySales();
+			$result = $this->MOrdered->getPendingOrders();
+			$array = array();
+			if($result){
+				foreach($result as $value){
+					$arr = new stdClass;
+					$arr->ordered_id = $value->ordered_id;
+					$arr->ordered_total = $value->ordered_total;
+					$arr->ordered_qr_code = $value->ordered_qr_code;
+					$array[]=$arr;
+				}
+				$data['pending'] = $array;
+			}else{
+				$data['pending'] = null;
+			}
+
+			$result1 = $this->MOrdered->getScannedOrders();
+			$array = array();
+			if($result1){
+				foreach($result1 as $value){
+					$arr = new stdClass;
+					$arr->ordered_id = $value->ordered_id;
+					$arr->ordered_total = $value->ordered_total;
+					$arr->ordered_qr_code = $value->ordered_qr_code;
+					$array[]=$arr;
+				}$data['scanned'] = $array;
+			}else{
+				$data['scanned'] = null;
+			}
+			
 			$this->load->view('imports/vAdminHeader');
-			$this->load->view('admin/vDashboard');
+			$this->load->view('admin/vDashboard',$data);
 			$this->load->view('imports/vAdminFooter');
+			
 		}
+
+
 
 		function viewSuperadminDashboard()
 		{
+			$data['users'] = $this->MUser->countUsers();
+			$data['active'] =  $this->MUser->countActiveUsers();
+			$data['inactive'] =  $this->MUser->countInactiveUsers();
 
 			$this->load->view('imports/vSuperadminHeader');
-			$this->load->view('superadmin/vDashboard');
+			$this->load->view('superadmin/vDashboard', $data);
 			$this->load->view('imports/vSuperadminFooter');
 		}
 
 		function viewUsersList()
 		{
-			$data['users'] = $this->MUser->getUsers();
+			$result = $this->MUser->getUsers();
+
+			$data['users'] = ($result)? $result->result() : null;
 
 			$this->load->view('imports/vSuperadminHeader');
 			$this->load->view('superadmin/vUsersList',$data);	

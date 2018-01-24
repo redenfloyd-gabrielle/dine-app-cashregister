@@ -1,7 +1,7 @@
 	<div class="row"></div>
 	<div class="row">
 		<div class="column"></div>
-		<div class="six wide column">
+		<div class="seven wide column">
 			<h1 class="ui grey dividing header">
 		        <img class="ui big image" src="<?php echo base_url("assets/images/qrcode.png")?>">
 		        <div class="content">
@@ -9,20 +9,18 @@
 		          <div class="sub header">Retrieve order via QR Code</div>
 		        </div>  
 		    </h1>
-
 		    <a href="<?php echo site_url()?>/CLogin/viewPos?>">
 		    	<h4 style="color: gray;"><i class="left arrow grey icon"></i>BACK TO HOME</h4>
 		    </a>
 
 		    <div class="ui hidden divider"></div>
-
+            
 		    <div class="ui info visible message msg">
 				<p>To retrieve guest order, place QR Code from mobile in front of the camera (web-cam).</p>
 			</div>
 			<div class="ui warning visible message msg">
 				<p>If the scanner does not appear, or if the scanner failed to retrieve the order, enter the <strong>Reference Number</strong> below.</p>
 			</div>
-
 		    <center>
 		    	<video id="qrcam" class="ui fluid item vid"></video> 
 		    	<div class="ui hidden divider"></div>
@@ -40,28 +38,37 @@
 		</div>
 		<div class="column"></div>
 	</div>
-	<div class="row"></div>
-	<div class="row"></div>
 </div> <!-- closing grid -->
-
-
-  <div class="ui basic modal">
-  <i class="close icon"></i>
+<!-- INVALID QR MODAL -->
+<div class="ui tiny basic modal" id="invalid">
   <div class="ui icon tiny header">
-    <i class="warning sign icon">  QR Code Failed</i>
-   
+    <i class="red warning sign icon">  QR Code Failed</i>
   </div>
   <div class="content">
-   <p align="center">Please try again. Make sure you are scanning a valid code. </p>
+   <p align="center" id="error" class="size16">Please try again. Make sure you are scanning a valid code.</p>
   </div>
   <div class="actions">
-    <div class="ui blue ok inverted button">
+    <div class="ui green ok inverted button">
       <i class="checkmark icon"></i>
       Okay
     </div>
   </div>
 </div>
-
+<!-- SUCCESSFULLY SCANNED MODAL -->
+<div class="ui tiny basic modal" id="successfull">
+  <div class="ui icon tiny header">
+    <i class="green checkmark icon">&nbsp Successfully scanned</i>
+  </div>
+  <div class="content">
+   <p align="center" class="size16">QR code successfully scanned.  See order lists. </p>
+  </div>
+  <div class="actions">
+    <div class="ui green ok inverted button" id="confirm">
+      <i class="checkmark icon"></i>
+      Okay
+    </div>
+  </div>
+</div>
 
 </body>
 </html>
@@ -77,12 +84,11 @@
         } else {
           console.error('No cameras found.');
         }
-      }).catch(function (e) {
+      }).catch(function(e) {
         console.error(e);
       });
 	
 	qr.addListener('scan',function(data){
-		
 		dataSet = "qr="+data;
 		$.ajax({
 			type: "POST",
@@ -91,20 +97,35 @@
 			cache: false,
 			success: function(result){
 				if(result){
-					$('body').html(result);
-					qr.stop($('#qrcam')[0]);
-				 }else{
-					$('.ui.basic.modal')
-					  .modal('show')
-					;
-				 }              
+					var data = result.split('*');
+					if(data[0] == 'pending'){
+						$('#successfull').modal('show');
+					 	$('#confirm').on('click',function(){
+					 		$('body').html(data[1]);
+					 	});
+						qr.stop($('#qrcam')[0]);
+					}else{
+						var msg = '';
+						if(data[0] == 'expired'){
+							msg = 'QR Code has expired.  Please try again. ';
+						}else{
+							msg = 'QR Code has already been scanned.  Please try again. ';
+						}
+						$('#error').html(msg);
+						$('#invalid').modal('show');
+					}
+				}else{
+					var msg = 'Please try again. Make sure you are scanning a valid code.';
+					$('#error').html(msg);
+					$('#invalid')
+					  .modal('show');
+				}     
 			},
 			error: function(jqXHR, errorThrown){
 				console.log(errorThrown);
 			}
 		});
 	});
-
 
 	$('#ok').on('click', function() {
 	  var qr = $("#ref").val();
@@ -116,13 +137,29 @@
 		cache: false,
 		success: function(result){
 			if(result){
-				$('body').html(result);
-				qr.stop($('#qrcam')[0]);
-			 }else{
-				$('.ui.basic.modal')
-				  .modal('show')
-				;
-			 }                 
+				var data = result.split('*');
+				if(data[0] == 'pending'){
+					$('#successfull').modal('show');
+				 	$('#confirm').on('click',function(){
+				 		$('body').html(data[1]);
+				 	});
+					qr.stop($('#qrcam')[0]);
+				}else{
+					var msg = '';
+					if(data[0] == 'expired'){
+						msg = 'QR Code has expired.  Please try again. ';
+					}else{
+						msg = 'QR Code has already been scanned.  Please try again. ';
+					}
+					$('#error').html(msg);
+					$('#invalid').modal('show');
+				}
+			}else{
+				var msg = 'Please try again. Make sure you are submitting a valid code.';
+				$('#error').html(msg);
+				$('#invalid')
+				  .modal('show');
+			}     
 		},
 		error: function(jqXHR, errorThrown){
 			console.log(errorThrown);

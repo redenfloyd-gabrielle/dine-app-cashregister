@@ -15,8 +15,7 @@
 		}
 
 		public function getOrderByQR($qr){
-			$where = array('ordered_qr_code' =>$qr,
-						   'ordered_status' => 'pending');
+			$where = array('ordered_qr_code' =>$qr);
 			$query = $this->read_where($where);
 			return $query;
 		}
@@ -37,8 +36,95 @@
 			'ordered_status' => 'pending' ));
 			$query = $this->db->get();
 			return $query->result();
-			// SELECT * FROM `order_item` JOIN ordered ON ordered_id = order_item_ordered_id WHERE ordered_id = 1
 		}
+
+		public function getOrderItemsByOrder($id){
+
+			$this->db->select('*');
+			$this->db->from('order_item');
+			$this->db->join($this::DB_TABLE,'order_item'.'.order_item_ordered_id= ordered_id ' );
+			$this->db->join('product','order_item'.'.order_item_product_id= product_id ' );
+			$this->db->where(array($this::DB_TABLE.'_id' => $id));
+			$query = $this->db->get();
+			return $query->result();
+		}
+
+		public function getOrders()
+		{
+			$this->db->select("*");
+			$this->db->from($this::DB_TABLE);
+			// $this->db->where('ordered_status', 'scanned');
+			$query = $this->db->get();
+			
+			return $query;
+		}
+
+
+		public function getScannedDataOrders()
+		{
+			$this->db->select("*");
+			$this->db->from($this::DB_TABLE);
+			$this->db->where('ordered_status', 'scanned');
+			$query = $this->db->get();
+			
+			return $query;
+		}
+
+		public function getPendingDataOrders()
+		{
+			$this->db->select("*");
+			$this->db->from($this::DB_TABLE);
+			$this->db->where('ordered_status', 'pending');
+			$query = $this->db->get();
+			
+			return $query;
+		}
+
+		public function getPendingOrdersResult()
+		{
+			$this->db->select("*");
+			$this->db->from($this::DB_TABLE);
+			$this->db->where('ordered_status', 'pending');
+			$query = $this->db->get();
+			
+			return $query->result();
+		}
+
+		public function getExpiredDataOrders()
+		{
+			$this->db->select("*");
+			$this->db->from($this::DB_TABLE);
+			$this->db->where('ordered_status', 'expired');
+			$query = $this->db->get();
+			
+			return $query;
+		}
+
+		public function getScannedOrders()
+		{
+			$this->db->select("*");
+			$this->db->from($this::DB_TABLE);
+			$this->db->where('ordered_status', 'scanned');
+			$this->db->limit(5);
+			$query = $this->db->get();
+			
+			return $query->result();
+		}
+
+		public function getPendingOrders()
+		{
+			$now = new DateTime(NULL, new DateTimeZone('Asia/Manila'));
+			
+			$this->db->select("*");
+			$this->db->from($this::DB_TABLE);
+			$this->db->where('ordered_status', 'pending');
+			$this->db->where('ordered_time >= "'.$now->format('Y-m-d 00:00:00').'" AND ordered_time <= "'.$now->format('Y-m-d H:i:s').'"');
+			$this->db->limit(5);
+			$query = $this->db->get();
+			
+			return $query->result();
+		}
+
 
 		public function getOrdered_id(){
 			return $this->ordered_id;

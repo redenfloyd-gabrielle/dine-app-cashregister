@@ -11,6 +11,8 @@
 	       $this->load->model('MReceipt');
 	      $this->load->helper('url');
 	      $this->load->library('session');
+	      $url = $this->config->site_url();
+     	  $this->urlSite = $url.'COrderItem/viewOrderInfo/';
 	  	}
 
 		public function index()
@@ -19,6 +21,7 @@
 		}
  		function viewOrderList()
  		{
+
  			$this->load->view('imports/vAdminHeader');
 			$this->load->view('admin/vOrderList');
 			$this->load->view('imports/vAdminFooter');
@@ -34,8 +37,6 @@
 			$this->session->set_userdata('receiptSession',$sessionReceipt);
 		}
 		
-
- 		
 		public function viewQDashboard(){
 			
 			$this->load->view('imports/vPosHeader');
@@ -53,22 +54,23 @@
 				foreach ($result as $q) {}
 				$id = $q->ordered_id;
 				$total = $q->ordered_total;
-				$status = $q->ordered_status;
 				$time = $q->ordered_time;
 				$date_now =new DateTime(NULL, new DateTimeZone('Asia/Manila'));
 				$dt = $date_now->format('Y-m-d H:i:s');
 			    $date = date_create_from_format('Y-m-d H:i:s', $time);
 				$datenow = date_create_from_format('Y-m-d H:i:s', $dt);
-				
+				$status = $q->ordered_status;
                 $interval = date_diff($datenow,$date);
-		        if($interval ->h >= 4){
-		        	$status = array('ordered_status' => 'expired');
-					$query = $this->MOrdered->update($id, $status);
+                $diff = $interval->h;
+				if($interval->d > 0){
+					$diff += $interval->d * 24;
+				}
+		        if($status == 'pending' && $diff >= 4){
+		        	$stat = array('ordered_status' => 'expired');
+					$query = $this->MOrdered->update($id, $stat);
+					$status = 'expired';
 		        }
-
 		        $result1 = $this->MOrdered->displayOrderItemsByOrder($id);
- 
-			   
 			    $qty = 0;
 			
 				$data['order_info'] = null;
@@ -88,31 +90,26 @@
 				}else{
 					$data['order_info'] = null;
 				}
-				// if($status == "scanned"){
-				// 	$data['error'] = "Please try again. Code has been scanned.";
-				// }else if($status == "expired"){
-				// 	$data['error'] = "Please try again. Code has expired.";
-				// }else{
-				// 	$data['error'] = "Please try again. Make sure you are scanning a valid code. ";
-				// }
 				
 				$data['total'] = $total;
 				$data['qty'] = $qty;
 				$data['id'] = $id;
 				$data['qr'] = $qr;
 				$data['page'] = 'qr';
+				$data['edit'] = 'no';
 			}else{
 				$data = null;
-				
 			}
-			if($data != null){
+			if($data != null && $status == "pending"){
 				if(!$this->session->userdata('receiptSession')){
 					$this->createReceiptSession();
 				}
 				$res = $this->load->view('pos/vOrder',$data,TRUE);
-				echo $res;	
-			 }
-			
+				echo $status.'*'.$res;	
+			}else if($data != null && $status != "pending"){
+				$res = '0';
+				echo $status.'*'.$res;	
+			}
 		}
 
 		public function displayOrderFromEditPage($qr)
@@ -146,6 +143,7 @@
 				$data['id'] = $id;
 				$data['qr'] = $qr;
 				$data['page'] = 'qr';
+				$data['edit'] = 'yes';
 			}else{
 				$data = null;
 				
@@ -153,9 +151,159 @@
 			if($data != null){
 				$res = $this->load->view('pos/vOrder',$data,TRUE);
 				echo $res;	
+			}else{
+				$res = $this->load->view('vError');
+				echo $res;
 			}
-			
-			
+		}
+
+		public function getScannedOrders()
+		{
+			// Datatables Variables
+	        $draw = intval($this->input->get("draw"));
+	        $start = intval($this->input->get("start"));
+	        $length = intval($this->input->get("length"));
+
+			$orders = $this->MOrdered->getScannedDataOrders();
+         	$data = array();
+
+			foreach($orders->result() as $o) {
+				$actions = 	' <a href="'.$this->urlSite.''.$o->ordered_id.'"><button class="ui inverted blue icon button">
+                                        <i class="unhide icon"></i>
+                                    </button></a>';
+
+                $date = date_create_from_format('Y-m-d H:i:s', $o->ordered_time); 
+
+			   	$data[] = array(
+			        $o->ordered_id,
+			       	$date->format('F d, Y g:i a'),
+			        $o->ordered_total,
+			        $o->ordered_qr_code,
+			        $actions,
+			        
+			   	);
+			}
+
+			$output = array(
+			  	"draw" => $draw,
+			    "recordsTotal" => $orders->num_rows(),
+			    "recordsFiltered" => $orders->num_rows(),
+			    "data" => $data
+			);
+			echo json_encode($output);
+			exit();
+		}
+
+		public function getPendingOrders()
+		{
+			// Datatables Variables
+	        $draw = intval($this->input->get("draw"));
+	        $start = intval($this->input->get("start"));
+	        $length = intval($this->input->get("length"));
+
+			$orders = $this->MOrdered->getPendingDataOrders();
+         	$data = array();
+
+			foreach($orders->result() as $o) {
+				$actions = 	' <a href="'.$this->urlSite.''.$o->ordered_id.'"><button class="ui inverted blue icon button">
+                                        <i class="unhide icon"></i>
+                                    </button></a>';
+
+                $date = date_create_from_format('Y-m-d H:i:s', $o->ordered_time); 
+
+			   	$data[] = array(
+			        $o->ordered_id,
+			       	$date->format('F d, Y g:i a'),
+			        $o->ordered_total,
+			        $o->ordered_qr_code,
+			        $actions,
+			        
+			   	);
+			}
+
+			$output = array(
+			  	"draw" => $draw,
+			    "recordsTotal" => $orders->num_rows(),
+			    "recordsFiltered" => $orders->num_rows(),
+			    "data" => $data
+			);
+			echo json_encode($output);
+			exit();
+		}
+
+		public function getExpiredOrders()
+		{
+			// Datatables Variables
+	        $draw = intval($this->input->get("draw"));
+	        $start = intval($this->input->get("start"));
+	        $length = intval($this->input->get("length"));
+
+			$orders = $this->MOrdered->getExpiredDataOrders();
+         	$data = array();
+
+			foreach($orders->result() as $o) {
+				$actions = 	' <a href="'.$this->urlSite.''.$o->ordered_id.'"><button class="ui inverted blue icon button">
+                                        <i class="unhide icon"></i>
+                                    </button></a>';
+
+                $date = date_create_from_format('Y-m-d H:i:s', $o->ordered_time); 
+
+			   	$data[] = array(
+			        $o->ordered_id,
+			       	$date->format('F d, Y g:i a'),
+			        $o->ordered_total,
+			        $o->ordered_qr_code,
+			        $actions,
+			        
+			   	);
+			}
+
+			$output = array(
+			  	"draw" => $draw,
+			    "recordsTotal" => $orders->num_rows(),
+			    "recordsFiltered" => $orders->num_rows(),
+			    "data" => $data
+			);
+			echo json_encode($output);
+			exit();
+		}
+
+		public function getOrders()
+		{
+			// Datatables Variables
+	        $draw = intval($this->input->get("draw"));
+	        $start = intval($this->input->get("start"));
+	        $length = intval($this->input->get("length"));
+
+			$orders = $this->MOrdered->getOrders();
+         	$data = array();
+
+			foreach($orders->result() as $o) {
+				$actions = 	' <a href="'.$this->urlSite.''.$o->ordered_id.'"><button class="ui inverted blue icon button">
+                                        <i class="unhide icon"></i>
+                                    </button></a>';
+
+                $date = date_create_from_format('Y-m-d H:i:s', $o->ordered_time); 
+
+			   	$data[] = array(
+			        $o->ordered_id,
+			       	$date->format('F d, Y g:i a'),
+			        $o->ordered_total,
+			        $o->ordered_qr_code,
+			        $o->ordered_status,
+			        $actions,
+			        
+			   	);
+			}
+
+			$output = array(
+			  	"draw" => $draw,
+			    "recordsTotal" => $orders->num_rows(),
+			    "recordsFiltered" => $orders->num_rows(),
+			    "data" => $data
+			);
+			echo json_encode($output);
+			exit();
 		}
     }
 ?>

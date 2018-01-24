@@ -2,24 +2,24 @@
 <div class="row"></div>
   <div class="row">
     <div class="column"></div>
-    <div class="six wide column">
+    <div class="seven wide column">
       <h1 class="ui grey dividing header">
             <img class="ui big image" src="<?php echo base_url("assets/images/hand.png")?>">
             <div class="content">
               EDIT ORDER
-              <div class="sub header">Create new order</div>
+              <div class="sub header">Edit current order</div>
             </div>  
         </h1>
         <?php if($page == 'manual'){
             echo '
               <a href="'.site_url().'/CProduct/backToMDashboard/'.$eid.'" class="item">
-                <h4 style="color: gray;"><i class="left arrow grey icon"></i>BACK TO HOME</h4>
+                <h4 style="color: gray;"><i class="left arrow grey icon"></i>BACK TO ORDERS</h4>
               </a>
             ';
          }else{
             echo '
               <a href="'.site_url().'/COrdered/displayOrderFromEditPage/'.$qr.'" class="item">
-                <h4 style="color: gray;"><i class="left arrow grey icon"></i>BACK TO HOME</h4>
+                <h4 style="color: gray;"><i class="left arrow grey icon"></i>BACK TO ORDERS</h4>
               </a>
             ';
          }?>
@@ -34,23 +34,25 @@
         <a class="item" data-tab="pancit">PANCIT</a>
         <a class="item" data-tab="extras">EXTRAS</a>
       </div>
-      <div class="ui bottom attached tab segment active" data-tab="maincourse" id="MAINCOURSE">
-        <font style="font-size:0px">MAIN COURSE</font>
-      </div>
-      <div class="ui bottom attached tab segment" data-tab="drinks" id="DRINKS">
-         <font style="font-size:0px">DRINKS</font>
-      </div>
-      <div class="ui bottom attached tab segment" data-tab="soup" id="SOUP">
-         <font style="font-size:0px">SOUP</font>
-      </div>
-      <div class="ui bottom attached tab segment" data-tab="pancit" id="PANCIT">
-         <font style="font-size:0px">PANCIT</font>
-      </div>
-      <div class="ui bottom attached tab segment" data-tab="extras" id="EXTRAS">
-         <font style="font-size:0px">EXTRAS</font>
+      <div class="scrollbar" id='scroll'>
+        <div class="ui bottom attached tab segment active" data-tab="maincourse" id="MAINCOURSE">
+          <font style="font-size:0px">MAIN COURSE</font>
+        </div>
+        <div class="ui bottom attached tab segment" data-tab="drinks" id="DRINKS">
+           <font style="font-size:0px">DRINKS</font>
+        </div>
+        <div class="ui bottom attached tab segment" data-tab="soup" id="SOUP">
+           <font style="font-size:0px">SOUP</font>
+        </div>
+        <div class="ui bottom attached tab segment" data-tab="pancit" id="PANCIT">
+           <font style="font-size:0px">PANCIT</font>
+        </div>
+        <div class="ui bottom attached tab segment" data-tab="extras" id="EXTRAS">
+           <font style="font-size:0px">EXTRAS</font>
+        </div>
       </div>
     </div>
-    <div class="two wide column"></div>
+    <div class="column"></div>
     
    <?php $this->view('pos/vEditComponent') ?>
 

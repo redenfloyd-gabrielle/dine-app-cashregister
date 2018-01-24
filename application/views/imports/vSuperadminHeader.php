@@ -33,11 +33,14 @@
         </span>
         <input hidden='' type='text' name='pass' id='pass' value='<?php echo strtolower($this->session->userdata['userSession']['user_password']);?>'>
     </div> 
-    <a class='item' href='<?php echo site_url()?>/CUser/viewSuperadminDashboard?>'>
+    <a class='item' href='<?php echo site_url()?>/CUser/viewSuperadminDashboard'>
         <i class='dashboard icon'></i> Dashboard
     </a>
-    <a class='item' href='<?php echo site_url()?>/CUser/viewUsersList?>'>
+    <a class='item' href='<?php echo site_url()?>/CUser/viewUsersList'>
         <i class='users icon'></i> Users
+    </a>
+    <a class="item" href='<?php echo site_url()?>/CProduct/viewAllProducts'>
+        <i class="food icon"></i> Products
     </a>
 </div>
 <!-- end of sidebar -->
@@ -50,12 +53,7 @@
     <a class=" item toggleMenu">
         <i class="sidebar icon"></i>
     </a> 
-    <a class=' item' href='<?php echo site_url()?>/CUser/viewSuperadminDashboard?>'>DINE</a>
-    <!-- <div class="ui inverted transparent left icon action input hidden item">
-        <input type="text" placeholder="Enter keyword..." name="search">
-        <i class="search icon"></i>
-        <button class='ui teal button'>Search</button>
-    </div> -->
+    <a class=' item' href='<?php echo site_url()?>/CUser/viewSuperadminDashboard'>DINE</a>
     <div class='right menu'>
         <div class='ui simple dropdown item' tabindex='0'>
         <i class='user icon'></i>PROFILE
@@ -64,7 +62,7 @@
         </i>
         <div class='menu' tabindex='-1'>
             <a class='item' id='changePass'><i class='lock icon'></i>CHANGE PASSWORD</a>
-            <a class='item' href='<?php echo site_url()?>/CLogin/userLogout?>' ><i class='power icon'></i>LOGOUT</a>
+            <a class='item' href='<?php echo site_url()?>/CLogin/userLogout' ><i class='power icon'></i>LOGOUT</a>
         </div>
     </div>
     </div>
@@ -80,10 +78,11 @@
 <div class="ui mini modal" id="confirmUpdate" aria-hidden="true">
   <div class="header">Update user credentials</div>
   <div class="content">
-    <form class="ui form" action="<?php echo site_url();?>/CUser/changePassword" method="POST">
+    <form class="ui form updatePassword" action="<?php echo site_url();?>/CUser/changePassword" method="POST">
         <div class="required field">
             <label>Old Password</label>
             <input type="password" name="old" id="old" required placeholder="Enter old password">
+            <input hidden='' type='password' name='pass' id='oldpass' value='<?php echo strtolower($this->session->userdata['changePassword']['user_password']);?>'>
         </div>
         <div class="required field">
             <label>New Password</label>
@@ -126,8 +125,144 @@
   </div>
 </div> 
 
+<!-- leave page modal -->
+<div class="ui basic modal" id="cancelModalHome">
+  <div class="ui icon header">
+    <i class="sign out icon"></i>
+    Leave Page
+  </div>
+  <div class="content">
+    <center><p style='font-size: 1.5em;'>Are you sure you want to leave this page? Changes you made may not be saved.</p></center>
+  </div>
+  <div class="actions">
+    <div class="ui gray basic cancel inverted button">
+      <i class="remove icon"></i>
+      No
+    </div>
+    <a  href='<?php echo site_url()?>/CUser/viewSuperadminDashboard'><button class="ui basic blue ok inverted button" type="submit">
+      <i class="checkmark icon"></i>
+      Yes
+    </button></a>
+  </div>
+</div>
 
 
+<script type="text/javascript">
+$(document).ready(function(){
+    $('.ui.modal').modal({
+        onApprove : function() {
+          //Submits the semantic ui form
+          //And pass the handling responsibilities to the form handlers,
+          // e.g. on form validation success
+          $('.ui.form').submit();
+          //Return false as to not close modal dialog
+          return false;
+        }
+    });
+
+
+
+    var formValidationRules =
+    {   //fields: { 
+            old_password: {
+                identifier: 'old',
+                rules:[
+                    {
+                        type: 'empty',
+                        prompt: 'This field must not be empty.'
+                    },
+                    {
+                        type: 'match[oldpass]',
+                        prompt: 'Password does not match with old password.' 
+                    }
+                ]
+            },
+            new_password: {
+                identifier: 'new',
+                rules:[
+                    {
+                        type: 'empty',
+                        prompt: 'This field must not be empty.'
+                    },
+                    {
+                        type: 'different[oldpass]',
+                        prompt: 'New password must be different from old password.'
+                    }
+                ]
+            },
+            confirm_password: {
+                identifier: 'confirm',
+                rules:[
+                    {
+                        type: 'empty',
+                        prompt: 'This field must not be empty.'
+                    },
+                    {
+                        type: 'match[new]',
+                        prompt: 'Password does not match with new password.'
+                    }
+                ]
+            }
+            
+        // }
+    }
+   
+    $('.updatePassword').form({
+        on: 'change',
+        inline: true,
+        fields: formValidationRules,
+        onSuccess : function() 
+        {
+          //Hides modal on validation success
+          // alert("Valid Submission, modal will close.");
+          $('.modal').modal('hide');
+        }
+    });
+
+    $('.userInformation').form({
+        on: 'change',
+        inline: true,
+        fields:{
+            first_name: {
+                identifier: 'fname',
+                rules:[
+                    {
+                        type: 'empty',
+                        prompt: 'This field must not be empty.'
+                    },
+                    {
+                        type: 'regExp[^[a-zA-Z. -]+$]',
+                        prompt: 'First name must only contain letters.'
+                    }
+                ]
+            },
+            last_name: {
+                identifier: 'lname',
+                rules:[
+                    {
+                        type: 'empty',
+                        prompt: 'This field must not be empty.'
+                    },
+                    {
+                        type: 'regExp[^[a-zA-Z. -]+$]',
+                        prompt: 'Last name must only contain letters.'
+                    }
+                ]
+            },
+            user_position: {
+                identifier: 'pos',
+                rules:[
+                    {
+                        type: 'empty',
+                        prompt: 'This field must not be empty.'
+                    }
+                ]
+            }
+        }
+    });
+});
+    
+</script>
 
 <?php 
 } else if ($this->session->userdata['userSession']['user_type'] == 'REGULAR') {

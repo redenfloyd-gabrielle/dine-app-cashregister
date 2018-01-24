@@ -9,7 +9,6 @@
     <link rel='stylesheet' href='<?php echo base_url("assets/css/adminAssets.css")?>'>
     <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/posAssets.css')?>">
     <link rel='stylesheet' href='<?php echo base_url("assets/semantic/semantic.min.css")?>'>
-    <link rel='stylesheet' href='<?php echo base_url("assets/semantic/datatables.min.css")?>'>
     <script src='<?php echo base_url("assets/jquery/jquery.min.js")?>'></script>
     <script src='<?php echo base_url("assets/semantic/semantic.min.js")?>'></script>
     <script type="text/javascript" src="<?php echo base_url('assets/jquery/tablesort.js')?>"></script>
@@ -19,6 +18,24 @@
     <script src='<?php echo base_url("assets/jquery/datatables.min.js")?>'></script>
     <script src='<?php echo base_url("assets/jquery/dataTables.semanticui.js")?>'></script>
 
+    <link rel='stylesheet' href='<?php echo base_url("assets/css/jquery.dataTables.min.css")?>'>
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/buttons.semanticui.min.css')?>">
+    <script src='<?php echo base_url("assets/jquery/dataTables.buttons.min.js")?>'></script>
+    <script src='<?php echo base_url("assets/jquery/jszip.min.js")?>'></script>
+    <script src='<?php echo base_url("assets/jquery/pdfmake.min.js")?>'></script>
+    <script src='<?php echo base_url("assets/jquery/vfs_fonts.js")?>'></script>
+    <script src='<?php echo base_url("assets/jquery/buttons.html5.min.js")?>'></script>
+    <script src='<?php echo base_url("assets/jquery/buttons.semanticui.min.js")?>'></script>
+    <script src='<?php echo base_url("assets/jquery/buttons.print.min.js")?>'></script>
+    <!-- <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css"> -->
+    <!-- <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/1.5.1/css/buttons.semanticui.min.css"> -->
+    <!-- <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.5.1/js/dataTables.buttons.min.js"></script> -->
+    <!-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script> -->
+    <!-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/pdfmake.min.js"></script> -->
+    <!-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/vfs_fonts.js"></script> -->
+    <!-- <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.5.1/js/buttons.html5.min.js"></script> -->
+    <!-- <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.5.1/js/buttons.semanticui.min.js"></script> -->
+    <!-- <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.5.1/js/buttons.print.min.js"></script> -->
 </head>
 <body class="pushable" >  
 
@@ -49,12 +66,9 @@
     <a class='item' href='<?php echo site_url()?>/COrdered/viewOrderList?>'>
         <i class='shop icon'></i> Orders
     </a>
-    <a class='item' href='<?php echo site_url()?>/CReports/viewReports'>
+    <a class='item' href='<?php echo site_url()?>/CReports/getData'>
         <i class='bar chart icon'></i> Reports
     </a>
-<!--     <a class='item' href='<?php //echo site_url()?>/CLogin/viewPos'>
-        <i class='calculator icon'></i> POS
-    </a> -->
 </div>
 <!-- end of sidebar -->
 
@@ -63,12 +77,9 @@
     <a class="borderless item toggleMenu">
         <i class="sidebar icon"></i>
     </a>
-    <a class='borderless item' href='<?php echo site_url()?>/CUser/viewAdminDashboard?>'>DINE</a>
-<!--     <div class="ui inverted transparent left icon action input borderless item">
-        <input type="text" placeholder="Enter keyword..." name="search">
-        <i class="search icon"></i>
-        <button class='ui brown button'>Search</button>
-    </div> -->
+
+    <a class='borderless item' href='<?php echo site_url()?>/CUser/viewAdminDashboard'>DINE</a>
+
     <div class='right menu'>
         <a class="item" href="<?php echo site_url()?>/CLogin/viewPos"><i class="calculator icon"></i>SWITCH TO POS</a> 
         <div class='ui simple dropdown item' tabindex='0'>
@@ -78,7 +89,7 @@
         </i>
         <div class='menu' tabindex='-1'>
             <a class='item' id='changePass'><i class='lock icon'></i>CHANGE PASSWORD</a>
-            <a class='item' href='<?php echo site_url()?>/CLogin/userLogout?>' ><i class='power icon'></i>LOGOUT</a>
+            <a class='item' href='<?php echo site_url()?>/CLogin/userLogout' ><i class='power icon'></i>LOGOUT</a>
         </div>
     </div>
     </div>
@@ -102,24 +113,25 @@
   <div class="header">Update user credentials</div>
   <div class="content">
     <form class="ui form updatePassForm" action="<?php echo site_url();?>/CUser/changePassword" method="POST">
+
         <div class="required field">
             <label>Old Password</label>
-            <input type="password" name="old" id="old" required placeholder="Enter old password">
+            <input type="password" name="old" id="old" placeholder="Enter old password">
+            <input hidden='' type='password' name='pass' id='oldpass' value='<?php echo strtolower($this->session->userdata['changePassword']['user_password']);?>'>
         </div>
         <div class="required field">
             <label>New Password</label>
-            <input type="password" name="new" id="new" required placeholder="Enter new password">
+            <input type="password" name="new" id="new" placeholder="Enter new password">
         </div>
         <div class="required field">
             <label>Confirm New Password</label>
-            <input type="password" name="confirm" id="confirm" required placeholder="Confirm new password">
+            <input type="password" name="confirm" id="confirm" placeholder="Confirm new password">
         </div>
-        <div class="ui error message"></div>
-
+        <!-- <div class="ui error message"></div> -->
   </div>
   <div class="actions" >
-    <div class="ui cancel gray button">Cancel</div>
-    <button class="ui submit brown button" type="submit">Update</button>
+    <div class="ui cancel button gray">Cancel</div>
+    <button class="ui submit ok brown button" type="submit">Update</button>
     </form>
   </div>
 </div>
@@ -145,6 +157,153 @@
   </div>
 </div>
 
+<!-- leave page modal -->
+<div class="ui basic modal" id="cancelModalHome">
+  <div class="ui icon header">
+    <i class="sign out icon"></i>
+    Leave Page
+  </div>
+  <div class="content">
+    <center><p style='font-size: 1.5em;'>Are you sure you want to leave this page? Changes you made may not be saved.</p></center>
+  </div>
+  <div class="actions">
+    <div class="ui gray basic cancel inverted button">
+      <i class="remove icon"></i>
+      No
+    </div>
+    <a href='<?php echo site_url()?>/CUser/viewAdminDashboard'><button class="ui basic brown ok inverted button" type="submit">
+      <i class="checkmark icon"></i>
+      Yes
+    </button></a>
+  </div>
+</div>
+
+<script type="text/javascript">
+$(document).ready(function(){
+
+    $('.ui.modal').modal({
+            onApprove : function() {
+              //Submits the semantic ui form
+              //And pass the handling responsibilities to the form handlers,
+              // e.g. on form validation success
+              $('.ui.form').submit();
+              //Return false as to not close modal dialog
+              return false;
+            }
+        });
+
+    var formValidationRules =
+    {   //fields: { 
+            old_password: {
+                identifier: 'old',
+                rules:[
+                    {
+                        type: 'empty',
+                        prompt: 'This field must not be empty.'
+                    },
+                    {
+                        type: 'match[oldpass]',
+                        prompt: 'Password does not match with old password.' 
+                    }
+                ]
+            },
+            new_password: {
+                identifier: 'new',
+                rules:[
+                    {
+                        type: 'empty',
+                        prompt: 'This field must not be empty.'
+                    },
+                    {
+                        type: 'different[oldpass]',
+                        prompt: 'New password must be different from old password.'
+                    }
+                ]
+            },
+            confirm_password: {
+                identifier: 'confirm',
+                rules:[
+                    {
+                        type: 'empty',
+                        prompt: 'This field must not be empty.'
+                    },
+                    {
+                        type: 'match[new]',
+                        prompt: 'Password does not match with new password.'
+                    }
+                ]
+            }
+        // }
+    }
+   
+    $('.updatePassForm').form({
+        on: 'change',
+        inline: true,
+        fields: formValidationRules,
+        onSuccess : function() 
+        {
+          //Hides modal on validation success
+          $('.modal').modal('hide');
+          // $('#valid').modal('show');
+        }
+    });
+
+
+    $('.productInformation').form({
+        on: 'blur',
+        inline: true,
+        fields:{
+            name: {
+                identifier: 'name',
+                rules:[
+                    {
+                        type: 'empty',
+                        prompt: 'This field must not be empty.'
+                    },
+                    {
+                        type: 'regExp[^[a-zA-Z. -]+$]',
+                        prompt: 'Product name must only contain letters.'
+                    }
+                ]
+            },
+            description: {
+                identifier: 'description',
+                rules:[
+                    {
+                        type: 'empty',
+                        prompt: 'This field must not be empty.'
+                    }
+                ]
+            },
+            price: {
+                identifier: 'price',
+                rules:[
+                    {
+                        type: 'empty',
+                        prompt: 'This field must not be empty.'
+                    },
+                    {
+                        type: 'number',
+                        prompt: 'This field must only contain numbers.'
+                    }
+                ]
+            },
+            category: {
+                identifier: 'category',
+                rules:[
+                    {
+                        type: 'empty',
+                        prompt: 'This field must not be empty.'
+                    }
+                ]
+            }
+        }
+    });
+
+
+});
+    
+</script>
 
 
 <?php 
