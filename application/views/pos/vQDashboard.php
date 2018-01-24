@@ -45,7 +45,7 @@
     <i class="red warning sign icon">  QR Code Failed</i>
   </div>
   <div class="content">
-   <p align="center" id="error" class="size16">Please try again. Make sure you are <span class="size16" id="scantext">scanning a valid code. </span></p>
+   <p align="center" id="error" class="size16">Please try again. Make sure you are scanning a valid code.</p>
   </div>
   <div class="actions">
     <div class="ui green ok inverted button">
@@ -84,7 +84,7 @@
         } else {
           console.error('No cameras found.');
         }
-      }).catch(function (e) {
+      }).catch(function(e) {
         console.error(e);
       });
 	
@@ -115,6 +115,8 @@
 						$('#invalid').modal('show');
 					}
 				}else{
+					var msg = 'Please try again. Make sure you are scanning a valid code.';
+					$('#error').html(msg);
 					$('#invalid')
 					  .modal('show');
 				}     
@@ -153,8 +155,8 @@
 					$('#invalid').modal('show');
 				}
 			}else{
-				var msg = 'inputting a valid reference number. ';
-				$('#scantext').html(msg);
+				var msg = 'Please try again. Make sure you are submitting a valid code.';
+				$('#error').html(msg);
 				$('#invalid')
 				  .modal('show');
 			}     

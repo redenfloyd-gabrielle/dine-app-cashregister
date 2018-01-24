@@ -451,6 +451,7 @@
 				$this->createReceiptSession();
 			}
         	$data['page'] = 'manual';
+        	$data['edit'] = 'no';
         	$data['id'] = $this->session->userdata['receiptSession']['receipt_id'];
 			$this->load->view('imports/vPosHeader');
 			$this->load->view('pos/vMDashboard',$data);
@@ -479,6 +480,7 @@
 				$data['qty'] = $qty;
 				$data['id'] = $receipt_id;
 				$data['page'] = 'manual';
+				$data['edit'] = 'no';
 			}else{
 				$data = null;
 			}

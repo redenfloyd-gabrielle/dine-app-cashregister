@@ -96,6 +96,7 @@
 				$data['id'] = $id;
 				$data['qr'] = $qr;
 				$data['page'] = 'qr';
+				$data['edit'] = 'no';
 			}else{
 				$data = null;
 			}
@@ -142,6 +143,7 @@
 				$data['id'] = $id;
 				$data['qr'] = $qr;
 				$data['page'] = 'qr';
+				$data['edit'] = 'yes';
 			}else{
 				$data = null;
 				
