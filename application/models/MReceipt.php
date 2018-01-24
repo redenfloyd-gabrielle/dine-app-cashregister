@@ -44,8 +44,8 @@
 
      	public function getWeeklySales(){
      		$now = new DateTime(NULL, new DateTimeZone('Asia/Manila'));
-     		$start = $now->format('Y-m-d'.strtotime('monday this week'));
-            $end = $now->format('Y-m-d '.strtotime('sunday this week'));
+            $start = date('Y-m-d', strtotime('monday this week'));
+            $end = date('Y-m-d', strtotime('sunday this week'));
 
     	  	$this->db->select('SUM(receipt_total) AS total');
           	$this->db->from($this::DB_TABLE);
