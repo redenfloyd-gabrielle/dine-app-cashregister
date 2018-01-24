@@ -11,15 +11,15 @@
                 </div>
             </h1> <!-- header -->
             <div class='ui breadcrumb'>
-                <a class='section' href='<?php echo site_url()?>/CUser/viewSuperadminDashboard'>HOME</a>
+                <a class='section confirmCancelHome'>HOME</a>
                 <i class='right arrow icon divider'></i>
-                <a class='section' id='confirmCancelBR'>USERS</a>
+                <a class='section confirmCancelBR'>USERS</a>
                 <i class='right arrow icon divider'></i>
                 <div class='active section'>ADD USER</div> 
             </div> <!-- breadcrumb -->
         </div> <!-- segment -->
 
-        <!-- content -->
+        <!-- content -->  
         <div class='ui segments'>
             <div class='ui basic segment'>
                 <h5 class='ui header teal ribbon label'><i class='info icon'></i>
@@ -28,7 +28,7 @@
                 <div class='ui stackable padded grid'>
                     <div class='row'>  
                         <div class='eight wide column'>
-                            <form class='ui form' method="POST" action="<?php echo site_url()?>/CUser/addUser">
+                            <form class='ui form userInformation' method="POST" action="<?php echo site_url()?>/CUser/addUser">
                             <h3 class='ui horizontal divider header'>
                                 <i class='address card outline icon'></i> User Personal Information
                             </h3>
@@ -41,18 +41,20 @@
                         </div>
                         <div class='eight wide column'>
                             <h3 class='ui horizontal divider header'><i class='user icon'></i>User Account Information</h3>
+                            <div class="field">
+                                <label><strong>POSITION</strong><span style="color: red;">*</span></label><br>
+                                <input type="hidden" name="position" id="position" value="">
+                                <select class="ui dropdown" name="pos" id="pos">
+                                    <option value>Choose position</option>
+                                    <option value="Manager">Manager</option>
+                                    <option value="Supervisor">Supervisor</option>
+                                    <option value="Cashier">Cashier</option>
+                                    <option value="Owner">Owner</option>
+                                </select>
+                            </div>
 
-                            <label>POSITION</label><br>
-                            <input type="hidden" name="position" id="position" value="">
-                            <select class="ui dropdown" name="pos" id="pos">
-                              <option value="">Choose position</option>
-                              <option value="Manager">Manager</option>
-                              <option value="Supervisor">Supervisor</option>
-                              <option value="Cashier">Cashier</option>
-                              <option value="Owner">Owner</option>
-                            </select> <!-- position dropdown -->
 
-                            <div class="ui error message"></div>
+                            <!-- <div class="ui error message"></div> -->
                         </div>
                     </div> <!-- row -->
                     <div class='row'>
@@ -77,48 +79,6 @@ $(document).ready(function(){
     $(document).on('change','#pos',function() {
         $('#position').val($('#pos').val());
     });
-    // var aFunction = function(){
-    //     $('.modal').modal({
-    //         //detachable: true, 
-    //         transition: 'fade up',
-    //         closable: false,
-    //         onApprove : function() {
-    //             $('.ui.form').submit();
-    //                 return false;
-    //         }
-    //     });
-    // }
-    // $(document).ready(aFunction){
-    //     $('.ui.form').form({
-    //         fields:{
-    //             name: {
-    //                 identifier: 'fname',
-    //                 rules:[{
-    //                     type: 'regExp[^[a-zA-Z. -]+$]',
-    //                     prompt: 'First name must not be empty and must only contain letters.'
-    //                 }]
-    //             },
-    //             name: {
-    //                 identifier: 'lname',
-    //                 rules:[{
-    //                     type: 'regExp[^[a-zA-Z. -]+$]',
-    //                     prompt: 'Last name must not be empty and must only contain letters.'
-    //                 }]
-    //             },
-    //             position: {
-    //                 identifier: 'pos',
-    //                 rules:[{
-    //                     type: 'regExp[^[a-zA-Z. -]+$]',
-    //                     prompt: 'Position must not be empty.'
-    //                 }]
-    //             }
-    //         },
-    //         onSuccess: function(){
-    //             // alert("Valid submission. Modal will close.");
-    //             $('.modal').modal('hide');
-    //         }
-    //     });
-    // }
 
 });
 </script>       

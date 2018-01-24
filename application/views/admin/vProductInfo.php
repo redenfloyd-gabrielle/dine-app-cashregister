@@ -47,7 +47,7 @@
                         </div>
                         <div class='two column row'>
                             <div class='center aligned middle aligned column'>
-                                <img src='<?php echo base_url($prod->product_image)?>'>
+                                <img class="ui large centered image" src='<?php echo base_url($prod->product_image)?>'>
                             </div>
                             <div class='column'>
                                 <p style='font-size: 1em;'>PRODUCT ID &nbsp &nbsp| &nbsp &nbsp <span style='font-size: 1.2em; font-style: italic; font-weight: bold;'><?php echo $prod->product_id; ?></span></p>

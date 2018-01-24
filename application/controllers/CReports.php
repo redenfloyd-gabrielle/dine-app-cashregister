@@ -304,7 +304,7 @@
  
  			
  			$this->load->view('imports/vAdminHeader');
-			$this->load->view('admin/vReports',$data);
+			$this->load->view('admin/vReports1');
 			$this->load->view('imports/vAdminFooter');
 	 		}
 
@@ -622,7 +622,7 @@
 
  			
  			$this->load->view('imports/vAdminHeader');
-			$this->load->view('admin/vReports',$data);
+			$this->load->view('admin/vReports1');
 			$this->load->view('imports/vAdminFooter');
  		}
 
