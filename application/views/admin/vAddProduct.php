@@ -1,7 +1,7 @@
 <div class="pusher">
     <div class='ui hidden divider'></div>
     <div class='ui padded basic segment'>
-        <!-- header -->
+        <!-- header --> 
         <div class='ui basic segment'>
             <h1 class="ui brown dividing header">
                 <i class="food icon"></i>
@@ -11,7 +11,7 @@
                 </div>
             </h1> <!-- header -->
             <div class='ui breadcrumb'>
-                <a class='section' href='<?php echo site_url()?>/CUser/viewAdminDashboard'>HOME</a>
+                <a class='section confirmCancelHome' >HOME</a>
                 <i class='right arrow icon divider'></i>
                 <a class='section' id='confirmCancelBR'>CATEGORIES</a>
                 <i class='right arrow icon divider'></i>
@@ -33,7 +33,7 @@
                 <div class='ui stackable padded grid'>
                     <div class='row'>
                         <div class='column'>
-                            <form class='ui form' method="POST" action="<?php echo site_url()?>/CProduct/addProduct" accept-charset="utf-8" enctype="multipart/form-data">
+                            <form class='ui form productInformation' method="POST" action="<?php echo site_url()?>/CProduct/addProduct" accept-charset="utf-8" enctype="multipart/form-data">
                                 <div class='nine wide field'>
                                     <label>UPLOAD IMAGE</label>
                                     <input type="file" name="image" id='image' accept="image/*">
@@ -53,7 +53,7 @@
                                         <label>FOOD PRICE</label>
                                         <input type='number' placeholder='Enter food price' name="price">
                                     </div>
-
+                                    
                                     <label>CATEGORY</label><br>
                                     <select class="ui dropdown" name="category">
                                       <option value="">Choose category</option>
@@ -77,7 +77,7 @@
                                 <div class='ui hidden divider'></div>
                                 <div class='ui hidden divider'></div>
 
-                                <a id='confirmCancel'><div class='ui submit gray button'>Cancel</div></a>
+                                <a id='confirmCancelBR'><div class='ui submit gray button'>Cancel</div></a>
 
                                 <button class='ui submit brown button' type="submit">Add</button>
 
