@@ -1,4 +1,4 @@
-<div class="pusher">
+<div class="pusher"> 
     <div class='ui hidden divider'></div>
     <div class='ui padded basic segment'>
         <!-- header -->
@@ -11,7 +11,7 @@
                 </div>
             </h1> <!-- header -->
             <div class='ui breadcrumb'>
-                <a class='section' href='<?php echo site_url()?>/CUser/viewAdminDashboard'>HOME</a>
+                <a class='section confirmCancelHome'>HOME</a>
                 <i class='right arrow icon divider'></i>
                 <a class='section' id='confirmCancelBR'>CATEGORIES</a>
                 <i class='right arrow icon divider'></i>
@@ -34,7 +34,7 @@
                     <?php foreach($product as $prod) {} ?>  
                     <div class='row'>
                         <div class='column'>
-                            <form class='ui form' method='POST' action='<?php echo site_url()?>/CProduct/updateProduct/<?php echo $prod->product_id; ?>' accept-charset="utf-8" enctype="multipart/form-data">
+                            <form class='ui form productInformation' method='POST' action='<?php echo site_url()?>/CProduct/updateProduct/<?php echo $prod->product_id; ?>' accept-charset="utf-8" enctype="multipart/form-data">
                                 <div class='nine wide field'>
                                     <label>UPLOAD IMAGE</label>
                                     <input type="hidden" name='pic' id='pic' >
@@ -69,7 +69,7 @@
                                 <div class='ui hidden divider'></div>
                                 <div class='ui hidden divider'></div>
 
-                                <a id='confirmCancel'><div class='ui submit gray button'>Cancel</div></a>
+                                <a id='confirmCancelBR'><div class='ui submit gray button'>Cancel</div></a>
 
                                 <button class='ui submit brown button' type='submit'>Edit</button>
 

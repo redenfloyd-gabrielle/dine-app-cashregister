@@ -20,6 +20,10 @@ $(document).ready(function(){
         $('#cancelModal').modal('show');
     });
 
+    $('.confirmCancelHome').click(function(){
+        $('#cancelModalHome').modal('show');
+    });
+
     // Prevents modal from closing when clicked outside
     $('.ui.modal').modal('setting', 'closable', false);
 
@@ -36,7 +40,7 @@ $(document).ready(function(){
 
 }); 
 
-$(document).ready(function(){
+// $(document).ready(function(){
 	// $(document).on('change','#old',function() {
 	// 	var temp = $('#pass').val();
 	// 	var shaObj = new jsSHA($('#old').val(), 'ASCII');
@@ -62,7 +66,7 @@ $(document).ready(function(){
 	// 	//classes sa if
  //    });
 
-}); 
+// }); 
 
 $(document).ready(function(){
 	$(document).on('change','#image',function(e) {

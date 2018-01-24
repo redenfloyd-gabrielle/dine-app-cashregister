@@ -139,22 +139,26 @@
   </div>
 </div>
 
-
-<!-- <div class="ui basic modal" id="valid">
-    <div class="ui icon header">
-    <i class="check icon"></i>
-    Valid Submission
+<!-- leave page modal -->
+<div class="ui basic modal" id="cancelModalHome">
+  <div class="ui icon header">
+    <i class="sign out icon"></i>
+    Leave Page
   </div>
   <div class="content">
-    <center><p style='font-size: 1.5em;'>Change password was successful. You will be logged out of your account and will be required to log in using your new password.</p></center>
+    <center><p style='font-size: 1.5em;'>Are you sure you want to leave this page? Changes you made may not be saved.</p></center>
   </div>
   <div class="actions">
-    <button class="ui basic brown ok inverted button">
+    <div class="ui gray basic cancel inverted button">
+      <i class="remove icon"></i>
+      No
+    </div>
+    <a href='<?php echo site_url()?>/CUser/viewAdminDashboard'><button class="ui basic brown ok inverted button" type="submit">
       <i class="checkmark icon"></i>
-      Okay
-    </button>
+      Yes
+    </button></a>
   </div>
-</div> -->
+</div>
 
 <script type="text/javascript">
 $(document).ready(function(){
@@ -214,7 +218,7 @@ $(document).ready(function(){
         // }
     }
    
-    $('.ui.form').form({
+    $('.updatePassForm').form({
         on: 'change',
         inline: true,
         fields: formValidationRules,
@@ -225,10 +229,60 @@ $(document).ready(function(){
           // $('#valid').modal('show');
         }
     });
-    // $('.ui.cancel.button').on('click', function(){
-    //     $('form').form('clear');
-    //     // $('.confirmUpdate').modal('hide');
-    // })
+
+
+    $('.productInformation').form({
+        on: 'blur',
+        inline: true,
+        fields:{
+            name: {
+                identifier: 'name',
+                rules:[
+                    {
+                        type: 'empty',
+                        prompt: 'This field must not be empty.'
+                    },
+                    {
+                        type: 'regExp[^[a-zA-Z. -]+$]',
+                        prompt: 'Product name must only contain letters.'
+                    }
+                ]
+            },
+            description: {
+                identifier: 'description',
+                rules:[
+                    {
+                        type: 'empty',
+                        prompt: 'This field must not be empty.'
+                    }
+                ]
+            },
+            price: {
+                identifier: 'price',
+                rules:[
+                    {
+                        type: 'empty',
+                        prompt: 'This field must not be empty.'
+                    },
+                    {
+                        type: 'number',
+                        prompt: 'This field must only contain numbers.'
+                    }
+                ]
+            },
+            category: {
+                identifier: 'category',
+                rules:[
+                    {
+                        type: 'empty',
+                        prompt: 'This field must not be empty.'
+                    }
+                ]
+            }
+        }
+    });
+
+
 });
     
 </script>
