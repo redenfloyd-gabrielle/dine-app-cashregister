@@ -53,8 +53,7 @@
                     </button>
                   </td>
                   <td>P<span class="subtotal" id="subtotal" name='sub<?php echo $order->item_id; ?>'><?php echo $order->order_item_subtotal; ?></span></td>
-                  <td><a class="confirmRemove" style="cursor: pointer;" data-id='<?php echo $order->item_id; ?>'><i class="red remove icon"></i></a></td>
-                  
+                  <td><a class="confirmRemove" style="cursor: pointer;" data-id='<?php echo $order->item_id; ?>'><i class="red remove icon"></i></a></td>  
               </tr>
             </form>
             <?php } ?>
@@ -94,7 +93,7 @@
           <a href="'.site_url().'/COrdered/displayOrderFromEditPage/'.$qr.'" class="item"><div class="ui teal button">BACK</div></a>
         ';
      }?>
-    </div><div class="hidden item"></div> <div class="hidden item"></div><div class="hidden item"></div><div class="hidden item"></div><div class="hidden item"></div><div class="hidden item"></div><div class="hidden item"></div><div class="hidden item"></div><div class="hidden item"></div><div class="hidden item"></div><div class="hidden item"></div><div class="hidden item"></div><div class="hidden item"></div><div class="hidden item"></div><div class="hidden item"></div>
+    <div class="hidden item"></div> <div class="hidden item"></div> <div class="hidden item"></div> <div class="hidden item"></div><div class="hidden item"></div><div class="hidden item"></div><div class="hidden item"></div><div class="hidden item"></div><div class="hidden item"></div><div class="hidden item"></div><div class="hidden item"></div><div class="hidden item"></div><div class="hidden item"></div><div class="hidden item"></div><div class="hidden item"></div><div class="hidden item"></div><div class="hidden item"></div>
   </div>
 </div>
 </div> 

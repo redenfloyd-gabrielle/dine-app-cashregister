@@ -13,7 +13,6 @@
   <script src="main.js"></script>
 </head>
 <body>
-<div class="new-page">
 <div class="receiptbox" id="receiptbox">
    <br>
    <p class="receipthead" align="center"><strong>Mameng's Seafoods and </strong></p>
@@ -33,7 +32,7 @@
    <table class="receipttbl">
      <tr>
        <th class="rqty" align="left">Qty</th>
-       <th class="rqty" align="left">Item</th>
+       <th class="lft rqty">Item</th>
      </tr>
      <?php if( isset($receipt_item)){ ?>
       <?php foreach ($receipt_item as $item) { ?>
@@ -50,7 +49,6 @@
   <div class="tagline">is not an option <div>
   <div class="tagline">it’s an obligation.</div>
   <br>
-</div>
 </div>
 <h3>`</h3>
 </body>

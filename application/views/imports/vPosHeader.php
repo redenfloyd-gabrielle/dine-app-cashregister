@@ -13,7 +13,7 @@
 </head>
 <body>
 <div class="ui large top attached inverted teal menu borderless">
-	<a class="item bpmono size18">DINE | POS</a>
+	<a class="item bpmono size18" href="<?php echo site_url()?>/CLogin/viewPos">DINE | POS</a>
 	<div class="right menu bpmono size18">
 		<div class="item">
 			<span style="text-transform: uppercase;"><?php echo $this->session->userdata['userSession']['user_first_name'].' '.$this->session->userdata['userSession']['user_last_name'];?> &nbsp | &nbsp <span id="date"></span> &nbsp | &nbsp <span class ="time"></span>&nbsp &nbsp</span>
@@ -57,7 +57,7 @@
 	   var date = monthNames[month-1]+ ' ' +
 	    (day<10 ? '0' : '') + day+','+ d.getFullYear();   
 	   $('#date').append(date);
-	   $('body').removeClass('dimmable');
+
     });
 
 </script>

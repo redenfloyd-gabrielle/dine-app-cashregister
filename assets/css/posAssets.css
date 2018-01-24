@@ -10,6 +10,7 @@
     font-weight: normal;
     font-style: normal;
 }
+
 body{background-color: white !important; overflow-y: none;}
 /* For Firefox */
 input[type='number'] { -moz-appearance:textfield;}
@@ -35,7 +36,7 @@ font-weight: bold;}
 .tagline{font-size:20px;font-weight: bold; font-family: "Lucida Console", Monaco, monospace; margin: 2px 0px ;text-transform: uppercase; text-align: center;}
 .receipttype{margin: 20px 0px; text-align: center;}
 .prodname{min-height: 35px;}
-.scrollbar{float: left; height: 460px; width: 590px; background: white; overflow-y: scroll; overflow-x: hidden; margin-bottom: 25px;}
+.scrollbar{float: left; height: 460px; width: 100%; background: white; overflow-y: scroll; overflow-x: hidden; margin-bottom: 25px;}
 #scroll::-webkit-scrollbar-track { -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); border-radius: 10px; background-color: white; }
 #scroll::-webkit-scrollbar{ width: 12px; background-color: #A0A0A0; }
 #scroll::-webkit-scrollbar-thumb { border-radius: 10px; -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3); background-color: #A0A0A0;}

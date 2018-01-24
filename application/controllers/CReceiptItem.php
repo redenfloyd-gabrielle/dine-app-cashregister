@@ -140,6 +140,7 @@
 				$data['qty'] = $qty;
 				$data['id'] = $receipt_id;
 				$data['page'] = 'manual';
+				$data['edit'] = 'no';
 			}else{
 				$data = null;
 			}
