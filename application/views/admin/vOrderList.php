@@ -136,12 +136,39 @@
     $(document).ready(function() {
         var flag=0;
         $(document).on('click', '#third', function(){
+            <?php $now = new DateTime(NULL, new DateTimeZone('Asia/Manila')); ?>
             if(flag==0){
                 $('#scanned').DataTable({
                     "ajax" : {
                         url: "<?php echo site_url();?>/COrdered/getScannedOrders",
                         type : 'GET',
                     },
+                    dom: 'Bfrtip',
+                    buttons: [
+                        {
+                            extend: 'excelHtml5',
+                            exportOptions: {
+                                columns: [0, 1, 2, 3]
+                            },
+                            title: 'Scanned Orders_<?php echo $now->format('Y-m-d'); ?>'
+                        },
+                        {
+                            extend: 'pdfHtml5',
+                            exportOptions: {
+                                columns: [0, 1, 2, 3]
+                            },
+                            messageTop: 'This PDF contains Scanned orders from dine-app.net',
+                            title: 'Scanned Orders_<?php echo $now->format('Y-m-d'); ?>'
+                        },
+                        {
+                            extend: 'print',
+                            exportOptions: {
+                                columns: [0, 1, 2, 3]
+                            },
+                            messageTop: 'This PDF contains Scanned orders from dine-app.net',
+                            title: 'Scanned Orders_<?php echo $now->format('Y-m-d'); ?>'
+                        }
+                    ]
                 });
                 flag++;
             }
@@ -150,23 +177,78 @@
         $('.menu .item').tab();
     } );
     $(document).ready(function() {
+        <?php $now = new DateTime(NULL, new DateTimeZone('Asia/Manila')); ?>
         $('#all').DataTable({
             "ajax" : {
                 url: "<?php echo site_url();?>/COrdered/getOrders",
                 type : 'GET',
             },
+            dom: 'Bfrtip',
+            buttons: [
+                {
+                    extend: 'excelHtml5',
+                    exportOptions: {
+                        columns: [0, 1, 2, 3, 4]
+                    },
+                    title: 'All Orders_<?php echo $now->format('Y-m-d'); ?>'
+                },
+                {
+                    extend: 'pdfHtml5',
+                    exportOptions: {
+                        columns: [0, 1, 2, 3, 4 ]
+                    },
+                    messageTop: 'This PDF contains all orders from dine-app.net',
+                    title: 'All Orders_<?php echo $now->format('Y-m-d'); ?>'
+                },
+                {
+                    extend: 'print',
+                    exportOptions: {
+                        columns: [0, 1, 2, 3, 4 ]
+                    },
+                    messageTop: 'This PDF contains all orders from dine-app.net',
+                    title: 'All Orders_<?php echo $now->format('Y-m-d'); ?>'
+                }
+            ]
+            
         });
     } );
 
     $(document).ready(function() {
         var flag=0;
         $(document).on('click', '#second', function(){
+            <?php $now = new DateTime(NULL, new DateTimeZone('Asia/Manila')); ?>
             if(flag==0){
                 $('#pending').DataTable({
                     "ajax" : {
                         url: "<?php echo site_url();?>/COrdered/getPendingOrders",
                         type : 'GET',
                     },
+                    dom: 'Bfrtip',
+                    buttons: [
+                        {
+                            extend: 'excelHtml5',
+                            exportOptions: {
+                                columns: [0, 1, 2, 3]
+                            },
+                            title: 'Pending  Orders_<?php echo $now->format('Y-m-d'); ?>'
+                        },
+                        {
+                            extend: 'pdfHtml5',
+                            exportOptions: {
+                                columns: [0, 1, 2, 3]
+                            },
+                            messageTop: 'This PDF contains Pending orders from dine-app.net',
+                            title: 'Pending Orders_<?php echo $now->format('Y-m-d'); ?>'
+                        },
+                        {
+                            extend: 'print',
+                            exportOptions: {
+                                columns: [0, 1, 2, 3]
+                            },
+                            messageTop: 'This PDF contains Pending orders from dine-app.net',
+                            title: 'Pending Orders_<?php echo $now->format('Y-m-d'); ?>'
+                        }
+                    ]
                 });
                 flag++;
             }
@@ -176,12 +258,39 @@
     $(document).ready(function() {
         var flag=0;
         $(document).on('click', '#fourth', function(){
+            <?php $now = new DateTime(NULL, new DateTimeZone('Asia/Manila')); ?>
             if(flag==0){
                 $('#expired').DataTable({
                     "ajax" : {
                         url: "<?php echo site_url();?>/COrdered/getExpiredOrders",
                         type : 'GET',
                     },
+                    dom: 'Bfrtip',
+                    buttons: [
+                        {
+                            extend: 'excelHtml5',
+                            exportOptions: {
+                                columns: [0, 1, 2, 3]
+                            },
+                            title: 'Expired Orders_<?php echo $now->format('Y-m-d'); ?>'
+                        },
+                        {
+                            extend: 'pdfHtml5',
+                            exportOptions: {
+                                columns: [0, 1, 2, 3]
+                            },
+                            messageTop: 'This PDF contains Expired orders from dine-app.net',
+                            title: 'Expired Orders_<?php echo $now->format('Y-m-d'); ?>'
+                        },
+                        {
+                            extend: 'print',
+                            exportOptions: {
+                                columns: [0, 1, 2, 3]
+                            },
+                            messageTop: 'This PDF contains Expired orders from dine-app.net',
+                            title: 'Expired Orders_<?php echo $now->format('M-d-Y'); ?>'
+                        }
+                    ]
                 });
                 flag++;
             }
