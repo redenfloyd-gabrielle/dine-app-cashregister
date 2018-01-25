@@ -7,7 +7,7 @@
                 <i class="dashboard icon"></i>
                 <div class="content">
                   USERS
-                  <div class="sub header">Add a new user</div>
+                  <div class="sub header">Edit user</div>
                 </div>
             </h1> <!-- header -->
             <div class='ui breadcrumb'>
@@ -15,7 +15,7 @@
                 <i class='right arrow icon divider'></i>
                 <a class='section' id='confirmCancelBR'>USERS</a>
                 <i class='right arrow icon divider'></i>
-                <div class='active section'>ADD USER</div>
+                <div class='active section'>EDIT USER</div>
             </div> <!-- breadcrumb -->
         </div> <!-- segment -->
         <!-- content -->

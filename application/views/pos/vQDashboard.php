@@ -155,7 +155,7 @@
 					$('#invalid').modal('show');
 				}
 			}else{
-				var msg = 'Please try again. Make sure you are submitting a valid code.';
+				var msg = 'Please try again. Make sure you are submitting a valid reference number.';
 				$('#error').html(msg);
 				$('#invalid')
 				  .modal('show');
