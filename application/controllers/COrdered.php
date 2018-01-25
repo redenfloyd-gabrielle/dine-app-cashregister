@@ -177,7 +177,7 @@
 			   	$data[] = array(
 			        $o->ordered_id,
 			       	$date->format('F d, Y g:i a'),
-			        $o->ordered_total,
+			        '₱ '.$o->ordered_total.'.00',
 			        $o->ordered_qr_code,
 			        $actions,
 			        
@@ -208,14 +208,14 @@
 				$actions = 	' <a href="'.$this->urlSite.''.$o->ordered_id.'"><button class="ui inverted blue icon button">
                                         <i class="unhide icon"></i>
                                     </button></a>';
-
+                $qr = ($o->ordered_qr_code == 0)? 'NOT APPLICABLE' : $o->ordered_qr_code;
                 $date = date_create_from_format('Y-m-d H:i:s', $o->ordered_time); 
 
 			   	$data[] = array(
 			        $o->ordered_id,
 			       	$date->format('F d, Y g:i a'),
-			        $o->ordered_total,
-			        $o->ordered_qr_code,
+			        '₱ '.$o->ordered_total.'.00',
+			        $qr,
 			        $actions,
 			        
 			   	);
@@ -245,14 +245,14 @@
 				$actions = 	' <a href="'.$this->urlSite.''.$o->ordered_id.'"><button class="ui inverted blue icon button">
                                         <i class="unhide icon"></i>
                                     </button></a>';
-
+                $qr = ($o->ordered_qr_code == 0)? 'NOT APPLICABLE' : $o->ordered_qr_code;
                 $date = date_create_from_format('Y-m-d H:i:s', $o->ordered_time); 
 
 			   	$data[] = array(
 			        $o->ordered_id,
 			       	$date->format('F d, Y g:i a'),
-			        $o->ordered_total,
-			        $o->ordered_qr_code,
+			        '₱ '.$o->ordered_total.'.00',
+			        $qr,
 			        $actions,
 			        
 			   	);
@@ -282,7 +282,7 @@
 				$actions = 	' <a href="'.$this->urlSite.''.$o->ordered_id.'"><button class="ui inverted blue icon button">
                                         <i class="unhide icon"></i>
                                     </button></a>';
-                $qr = ($o->ordered_qr_code == 0)? 'NO QR CODE' : $o->ordered_qr_code;
+                $qr = ($o->ordered_qr_code == 0)? 'NOT APPLICABLE' : $o->ordered_qr_code;
 
                 $date = date_create_from_format('Y-m-d H:i:s', $o->ordered_time); 
 
