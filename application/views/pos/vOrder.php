@@ -12,9 +12,7 @@ if($edit == 'yes' && $page =='qr'){
 </head>';
 }?>
 
-
 <?php if($page == 'qr'){
- 
 echo '
 <div class="ui large top attached inverted teal menu borderless">
   <a class="item bpmono size18" href="'.site_url().'/CLogin/viewPos">DINE | POS</a>
@@ -64,12 +62,7 @@ echo '
       (day<10 ? "0" : "") + day+","+ d.getFullYear();   
      $("#date").append(date);
     });
-
 </script> 
-
-
-
-
  <div class="row"></div>
   <div class="row">
     <div class="column"></div>

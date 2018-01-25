@@ -95,8 +95,8 @@
 
 <div class="ui basic modal" id="confirmReset">
   <div class="ui icon header">
-    <i class="refresh lock icon"></i>
-    Remove User
+    <i class="refresh icon"></i>
+    Reset Password
   </div>
   <div class="content">
 <form class='ui form' method='POST' action='<?php echo site_url()?>/CUser/resetPassword'>
