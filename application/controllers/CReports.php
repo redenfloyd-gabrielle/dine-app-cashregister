@@ -522,6 +522,8 @@
  				$data["daily31"] = 0;
  			}
 
+ 			$data["day"] = $this->MReports->get_daily();
+
  			//////////////////////////////////WEEKLY////////////////////////////////////////////////
 
 
@@ -622,7 +624,7 @@
 
  			
  			$this->load->view('imports/vAdminHeader');
-			$this->load->view('admin/vReports1');
+			$this->load->view('admin/vReports1',$data);
 			$this->load->view('imports/vAdminFooter');
  		}
 

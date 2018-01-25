@@ -533,6 +533,23 @@
             }
         }
 
+        public function get_daily(){
+
+            $this->load->database();
+            $now = new DateTime(NULL, new DateTimeZone('Asia/Manila'));
+            $this->db->select('*, SUM(receipt_total) as total');
+            $this->db->from('receipt');
+            $this->db->where('receipt_date >="'.$now->format('Y-m-d 0:0:0').'" AND receipt_date <= "'.$now->format('Y-m-d 23:59:59').'"');
+
+            $data = $this->db->get();
+            if($data->result() > 0){
+               return $data->result();
+            }else{
+               return $total = 0;
+            }
+        }
+
+
 
         public function get_weekly3(){
 
