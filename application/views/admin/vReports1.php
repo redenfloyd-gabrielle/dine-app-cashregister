@@ -65,6 +65,52 @@
             <div class="eight wide column">
               <div id="piechart" style="width: 500; height: 500px;"></div>
             </div>
+
+            <div class=" eight wide column">
+              <h3 class="ui grey dividing header">
+                  <div class="content">
+                    SALES (OVERALL)
+                    <!-- <div class="sub header">Shows the list of orders</div> -->
+                  </div>
+              </h3> <!-- header -->
+              <div class="ui hidden divider"></div>
+              <table class='ui sortable stackable celled table' id="receipt_all">
+                <thead>
+                  <tr> 
+                    <td><b>Receipt ID</b></td>
+                    <td><b>Receipt Date</b></td>  
+                    <td><b>Receipt Total</b></td>
+                    <td><b>Cashier</b></td>
+                    <td><b>Actions</b></td>
+                  </tr>
+                </thead>
+                <?php
+                  foreach($receipt as $row){
+                    ?>
+                    <tr>
+                      <td><?php echo $row->receipt_id; ?></td>
+                      <td><?php echo $row->receipt_date?></td>
+                      <td><?php echo $row->receipt_total; ?></td>
+                      <td><?php echo $row->receipt_cashier; ?></td>
+                      <td><a href="<?php echo site_url()?>/CReports/viewInfo/<?php echo $row->receipt_id?>"><button class="ui inverted blue icon button">
+                                        <i class="unhide icon"></i>
+                                    </button></a>'</td>
+                    </tr>
+                    <?php
+                  }
+                ?>
+              </table>
+            </div>
+
+            <?php
+                foreach($overall as $row){
+                  ?>
+                  <h1>Total Sales: <?php echo $row->total?></h1>
+                  <?php
+                }
+            ?>
+
+
             <div class="sixteen wide center aligned middle aligned column">
               <h3 class="ui grey dividing header">
                 <div class="content">
@@ -138,10 +184,56 @@
             </h3> <!-- header -->
             <div id="curve_chart4"></div>
           </div>
-        </div>
-            
 
-          
+
+            <div class=" eight wide column">
+              <h3 class="ui grey dividing header">
+                  <div class="content">
+                    SALES (DAILY)
+                    <!-- <div class="sub header">Shows the list of orders</div> -->
+                  </div>
+              </h3> <!-- header -->
+              <div class="ui hidden divider"></div>
+              <table class='ui sortable stackable celled table' id="receipt_day">
+                <thead>
+                  <tr> 
+                    <td><b>Receipt ID</b></td>
+                    <td><b>Receipt Date</b></td>  
+                    <td><b>Receipt Total</b></td>
+                    <td><b>Cashier</b></td>
+                    <td><b>Actions</b></td>
+                  </tr>
+                </thead>
+                <?php
+                  foreach($receipt_day as $row){
+                    ?>
+                    <tr>
+                      <td><?php echo $row->receipt_id; ?></td>
+                      <td><?php echo $row->receipt_date?></td>
+                      <td><?php echo $row->receipt_total; ?></td>
+                      <td><?php echo $row->receipt_cashier; ?></td>
+                      <td><a href="<?php echo site_url()?>/CReports/viewInfo/<?php echo $row->receipt_id?>"><button class="ui inverted blue icon button">
+                                        <i class="unhide icon"></i>
+                                    </button></a>'</td>
+                    </tr>
+                    <?php
+                  }
+                ?>
+              </table>
+            </div>
+            <?php
+                foreach($day as $row){
+                  ?>
+                  <h1>Total Sales of The Day: <?php echo $row->total?></h1>
+                  <?php
+                }
+            ?>
+
+
+
+
+
+        </div>
       </div>
 
       <div class="ui bottom attached tab segment" data-tab="third">
@@ -173,12 +265,6 @@
                   <?php
                 }
               ?>
-
-              <tr>
-                    <td>-Total</td>
-                    <td></td>
-                    <td></td>
-                  </tr>
             </table>
           </div>
           <div class="column">
@@ -190,6 +276,54 @@
             </h3> <!-- header -->
             <div id="curve_chart5"></div>
           </div>
+
+
+            <div class=" eight wide column">
+              <h3 class="ui grey dividing header">
+                  <div class="content">
+                    SALES (WEEKLY)
+                    <!-- <div class="sub header">Shows the list of orders</div> -->
+                  </div>
+              </h3> <!-- header -->
+              <div class="ui hidden divider"></div>
+              <table class='ui sortable stackable celled table' id="receipt_week">
+                <thead>
+                  <tr> 
+                    <td><b>Receipt ID</b></td>
+                    <td><b>Receipt Date</b></td>  
+                    <td><b>Receipt Total</b></td>
+                    <td><b>Cashier</b></td>
+                    <td><b>Actions</b></td>
+                  </tr>
+                </thead>
+                <?php
+                  foreach($receipt_week as $row){
+                    ?>
+                    <tr>
+                      <td><?php echo $row->receipt_id; ?></td>
+                      <td><?php echo $row->receipt_date?></td>
+                      <td><?php echo $row->receipt_total; ?></td>
+                      <td><?php echo $row->receipt_cashier; ?></td>
+                      <td><a href="<?php echo site_url()?>/CReports/viewInfo/<?php echo $row->receipt_id?>"><button class="ui inverted blue icon button">
+                                        <i class="unhide icon"></i>
+                                    </button></a>'</td>
+                    </tr>
+                    <?php
+                  }
+                ?>
+              </table>
+            </div>
+            <?php
+                foreach($weekly as $row){
+                  ?>
+                  <h1>Total Sales of The Week: <?php echo $row->total?></h1>
+                  <?php
+                }
+            ?>
+
+
+
+
         </div>
       </div>
 
@@ -227,12 +361,63 @@
           <div class="column">
             <h3 class="ui grey dividing header">
                 <div class="content">
-                  DAILY SALES
+                  MONTHLY SALES
                   <!-- <div class="sub header">Shows the list of orders</div> -->
                 </div>
             </h3> <!-- header -->
             <div id="curve_chart6"></div>
           </div>
+
+
+
+            <div class=" eight wide column">
+              <h3 class="ui grey dividing header">
+                  <div class="content">
+                    SALES (MONTHLY)
+                    <!-- <div class="sub header">Shows the list of orders</div> -->
+                  </div>
+              </h3> <!-- header -->
+              <div class="ui hidden divider"></div>
+              <table class='ui sortable stackable celled table' id="receipt_month">
+                <thead>
+                  <tr> 
+                    <td><b>Receipt ID</b></td>
+                    <td><b>Receipt Date</b></td>  
+                    <td><b>Receipt Total</b></td>
+                    <td><b>Cashier</b></td>
+                    <td><b>Actions</b></td>
+                  </tr>
+                </thead>
+                <?php
+                  foreach($receipt_month as $row){
+                    ?>
+                    <tr>
+                      <td><?php echo $row->receipt_id; ?></td>
+                      <td><?php echo $row->receipt_date?></td>
+                      <td><?php echo $row->receipt_total; ?></td>
+                      <td><?php echo $row->receipt_cashier; ?></td>
+                      <td><a href="<?php echo site_url()?>/CReports/viewInfo/<?php echo $row->receipt_id?>"><button class="ui inverted blue icon button">
+                                        <i class="unhide icon"></i>
+                                    </button></a>'</td>
+                    </tr>
+                    <?php
+                  }
+                ?>
+              </table>
+            </div>
+            <?php
+                foreach($monthly as $row){
+                  ?>
+                  <h1>Total Sales of The month: <?php echo $row->total?></h1>
+                  <?php
+                }
+            ?>
+
+
+
+
+
+
         </div>
       </div>
 
@@ -418,6 +603,179 @@
     } );
  
 </script>
+
+
+
+<script type="text/javascript">
+    $(document).ready(function() {
+      $('.menu .item').tab();
+        var flag=0;
+        $(document).on('click', '#third', function(){
+            <?php $now = new DateTime(NULL, new DateTimeZone('Asia/Manila')); ?>
+            if(flag==0){
+                $('#receipt_week').DataTable({
+                    // "ajax" : {
+                    //     url: "<?php echo site_url();?>/CReports/getWeekly",
+                    //     type : 'GET',
+                    // },
+                    dom: 'Bfrtip',
+                    buttons: [
+                        {
+                            extend: 'excelHtml5',
+                            exportOptions: {
+                                columns: [0, 1, 2]
+                            },
+                            title: 'Weekly Products Sales_<?php echo $now->format('Y-m-d'); ?>'
+                        },
+                        {
+                            extend: 'pdfHtml5',
+                            exportOptions: {
+                                columns: [0, 1, 2]
+                            },
+                            messageTop: 'This PDF contains Scanned orders from dine-app.net',
+                            title: 'Weekly Products Sales_<?php echo $now->format('Y-m-d'); ?>'
+                        },
+                        {
+                            extend: 'print',
+                            exportOptions: {
+                                columns: [0, 1, 2]
+                            },
+                            messageTop: 'This PDF contains Scanned orders from dine-app.net',
+                            title: 'Weekly Products Sales_<?php echo $now->format('Y-m-d'); ?>'
+                        }
+                    ]
+                });
+                flag++;
+            }
+        });
+
+        
+    } );
+    $(document).ready(function() {
+        <?php $now = new DateTime(NULL, new DateTimeZone('Asia/Manila')); ?>
+        $('#receipt_all').DataTable({
+            // "ajax" : {
+            //     url: "<?php echo site_url();?>/CReports/getAll",
+            //     type : 'GET',
+            // },
+            dom: 'Bfrtip',
+            buttons: [
+                {
+                    extend: 'excelHtml5',
+                    exportOptions: {
+                        columns: [0, 1, 2]
+                    },
+                    title: 'All Products Sales_<?php echo $now->format('Y-m-d'); ?>'
+                },
+                {
+                    extend: 'pdfHtml5',
+                    exportOptions: {
+                        columns: [0, 1, 2]
+                    },
+                    messageTop: 'This PDF contains all orders from dine-app.net',
+                    title: 'All Products Sales_<?php echo $now->format('Y-m-d'); ?>'
+                },
+                {
+                    extend: 'print',
+                    exportOptions: {
+                        columns: [0, 1, 2]
+                    },
+                    messageTop: 'This PDF contains all orders from dine-app.net',
+                    title: 'All Products Sales_<?php echo $now->format('Y-m-d'); ?>'
+                }
+            ]
+            
+        });
+    } );
+
+    $(document).ready(function() {
+        var flag=0;
+        $(document).on('click', '#second', function(){
+            <?php $now = new DateTime(NULL, new DateTimeZone('Asia/Manila')); ?>
+            if(flag==0){
+                $('#receipt_day').DataTable({
+                    // "ajax" : {
+                    //     url: "<?php echo site_url();?>/CReports/getDaily",
+                    //     type : 'GET',
+                    // },
+                    dom: 'Bfrtip',
+                    buttons: [
+                        {
+                            extend: 'excelHtml5',
+                            exportOptions: {
+                                columns: [0, 1, 2]
+                            },
+                            title: 'Daily Product Sales_<?php echo $now->format('Y-m-d'); ?>'
+                        },
+                        {
+                            extend: 'pdfHtml5',
+                            exportOptions: {
+                                columns: [0, 1, 2]
+                            },
+                            messageTop: 'This PDF contains Pending orders from dine-app.net',
+                            title: 'Daily Product Sales_<?php echo $now->format('Y-m-d'); ?>'
+                        },
+                        {
+                            extend: 'print',
+                            exportOptions: {
+                                columns: [0, 1, 2]
+                            },
+                            messageTop: 'This PDF contains Pending orders from dine-app.net',
+                            title: 'Daily Product Sales_<?php echo $now->format('Y-m-d'); ?>'
+                        }
+                    ]
+                });
+                flag++;
+            }
+        });
+    } );
+
+    $(document).ready(function() {
+        var flag=0;
+        $(document).on('click', '#fourth', function(){
+            <?php $now = new DateTime(NULL, new DateTimeZone('Asia/Manila')); ?>
+            if(flag==0){
+                $('#receipt_month').DataTable({
+                    // "ajax" : {
+                    //     url: "<?php echo site_url();?>/CReports/getDaily",
+                    //     type : 'GET',
+                    // },
+                    dom: 'Bfrtip',
+                    buttons: [
+                        {
+                            extend: 'excelHtml5',
+                            exportOptions: {
+                                columns: [0, 1, 2]
+                            },
+                            title: 'Monthly Product Sales_<?php echo $now->format('Y-m-d'); ?>'
+                        },
+                        {
+                            extend: 'pdfHtml5',
+                            exportOptions: {
+                                columns: [0, 1, 2]
+                            },
+                            messageTop: 'This PDF contains Pending orders from dine-app.net',
+                            title: 'Monthly Product Sales_<?php echo $now->format('Y-m-d'); ?>'
+                        },
+                        {
+                            extend: 'print',
+                            exportOptions: {
+                                columns: [0, 1, 2]
+                            },
+                            messageTop: 'This PDF contains Pending orders from dine-app.net',
+                            title: 'Monthly Product Sales_<?php echo $now->format('Y-m-d'); ?>'
+                        }
+                    ]
+                });
+                flag++;
+            }
+        });
+    } );
+ 
+</script>
+
+
+
 
 <script type="text/javascript">
       google.charts.load('current', {'packages':['corechart']});
