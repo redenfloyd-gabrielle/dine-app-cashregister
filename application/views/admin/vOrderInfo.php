@@ -34,7 +34,7 @@
                         <div class='twelve wide column'>
                             <p>ORDER ID: <strong style='font-style: italic;'><?php echo $o->ordered_id; ?></strong></p>
                             <?php  $date = date_create_from_format('Y-m-d H:i:s', $o->ordered_time); ?>
-                            <p>ORDER DATE: <strong style='font-style: italic;'><?php echo $date->format('F d, Y H:i a'); ?></strong></p>
+                            <p>ORDER DATE: <strong style='font-style: italic;'><?php echo $date->format('F d, Y g:i a'); ?></strong></p>
 
                             <!-- <p>CASHIER: <strong style='font-style: italic;'><?php echo $o->ordered_guest_id; ?></strong></p> -->
                             <div class='ui hidden divider'></div> 

@@ -172,13 +172,14 @@
                                         <i class="unhide icon"></i>
                                     </button></a>';
 
+                $qr = ($o->ordered_qr_code == 0)? 'NOT APPLICABLE' : $o->ordered_qr_code;
                 $date = date_create_from_format('Y-m-d H:i:s', $o->ordered_time); 
 
 			   	$data[] = array(
 			        $o->ordered_id,
 			       	$date->format('F d, Y g:i a'),
 			        '₱ '.$o->ordered_total.'.00',
-			        $o->ordered_qr_code,
+			        $qr,
 			        $actions,
 			        
 			   	);

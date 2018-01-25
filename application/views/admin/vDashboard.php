@@ -180,10 +180,11 @@
                             </thead>
                             <tbody>
                                 <?php foreach($pending as $item){?>
+                                    <?php $qr = ($item->ordered_qr_code == 0)? 'NOT APPLICABLE' : $item->ordered_qr_code; ?>
                                 <tr>
                                     <td><?php echo $item->ordered_id; ?></td>
-                                    <td><?php echo $item->ordered_total; ?></td>
-                                    <td><?php echo $item->ordered_qr_code; ?></td>
+                                    <td><?php echo '₱ '.$item->ordered_total.'.00'; ?></td>
+                                    <td><?php echo $qr; ?></td>
                                     <td>
                                         <a href='<?php echo site_url()?>/COrderItem/viewOrderInfo/<?php echo $item->ordered_id?>' >
                                             <div class='ui basic blue icon button' data-tooltip="View order">
@@ -214,10 +215,11 @@
                             </thead>
                             <tbody>
                                 <?php foreach($scanned as $item){?>
+                                    <?php $qr = ($item->ordered_qr_code == 0)? 'NOT APPLICABLE' : $item->ordered_qr_code; ?>
                                 <tr>
                                     <td><?php echo $item->ordered_id; ?></td>
-                                    <td><?php echo $item->ordered_total; ?></td>
-                                    <td><?php echo $item->ordered_qr_code; ?></td>
+                                    <td><?php echo '₱ '.$item->ordered_total.'.00'; ?></td>
+                                    <td><?php echo $qr; ?></td>
                                     <td>
                                         <a href='<?php echo site_url()?>/COrderItem/viewOrderInfo/<?php echo $item->ordered_id?>'>
                                             <div class='ui basic blue icon button'>
