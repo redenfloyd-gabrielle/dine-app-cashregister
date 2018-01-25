@@ -55,16 +55,16 @@
                                     <?php foreach($items as $i) { ?>
                                         <tr>
                                             <td><?php echo $i->product_name; ?></td>
-                                            <td>P <?php echo $i->product_price; ?>.00</td>
+                                            <td>₱ <?php echo $i->product_price; ?>.00</td>
                                             <td><?php echo $i->order_item_qty; ?></td>
-                                            <td>P <?php echo $i->order_item_subtotal; ?>.00</td>
+                                            <td>₱ <?php echo $i->order_item_subtotal; ?>.00</td>
                                             <?php $total += $i->order_item_subtotal ; ?>
                                         </tr>
                                     <?php } ?>
                                 </tbody>
                             </table>
                             <div class='ui hidden divider'></div>
-                            <p style="float: right;">TOTAL (P): <strong style='font-style: italic;'><?php echo $total; ?></strong></p>
+                            <p style="float: right;">TOTAL (P): <strong style='font-style: italic;'><?php echo '₱ '.$total; ?>.00</strong></p>
                            <!--  <p>CASH (P): <strong style='font-style: italic;'>200.00</strong></p>
                             <p>CHANGE (P): <strong style='font-style: italic;'>200.00</strong></p> -->
                             <div class='ui hidden divider'></div>
