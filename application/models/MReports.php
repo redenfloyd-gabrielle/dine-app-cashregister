@@ -864,5 +864,118 @@
                return $total = 0;
             }
         }
+
+
+        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+        public function getReceipt(){
+            $this->load->database();
+            $now = new DateTime(NULL, new DateTimeZone('Asia/Manila'));
+
+            $this->db->select('*');
+            $this->db->from('receipt');
+            $this->db->where('receipt_total > 0');            
+            $data = $this->db->get();
+            if($data->result() > 0){
+               return $data->result();
+            }else{
+               return $total = 0;
+            }
+        }
+
+
+        public function getReceiptday(){
+
+            $this->load->database();
+            $now = new DateTime(NULL, new DateTimeZone('Asia/Manila'));
+
+            $this->db->select('*');
+            $this->db->from('receipt');
+            $this->db->where('receipt_date >= "'.$now->format('Y-m-d 0:0:0').'" AND receipt_date <= "'.$now->format('Y-m-d 23:59:59').'" AND receipt_total > 0');
+
+           // SELECT * FROM `receipt` WHERE receipt_date >= '2018-01-25 0:0:0' and receipt_date <= '2018-01-25 23:59:59'
+
+            $data = $this->db->get();
+            return $data->result();
+        }
+
+        public function getReceiptmonth(){
+
+            $this->load->database();
+            $now = new DateTime(NULL, new DateTimeZone('Asia/Manila'));
+
+            $this->db->select('*');
+            $this->db->from('receipt');
+            $this->db->where('receipt_date >= "'.$now->format('Y-m-01 0:0:0').'" AND receipt_date <= "'.$now->format('Y-m-t 23:59:59').'" AND receipt_total > 0');
+        
+            $data = $this->db->get();
+            if($data->result() > 0){
+               return $data->result();
+            }else{
+               return $total = 0;
+            }
+        }
+
+
+        public function getReceiptweek(){
+
+            $this->load->database();
+            $start = date('Y-m-d', strtotime('monday this week'));
+            $end = date('Y-m-d', strtotime('sunday this week'));
+
+
+            $this->db->select('*');
+            $this->db->from('receipt');
+            $this->db->where('receipt_date >= "'.$start.'" AND receipt_date <= "'.$end.'" AND receipt_total > 0');
+    
+
+            $data = $this->db->get();
+            return $data->result();
+        }
+
+        public function getReceiptInfoByID($id){
+
+            $this->load->database();
+
+            $this->db->select('*');
+            $this->db->from('receipt');
+            $this->db->join('user ', 'user_id = receipt_cashier');
+            $this->db->where('receipt_id = '.$id.'');
+
+
+            $data = $this->db->get();
+            return $data->result();
+
+        }
+
+        public function getTableValues($id){
+            $this->load->database();
+            $this->db->select('*');
+            $this->db->from('receipt r');
+            $this->db->join('receipt_item re','re.receipt_item_receipt_id = r.receipt_id');
+            $this->db->join('product p', 'p.product_id = re.receipt_item_product_id');
+            $this->db->where('receipt_id = '.$id.'');
+
+            $data = $this->db->get();
+            return $data->result();
+
+        }
+
+        public function getTotalSales(){
+            $this->load->database();
+
+            $this->db->select('*, SUM(receipt_total) as total');
+            $this->db->from('receipt');
+            $data = $this->db->get();
+            return $data->result();
+        }
     }
+
 ?>
