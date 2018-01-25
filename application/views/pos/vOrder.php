@@ -201,6 +201,7 @@ echo '
 <input type="hidden" name="page" id="page" value="<?php echo $page; ?>">
 </body>
 </html>
+
     
 <script type="text/javascript">
   $(document).ready(function(){
