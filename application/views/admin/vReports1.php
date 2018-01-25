@@ -94,7 +94,7 @@
                       <td><?php echo $row->receipt_cashier; ?></td>
                       <td><a href="<?php echo site_url()?>/CReports/viewInfo/<?php echo $row->receipt_id?>"><button class="ui inverted blue icon button">
                                         <i class="unhide icon"></i>
-                                    </button></a>'</td>
+                                    </button></a></td>
                     </tr>
                     <?php
                   }
@@ -214,7 +214,7 @@
                       <td><?php echo $row->receipt_cashier; ?></td>
                       <td><a href="<?php echo site_url()?>/CReports/viewInfo/<?php echo $row->receipt_id?>"><button class="ui inverted blue icon button">
                                         <i class="unhide icon"></i>
-                                    </button></a>'</td>
+                                    </button></a></td>
                     </tr>
                     <?php
                   }
@@ -306,7 +306,7 @@
                       <td><?php echo $row->receipt_cashier; ?></td>
                       <td><a href="<?php echo site_url()?>/CReports/viewInfo/<?php echo $row->receipt_id?>"><button class="ui inverted blue icon button">
                                         <i class="unhide icon"></i>
-                                    </button></a>'</td>
+                                    </button></a></td>
                     </tr>
                     <?php
                   }
@@ -398,7 +398,7 @@
                       <td><?php echo $row->receipt_cashier; ?></td>
                       <td><a href="<?php echo site_url()?>/CReports/viewInfo/<?php echo $row->receipt_id?>"><button class="ui inverted blue icon button">
                                         <i class="unhide icon"></i>
-                                    </button></a>'</td>
+                                    </button></a></td>
                     </tr>
                     <?php
                   }
