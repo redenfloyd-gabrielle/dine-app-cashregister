@@ -32,11 +32,11 @@
                         <div class='two wide column'></div>
                         <div class='twelve wide column'>
                           <?php foreach($rec_info as $row){ ?>
-                            <p>ORDER ID: <strong style='font-style: italic;'></strong></p>
-                            <p>ORDER DATE: <strong style='font-style: italic;'></strong></p>
+                            <p>RECEIPT ID: <strong style='font-style: italic;'>000<?php echo $row->receipt_id ?></strong></p>
+                            <p>RECEIPT DATE: <strong style='font-style: italic;'><?php echo $row->receipt_date ?></strong></p>
 
-                            <p>CASHIER ID: ------</p>
-                            <p>CASHIER: <strong style='font-style: italic;'>--------------</strong></p>
+                            <p>CASHIER ID: <?php echo $row->receipt_cashier ?></p>
+                            <p>CASHIER: <strong style='font-style: italic;'><?php echo $row->user_last_name;?>, <?php echo $row->user_first_name;?></strong></p>
                             <div class='ui hidden divider'></div>
                             <table class='ui very basic table' id="all">
                                 <thead>
