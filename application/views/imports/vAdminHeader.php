@@ -81,7 +81,7 @@
     <a class='borderless item' href='<?php echo site_url()?>/CUser/viewAdminDashboard'>DINE</a>
 
     <div class='right menu'>
-        <a class="item" href="<?php echo site_url()?>/CLogin/viewPos"><i class="calculator icon"></i>SWITCH TO POS</a> 
+        <a class="item" href="<?php echo site_url()?>/CLogin/viewPos"><i class="calculator icon"></i>SWITCH TO CASHREGISTER</a> 
         <div class='ui simple dropdown item' tabindex='0'>
         <i class='user icon'></i>PROFILE
         <i class='dropdown icon' tabindex='0'>
@@ -237,7 +237,7 @@ $(document).ready(function(){
     }
    
     $('.updatePassForm').form({
-        on: 'change',
+        on: 'submit',
         inline: true,
         fields: formValidationRules,
         onSuccess : function() 
@@ -250,7 +250,7 @@ $(document).ready(function(){
 
 
     $('.productInformation').form({
-        on: 'blur',
+        on: 'submit',
         inline: true,
         fields:{
             name: {

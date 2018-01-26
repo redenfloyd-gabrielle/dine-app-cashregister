@@ -1,3 +1,13 @@
+@font-face {
+  font-family: 'BarlowCondensed-Light';
+  src: url('../fonts/barlow/BarlowCondensed-Light.eot?#iefix') format('embedded-opentype'),  
+  	   url('../fonts/barlow/BarlowCondensed-Light.otf')  format('opentype'),
+	   url('../fonts/barlow/BarlowCondensed-Light.woff') format('woff'), 
+	   url('../fonts/barlow/BarlowCondensed-Light.ttf')  format('truetype'), 
+	   url('../fonts/barlow/BarlowCondensed-Light.svg#BarlowCondensed-Light') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
 
 #userDesc {
     text-align: center;
@@ -11,3 +21,8 @@
 #userContent{
 	background-color: paleturquoise;
 }
+
+
+
+
+#ttalsales {font-family: 'BarlowCondensed-Light'; font-size: 2em;}
