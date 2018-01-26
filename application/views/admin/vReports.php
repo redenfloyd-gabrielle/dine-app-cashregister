@@ -67,7 +67,7 @@
               <div id="piechart" style="width: 500; height: 500px;"></div>
             </div>
 
-            <div class=" eight wide column">
+            <div class=" sixteen wide column">
               <h3 class="ui grey dividing header">
                   <div class="content">
                     SALES (OVERALL)
@@ -102,42 +102,68 @@
                 ?>
               </table>
             </div>
+            <div class="row">
+              <div class="ui divider"></div>
+              <div class="twelve wide column"></div>
+              <div class="six wide column">
+                <?php
+                    foreach($overall as $row){
+                      ?>
+                      <h3 class="ttalsales">TOTAL SALES: <?php echo $row->total?></h3>
+                      <?php
+                    }
+                ?>
+              </div>
 
-            <?php
-                foreach($overall as $row){
-                  ?>
-                  <h1>Total Sales: <?php echo $row->total?></h1>
-                  <?php
-                }
-            ?>
+            </div>
 
+            <div class="row"></div>
 
             <div class="sixteen wide center aligned middle aligned column">
-              <h3 class="ui grey dividing header">
-                <div class="content">
-                  DAILY SALES
+              <div class="ui grid">
+                <div class="four wide column"></div>
+                <div class="left aligned eight wide column">
+                  <h3 class="ui grey dividing header">
+                    <div class="content">
+                      DAILY SALES
+                    </div>
+                  </h3> <!-- header -->
                 </div>
-              </h3> <!-- header -->
+                <div class="four wide column"></div>
+              </div>
+                  
               <div class='ui container'>
                 <div id="curve_chart" align="center"></div>
               </div>
             </div>
             <div class="sixteen wide center aligned middle aligned column">
-              <h3 class="ui grey dividing header">
-                <div class="content">
-                  WEEKLY SALES
+              <div class="ui grid">
+                <div class="four wide column"></div>
+                <div class="left aligned eight wide column">
+                  <h3 class="ui grey dividing header">
+                    <div class="content">
+                      WEEKLY SALES
+                    </div>
+                  </h3> <!-- header -->
                 </div>
-              </h3> <!-- header -->
+                <div class="four wide column"></div>
+              </div>
               <div class='ui container'>
                 <div id="curve_chart2" align="center"></div>
               </div>
             </div>
             <div class="sixteen wide center aligned middle aligned column">
-              <h3 class="ui grey dividing header">
-                <div class="content">
-                  MONTHLY SALES
+              <div class="ui grid">
+                <div class="four wide column"></div>
+                <div class="left aligned eight wide column">
+                  <h3 class="ui grey dividing header">
+                    <div class="content">
+                      MONTHLY SALES
+                    </div>
+                  </h3> <!-- header -->
                 </div>
-              </h3> <!-- header -->
+                <div class="four wide column"></div>
+              </div>
               <div class='ui container'>
                 <div id="curve_chart3" align="center"></div>
               </div>
@@ -187,7 +213,7 @@
           </div>
 
 
-            <div class=" eight wide column">
+            <div class="sixteen wide column">
               <h3 class="ui grey dividing header">
                   <div class="content">
                     SALES (DAILY)
@@ -225,10 +251,11 @@
             <?php
                 foreach($day as $row){
                   ?>
-                  <h1>Total Sales of The Day: ₱ <?php echo $row->total; ?>.00</h1>
+                  <h3>Total Sales of The Day: ₱ <?php echo $row->total; ?>.00</h3>
                   <?php
                 }
             ?>
+            <div class="row"></div>
 
 
 
@@ -279,7 +306,7 @@
           </div>
 
 
-            <div class=" eight wide column">
+            <div class=" sixteen wide column">
               <h3 class="ui grey dividing header">
                   <div class="content">
                     SALES (WEEKLY)
@@ -317,10 +344,11 @@
             <?php
                 foreach($weekly as $row){
                   ?>
-                  <h1>Total Sales of The Week: ₱ <?php echo $row->total; ?>.00</h1>
+                  <h3>Total Sales of The Week: ₱ <?php echo $row->total; ?>.00</h3>
                   <?php
                 }
             ?>
+            <div class="row"></div>
 
 
 
@@ -371,7 +399,7 @@
 
 
 
-            <div class=" eight wide column">
+            <div class=" sixteen wide column">
               <h3 class="ui grey dividing header">
                   <div class="content">
                     SALES (MONTHLY)
@@ -409,11 +437,11 @@
             <?php
                 foreach($monthly as $row){
                   ?>
-                  <h1>Total Sales of The month: ₱ <?php echo $row->total; ?>.00</h1>
+                  <h3>Total Sales of The month: ₱ <?php echo $row->total; ?>.00</h3>
                   <?php
                 }
             ?>
-
+            <div class="row"></div>
 
 
 

@@ -51,7 +51,7 @@
 
                                     <div class='nine wide  required field'>
                                         <label>FOOD PRICE</label>
-                                        <input type='number' placeholder='Enter food price' name="price">
+                                        <input type='number' placeholder='Enter food price' name="price" step=".01">
                                     </div>
                                     
                                     <label>CATEGORY</label><br>
@@ -77,7 +77,7 @@
                                 <div class='ui hidden divider'></div>
                                 <div class='ui hidden divider'></div>
 
-                                <a id='confirmCancelBR'><div class='ui submit gray button'>Cancel</div></a>
+                                <a class="confirmCancelBR"><div class='ui submit gray button'>Cancel</div></a>
 
                                 <button class='ui submit brown button' type="submit">Add</button>
 

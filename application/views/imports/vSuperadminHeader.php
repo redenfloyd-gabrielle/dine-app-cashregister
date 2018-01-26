@@ -81,16 +81,16 @@
     <form class="ui form updatePassword" action="<?php echo site_url();?>/CUser/changePassword" method="POST">
         <div class="required field">
             <label>Old Password</label>
-            <input type="password" name="old" id="old" required placeholder="Enter old password">
+            <input type="password" name="old" id="old" placeholder="Enter old password">
             <input hidden='' type='password' name='pass' id='oldpass' value='<?php echo strtolower($this->session->userdata['changePassword']['user_password']);?>'>
         </div>
         <div class="required field">
             <label>New Password</label>
-            <input type="password" name="new" id="new" required placeholder="Enter new password">
+            <input type="password" name="new" id="new" placeholder="Enter new password">
         </div>
         <div class="required field">
             <label>Confirm New Password</label>
-            <input type="password" name="confirm" id="confirm" required placeholder="Confirm new password">
+            <input type="password" name="confirm" id="confirm" placeholder="Confirm new password">
         </div>
     
     <p></p> 
@@ -127,6 +127,7 @@
 
 <!-- leave page modal -->
 <div class="ui basic modal" id="cancelModalHome">
+    <i class="close icon"></i>
   <div class="ui icon header">
     <i class="sign out icon"></i>
     Leave Page
@@ -208,7 +209,7 @@ $(document).ready(function(){
     }
    
     $('.updatePassword').form({
-        on: 'change',
+        on: 'submit',
         inline: true,
         fields: formValidationRules,
         onSuccess : function() 
@@ -217,10 +218,11 @@ $(document).ready(function(){
           // alert("Valid Submission, modal will close.");
           $('.modal').modal('hide');
         }
+
     });
 
     $('.userInformation').form({
-        on: 'change',
+        on: 'submit',
         inline: true,
         fields:{
             first_name: {

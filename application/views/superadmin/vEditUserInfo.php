@@ -13,12 +13,12 @@
             <div class='ui breadcrumb'>
                 <a class='section confirmCancelHome' >HOME</a>
                 <i class='right arrow icon divider'></i>
-                <a class='section' id='confirmCancelBR'>USERS</a>
+                <a class='section confirmCancelBR'>USERS</a>
                 <i class='right arrow icon divider'></i>
                 <div class='active section'>EDIT USER</div>
             </div> <!-- breadcrumb -->
         </div> <!-- segment -->
-        <!-- content -->
+        <!-- content --> 
         <div class='ui segments'>
             <div class='ui basic segment'>
                 <h5 class='ui header teal ribbon label'><i class='info icon'></i>
