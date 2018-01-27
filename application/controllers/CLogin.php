@@ -179,9 +179,9 @@
 			    $date = date_create_from_format('Y-m-d H:i:s', $time);
 				$datenow = date_create_from_format('Y-m-d H:i:s', $dt);
 				$interval = date_diff($datenow,$date);
-				$diff += $interval->h;
-				if($interval ->d > 0){
-					$diff = $interval->d * 24;
+				$diff= $interval->h;
+				if($interval->d > 0){
+					$diff += $interval->d * 24;
 				}
 		        if($diff >= 4){
 		        	$stat = array('ordered_status' => 'expired');
