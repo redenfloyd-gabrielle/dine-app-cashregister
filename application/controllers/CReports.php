@@ -232,6 +232,11 @@
 
  			//////////////////////////////////WEEKLY////////////////////////////////////////////////
 
+ 			if(date('Y-m-d', strtotime('-28 day', strtotime('monday this week'))) >= date('Y-m-01')) {
+ 				$data["weekly4"] = $this->MReports->get_weekly3();
+ 			}else{
+ 				$data["weekly4"] = 0;
+ 			}
 
  			if(date('Y-m-d', strtotime('-21 day', strtotime('monday this week'))) >= date('Y-m-01')) {
  				$data["weekly3"] = $this->MReports->get_weekly3();

@@ -965,7 +965,7 @@
             if($daily16 != 0){
               foreach($daily16 as $row){
                 if($row->total != 0){
-                  echo "['16',".$row->total.",'#99ccff#99ccff'],";
+                  echo "['16',".$row->total.",'#99ccff'],";
                 }
               }
             }
@@ -973,7 +973,7 @@
             if($daily17 != 0){
               foreach($daily17 as $row){
                 if($row->total != 0){
-                  echo "['17',".$row->total.",'#99ccff#99ccff'],";
+                  echo "['17',".$row->total.",'#99ccff'],";
                 }
               }
             }
@@ -981,7 +981,7 @@
             if($daily18 != 0){
               foreach($daily18 as $row){
                 if($row->total != 0){
-                  echo "['18',".$row->total.",'#99ccff#99ccff'],";
+                  echo "['18',".$row->total.",'#99ccff'],";
                 }
               }
             }
@@ -989,7 +989,7 @@
             if($daily19 != 0){
               foreach($daily19 as $row){
                 if($row->total != 0){
-                  echo "['19',".$row->total.",'#99ccff#99ccff'],";
+                  echo "['19',".$row->total.",'#99ccff'],";
                 }
               }
             }
@@ -1245,7 +1245,7 @@
             if($daily16 != 0){
               foreach($daily16 as $row){
                 if($row->total != 0){
-                  echo "['16',".$row->total.",'#99ccff#99ccff'],";
+                  echo "['16',".$row->total.",'#99ccff'],";
                 }
               }
             }
@@ -1253,7 +1253,7 @@
             if($daily17 != 0){
               foreach($daily17 as $row){
                 if($row->total != 0){
-                  echo "['17',".$row->total.",'#99ccff#99ccff'],";
+                  echo "['17',".$row->total.",'#99ccff'],";
                 }
               }
             }
@@ -1261,7 +1261,7 @@
             if($daily18 != 0){
               foreach($daily18 as $row){
                 if($row->total != 0){
-                  echo "['18',".$row->total.",'#99ccff#99ccff'],";
+                  echo "['18',".$row->total.",'#99ccff'],";
                 }
               }
             }
@@ -1269,7 +1269,7 @@
             if($daily19 != 0){
               foreach($daily19 as $row){
                 if($row->total != 0){
-                  echo "['19',".$row->total.",'#99ccff#99ccff'],";
+                  echo "['19',".$row->total.",'#99ccff'],";
                 }
               }
             }
@@ -1402,19 +1402,43 @@
       var data = google.visualization.arrayToDataTable([
         ["Element", "Density", { role: "style" } ],
         <?php
-        if($weekly3 != 0){
-            foreach($weekly3 as $row){
+          if($weekly4 != 0){
+            foreach($weekly4 as $row){
               if($row->total != 0){
                 echo "['1st Week',".$row->total.",'#99ccff'],";
               }
             }
           }
 
-          if($weekly2 != 0){
-            if($weekly3 != 0){
-              foreach($weekly2 as $row){
+          if($weekly3 != 0){
+            if($weekly4 != 0){
+              foreach($weekly3 as $row){
                 if($row->total != 0){
                   echo "['2nd Week',".$row->total.",'#99ccff'],";
+                }
+              }
+            }else{
+                foreach($weekly3 as $row){
+                  if($row->total != 0){
+                    echo "['1stt Week',".$row->total.",'#99ccff'],";
+                  }
+                }
+              }
+          }
+
+          if($weekly2 != 0){
+            if($weekly3 != 0){
+              if($weekly4 != 0){
+                foreach($weekly2 as $row){
+                  if($row->total != 0){
+                    echo "['3rd Week',".$row->total.",'#99ccff'],";
+                  }
+                }
+              }else{
+                foreach($weekly2 as $row){
+                  if($row->total != 0){
+                    echo "['2nd Week',".$row->total.",'#99ccff'],";
+                  }
                 }
               }
             }else{
@@ -1429,9 +1453,17 @@
           if($weekly1 != 0){
             if($weekly2 != 0){
               if($weekly3 != 0){
-                foreach($weekly1 as $row){
-                  if($row->total != 0){
-                    echo "['3rd Week',".$row->total.",'#99ccff'],";
+                if($weekly4 !=0){
+                  foreach($weekly1 as $row){
+                    if($row->total != 0){
+                      echo "['4th Week',".$row->total.",'#99ccff'],";
+                    }
+                  }
+                }else{
+                  foreach($weekly1 as $row){
+                    if($row->total != 0){
+                      echo "['3rd Week',".$row->total.",'#99ccff'],";
+                    }
                   }
                 }
               }else{
@@ -1486,19 +1518,43 @@
       var data = google.visualization.arrayToDataTable([
         ["Element", "Density", { role: "style" } ],
         <?php
-            if($weekly3 != 0){
-            foreach($weekly3 as $row){
+            if($weekly4 != 0){
+            foreach($weekly4 as $row){
               if($row->total != 0){
                 echo "['1st Week',".$row->total.",'#99ccff'],";
               }
             }
           }
 
-          if($weekly2 != 0){
-            if($weekly3 != 0){
-              foreach($weekly2 as $row){
+          if($weekly3 != 0){
+            if($weekly4 != 0){
+              foreach($weekly3 as $row){
                 if($row->total != 0){
                   echo "['2nd Week',".$row->total.",'#99ccff'],";
+                }
+              }
+            }else{
+                foreach($weekly3 as $row){
+                  if($row->total != 0){
+                    echo "['1stt Week',".$row->total.",'#99ccff'],";
+                  }
+                }
+              }
+          }
+
+          if($weekly2 != 0){
+            if($weekly3 != 0){
+              if($weekly4 != 0){
+                foreach($weekly2 as $row){
+                  if($row->total != 0){
+                    echo "['3rd Week',".$row->total.",'#99ccff'],";
+                  }
+                }
+              }else{
+                foreach($weekly2 as $row){
+                  if($row->total != 0){
+                    echo "['2nd Week',".$row->total.",'#99ccff'],";
+                  }
                 }
               }
             }else{
@@ -1513,9 +1569,17 @@
           if($weekly1 != 0){
             if($weekly2 != 0){
               if($weekly3 != 0){
-                foreach($weekly1 as $row){
-                  if($row->total != 0){
-                    echo "['3rd Week',".$row->total.",'#99ccff'],";
+                if($weekly4 !=0){
+                  foreach($weekly1 as $row){
+                    if($row->total != 0){
+                      echo "['4th Week',".$row->total.",'#99ccff'],";
+                    }
+                  }
+                }else{
+                  foreach($weekly1 as $row){
+                    if($row->total != 0){
+                      echo "['3rd Week',".$row->total.",'#99ccff'],";
+                    }
                   }
                 }
               }else{

@@ -549,6 +549,28 @@
             }
         }
 
+        public function get_weekly4(){
+
+            $this->load->database();
+            $date_now = date('Y-m-d');
+
+            $start = date('Y-m-d', strtotime('-28 day', strtotime('monday this week')));
+            $end = date('Y-m-d', strtotime('-28 day', strtotime('sunday this week')));
+            
+            $this->db->select('*, SUM(receipt_total) as total');
+            $this->db->from('receipt');
+            $this->db->where('receipt_date >= "'.$start.'" AND 
+                receipt_date <="'.$end.'" ');
+
+            $data = $this->db->get();
+            if($data->result() > 0){
+               return $data->result();
+            }else{
+               return $total = 0;
+            }
+
+
+        }
 
 
         public function get_weekly3(){
