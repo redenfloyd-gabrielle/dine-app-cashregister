@@ -134,13 +134,21 @@
 					);
 					$result1 = $this->MReceiptItem->insert($data1);
 				}
-			}
-
-			$data = array('receipt_date' => $receipt_date,
+				$data = array('receipt_date' => $receipt_date,
+						  	  'receipt_total' => $receipt_total,
+						      'receipt_cash' => $receipt_cash,
+						      'receipt_change' => $receipt_change,
+						      'receipt_ordered_id' => $eid
+				);
+			}else{
+				$data = array('receipt_date' => $receipt_date,
 						  'receipt_total' => $receipt_total,
 						  'receipt_cash' => $receipt_cash,
 						  'receipt_change' => $receipt_change
-			);
+				);
+			}
+
+
 			$result = $this->MReceipt->update($receipt_id,$data);
 
 			foreach ($tableData as $key => $datas) {
