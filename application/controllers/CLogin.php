@@ -22,13 +22,13 @@
 			if ($this->session->userdata('userSession') == FALSE) {
 				$this->load->view('vLogin');
 			} elseif ($this->session->userdata['userSession']['user_type'] == 'ADMIN') {
-			    redirect('admin/dashboard');
+			    redirect('CLogin/viewAdminDashboard');
 			} else if ($this->session->userdata['userSession']['user_type'] == 'REGULAR') {
-			    redirect('cashregister');
+			    redirect('CLogin/viewPos');
 			} else if ($this->session->userdata['userSession']['user_type'] == 'SUPERADMIN') {
-			    redirect('superadmin/dashboard');
+			    redirect('CLogin/viewSuperadminDashboard');
 			} else {
-			    redirect('login');
+			    redirect('CInitialize');
 			}
 		}
 
@@ -90,7 +90,7 @@
 		function viewPos()
 		{
 			$this->load->view('imports/vPosHeader');
-			$this->load->view('pos/vPOSHome');
+			$this->load->view('pos/POSHome');
 		}
 	
 		function userLogin(){
@@ -114,35 +114,35 @@
 						$this->session->set_userdata('changePassword', $sessionData);
 						//print_r($this->session->userdata['userSession']['user_type']);
 						if ($result[0]->user_type == 'ADMIN') {
-							redirect('admin/dashboard');
+							redirect('CLogin/viewAdminDashboard');
 						} elseif ($result[0]->user_type == 'SUPERADMIN') {
-							redirect('superadmin/dashboard');
+							redirect('CLogin/viewSuperadminDashboard');
 						} else if ($result[0]->user_type == 'REGULAR') {
-							redirect('cashregister');
+							redirect('CLogin/viewPos');
 						} else {
 							$this->session->set_flashdata('response',"Invalid Login Attempt!");
 							$this->session->set_flashdata('error',"Check User ID and Password.");
-							redirect('login');
+							redirect('CInitialize');
 						}
 					} else {
 						$this->session->set_flashdata('response',"Invalid Login Attempt!");
 						$this->session->set_flashdata('error',"Check User ID and Password.");
-						redirect('login');
+						redirect('CInitialize');
 
 					}
 				}else{
 					$this->session->set_flashdata('response',"Empty Login!");
 					$this->session->set_flashdata('error',"Enter User ID and Password.");
-					redirect('login');
+					redirect('CInitialize');
 				}
 			} elseif ($this->session->userdata['userSession']['user_type'] == 'ADMIN') {
-			    redirect('admin/dashboard');
+			    redirect('CLogin/viewAdminDashboard');
 			} else if ($this->session->userdata['userSession']['user_type'] == 'REGULAR') {
-			    redirect('cashregister');
+			    redirect('CLogin/viewPos');
 			} else if ($this->session->userdata['userSession']['user_type'] == 'SUPERADMIN') {
-			    redirect('superadmin/dashboard');
+			    redirect('CLogin/viewSuperadminDashboard');
 			} else {
-			    redirect('login');
+			    redirect('CInitialize');
 			}
 		}
 
@@ -165,7 +165,7 @@
 		public function userLogout()
 		{
 			$this->session->unset_userdata('userSession');
-			redirect('logout');
+			redirect('CLogin');
 		}
 
 		public function updateOrderStatus()
@@ -179,9 +179,9 @@
 			    $date = date_create_from_format('Y-m-d H:i:s', $time);
 				$datenow = date_create_from_format('Y-m-d H:i:s', $dt);
 				$interval = date_diff($datenow,$date);
-				$diff= $interval->h;
-				if($interval->d > 0){
-					$diff += $interval->d * 24;
+				$diff += $interval->h;
+				if($interval ->d > 0){
+					$diff = $interval->d * 24;
 				}
 		        if($diff >= 4){
 		        	$stat = array('ordered_status' => 'expired');

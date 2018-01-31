@@ -12,10 +12,12 @@ if($edit == 'yes' && $page =='qr'){
 </head>';
 }?>
 
+
 <?php if($page == 'qr'){
+ 
 echo '
 <div class="ui large top attached inverted teal menu borderless">
-  <a class="item bpmono size18" href="'.site_url().'cashregister">DINE | POS</a>
+  <a class="item bpmono size18" href="'.site_url().'/CLogin/viewPos">DINE | POS</a>
   <div class="right menu bpmono size18">
     <div class="item">
       <span style="text-transform: uppercase;">'.$this->session->userdata["userSession"]["user_first_name"].' '.$this->session->userdata["userSession"]["user_last_name"].' &nbsp | &nbsp <span id="date"></span> &nbsp | &nbsp <span class ="time"></span>&nbsp &nbsp</span>
@@ -23,11 +25,11 @@ echo '
     <div class="hidden item"></div>';
     if($this->session->userdata['userSession']['user_type'] == "ADMIN"){
       echo'
-      <a class="item" href="'.site_url().'admin/dashboard"><i class="user icon"></i>SWITCH TO ADMIN</a> 
+      <a class="item" href="'.site_url().'/CUser/viewAdminDashboard"><i class="user icon"></i>SWITCH TO ADMIN</a> 
           <div class="hidden item"></div>';
     }
     echo'
-    <a class="item" href="'.site_url().'signout"><i class="white sign out icon"></i>LOGOUT</a>
+    <a class="item" href="'.site_url().'/CLogin/userLogout?>"><i class="white sign out icon"></i>LOGOUT</a>
   </div>
 </div>
 <div class="ui grid"> 
@@ -62,7 +64,12 @@ echo '
       (day<10 ? "0" : "") + day+","+ d.getFullYear();   
      $("#date").append(date);
     });
+
 </script> 
+
+
+
+
  <div class="row"></div>
   <div class="row">
     <div class="column"></div>
@@ -74,7 +81,7 @@ echo '
               <div class="sub header">Retrieve order via QR Code</div>
             </div>  
         </h1>
-        <a href="'.site_url().'cashregister">
+        <a href="'.site_url().'/CLogin/viewPos">
           <h4 style="color: gray;"><i class="left arrow grey icon"></i>BACK TO HOME</h4>
         </a>
         <div class="ui hidden divider"></div>
@@ -99,9 +106,9 @@ echo '
         <div class="ten wide column"></div>
         <div class="six wide right aligned column ">
           <?php if($page == "manual"){
-                echo '<a href="'.site_url().'cashregister/editorder/'.$page.'/'.$id.'/1" ><button class="fluid ui labeled icon button"><i class="pencil icon"></i>EDIT ORDER</button></a>';
+                echo '<a href="'.site_url().'/COrderItem/viewEdit/'.$page.'/'.$id.'/1" ><button class="fluid ui labeled icon button"><i class="pencil icon"></i>EDIT ORDER</button></a>';
           }else{
-                echo '<a href="'.site_url().'cashregister/editorder/'.$page.'/'.$id.'/'.$qr.'" ><button class="fluid ui labeled icon button"><i class="pencil icon"></i>EDIT ORDER</button></a>';
+                echo '<a href="'.site_url().'/COrderItem/viewEdit/'.$page.'/'.$id.'/'.$qr.'" ><button class="fluid ui labeled icon button"><i class="pencil icon"></i>EDIT ORDER</button></a>';
           }
           ?>
         </div>
@@ -189,7 +196,7 @@ echo '
 </div> <!-- closing grid -->
 <div class="ui borderless bottom fixed menu">
   <div class="right menu">
-    <a href="<?php echo site_url();?>cashregister" class="item"><div class="ui teal button">BACK</div></a>
+    <a href="<?php echo site_url();?>/CLogin/viewPos" class="item"><div class="ui teal button">BACK</div></a>
     <div class="hidden item"></div><div class="hidden item"></div><div class="hidden item"></div>
     <a class="item"><button class="ui teal button" id="rbtn">CHECKOUT</button></a>
     <a class="item"><button class="ui teal button" id="print">CHECKOUT w/RECEIPT</button></a>
@@ -201,7 +208,6 @@ echo '
 <input type="hidden" name="page" id="page" value="<?php echo $page; ?>">
 </body>
 </html>
-
     
 <script type="text/javascript">
   $(document).ready(function(){
@@ -291,13 +297,13 @@ echo '
       if(cash != 0){
         $.ajax({
           type: "POST",
-          url: "<?php echo site_url()?>addtoreceipt",
+          url: "<?php echo site_url()?>/CReceipt/addOrderToReceipt",
           data: dataSet,
           cache: false,
           success: function(result){
              $('body').html(result);
               window.print();
-              document.location.href = "<?php echo site_url()?>cashregister"; 
+              document.location.href = "<?php echo site_url()?>/CLogin/viewPos"; 
           },
           error: function(jqXHR, errorThrown){
               console.log(errorThrown);
@@ -324,7 +330,7 @@ echo '
         if(cash != 0 && change >=0){
            $.ajax({
             type: "POST",
-            url: "<?php echo site_url()?>printreceipt",
+            url: "<?php echo site_url()?>/CReceipt/printReceipt",
             data: data,
             cache: false,
             success: function(result){
@@ -333,7 +339,7 @@ echo '
               window.print();
               $('body').html(data[1]);
               window.print();
-              document.location.href = "<?php echo site_url()?>cashregister"; 
+              document.location.href = "<?php echo site_url()?>/CLogin/viewPos"; 
             },
             error: function(jqXHR, errorThrown){
               console.log(errorThrown);

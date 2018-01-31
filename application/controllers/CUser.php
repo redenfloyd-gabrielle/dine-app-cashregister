@@ -13,7 +13,7 @@
 	      $this->load->model('MProduct');
 	      $this->load->model('MReceipt');
 	      $url = $this->config->site_url();
-     	  $this->urlSite = $url.'superadmin/edituser/';
+     	  $this->urlSite = $url.'/CUser/editUserInfo/';
 	  	}
 
 		public function index()
@@ -35,9 +35,9 @@
 				$this->session->unset_userdata('userSession');
 				$this->session->set_flashdata('msg',"Successfully changed your password!");
 				$this->session->set_flashdata('msg2',"Please login using your new password.");
-				redirect('logout');
+				redirect('CLogin');
 			} else {
-				print_r('SOMETHING WENT WRONG;');
+				redirect('CLogin/viewSuperadminDashboard');
 			}
 		}
 
@@ -52,7 +52,7 @@
 			$result = $this->MUser->update($id, $data);
 			if ($result) {
 				$this->session->set_flashdata('response',"Successfully reset user password!");
-				redirect('superadmin/users');
+				redirect('CUser/viewUsersList');
 			} else {
 				print_r('SOMETHING WENT WRONG;');
 			}
@@ -69,7 +69,7 @@
 			$result = $this->MUser->update($id, $data);
 			if ($result) {
 				$this->session->set_flashdata('response',"Successfully activated user!");
-				redirect('superadmin/users');
+				redirect('CUser/viewUsersList');
 			} else {
 				print_r('SOMETHING WENT WRONG;');
 			}
@@ -84,7 +84,7 @@
 			$user = $this->MUser->read_where($where);
 			if($user){
 				$this->session->set_flashdata('error',"User already exists!");
-				redirect('superadmin/users');
+				redirect('CUser/viewUsersList');
 			} else {
 				$now = new DateTime(NULL, new DateTimeZone('Asia/Manila'));
 				$type = null;
@@ -108,7 +108,7 @@
 				$result = $this->MUser->insert($data);
 				if ($result) {
 					$this->session->set_flashdata('response',"Successfully added new user!");
-					redirect('superadmin/users');
+					redirect('CUser/viewUsersList');
 				} else {
 					print_r('SOMETHING WENT WRONG;');
 				}
@@ -140,7 +140,7 @@
 			$result = $this->MUser->update($user_id,$data);
 			if ($result) {
 				$this->session->set_flashdata('response',"Successfully edited user information!");
-				redirect('superadmin/users');
+				redirect('CUser/viewUsersList');
 			} else {
 				print_r('SOMETHING WENT WRONG;');
 			}
@@ -157,7 +157,7 @@
 			$result = $this->MUser->update($user_id, $data);
 			if ($result) {
 				$this->session->set_flashdata('response',"Successfully deleted user!");
-				redirect('superadmin/users');
+				redirect('CUser/viewUsersList');
 			} else {
 				print_r('SOMETHING WENT WRONG;');
 			}

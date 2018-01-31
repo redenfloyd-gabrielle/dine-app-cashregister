@@ -11,7 +11,7 @@
                 </div>
             </h1> <!-- header -->
             <div class='ui breadcrumb'>
-                <a class='section' href='<?php echo site_url()?>admin/dashboard'>HOME</a>
+                <a class='section' href='<?php echo site_url()?>/CUser/viewAdminDashboard'>HOME</a>
                 <i class='right arrow icon divider'></i>
                 <div class='active section'>ORDERS</div>
             </div> <!-- breadcrumb -->
@@ -140,7 +140,7 @@
             if(flag==0){
                 $('#scanned').DataTable({
                     "ajax" : {
-                        url: "<?php echo site_url();?>getscannedorders",
+                        url: "<?php echo site_url();?>/COrdered/getScannedOrders",
                         type : 'GET',
                     },
                     dom: 'Bfrtip',
@@ -180,7 +180,7 @@
         <?php $now = new DateTime(NULL, new DateTimeZone('Asia/Manila')); ?>
         $('#all').DataTable({
             "ajax" : {
-                url: "<?php echo site_url();?>getorders",
+                url: "<?php echo site_url();?>/COrdered/getOrders",
                 type : 'GET',
             },
             dom: 'Bfrtip',
@@ -220,7 +220,7 @@
             if(flag==0){
                 $('#pending').DataTable({
                     "ajax" : {
-                        url: "<?php echo site_url();?>getpendingorders",
+                        url: "<?php echo site_url();?>/COrdered/getPendingOrders",
                         type : 'GET',
                     },
                     dom: 'Bfrtip',
@@ -262,7 +262,7 @@
             if(flag==0){
                 $('#expired').DataTable({
                     "ajax" : {
-                        url: "<?php echo site_url();?>getexpiredorders",
+                        url: "<?php echo site_url();?>/COrdered/getExpiredOrders",
                         type : 'GET',
                     },
                     dom: 'Bfrtip',

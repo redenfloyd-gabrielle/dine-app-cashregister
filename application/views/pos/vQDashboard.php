@@ -9,7 +9,7 @@
 		          <div class="sub header">Retrieve order via QR Code</div>
 		        </div>  
 		    </h1>
-		    <a href="<?php echo site_url()?>cashregister">
+		    <a href="<?php echo site_url()?>/CLogin/viewPos?>">
 		    	<h4 style="color: gray;"><i class="left arrow grey icon"></i>BACK TO HOME</h4>
 		    </a>
 
@@ -92,7 +92,7 @@
 		dataSet = "qr="+data;
 		$.ajax({
 			type: "POST",
-			url: '<?php echo site_url()?>displayfromqr',
+			url: '<?php echo site_url()?>/COrdered/displayOrderFromQR',
 			data: dataSet,
 			cache: false,
 			success: function(result){
@@ -132,7 +132,7 @@
 	  dataSet = "qr="+qr;
 	  $.ajax({
 		type: "POST",
-		url: '<?php echo site_url()?>displayfromqr',
+		url: '<?php echo site_url()?>/COrdered/displayOrderFromQR',
 		data: dataSet,
 		cache: false,
 		success: function(result){
@@ -155,7 +155,7 @@
 					$('#invalid').modal('show');
 				}
 			}else{
-				var msg = 'Please try again. Make sure you are submitting a valid reference number.';
+				var msg = 'Please try again. Make sure you are submitting a valid code.';
 				$('#error').html(msg);
 				$('#invalid')
 				  .modal('show');

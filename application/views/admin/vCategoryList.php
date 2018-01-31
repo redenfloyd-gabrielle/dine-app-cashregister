@@ -11,7 +11,7 @@
                 </div>
             </h1> <!-- header -->
             <div class='ui breadcrumb'>
-                <a class='section' href='<?php echo site_url()?>admin/dashboard'>HOME</a>
+                <a class='section' href='<?php echo site_url()?>/CUser/viewAdminDashboard'>HOME</a>
                 <i class='right arrow icon divider'></i>
                 <div class='active section'>CATEGORIES</div>
             </div> <!-- breadcrumb -->
@@ -43,7 +43,7 @@
                 <div class='ui stackable padded grid'>
                     <div class='row'>
                         <div class='right aligned column'>
-                            <a href='<?php echo site_url()?>admin/addproduct'><div class='ui basic green labeled icon button'>
+                            <a href='<?php echo site_url()?>/CProduct/addNewProduct'><div class='ui basic green labeled icon button'>
                                 Add Product <i class='add icon'></i>
                             </div></a> <!-- Add new product -->
                         </div>
@@ -51,7 +51,7 @@
                     <div class='row'>
                         <div class='sixteen wide column'>
                             <div class='ui three stackable centered cards'>
-                                <a class='ui small card' href='<?php echo site_url()?>admin/category/PANCIT'> 
+                                <a class='ui small card' href='<?php echo site_url()?>/CProduct/viewProductsInCategory/PANCIT'> 
                                     <div class='center aligned middle aligned content' id='superadmin-card'>
                                         <img src='<?php echo base_url("assets/images/ricemeal.png")?>' class='ui small image'>
                                         <div class='header' id='userHeader'>
@@ -60,7 +60,7 @@
                                     </div>
                                 </a> <!-- category card -->
 
-                                <a class='ui small card' href='<?php echo site_url()?>admin/category/SOUP'>  
+                                <a class='ui small card' href='<?php echo site_url()?>/CProduct/viewProductsInCategory/SOUP'>  
                                     <div class='center aligned middle aligned content' id='superadmin-card'>
                                         <img src='<?php echo base_url("assets/images/soup.png")?>' class='ui small image'>
                                         <div class='header' id='userHeader'>
@@ -69,7 +69,7 @@
                                     </div>
                                 </a> <!-- category card -->
 
-                                <a class='ui small card' href='<?php echo site_url()?>admin/category/MAIN COURSE'>    
+                                <a class='ui small card' href='<?php echo site_url()?>/CProduct/viewProductsInCategory/MAIN COURSE'>    
                                     <div class='center aligned middle aligned content' id='superadmin-card'>
                                         <img src='<?php echo base_url("assets/images/meals.svg")?>' class='ui small image'>
                                         <div class='header' id='userHeader'>
@@ -78,7 +78,7 @@
                                     </div>
                                 </a> <!-- category card -->
 
-                                <a class='ui small card' href='<?php echo site_url()?>admin/category/DRINKS'>    
+                                <a class='ui small card' href='<?php echo site_url()?>/CProduct/viewProductsInCategory/DRINKS'>    
                                     <div class='center aligned middle aligned content' id='superadmin-card'>
                                         <img src='<?php echo base_url("assets/images/drinks.svg")?>' class='ui small image'>
                                         <div class='header' id='userHeader'>
@@ -87,7 +87,7 @@
                                     </div>
                                 </a> <!-- category card -->
 
-                                <a class='ui small card' href='<?php echo site_url()?>admin/category/EXTRAS'>    
+                                <a class='ui small card' href='<?php echo site_url()?>/CProduct/viewProductsInCategory/EXTRAS'>    
                                     <div class='center aligned middle aligned content' id='superadmin-card'>
                                         <img src='<?php echo base_url("assets/images/extras.svg")?>' class='ui small image'>
                                         <div class='header' id='userHeader'>

@@ -18,7 +18,7 @@
     <div class='column'></div>
     <div class='eight wide column'>
 
-        <form class='ui tiny form' method='POST' action='<?php echo site_url()?>signin'>
+        <form class='ui tiny form' method='POST' action='<?php echo site_url()?>/CLogin/userLogin'>
             <div class='ui basic secondary segment'>
                 <h3 class='ui middle aligned header'>
                     <div class='content'>
@@ -95,12 +95,12 @@ $(document).ready(function(){
 
 <?php 
 } elseif ($this->session->userdata['userSession']['user_type'] == 'ADMIN') {
-    redirect('admin/dashboard');
+    redirect('CLogin/viewAdminDashboard');
 } else if ($this->session->userdata['userSession']['user_type'] == 'REGULAR') {
-    redirect('cashregister');
+    redirect('CLogin/viewPos');
 } else if ($this->session->userdata['userSession']['user_type'] == 'SUPERADMIN') {
-    redirect('admin/dashboard');
+    redirect('CLogin/viewSuperadminDashboard');
 } else {
-    redirect('login');
+    redirect('CInitialize');
 }
 ?>

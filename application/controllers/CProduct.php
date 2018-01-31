@@ -17,7 +17,7 @@
 	      $url = $this->config->site_url();
 	      $burl = $this->config->base_url();
 	      $this->link = $burl;
-     	  $this->urlSite = $url.'admin/product/';
+     	  $this->urlSite = $url.'/CProduct/viewProductInfo/';
 	  	}
 
 		public function index()
@@ -45,10 +45,10 @@
 			if ($result) {
 				if($this->session->userdata['userSession']['user_type'] == 'SUPERADMIN'){
 					$this->session->set_flashdata('response',"Successfully deleted product!");
-					redirect('superadmin/products');
+					redirect('CProduct/viewAllProducts');
 				} else {
 					$this->session->set_flashdata('response',"Successfully deleted product!");
-					redirect('admin/categories');
+					redirect('CProduct/viewCategoryList');
 					
 				}
 				
@@ -79,7 +79,7 @@
 					}
 				} 
 				$this->session->set_flashdata('response',"Successfully updated product information!");
-				redirect('admin/product/'.$id);
+				redirect('CProduct/viewProductInfo/'.$id);
 			} else {
 				print_r('SOMETHING WENT WRONG;');
 			}
@@ -97,7 +97,7 @@
 			
 			if ($result) {
 				$this->session->set_flashdata('response',"Successfully restocked product!");
-				redirect('admin/categories');
+				redirect('CProduct/viewCategoryList');
 			} else {
 				print_r('SOMETHING WENT WRONG;');
 			}
@@ -123,7 +123,7 @@
 			if ($prod) {
 				foreach ($prod as $val) {}
 				$this->session->set_flashdata('error',"Product already exists!");
-				redirect('admin/product/'.$val->product_id);
+				redirect('CProduct/viewProductInfo/'.$val->product_id);
 			} else {
 				$now = new DateTime(NULL, new DateTimeZone('Asia/Manila'));
 			
@@ -147,7 +147,7 @@
 						$photo = $this->MProduct->insertPhotoProduct("noimage.jpg",$prod_id);
 					}
 					$this->session->set_flashdata('response',"Successfully add new product!");
-					redirect('admin/categories');
+					redirect('CProduct/viewCategoryList');
 				} else {
 					print_r('SOMETHING WENT WRONG;');
 				}
