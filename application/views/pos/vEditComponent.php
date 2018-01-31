@@ -31,7 +31,7 @@
         <tbody>
           <?php if(isset($order_info)) { ?>
                <?php foreach ($order_info as $order){ ?>
-               <form class='' id='form' method='POST' action='<?php echo site_url().'/COrderItem/updateList/'.$order->item_id.'/'.$page.'/'.$eid.'/'.$qr; ?>'>
+               <form class='' id='form' method='POST' action='<?php echo site_url().'updatelist/'.$order->item_id.'/'.$page.'/'.$eid.'/'.$qr; ?>'>
               <tr id="myTR">
                   <td class="five wide"><?php echo $order->product_name; ?></td>
                   <td class="two wide">P<span class="price" name='prod_price'><?php echo $order->product_price; ?></span></td>
@@ -86,11 +86,11 @@
     
     <?php if($page == 'manual'){
         echo '
-          <a href="'.site_url().'/CProduct/backToMDashboard/'.$eid.'" class="item"><div class="ui teal button">BACK</div></a>
+          <a href="'.site_url().'cashregister/manual/dashboard/'.$eid.'" class="item"><div class="ui teal button">BACK</div></a>
         ';
      }else{
         echo '
-          <a href="'.site_url().'/COrdered/displayOrderFromEditPage/'.$qr.'" class="item"><div class="ui teal button">BACK</div></a>
+          <a href="'.site_url().'cashregister/edit/'.$qr.'" class="item"><div class="ui teal button">BACK</div></a>
         ';
      }?>
     <div class="hidden item"></div> <div class="hidden item"></div> <div class="hidden item"></div> <div class="hidden item"></div><div class="hidden item"></div><div class="hidden item"></div><div class="hidden item"></div><div class="hidden item"></div><div class="hidden item"></div><div class="hidden item"></div><div class="hidden item"></div><div class="hidden item"></div><div class="hidden item"></div><div class="hidden item"></div><div class="hidden item"></div><div class="hidden item"></div><div class="hidden item"></div>
@@ -103,9 +103,9 @@
     <div class='header'>Remove Item </div> 
     <div class='content'>
       <?php if(isset($prod_cat)){
-         echo '<form method="POST" action="'.site_url().'/COrderItem/removeToList/'.$page.'/'.$eid.'/'.$qr.'/'.$prod_cat.'" >';
+         echo '<form method="POST" action="'.site_url().'removelist/'.$page.'/'.$eid.'/'.$qr.'/'.$prod_cat.'" >';
        }else{
-        echo '<form method="POST" action="'.site_url().'/COrderItem/removeToList/'.$page.'/'.$eid.'/'.$qr.'/NONE" >';
+        echo '<form method="POST" action="'.site_url().'removelist/'.$page.'/'.$eid.'/'.$qr.'/NONE" >';
        }
        ?>
         <input type='hidden' name='order_item_id' id='order_item_id' value=''>

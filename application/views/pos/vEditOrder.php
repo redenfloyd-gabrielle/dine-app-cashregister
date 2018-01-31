@@ -12,13 +12,13 @@
         </h1>
         <?php if($page == 'manual'){
             echo '
-              <a href="'.site_url().'/CProduct/backToMDashboard/'.$eid.'" class="item">
+              <a href="'.site_url().'cashregister/manual/dashboard/'.$eid.'" class="item">
                 <h4 style="color: gray;"><i class="left arrow grey icon"></i>BACK TO ORDERS</h4>
               </a>
             ';
          }else{
             echo '
-              <a href="'.site_url().'/COrdered/displayOrderFromEditPage/'.$qr.'" class="item">
+              <a href="'.site_url().'cashregister/edit/'.$qr.'" class="item">
                 <h4 style="color: gray;"><i class="left arrow grey icon"></i>BACK TO ORDERS</h4>
               </a>
             ';
@@ -69,7 +69,7 @@
   $.ajax({
 
         type: "POST",
-        url: "<?php echo site_url()?>/CProduct/viewProductEdit/"+page+"/MAINCOURSE/"+eid+"/"+qr,
+        url: "<?php echo site_url()?>viewproductsedit/"+page+"/MAINCOURSE/"+eid+"/"+qr,
         success: function(result){
           $('#MAINCOURSE').html(result);  
         },
@@ -89,7 +89,7 @@
         cat = $.trim(cat.replace(/[\t\n]+/g,' '));
         $.ajax({
         type: "POST",
-        url: "<?php echo site_url()?>/CProduct/viewProductEdit/"+page+"/"+cat+"/"+eid+"/"+qr,
+        url: "<?php echo site_url()?>viewproductsedit/"+page+"/"+cat+"/"+eid+"/"+qr,
         cache: false,
         success: function(result){
          

@@ -33,7 +33,7 @@
                 <div class='ui stackable padded grid'>
                     <div class='row'>
                         <div class='column'>
-                            <form class='ui form productInformation' method="POST" action="<?php echo site_url()?>/CProduct/addProduct" accept-charset="utf-8" enctype="multipart/form-data">
+                            <form class='ui form productInformation' method="POST" action="<?php echo site_url()?>addproduct" accept-charset="utf-8" enctype="multipart/form-data">
                                 <div class='nine wide field'>
                                     <label>UPLOAD IMAGE</label>
                                     <input type="file" name="image" id='image' accept="image/*">
@@ -51,7 +51,7 @@
 
                                     <div class='nine wide  required field'>
                                         <label>FOOD PRICE</label>
-                                        <input type='number' placeholder='Enter food price' name="price">
+                                        <input type='number' placeholder='Enter food price' name="price" step=".01">
                                     </div>
                                     
                                     <label>CATEGORY</label><br>
@@ -77,7 +77,7 @@
                                 <div class='ui hidden divider'></div>
                                 <div class='ui hidden divider'></div>
 
-                                <a id='confirmCancelBR'><div class='ui submit gray button'>Cancel</div></a>
+                                <a class="confirmCancelBR"><div class='ui submit gray button'>Cancel</div></a>
 
                                 <button class='ui submit brown button' type="submit">Add</button>
 

@@ -11,9 +11,9 @@
                 </div>
             </h1> <!-- header -->
             <div class='ui breadcrumb'>
-                <a class='section' href='<?php echo site_url()?>/CUser/viewAdminDashboard'>HOME</a>
+                <a class='section' href='<?php echo site_url()?>admin/dashboard'>HOME</a>
                 <i class='right arrow icon divider'></i>
-                <a class='section' href='<?php echo site_url()?>/COrdered/viewOrderList'>ORDERS</a>
+                <a class='section' href='<?php echo site_url()?>admin/orders'>ORDERS</a>
                 <i class='right arrow icon divider'></i>
                 <div class='active section'>ORDER INFORMATION</div>
             </div> <!-- breadcrumb -->
@@ -34,7 +34,7 @@
                         <div class='twelve wide column'>
                             <p>ORDER ID: <strong style='font-style: italic;'><?php echo $o->ordered_id; ?></strong></p>
                             <?php  $date = date_create_from_format('Y-m-d H:i:s', $o->ordered_time); ?>
-                            <p>ORDER DATE: <strong style='font-style: italic;'><?php echo $date->format('F d, Y H:i a'); ?></strong></p>
+                            <p>ORDER DATE: <strong style='font-style: italic;'><?php echo $date->format('F d, Y g:i a'); ?></strong></p>
 
                             <!-- <p>CASHIER: <strong style='font-style: italic;'><?php echo $o->ordered_guest_id; ?></strong></p> -->
                             <div class='ui hidden divider'></div> 
@@ -55,16 +55,16 @@
                                     <?php foreach($items as $i) { ?>
                                         <tr>
                                             <td><?php echo $i->product_name; ?></td>
-                                            <td>P <?php echo $i->product_price; ?>.00</td>
+                                            <td>₱ <?php echo $i->product_price; ?>.00</td>
                                             <td><?php echo $i->order_item_qty; ?></td>
-                                            <td>P <?php echo $i->order_item_subtotal; ?>.00</td>
+                                            <td>₱ <?php echo $i->order_item_subtotal; ?>.00</td>
                                             <?php $total += $i->order_item_subtotal ; ?>
                                         </tr>
                                     <?php } ?>
                                 </tbody>
                             </table>
                             <div class='ui hidden divider'></div>
-                            <p style="float: right;">TOTAL (P): <strong style='font-style: italic;'><?php echo $total; ?></strong></p>
+                            <p style="float: right;">TOTAL (P): <strong style='font-style: italic;'><?php echo '₱ '.$total; ?>.00</strong></p>
                            <!--  <p>CASH (P): <strong style='font-style: italic;'>200.00</strong></p>
                             <p>CHANGE (P): <strong style='font-style: italic;'>200.00</strong></p> -->
                             <div class='ui hidden divider'></div>

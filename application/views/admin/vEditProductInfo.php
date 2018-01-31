@@ -34,7 +34,7 @@
                     <?php foreach($product as $prod) {} ?>  
                     <div class='row'>
                         <div class='column'>
-                            <form class='ui form productInformation' method='POST' action='<?php echo site_url()?>/CProduct/updateProduct/<?php echo $prod->product_id; ?>' accept-charset="utf-8" enctype="multipart/form-data">
+                            <form class='ui form productInformation' method='POST' action='<?php echo site_url()?>updateproduct/<?php echo $prod->product_id; ?>' accept-charset="utf-8" enctype="multipart/form-data">
                                 <div class='nine wide field'>
                                     <label>UPLOAD IMAGE</label>
                                     <input type="hidden" name='pic' id='pic' >

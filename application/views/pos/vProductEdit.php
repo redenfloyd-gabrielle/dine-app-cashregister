@@ -3,7 +3,7 @@
   <?php if(isset($products)) { ?>
         <?php foreach ($products as $prod){ ?>
       <div class="five wide column">
-            <form method="POST" action="<?php echo site_url().'/CReceiptItem/editItems/'.$page.'/'. $prod->product_id.'/'.$eid.'/'.$qr;?>">
+            <form method="POST" action="<?php echo site_url().'edititems/'.$page.'/'. $prod->product_id.'/'.$eid.'/'.$qr;?>">
                <div class="ui cards">
                   <div class="card cardbox">
                     <div class="content">

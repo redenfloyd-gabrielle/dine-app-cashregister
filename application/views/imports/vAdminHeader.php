@@ -57,16 +57,16 @@
         </span>
         <input hidden='' type='text' name='pass' id='pass' value='<?php echo strtolower($this->session->userdata['userSession']['user_password']);?>'>
     </div> 
-    <a class='item' href='<?php echo site_url()?>/CUser/viewAdminDashboard'>
+    <a class='item' href='<?php echo site_url()?>admin/dashboard'>
         <i class='dashboard icon'></i> Dashboard
     </a>
-    <a class='item' href='<?php echo site_url()?>/CProduct/viewCategoryList'>
+    <a class='item' href='<?php echo site_url()?>admin/categories'>
         <i class='food icon'></i> Products
     </a>
-    <a class='item' href='<?php echo site_url()?>/COrdered/viewOrderList?>'>
+    <a class='item' href='<?php echo site_url()?>admin/orders'>
         <i class='shop icon'></i> Orders
     </a>
-    <a class='item' href='<?php echo site_url()?>/CReports/getData'>
+    <a class='item' href='<?php echo site_url()?>admin/reports'>
         <i class='bar chart icon'></i> Reports
     </a>
 </div>
@@ -78,10 +78,10 @@
         <i class="sidebar icon"></i>
     </a>
 
-    <a class='borderless item' href='<?php echo site_url()?>/CUser/viewAdminDashboard'>DINE</a>
+    <a class='borderless item' href='<?php echo site_url()?>admin/dashboard'>DINE</a>
 
     <div class='right menu'>
-        <a class="item" href="<?php echo site_url()?>/CLogin/viewPos"><i class="calculator icon"></i>SWITCH TO POS</a> 
+        <a class="item" href="<?php echo site_url()?>cashregister"><i class="calculator icon"></i>SWITCH TO CASHREGISTER</a> 
         <div class='ui simple dropdown item' tabindex='0'>
         <i class='user icon'></i>PROFILE
         <i class='dropdown icon' tabindex='0'>
@@ -89,7 +89,7 @@
         </i>
         <div class='menu' tabindex='-1'>
             <a class='item' id='changePass'><i class='lock icon'></i>CHANGE PASSWORD</a>
-            <a class='item' href='<?php echo site_url()?>/CLogin/userLogout' ><i class='power icon'></i>LOGOUT</a>
+            <a class='item' href='<?php echo site_url()?>signout' ><i class='power icon'></i>LOGOUT</a>
         </div>
     </div>
     </div>
@@ -112,7 +112,7 @@
 <div class="ui mini modal" id="confirmUpdate" aria-hidden="true">
   <div class="header">Update user credentials</div>
   <div class="content">
-    <form class="ui form updatePassForm" action="<?php echo site_url();?>/CUser/changePassword" method="POST">
+    <form class="ui form updatePassForm" action="<?php echo site_url();?>changepassword" method="POST">
 
         <div class="required field">
             <label>Old Password</label>
@@ -150,7 +150,7 @@
       <i class="remove icon"></i>
       No
     </div>
-    <a href="<?php echo site_url()?>/CProduct/viewCategoryList?>"><button class="ui basic brown ok inverted button" type="submit">
+    <a href="<?php echo site_url()?>admin/categories"><button class="ui basic brown ok inverted button" type="submit">
       <i class="checkmark icon"></i>
       Yes
     </button></a>
@@ -171,7 +171,7 @@
       <i class="remove icon"></i>
       No
     </div>
-    <a href='<?php echo site_url()?>/CUser/viewAdminDashboard'><button class="ui basic brown ok inverted button" type="submit">
+    <a href='<?php echo site_url()?>admin/dashboard'><button class="ui basic brown ok inverted button" type="submit">
       <i class="checkmark icon"></i>
       Yes
     </button></a>
@@ -237,7 +237,7 @@ $(document).ready(function(){
     }
    
     $('.updatePassForm').form({
-        on: 'change',
+        on: 'submit',
         inline: true,
         fields: formValidationRules,
         onSuccess : function() 
@@ -250,7 +250,7 @@ $(document).ready(function(){
 
 
     $('.productInformation').form({
-        on: 'blur',
+        on: 'submit',
         inline: true,
         fields:{
             name: {
@@ -308,10 +308,10 @@ $(document).ready(function(){
 
 <?php 
 } else if ($this->session->userdata['userSession']['user_type'] == 'REGULAR') {
-    redirect('CLogin/viewPos');
+    redirect('cashregister');
 } else if ($this->session->userdata['userSession']['user_type'] == 'SUPERADMIN') {
-    redirect('CLogin/viewSuperadminDashboard');
+    redirect('superadmin/dashboard');
 } else {
-    redirect('CInitialize');
+    redirect('login');
 }
 ?>
