@@ -28,7 +28,7 @@
                 <div class='ui stackable padded grid'>
                     <div class='row'>  
                         <div class='eight wide column'>
-                            <form class='ui form userInformation' method="POST" action="<?php echo site_url()?>/CUser/addUser">
+                            <form class='ui form userInformation' method="POST" action="<?php echo site_url()?>adduser">
                             <h3 class='ui horizontal divider header'>
                                 <i class='address card outline icon'></i> User Personal Information
                             </h3>

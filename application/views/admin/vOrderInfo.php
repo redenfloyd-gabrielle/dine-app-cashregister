@@ -11,9 +11,9 @@
                 </div>
             </h1> <!-- header -->
             <div class='ui breadcrumb'>
-                <a class='section' href='<?php echo site_url()?>/CUser/viewAdminDashboard'>HOME</a>
+                <a class='section' href='<?php echo site_url()?>admin/dashboard'>HOME</a>
                 <i class='right arrow icon divider'></i>
-                <a class='section' href='<?php echo site_url()?>/COrdered/viewOrderList'>ORDERS</a>
+                <a class='section' href='<?php echo site_url()?>admin/orders'>ORDERS</a>
                 <i class='right arrow icon divider'></i>
                 <div class='active section'>ORDER INFORMATION</div>
             </div> <!-- breadcrumb -->

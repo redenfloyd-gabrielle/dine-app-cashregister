@@ -30,7 +30,7 @@
                             <?php foreach ($user as $u) { ?>
                         
                         <div class='eight wide column'>
-                            <form class='ui form userInformation' method="POST" action="<?php echo site_url()?>/CUser/updateUser/<?php echo $u->user_id; ?> ">
+                            <form class='ui form userInformation' method="POST" action="<?php echo site_url()?>updateuser/<?php echo $u->user_id; ?> ">
                             <h3 class='ui horizontal divider header'>
                                 <i class='address card outline icon'></i> User Personal Information
                             </h3>

@@ -11,7 +11,7 @@
                 </div>
             </h1> <!-- header -->
             <div class='ui breadcrumb'>
-                <a class='section' href='<?php echo site_url()?>/CUser/viewSuperadminDashboard'>HOME</a>
+                <a class='section' href='<?php echo site_url()?>superadmin/dashboard'>HOME</a>
                 <i class='right arrow icon divider'></i>
                 <div class='active section'>USERS</div>
             </div> <!-- breadcrumb -->
@@ -35,7 +35,7 @@
                 <div class='ui stackable padded grid'>
                     <div class='row'>
                         <div class='right aligned column'>
-                            <a href='<?php echo site_url()?>/CUser/vAddUser'><button class='ui basic green labeled icon button addBut'><i class='user icon'></i>Add new user</div></a> <!-- Add new user -->
+                            <a href='<?php echo site_url()?>superadmin/adduser'><button class='ui basic green labeled icon button addBut'><i class='user icon'></i>Add new user</div></a> <!-- Add new user -->
                         </div>
                     </div> <!-- row -->
                     <?php if (isset($users)) { ?>
@@ -75,7 +75,7 @@
     Remove User
   </div>
   <div class="content">
-<form class='ui form' method='POST' action='<?php echo site_url()?>/CUser/deleteUser'>
+<form class='ui form' method='POST' action='<?php echo site_url()?>deleteuser'>
     <center><p style='font-size: 1.5em;'>Are you sure you want to remove this user?</p></center>
     <input type="hidden" name='user_id' id="user_id" value="">
   </div>

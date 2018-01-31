@@ -12,7 +12,7 @@
 	      $this->load->helper('url');
 	      $this->load->library('session');
 	      $url = $this->config->site_url();
-     	  $this->urlSite = $url.'COrderItem/viewOrderInfo/';
+     	  $this->urlSite = $url.'admin/order/';
 	  	}
 
 		public function index()
