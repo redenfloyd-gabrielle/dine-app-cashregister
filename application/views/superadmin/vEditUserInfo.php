@@ -7,18 +7,18 @@
                 <i class="dashboard icon"></i>
                 <div class="content">
                   USERS
-                  <div class="sub header">Edit user</div>
+                  <div class="sub header">Add a new user</div>
                 </div>
             </h1> <!-- header -->
             <div class='ui breadcrumb'>
                 <a class='section confirmCancelHome' >HOME</a>
                 <i class='right arrow icon divider'></i>
-                <a class='section confirmCancelBR'>USERS</a>
+                <a class='section' id='confirmCancelBR'>USERS</a>
                 <i class='right arrow icon divider'></i>
-                <div class='active section'>EDIT USER</div>
+                <div class='active section'>ADD USER</div>
             </div> <!-- breadcrumb -->
         </div> <!-- segment -->
-        <!-- content --> 
+        <!-- content -->
         <div class='ui segments'>
             <div class='ui basic segment'>
                 <h5 class='ui header teal ribbon label'><i class='info icon'></i>
@@ -30,7 +30,7 @@
                             <?php foreach ($user as $u) { ?>
                         
                         <div class='eight wide column'>
-                            <form class='ui form userInformation' method="POST" action="<?php echo site_url()?>updateuser/<?php echo $u->user_id; ?> ">
+                            <form class='ui form userInformation' method="POST" action="<?php echo site_url()?>/CUser/updateUser/<?php echo $u->user_id; ?> ">
                             <h3 class='ui horizontal divider header'>
                                 <i class='address card outline icon'></i> User Personal Information
                             </h3>

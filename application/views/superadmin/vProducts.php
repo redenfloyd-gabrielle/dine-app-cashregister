@@ -11,7 +11,7 @@
                 </div>
             </h1> <!-- header -->
             <div class='ui breadcrumb'>
-                <a class='section' href='<?php echo site_url()?>superadmin/dashboard'>HOME</a>
+                <a class='section' href='<?php echo site_url()?>/CUser/viewSuperadminDashboard'>HOME</a>
                 <i class='right arrow icon divider'></i>
                 <div class='active section'>PRODUCTS</div>
             </div> <!-- breadcrumb -->
@@ -71,7 +71,7 @@
     Remove Item
   </div>
   <div class="content">
-<form class='ui form' method='POST' action='<?php echo site_url()?>deleteproduct'>
+<form class='ui form' method='POST' action='<?php echo site_url()?>/CProduct/deleteProduct?>'>
     <center><p style='font-size: 1.5em;'>Are you sure you want to remove this item?</p></center>
     <input type='hidden' name='product_id' id='product_id' value="">
   </div>
@@ -104,7 +104,7 @@ $(document).ready(function(){
 $(document).ready(function() {
     $('#products').DataTable({
         "ajax" : {
-            url: "<?php echo site_url();?>getallproducts",
+            url: "<?php echo site_url();?>/CProduct/getAllProducts",
             type : 'GET',
         },
     });

@@ -11,9 +11,9 @@
                 </div>
             </h1> <!-- header -->
             <div class='ui breadcrumb'>
-                <a class='section' href='<?php echo site_url()?>admin/dashboard'>HOME</a>
+                <a class='section' href='<?php echo site_url()?>/CUser/viewAdminDashboard'>HOME</a>
                 <i class='right arrow icon divider'></i>
-                <a class='section' href='<?php echo site_url()?>admin/categories'>CATEGORIES</a> 
+                <a class='section' href='<?php echo site_url()?>/CProduct/viewCategoryList'>CATEGORIES</a> 
                 <i class='right arrow icon divider'></i>
                 <div class='active section'>PRODUCT INFORMATION</div>
             </div> <!-- breadcrumb -->
@@ -38,7 +38,7 @@
                     <?php foreach($product as $prod) {} ?>  
                         <div class='row'>
                             <div class='right aligned column'>
-                                <a href='<?php echo site_url()?>admin/editproduct/<?php echo $prod->product_id; ?>'>
+                                <a href='<?php echo site_url()?>/CProduct/editProductInfo/<?php echo $prod->product_id; ?>'>
                                     <div class='ui basic blue labeled icon button'>
                                         Edit <i class='pencil icon'></i>
                                     </div>
@@ -85,7 +85,7 @@
     Remove Item
   </div>
   <div class="content">
-<form class='ui form' method='POST' action='<?php echo site_url()?>deleteproduct'>
+<form class='ui form' method='POST' action='<?php echo site_url()?>/CProduct/deleteProduct?>'>
     <center><p style='font-size: 1.5em;'>Are you sure you want to remove this item?</p></center>
     <input hidden='' type='text' name='product_id' id='product_id' value='<?php echo $prod->product_id?>'>
   </div>

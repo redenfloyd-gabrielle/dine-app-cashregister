@@ -10,7 +10,7 @@
         </div>  
       </h1>
 
-        <a href="<?php echo site_url()?>cashregister">
+        <a href="<?php echo site_url()?>/CLogin/viewPos?>">
           <h4 style="color: gray;"><i class="left arrow grey icon"></i>BACK TO HOME</h4>
         </a>
 
@@ -50,7 +50,7 @@
   $(document).ready(function(){
      $.ajax({
         type: "POST",
-        url: '<?php echo site_url()?>/displayorderlistmanual',
+        url: '<?php echo site_url()?>/CReceiptItem/displayOrderListManual',
         cache: false,
         success: function(result){
             if(result){
@@ -65,7 +65,7 @@
     });
      $.ajax({
         type: "POST",
-        url: "<?php echo site_url()?>viewproduct/MAINCOURSE",
+        url: "<?php echo site_url()?>/CProduct/viewProduct/MAINCOURSE",
         cache: false,
         success: function(result){
           $('#MAINCOURSE').html(result);  
@@ -82,7 +82,7 @@
       cat = $.trim(cat.replace(/[\t\n]+/g,' '));
         $.ajax({
         type: "POST",
-        url: "<?php echo site_url()?>viewproduct/"+cat,
+        url: "<?php echo site_url()?>/CProduct/viewProduct/"+cat,
         cache: false,
         success: function(result){
          

@@ -13,17 +13,17 @@
 </head>
 <body>
 <div class="ui large top attached inverted teal menu borderless">
-	<a class="item bpmono size18" href="<?php echo site_url()?>cashregister">DINE | POS</a>
+	<a class="item bpmono size18" href="<?php echo site_url()?>/CLogin/viewPos">DINE | POS</a>
 	<div class="right menu bpmono size18">
 		<div class="item">
 			<span style="text-transform: uppercase;"><?php echo $this->session->userdata['userSession']['user_first_name'].' '.$this->session->userdata['userSession']['user_last_name'];?> &nbsp | &nbsp <span id="date"></span> &nbsp | &nbsp <span class ="time"></span>&nbsp &nbsp</span>
 		</div>
 		<div class="hidden item"></div>
 		<?php if($this->session->userdata['userSession']['user_type'] == "ADMIN"){
-			echo '<a class="item" href="'.site_url().'admin/dashboard"><i class="user icon"></i>SWITCH TO ADMIN</a> 
+			echo '<a class="item" href="'.site_url().'/CUser/viewAdminDashboard"><i class="user icon"></i>SWITCH TO ADMIN</a> 
 					<div class="hidden item"></div>';
 		}?>
-		<a class="item" href="<?php echo site_url()?>signout"><i class="white sign out icon"></i>LOGOUT</a>
+		<a class="item" href="<?php echo site_url()?>/CLogin/userLogout?>"><i class="white sign out icon"></i>LOGOUT</a>
 	</div>
 </div>
 <div class="ui grid">	
@@ -63,8 +63,8 @@
 </script>
 
 <?php } else if ($this->session->userdata['userSession']['user_type'] == 'SUPERADMIN') {
-	redirect('superadmin/dashboard');
+	 redirect('CLogin/viewSuperadminDashboard');
 } else {
-    redirect('login');
+    redirect('CInitialize');
 }
 ?>

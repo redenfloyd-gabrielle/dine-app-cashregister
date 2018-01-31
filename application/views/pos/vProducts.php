@@ -4,7 +4,7 @@
         <?php if(isset($products)) { ?>
           <?php $x=0; foreach ($products as $prod){ ?>
           <div class="five wide column">
-            <form method="POST" action="<?php echo site_url()?>addreceiptitem/<?php echo $prod->product_id.'/'.$this->session->userdata['receiptSession']['receipt_id'];?>">
+            <form method="POST" action="<?php echo site_url()?>/CReceiptItem/addReceiptItem/<?php echo $prod->product_id.'/'.$this->session->userdata['receiptSession']['receipt_id'];?>">
                <div class="ui cards">
                   <div class="card">
                     <div class="content">
