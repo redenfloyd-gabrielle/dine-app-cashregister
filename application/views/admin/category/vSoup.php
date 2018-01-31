@@ -11,9 +11,9 @@
                 </div>
             </h1> <!-- header -->
             <div class='ui breadcrumb'>
-                <a class='section' href='<?php echo site_url()?>/CUser/viewAdminDashboard'>HOME</a>
+                <a class='section' href='<?php echo site_url()?>admin/dashboard'>HOME</a>
                 <i class='right arrow icon divider'></i>
-                <a class='section' href='<?php echo site_url()?>/CProduct/viewCategoryList'>CATEGORIES</a>
+                <a class='section' href='<?php echo site_url()?>admin/categories'>CATEGORIES</a>
                 <i class='right arrow icon divider'></i>
                 <div class='active section'>PRODUCT LIST</div>
             </div> <!-- breadcrumb -->
@@ -73,7 +73,7 @@
     Remove Item
   </div>
   <div class="content">
-<form class='ui form' method='POST' action='<?php echo site_url()?>/CProduct/deleteProduct?>'>
+<form class='ui form' method='POST' action='<?php echo site_url()?>deleteproduct'>
     <center><p style='font-size: 1.5em;'>Are you sure you want to remove this item?</p></center>
     <input type='hidden' name='product_id' id='product_id' value="">
   </div>
@@ -96,7 +96,7 @@
     Restock Item
   </div>
   <div class="content">
-<form class='ui form' method='POST' action='<?php echo site_url()?>/CProduct/restockProduct'>
+<form class='ui form' method='POST' action='<?php echo site_url()?>restockproduct'>
     <center><p style='font-size: 1.5em;'>Are you sure you want to restock this item?</p></center>
     <input type='hidden' name='rproduct_id' id='rproduct_id' value="">
   </div>
@@ -142,7 +142,7 @@ $(document).ready(function() {
    
     $('#soup').DataTable({
         "ajax" : {
-            url: "<?php echo site_url();?>/CProduct/getSoup",
+            url: "<?php echo site_url();?>getsoup",
             type : 'GET',
         },
     });

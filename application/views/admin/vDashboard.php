@@ -11,7 +11,7 @@
                 </div>
             </h1> <!-- header --> 
             <div class='ui breadcrumb'>
-                <a class='section' href='<?php echo site_url()?>/CUser/viewAdminDashboard'>HOME</a>
+                <a class='section' href='<?php echo site_url()?>admin/dashboard'>HOME</a>
                 <i class='right arrow icon divider'></i>
                 <div class='active section'>DASHBOARD</div>
             </div> <!-- breadcrumb -->
@@ -22,9 +22,9 @@
         <!-- content -->
         <div class='ui basic segment'> 
             <div class='ui labeled three icon item menu'>
-                <a href='<?php echo site_url()?>/CProduct/viewCategoryList' class='item'><i class='food icon'></i>PRODUCTS</a>
-                <a href='<?php echo site_url()?>/COrdered/viewOrderList' class='item'><i class='shop icon'></i>ORDERS</a>
-                <a href='<?php echo site_url()?>/CReports/getData' class='item'><i class='calculator icon'></i>REPORTS</a>
+                <a href='<?php echo site_url()?>admin/categories' class='item'><i class='food icon'></i>PRODUCTS</a>
+                <a href='<?php echo site_url()?>admin/orders' class='item'><i class='shop icon'></i>ORDERS</a>
+                <a href='<?php echo site_url()?>admin/reports' class='item'><i class='calculator icon'></i>REPORTS</a>
             </div> 
             <div class="ui grid">
                 
@@ -186,7 +186,7 @@
                                     <td><?php echo '₱ '.$item->ordered_total.'.00'; ?></td>
                                     <td><?php echo $qr; ?></td>
                                     <td>
-                                        <a href='<?php echo site_url()?>/COrderItem/viewOrderInfo/<?php echo $item->ordered_id?>' >
+                                        <a href='<?php echo site_url()?>admin/order/<?php echo $item->ordered_id?>' >
                                             <div class='ui basic blue icon button' data-tooltip="View order">
                                                 <i class='unhide icon'></i>
                                             </div>
@@ -196,7 +196,7 @@
                                 <?php }?>
                             </tbody>
                         </table>
-                        <a href="<?php echo site_url()?>/COrdered/viewOrderList" class="ui button">View pending orders</a>
+                        <a href="<?php echo site_url()?>admin/orders" class="ui button">View pending orders</a>
                         <?php }else{ 
                             echo "<p class='notice'>There are no pending orders for today.</p>";
                             } ?>
@@ -221,7 +221,7 @@
                                     <td><?php echo '₱ '.$item->ordered_total.'.00'; ?></td>
                                     <td><?php echo $qr; ?></td>
                                     <td>
-                                        <a href='<?php echo site_url()?>/COrderItem/viewOrderInfo/<?php echo $item->ordered_id?>'>
+                                        <a href='<?php echo site_url()?>admin/order/<?php echo $item->ordered_id?>'>
                                             <div class='ui basic blue icon button'>
                                                 <i class='unhide icon'></i>
                                             </div>
@@ -231,7 +231,7 @@
                                 <?php }?>
                             </tbody>
                         </table>
-                        <a href="<?php echo site_url()?>/COrdered/viewOrderList" class="ui button">View scanned orders</a>
+                        <a href="<?php echo site_url()?>admin/orders" class="ui button">View scanned orders</a>
                         <?php }else{ 
                             echo "<p class='notice'>There are no scanned orders at the moment.</p>";
                             } ?>

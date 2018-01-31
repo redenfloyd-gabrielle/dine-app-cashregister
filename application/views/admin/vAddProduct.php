@@ -33,7 +33,7 @@
                 <div class='ui stackable padded grid'>
                     <div class='row'>
                         <div class='column'>
-                            <form class='ui form productInformation' method="POST" action="<?php echo site_url()?>/CProduct/addProduct" accept-charset="utf-8" enctype="multipart/form-data">
+                            <form class='ui form productInformation' method="POST" action="<?php echo site_url()?>addproduct" accept-charset="utf-8" enctype="multipart/form-data">
                                 <div class='nine wide field'>
                                     <label>UPLOAD IMAGE</label>
                                     <input type="file" name="image" id='image' accept="image/*">

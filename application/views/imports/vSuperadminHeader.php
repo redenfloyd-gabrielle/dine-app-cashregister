@@ -33,13 +33,13 @@
         </span>
         <input hidden='' type='text' name='pass' id='pass' value='<?php echo strtolower($this->session->userdata['userSession']['user_password']);?>'>
     </div> 
-    <a class='item' href='<?php echo site_url()?>/CUser/viewSuperadminDashboard'>
+    <a class='item' href='<?php echo site_url()?>superadmin/dashboard'>
         <i class='dashboard icon'></i> Dashboard
     </a>
-    <a class='item' href='<?php echo site_url()?>/CUser/viewUsersList'>
+    <a class='item' href='<?php echo site_url()?>superadmin/users'>
         <i class='users icon'></i> Users
     </a>
-    <a class="item" href='<?php echo site_url()?>/CProduct/viewAllProducts'>
+    <a class="item" href='<?php echo site_url()?>superadmin/products'>
         <i class="food icon"></i> Products
     </a>
 </div>
@@ -53,7 +53,7 @@
     <a class=" item toggleMenu">
         <i class="sidebar icon"></i>
     </a> 
-    <a class=' item' href='<?php echo site_url()?>/CUser/viewSuperadminDashboard'>DINE</a>
+    <a class=' item' href='<?php echo site_url()?>superadmin/dashboard'>DINE</a>
     <div class='right menu'>
         <div class='ui simple dropdown item' tabindex='0'>
         <i class='user icon'></i>PROFILE
@@ -62,7 +62,7 @@
         </i>
         <div class='menu' tabindex='-1'>
             <a class='item' id='changePass'><i class='lock icon'></i>CHANGE PASSWORD</a>
-            <a class='item' href='<?php echo site_url()?>/CLogin/userLogout' ><i class='power icon'></i>LOGOUT</a>
+            <a class='item' href='<?php echo site_url()?>signout' ><i class='power icon'></i>LOGOUT</a>
         </div>
     </div>
     </div>
@@ -78,7 +78,7 @@
 <div class="ui mini modal" id="confirmUpdate" aria-hidden="true">
   <div class="header">Update user credentials</div>
   <div class="content">
-    <form class="ui form updatePassword" action="<?php echo site_url();?>/CUser/changePassword" method="POST">
+    <form class="ui form updatePassword" action="<?php echo site_url();?>changepassword" method="POST">
         <div class="required field">
             <label>Old Password</label>
             <input type="password" name="old" id="old" placeholder="Enter old password">
@@ -118,7 +118,7 @@
       <i class="remove icon"></i>
       No
     </div>
-    <a href="<?php echo site_url()?>/CUser/viewUsersList"><button class="ui basic blue ok inverted button" type="submit">
+    <a href="<?php echo site_url()?>superadmin/users"><button class="ui basic blue ok inverted button" type="submit">
       <i class="checkmark icon"></i>
       Yes
     </button></a>
@@ -140,7 +140,7 @@
       <i class="remove icon"></i>
       No
     </div>
-    <a  href='<?php echo site_url()?>/CUser/viewSuperadminDashboard'><button class="ui basic blue ok inverted button" type="submit">
+    <a  href='<?php echo site_url()?>superadmin/dashboard'><button class="ui basic blue ok inverted button" type="submit">
       <i class="checkmark icon"></i>
       Yes
     </button></a>
@@ -268,10 +268,10 @@ $(document).ready(function(){
 
 <?php 
 } else if ($this->session->userdata['userSession']['user_type'] == 'REGULAR') {
-    redirect('CLogin/viewPos');
+    redirect('cashregister');
 } else if ($this->session->userdata['userSession']['user_type'] == 'ADMIN') {
-    redirect('CLogin/viewAdminDashboard');
+    redirect('admin/dashboard');
 } else {
-    redirect('CInitialize');
+    redirect('login');
 }
 ?>

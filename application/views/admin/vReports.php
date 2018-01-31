@@ -11,7 +11,7 @@
                 </div>
             </h1> <!-- header -->
             <div class='ui breadcrumb'>
-                <a class='section' href='<?php echo site_url()?>/CUser/viewAdminDashboard'>HOME</a>
+                <a class='section' href='<?php echo site_url()?>admin/dashboard'>HOME</a>
                 <i class='right arrow icon divider'></i>
                 <div class='active section'>REPORTS</div>
             </div> <!-- breadcrumb -->
@@ -93,7 +93,7 @@
                       <td><?php echo $row->receipt_date?></td>
                       <td>₱ <?php echo $row->receipt_total; ?>.00</td>
                       <td><?php echo $row->receipt_cashier; ?></td>
-                      <td><a href="<?php echo site_url()?>/CReports/viewInfo/<?php echo $row->receipt_id?>"><button class="ui inverted blue icon button">
+                      <td><a href="<?php echo site_url()?>admin/reports/receipt/<?php echo $row->receipt_id?>"><button class="ui inverted blue icon button">
                                         <i class="unhide icon"></i>
                                     </button></a></td>
                     </tr>
@@ -239,7 +239,7 @@
                       <td><?php echo $row->receipt_date?></td>
                       <td>₱ <?php echo $row->receipt_total; ?>.00</td>
                       <td><?php echo $row->receipt_cashier; ?></td>
-                      <td><a href="<?php echo site_url()?>/CReports/viewInfo/<?php echo $row->receipt_id?>"><button class="ui inverted blue icon button">
+                      <td><a href="<?php echo site_url()?>admin/reports/receipt/<?php echo $row->receipt_id?>"><button class="ui inverted blue icon button">
                                         <i class="unhide icon"></i>
                                     </button></a></td>
                     </tr>
@@ -332,7 +332,7 @@
                       <td><?php echo $row->receipt_date?></td>
                       <td>₱ <?php echo $row->receipt_total; ?>.00</td>
                       <td><?php echo $row->receipt_cashier; ?></td>
-                      <td><a href="<?php echo site_url()?>/CReports/viewInfo/<?php echo $row->receipt_id?>"><button class="ui inverted blue icon button">
+                      <td><a href="<?php echo site_url()?>admin/reports/receipt/<?php echo $row->receipt_id?>"><button class="ui inverted blue icon button">
                                         <i class="unhide icon"></i>
                                     </button></a></td>
                     </tr>
@@ -425,7 +425,7 @@
                       <td><?php echo $row->receipt_date?></td>
                       <td>₱ <?php echo $row->receipt_total; ?>.00</td>
                       <td><?php echo $row->receipt_cashier; ?></td>
-                      <td><a href="<?php echo site_url()?>/CReports/viewInfo/<?php echo $row->receipt_id?>"><button class="ui inverted blue icon button">
+                      <td><a href="<?php echo site_url()?>admin/reports/receipt/<?php echo $row->receipt_id?>"><button class="ui inverted blue icon button">
                                         <i class="unhide icon"></i>
                                     </button></a></td>
                     </tr>

@@ -9,7 +9,7 @@
 		          <div class="sub header">Retrieve order via QR Code</div>
 		        </div>  
 		    </h1>
-		    <a href="<?php echo site_url()?>/CLogin/viewPos?>">
+		    <a href="<?php echo site_url()?>cashregister">
 		    	<h4 style="color: gray;"><i class="left arrow grey icon"></i>BACK TO HOME</h4>
 		    </a>
 
@@ -92,7 +92,7 @@
 		dataSet = "qr="+data;
 		$.ajax({
 			type: "POST",
-			url: '<?php echo site_url()?>/COrdered/displayOrderFromQR',
+			url: '<?php echo site_url()?>displayfromqr',
 			data: dataSet,
 			cache: false,
 			success: function(result){
@@ -132,7 +132,7 @@
 	  dataSet = "qr="+qr;
 	  $.ajax({
 		type: "POST",
-		url: '<?php echo site_url()?>/COrdered/displayOrderFromQR',
+		url: '<?php echo site_url()?>displayfromqr',
 		data: dataSet,
 		cache: false,
 		success: function(result){
