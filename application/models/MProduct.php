@@ -61,7 +61,7 @@
 		public function insertPhotoProduct($filename,$id) 
 		{ 
 			$where = array(
-				"product_image" =>  "assets/images/".$filename,
+				"product_image" =>  "assets/images/products/".$filename,
 			);
 
 			return $result = $this->update($id, $where);
