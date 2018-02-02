@@ -186,11 +186,19 @@
                                     <td><?php echo '₱ '.$item->ordered_total.'.00'; ?></td>
                                     <td><?php echo $qr; ?></td>
                                     <td>
+                                        <?php if($qr == 'NOT APPLICABLE' ) {?>
+                                        <a class="disabled" href='<?php echo site_url()?>admin/order/<?php echo $item->ordered_id?>' >
+                                            <div class='ui basic blue icon button disabled' data-tooltip="View order">
+                                                <i class='unhide icon'></i>
+                                            </div>
+                                        </a> <!-- Edit product information -->
+                                        <?php } else {?>
                                         <a href='<?php echo site_url()?>admin/order/<?php echo $item->ordered_id?>' >
                                             <div class='ui basic blue icon button' data-tooltip="View order">
                                                 <i class='unhide icon'></i>
                                             </div>
                                         </a> <!-- Edit product information -->
+                                        <?php } ?>
                                     </td>
                                 </tr>
                                 <?php }?>
@@ -247,3 +255,8 @@
 
 </body>
 </html>
+<script type="text/javascript">
+    $(document).on('click','.disabled',function(e) {
+        e.preventDefault();
+    });
+</script>
