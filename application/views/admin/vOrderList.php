@@ -168,7 +168,8 @@
                             messageTop: 'This PDF contains Scanned orders from dine-app.net',
                             title: 'Scanned Orders_<?php echo $now->format('Y-m-d'); ?>'
                         }
-                    ]
+                    ],
+                    "order": [],
                 });
                 flag++;
             }
@@ -208,7 +209,8 @@
                     messageTop: 'This PDF contains all orders from dine-app.net',
                     title: 'All Orders_<?php echo $now->format('Y-m-d'); ?>'
                 }
-            ]
+            ],
+            "order": [],
             
         });
     } );
@@ -248,7 +250,8 @@
                             messageTop: 'This PDF contains Pending orders from dine-app.net',
                             title: 'Pending Orders_<?php echo $now->format('Y-m-d'); ?>'
                         }
-                    ]
+                    ],
+                    "order": [],
                 });
                 flag++;
             }
@@ -290,11 +293,15 @@
                             messageTop: 'This PDF contains Expired orders from dine-app.net',
                             title: 'Expired Orders_<?php echo $now->format('M-d-Y'); ?>'
                         }
-                    ]
+                    ],
+                    "order": [],
                 });
                 flag++;
             }
         });
     } );
-    
+
+    $(document).on('click','.disabled',function(e) {
+        e.preventDefault();
+    });
 </script>

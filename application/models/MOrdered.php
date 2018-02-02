@@ -53,7 +53,7 @@
 		{
 			$this->db->select("*");
 			$this->db->from($this::DB_TABLE);
-			// $this->db->where('ordered_status', 'scanned');
+			$this->db->where('ordered_qr_code !=', 0);
 			$query = $this->db->get();
 			
 			return $query;
@@ -65,6 +65,8 @@
 			$this->db->select("*");
 			$this->db->from($this::DB_TABLE);
 			$this->db->where('ordered_status', 'scanned');
+			$this->db->where('ordered_qr_code !=', 0);
+			$this->db->order_by('ordered_time','desc');
 			$query = $this->db->get();
 			
 			return $query;
@@ -75,6 +77,8 @@
 			$this->db->select("*");
 			$this->db->from($this::DB_TABLE);
 			$this->db->where('ordered_status', 'pending');
+			$this->db->where('ordered_qr_code !=', 0);
+			$this->db->order_by('ordered_time','desc');
 			$query = $this->db->get();
 			
 			return $query;
@@ -95,6 +99,8 @@
 			$this->db->select("*");
 			$this->db->from($this::DB_TABLE);
 			$this->db->where('ordered_status', 'expired');
+			$this->db->where('ordered_qr_code !=', 0);
+			$this->db->order_by('ordered_time','desc');
 			$query = $this->db->get();
 			
 			return $query;
@@ -105,6 +111,7 @@
 			$this->db->select("*");
 			$this->db->from($this::DB_TABLE);
 			$this->db->where('ordered_status', 'scanned');
+			$this->db->order_by('ordered_time','desc');
 			$this->db->limit(5);
 			$query = $this->db->get();
 			
@@ -119,6 +126,7 @@
 			$this->db->from($this::DB_TABLE);
 			$this->db->where('ordered_status', 'pending');
 			$this->db->where('ordered_time >= "'.$now->format('Y-m-d 00:00:00').'" AND ordered_time <= "'.$now->format('Y-m-d H:i:s').'"');
+			$this->db->order_by('ordered_time','desc');
 			$this->db->limit(5);
 			$query = $this->db->get();
 			

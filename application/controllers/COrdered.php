@@ -172,7 +172,14 @@
                                         <i class="unhide icon"></i>
                                     </button></a>';
 
-                $qr = ($o->ordered_qr_code == 0)? 'NOT APPLICABLE' : $o->ordered_qr_code;
+                if($o->ordered_qr_code == 0){
+                	$qr = 'NOT APPLICABLE';
+                	$actions = 	' <a class="disabled" href="'.$this->urlSite.''.$o->ordered_id.'" ><button class="ui inverted blue icon button disabled">
+                                        <i class="unhide icon"></i>
+                                    </button></a>'; 
+                } else {
+                	$qr = $o->ordered_qr_code;
+               	}
                 $date = date_create_from_format('Y-m-d H:i:s', $o->ordered_time); 
 
 			   	$data[] = array(
@@ -209,7 +216,14 @@
 				$actions = 	' <a href="'.$this->urlSite.''.$o->ordered_id.'"><button class="ui inverted blue icon button">
                                         <i class="unhide icon"></i>
                                     </button></a>';
-                $qr = ($o->ordered_qr_code == 0)? 'NOT APPLICABLE' : $o->ordered_qr_code;
+                if($o->ordered_qr_code == 0){
+                	$qr = 'NOT APPLICABLE';
+                	$actions = 	' <a class="disabled" href="'.$this->urlSite.''.$o->ordered_id.'" ><button class="ui inverted blue icon button disabled">
+                                        <i class="unhide icon"></i>
+                                    </button></a>'; 
+                } else {
+                	$qr = $o->ordered_qr_code;
+               	}
                 $date = date_create_from_format('Y-m-d H:i:s', $o->ordered_time); 
 
 			   	$data[] = array(
@@ -246,7 +260,14 @@
 				$actions = 	' <a href="'.$this->urlSite.''.$o->ordered_id.'"><button class="ui inverted blue icon button">
                                         <i class="unhide icon"></i>
                                     </button></a>';
-                $qr = ($o->ordered_qr_code == 0)? 'NOT APPLICABLE' : $o->ordered_qr_code;
+                if($o->ordered_qr_code == 0){
+                	$qr = 'NOT APPLICABLE';
+                	$actions = 	' <a class="disabled" href="'.$this->urlSite.''.$o->ordered_id.'"><button class="ui inverted blue icon button" disabled>
+                                        <i class="unhide icon"></i>
+                                    </button></a>'; 
+                } else {
+                	$qr = $o->ordered_qr_code;
+               	}
                 $date = date_create_from_format('Y-m-d H:i:s', $o->ordered_time); 
 
 			   	$data[] = array(
@@ -283,7 +304,14 @@
 				$actions = 	' <a href="'.$this->urlSite.''.$o->ordered_id.'"><button class="ui inverted blue icon button">
                                         <i class="unhide icon"></i>
                                     </button></a>';
-                $qr = ($o->ordered_qr_code == 0)? 'NOT APPLICABLE' : $o->ordered_qr_code;
+                if($o->ordered_qr_code == 0){
+                	$qr = 'NOT APPLICABLE';
+                	$actions = 	' <a class="disabled" href="'.$this->urlSite.''.$o->ordered_id.'"><button class="ui inverted blue icon button disabled">
+                                        <i class="unhide icon"></i>
+                                    </button></a>'; 
+                } else {
+                	$qr = $o->ordered_qr_code;
+               	}
 
                 $date = date_create_from_format('Y-m-d H:i:s', $o->ordered_time); 
 
