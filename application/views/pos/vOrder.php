@@ -162,7 +162,7 @@ echo '
           AMOUNT DUE
         </div>
         <div class="eight wide middle aligned  compact column">
-          <strong><p style="font-size: 1.3em;">P<span id="due">0</span>.00</p></strong>
+          <strong><p style="font-size: 1.3em;">P<span id="due">0</span></p></strong>
         </div>
 
         <!-- CASH -->
@@ -210,6 +210,7 @@ echo '
       e.preventDefault()
       });
     })
+
     $('#cashbox').on('blur', 'input[type=number]', function (e) {
      $(this).off('mousewheel.disableScroll')
     })
@@ -218,7 +219,10 @@ echo '
     if(cash == 0){
      $('#error').hide();
     }
-
+    
+    if($("#amount").val() == 0){
+      $("#cash").html("0.00");
+    }
     $(".close.icon").click(function(){
       $('#error').hide();
     });
@@ -253,18 +257,23 @@ echo '
           if(!isNaN(value) && value.length != 0) {
               sum += parseFloat(value);
           }
+          sum = parseFloat(sum).toFixed(2);
           $("#due").html(sum); 
       });
       $('#amount').on('keyup', function() {
         //var tableData = storeTblValues();
         var amt = $("#amount").val();
         var due = $("#due").text();
-        var cash = amt+'.00';
-        var change = parseFloat(cash)-parseFloat(due)+'.00';
-        $("#cash").html(cash); 
-        $("#change").html(change);
-
-        
+        if(amt == ''){
+          $("#cash").html('0.00'); 
+          $("#change").html('0.00');
+        }else{
+          var cash = parseFloat(amt).toFixed(2);
+          var change = parseFloat(cash).toFixed(2)-parseFloat(due).toFixed(2);
+          change = parseFloat(change).toFixed(2);
+          $("#cash").html(cash); 
+          $("#change").html(change);
+        }
         if(change < 0){
           $("#change").css("color","red");
           $('#peso').css("color","red");
