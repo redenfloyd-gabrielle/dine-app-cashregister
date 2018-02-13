@@ -28,8 +28,16 @@
  			$this->load->model("MReports");
  			$now = new DateTime(NULL, new DateTimeZone('Asia/Manila'));
 
- 			$data["datad"] = $this->MReports->get_data_daily();
-
+ 			if(isset($_POST['myDate'])){
+ 				$var = $_POST['myDate'];
+ 				$data["today"] = $var;
+ 				$data["datad"] = $this->MReports->get_data_daily_withdate($var);
+ 				$data["receipt_day"] = $this->MReports->getReceiptday_withdate($var);
+ 			}else{
+ 				$data["today"] = date('Y-m-d');
+ 				$data["datad"] = $this->MReports->get_data_daily();
+ 				$data["receipt_day"] = $this->MReports->getReceiptday();
+ 			}
  			$data["dataw"] = $this->MReports->get_data_weekly();
 
  			$data["datam"] = $this->MReports->get_data_monthly();
@@ -37,7 +45,6 @@
  			$data["data"] = $this->MReports->get_data();
 
  			$data["receipt"] = $this->MReports->getReceipt();
- 			$data["receipt_day"] = $this->MReports->getReceiptday();
  			$data["receipt_week"] = $this->MReports->getReceiptweek();
  			$data["receipt_month"] = $this->MReports->getReceiptmonth();
  			

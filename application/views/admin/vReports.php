@@ -174,9 +174,19 @@
       <div class="ui bottom attached tab segment" data-tab="second">
         <div class="ui two column grid">
           <div class="column">
+            <form method="POST" action="<?php echo site_url()?>/CReports/getData">
+              <input type="date" id="myDate" name="myDate">
+              <input type="submit" value="Select">
+            </form>
             <h3 class="ui grey dividing header">
                 <div class="content">
                   SOLD PRODUCTS (DAILY)
+                  <?php
+                    if($today != 0){
+                      $var = new DateTime($today);
+                      echo date_format($var,'F d, Y');
+                    }
+                  ?>
                   <!-- <div class="sub header">Shows the list of orders</div> -->
                 </div>
             </h3> <!-- header -->
@@ -484,23 +494,23 @@
                             exportOptions: {
                                 columns: [0, 1, 2]
                             },
-                            title: 'Weekly Products Sales_<?php echo $now->format('Y-m-d'); ?>'
+                            title: 'Weekly Products Sales_<?php echo $now->format('Y-m-d'); ?>_<?php echo $this->session->userdata['userSession']['user_first_name'];?> '
                         },
                         {
                             extend: 'pdfHtml5',
                             exportOptions: {
                                 columns: [0, 1, 2]
                             },
-                            messageTop: 'This PDF contains Scanned orders from dine-app.net',
-                            title: 'Weekly Products Sales_<?php echo $now->format('Y-m-d'); ?>'
+                            messageTop: 'This PDF contains orders from dine-app.net',
+                            title: 'Weekly Products Sales_<?php echo $now->format('Y-m-d'); ?>_<?php echo $this->session->userdata['userSession']['user_first_name'];?> '
                         },
                         {
                             extend: 'print',
                             exportOptions: {
                                 columns: [0, 1, 2]
                             },
-                            messageTop: 'This PDF contains Scanned orders from dine-app.net',
-                            title: 'Weekly Products Sales_<?php echo $now->format('Y-m-d'); ?>'
+                            messageTop: 'This PDF contains orders from dine-app.net',
+                            title: 'Weekly Products Sales_<?php echo $now->format('Y-m-d'); ?>_<?php echo $this->session->userdata['userSession']['user_first_name'];?> '
                         }
                     ]
                 });
@@ -524,7 +534,7 @@
                     exportOptions: {
                         columns: [0, 1, 2]
                     },
-                    title: 'All Products Sales_<?php echo $now->format('Y-m-d'); ?>'
+                    title: 'All Products Sales_<?php echo $now->format('Y-m-d'); ?>_<?php echo $this->session->userdata['userSession']['user_first_name'];?> '
                 },
                 {
                     extend: 'pdfHtml5',
@@ -532,7 +542,7 @@
                         columns: [0, 1, 2]
                     },
                     messageTop: 'This PDF contains all orders from dine-app.net',
-                    title: 'All Products Sales_<?php echo $now->format('Y-m-d'); ?>'
+                    title: 'All Products Sales_<?php echo $now->format('Y-m-d'); ?>_<?php echo $this->session->userdata['userSession']['user_first_name'];?> '
                 },
                 {
                     extend: 'print',
@@ -540,7 +550,7 @@
                         columns: [0, 1, 2]
                     },
                     messageTop: 'This PDF contains all orders from dine-app.net',
-                    title: 'All Products Sales_<?php echo $now->format('Y-m-d'); ?>'
+                    title: 'All Products Sales_<?php echo $now->format('Y-m-d'); ?>_<?php echo $this->session->userdata['userSession']['user_first_name'];?> '
                 }
             ]
             
@@ -564,23 +574,23 @@
                             exportOptions: {
                                 columns: [0, 1, 2]
                             },
-                            title: 'Daily Product Sales_<?php echo $now->format('Y-m-d'); ?>'
+                            title: 'Daily Product Sales_<?php echo $now->format('Y-m-d'); ?>_<?php echo $this->session->userdata['userSession']['user_first_name'];?> '
                         },
                         {
                             extend: 'pdfHtml5',
                             exportOptions: {
                                 columns: [0, 1, 2]
                             },
-                            messageTop: 'This PDF contains Pending orders from dine-app.net',
-                            title: 'Daily Product Sales_<?php echo $now->format('Y-m-d'); ?>'
+                            messageTop: 'This PDF contains orders from dine-app.net',
+                            title: 'Daily Product Sales_<?php echo $now->format('Y-m-d'); ?>_<?php echo $this->session->userdata['userSession']['user_first_name'];?> '
                         },
                         {
                             extend: 'print',
                             exportOptions: {
                                 columns: [0, 1, 2]
                             },
-                            messageTop: 'This PDF contains Pending orders from dine-app.net',
-                            title: 'Daily Product Sales_<?php echo $now->format('Y-m-d'); ?>'
+                            messageTop: 'This PDF contains orders from dine-app.net',
+                            title: 'Daily Product Sales_<?php echo $now->format('Y-m-d'); ?>_<?php echo $this->session->userdata['userSession']['user_first_name'];?> '
                         }
                     ]
                 });
@@ -606,23 +616,23 @@
                             exportOptions: {
                                 columns: [0, 1, 2]
                             },
-                            title: 'Monthly Product Sales_<?php echo $now->format('Y-m-d'); ?>'
+                            title: 'Monthly Product Sales_<?php echo $now->format('Y-m-d'); ?>_<?php echo $this->session->userdata['userSession']['user_first_name'];?> '
                         },
                         {
                             extend: 'pdfHtml5',
                             exportOptions: {
                                 columns: [0, 1, 2]
                             },
-                            messageTop: 'This PDF contains Pending orders from dine-app.net',
-                            title: 'Monthly Product Sales_<?php echo $now->format('Y-m-d'); ?>'
+                            messageTop: 'This PDF contains orders from dine-app.net',
+                            title: 'Monthly Product Sales_<?php echo $now->format('Y-m-d'); ?>_<?php echo $this->session->userdata['userSession']['user_first_name'];?> '
                         },
                         {
                             extend: 'print',
                             exportOptions: {
                                 columns: [0, 1, 2]
                             },
-                            messageTop: 'This PDF contains Pending orders from dine-app.net',
-                            title: 'Monthly Product Sales_<?php echo $now->format('Y-m-d'); ?>'
+                            messageTop: 'This PDF contains orders from dine-app.net',
+                            title: 'Monthly Product Sales_<?php echo $now->format('Y-m-d'); ?>_<?php echo $this->session->userdata['userSession']['user_first_name'];?> '
                         }
                     ]
                 });
@@ -654,23 +664,23 @@
                             exportOptions: {
                                 columns: [0, 1, 2]
                             },
-                            title: 'Weekly Products Sales_<?php echo $now->format('Y-m-d'); ?>'
+                            title: 'Weekly Products Sales_<?php echo $now->format('Y-m-d'); ?>_<?php echo $this->session->userdata['userSession']['user_first_name'];?> '
                         },
                         {
                             extend: 'pdfHtml5',
                             exportOptions: {
                                 columns: [0, 1, 2]
                             },
-                            messageTop: 'This PDF contains Scanned orders from dine-app.net',
-                            title: 'Weekly Products Sales_<?php echo $now->format('Y-m-d'); ?>'
+                            messageTop: 'This PDF contains orders from dine-app.net',
+                            title: 'Weekly Products Sales_<?php echo $now->format('Y-m-d'); ?>_<?php echo $this->session->userdata['userSession']['user_first_name'];?> '
                         },
                         {
                             extend: 'print',
                             exportOptions: {
                                 columns: [0, 1, 2]
                             },
-                            messageTop: 'This PDF contains Scanned orders from dine-app.net',
-                            title: 'Weekly Products Sales_<?php echo $now->format('Y-m-d'); ?>'
+                            messageTop: 'This PDF contains orders from dine-app.net',
+                            title: 'Weekly Products Sales_<?php echo $now->format('Y-m-d'); ?>_<?php echo $this->session->userdata['userSession']['user_first_name'];?> '
                         }
                     ]
                 });
@@ -694,7 +704,7 @@
                     exportOptions: {
                         columns: [0, 1, 2]
                     },
-                    title: 'All Products Sales_<?php echo $now->format('Y-m-d'); ?>'
+                    title: 'All Products Sales_<?php echo $now->format('Y-m-d'); ?>_<?php echo $this->session->userdata['userSession']['user_first_name'];?> '
                 },
                 {
                     extend: 'pdfHtml5',
@@ -702,7 +712,7 @@
                         columns: [0, 1, 2]
                     },
                     messageTop: 'This PDF contains all orders from dine-app.net',
-                    title: 'All Products Sales_<?php echo $now->format('Y-m-d'); ?>'
+                    title: 'All Products Sales_<?php echo $now->format('Y-m-d'); ?>_<?php echo $this->session->userdata['userSession']['user_first_name'];?> '
                 },
                 {
                     extend: 'print',
@@ -710,7 +720,7 @@
                         columns: [0, 1, 2]
                     },
                     messageTop: 'This PDF contains all orders from dine-app.net',
-                    title: 'All Products Sales_<?php echo $now->format('Y-m-d'); ?>'
+                    title: 'All Products Sales_<?php echo $now->format('Y-m-d'); ?>_<?php echo $this->session->userdata['userSession']['user_first_name'];?> '
                 }
             ]
             
@@ -734,23 +744,23 @@
                             exportOptions: {
                                 columns: [0, 1, 2]
                             },
-                            title: 'Daily Product Sales_<?php echo $now->format('Y-m-d'); ?>'
+                            title: 'Daily Product Sales_<?php echo $now->format('Y-m-d'); ?>_<?php echo $this->session->userdata['userSession']['user_first_name'];?> '
                         },
                         {
                             extend: 'pdfHtml5',
                             exportOptions: {
                                 columns: [0, 1, 2]
                             },
-                            messageTop: 'This PDF contains Pending orders from dine-app.net',
-                            title: 'Daily Product Sales_<?php echo $now->format('Y-m-d'); ?>'
+                            messageTop: 'This PDF contains orders from dine-app.net',
+                            title: 'Daily Product Sales_<?php echo $now->format('Y-m-d'); ?>_<?php echo $this->session->userdata['userSession']['user_first_name'];?> '
                         },
                         {
                             extend: 'print',
                             exportOptions: {
                                 columns: [0, 1, 2]
                             },
-                            messageTop: 'This PDF contains Pending orders from dine-app.net',
-                            title: 'Daily Product Sales_<?php echo $now->format('Y-m-d'); ?>'
+                            messageTop: 'This PDF contains orders from dine-app.net',
+                            title: 'Daily Product Sales_<?php echo $now->format('Y-m-d'); ?>_<?php echo $this->session->userdata['userSession']['user_first_name'];?> '
                         }
                     ]
                 });
@@ -776,23 +786,23 @@
                             exportOptions: {
                                 columns: [0, 1, 2]
                             },
-                            title: 'Monthly Product Sales_<?php echo $now->format('Y-m-d'); ?>'
+                            title: 'Monthly Product Sales_<?php echo $now->format('Y-m-d'); ?>_<?php echo $this->session->userdata['userSession']['user_first_name'];?> '
                         },
                         {
                             extend: 'pdfHtml5',
                             exportOptions: {
                                 columns: [0, 1, 2]
                             },
-                            messageTop: 'This PDF contains Pending orders from dine-app.net',
-                            title: 'Monthly Product Sales_<?php echo $now->format('Y-m-d'); ?>'
+                            messageTop: 'This PDF contains orders from dine-app.net',
+                            title: 'Monthly Product Sales_<?php echo $now->format('Y-m-d'); ?>_<?php echo $this->session->userdata['userSession']['user_first_name'];?> '
                         },
                         {
                             extend: 'print',
                             exportOptions: {
                                 columns: [0, 1, 2]
                             },
-                            messageTop: 'This PDF contains Pending orders from dine-app.net',
-                            title: 'Monthly Product Sales_<?php echo $now->format('Y-m-d'); ?>'
+                            messageTop: 'This PDF contains orders from dine-app.net',
+                            title: 'Monthly Product Sales_<?php echo $now->format('Y-m-d'); ?>_<?php echo $this->session->userdata['userSession']['user_first_name'];?> '
                         }
                     ]
                 });

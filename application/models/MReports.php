@@ -53,6 +53,24 @@
             return $data->result();
         }
 
+        public function get_data_daily_withdate($var){
+            $this->load->database();
+            $starter = '0:0:0';
+            $ender = '23:59:59';
+
+            $start = $var.' '.$starter;
+            $end = $var.' '.$ender;
+            $this->db->select('*, SUM(receipt_item_quantity) as quantity, SUM(receipt_item_subtotal) as subtotal');
+            $this->db->from('receipt_item ri');
+            $this->db->join('product p', 'p.product_id = ri.receipt_item_product_id');
+            $this->db->join('receipt r','r.receipt_id = ri.receipt_item_receipt_id');
+            $this->db->where('r.receipt_date >= "'.$start.'" AND r.receipt_date <= "'.$end.'"');
+            $this->db->group_by("receipt_item_product_id");
+
+            $data = $this->db->get();
+            return $data->result();
+        }
+
         public function get_data_monthly(){
             $this->load->database();
             $now = new DateTime(NULL, new DateTimeZone('Asia/Manila'));
@@ -928,6 +946,24 @@
             return $data->result();
         }
 
+        public function getReceiptday_withdate($var){
+
+            $this->load->database();
+            $starter = '0:0:0';
+            $ender = '23:59:59';
+
+            $start = $var.' '.$starter;
+            $end = $var.' '.$ender;
+
+            $this->db->select('*');
+            $this->db->from('receipt');
+            $this->db->where('receipt_date >= "'.$start.'" AND receipt_date <= "'.$end.'" AND receipt_total > 0');
+
+           // SELECT * FROM `receipt` WHERE receipt_date >= '2018-01-25 0:0:0' and receipt_date <= '2018-01-25 23:59:59'
+
+            $data = $this->db->get();
+            return $data->result();
+        }
         public function getReceiptmonth(){
 
             $this->load->database();
