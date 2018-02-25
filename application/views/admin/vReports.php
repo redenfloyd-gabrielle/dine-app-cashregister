@@ -172,12 +172,14 @@
       </div>
 
       <div class="ui bottom attached tab segment" data-tab="second">
-        <div class="ui two column grid">
-          <div class="column">
+        <div class="ui grid">
+          <div class="sixteen wide right aligned middle aligned column">
             <form method="POST" action="<?php echo site_url()?>/CReports/getData">
               <input type="date" id="myDate" name="myDate">
-              <input type="submit" value="Select">
+              <input class="ui mini brown button" type="submit" value="Select">
             </form>
+          </div>
+          <div class="eight wide column">
             <h3 class="ui grey dividing header">
                 <div class="content">
                   SOLD PRODUCTS (DAILY)
@@ -212,7 +214,7 @@
               ?>
             </table>
           </div>
-          <div class="column">
+          <div class="eight wide column">
             <h3 class="ui grey dividing header">
                 <div class="content">
                   DAILY SALES
