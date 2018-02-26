@@ -504,7 +504,8 @@
                             exportOptions: {
                                 columns: [0, 1, 2]
                             },
-                            title: 'Weekly Products Sales_<?php echo $now->format('Y-m-d'); ?>_<?php echo $this->session->userdata['userSession']['user_first_name'];?> '
+                            messageBottom: 'Printed by: <?php echo $this->session->userdata['userSession']['user_first_name'];?>',
+                            title: 'Weekly Products Sales_<?php echo $now->format('Y-m-d'); ?>'
                         },
                         {
                             extend: 'pdfHtml5',
@@ -552,7 +553,8 @@
                     exportOptions: {
                         columns: [0, 1, 2]
                     },
-                    title: 'All Products Sales_<?php echo $now->format('Y-m-d'); ?>_<?php echo $this->session->userdata['userSession']['user_first_name'];?> '
+                    messageBottom: 'Printed by: <?php echo $this->session->userdata['userSession']['user_first_name'];?>',
+                    title: 'All Products Sales_<?php echo $now->format('Y-m-d'); ?>'
                 },
                 {
                     extend: 'pdfHtml5',
@@ -600,7 +602,8 @@
                             exportOptions: {
                                 columns: [0, 1, 2]
                             },
-                            title: 'Daily Product Sales_<?php echo $today; ?>_<?php echo $this->session->userdata['userSession']['user_first_name'];?> '
+                            messageBottom: 'Printed by: <?php echo $this->session->userdata['userSession']['user_first_name'];?>',
+                            title: 'Daily Product Sales_<?php echo $today; ?>'
                         },
                         {
                             extend: 'pdfHtml5',
@@ -650,7 +653,8 @@
                             exportOptions: {
                                 columns: [0, 1, 2]
                             },
-                            title: 'Monthly Product Sales_<?php echo $now->format('Y-m-d'); ?>_<?php echo $this->session->userdata['userSession']['user_first_name'];?> '
+                            messageBottom: 'Printed by: <?php echo $this->session->userdata['userSession']['user_first_name'];?>',
+                            title: 'Monthly Product Sales_<?php echo $now->format('Y-m-d'); ?>'
                         },
                         {
                             extend: 'pdfHtml5',
@@ -706,7 +710,8 @@
                             exportOptions: {
                                 columns: [0, 1, 2]
                             },
-                            title: 'Weekly Products Sales_<?php echo $now->format('Y-m-d'); ?>_<?php echo $this->session->userdata['userSession']['user_first_name'];?> '
+                            messageBottom: 'Printed by: <?php echo $this->session->userdata['userSession']['user_first_name'];?>',
+                            title: 'Weekly Products Sales_<?php echo $now->format('Y-m-d'); ?>'
                         },
                         {
                             extend: 'pdfHtml5',
@@ -754,7 +759,8 @@
                     exportOptions: {
                         columns: [0, 1, 2]
                     },
-                    title: 'All Products Sales_<?php echo $now->format('Y-m-d'); ?>_<?php echo $this->session->userdata['userSession']['user_first_name'];?> '
+                    messageBottom: 'Printed by: <?php echo $this->session->userdata['userSession']['user_first_name'];?>',
+                    title: 'All Products Sales_<?php echo $now->format('Y-m-d'); ?>'
                 },
                 {
                     extend: 'pdfHtml5',
@@ -802,7 +808,8 @@
                             exportOptions: {
                                 columns: [0, 1, 2]
                             },
-                            title: 'Daily Product Sales_<?php echo $today; ?>_<?php echo $this->session->userdata['userSession']['user_first_name'];?> '
+                            messageBottom: 'Printed by: <?php echo $this->session->userdata['userSession']['user_first_name'];?>',
+                            title: 'Daily Product Sales_<?php echo $today; ?>'
                         },
                         {
                             extend: 'pdfHtml5',
@@ -852,7 +859,8 @@
                             exportOptions: {
                                 columns: [0, 1, 2]
                             },
-                            title: 'Monthly Product Sales_<?php echo $now->format('Y-m-d'); ?>_<?php echo $this->session->userdata['userSession']['user_first_name'];?> '
+                            messageBottom: 'Printed by: <?php echo $this->session->userdata['userSession']['user_first_name'];?>',
+                            title: 'Monthly Product Sales_<?php echo $now->format('Y-m-d'); ?>'
                         },
                         {
                             extend: 'pdfHtml5',
