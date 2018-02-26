@@ -31,7 +31,7 @@
           <a class="item" data-tab="fourth" id="fourth">Monthly</a>
         </div>
 
-        <div class="ui bottom attached active tab segment" data-tab="first">
+        <div class="ui bottom attached active tab segment" data-tab="first" id='tab1'>
           <div class="ui grid">
             <div class=" eight wide column">
               <h3 class="ui grey dividing header">
@@ -171,10 +171,10 @@
           </div>
       </div>
 
-      <div class="ui bottom attached tab segment" data-tab="second">
+      <div class="ui bottom attached tab segment" data-tab="second" id='tab2'>
         <div class="ui grid">
           <div class="sixteen wide right aligned middle aligned column">
-            <form method="POST" action="<?php echo site_url()?>/CReports/getData">
+            <form method="POST" action="<?php echo site_url()?>report/daily">
               <input type="date" id="myDate" name="myDate">
               <input class="ui mini brown button" type="submit" value="Select">
             </form>
@@ -276,7 +276,7 @@
         </div>
       </div>
 
-      <div class="ui bottom attached tab segment" data-tab="third">
+      <div class="ui bottom attached tab segment" data-tab="third" id='tab3'>
         <div class="ui two column grid">
           <div class="column">
             <h3 class="ui grey dividing header">
@@ -368,7 +368,7 @@
         </div>
       </div>
 
-      <div class="ui bottom attached tab segment" data-tab="fourth">
+      <div class="ui bottom attached tab segment" data-tab="fourth" id='tab4'>
         <div class="ui two column grid">
           <div class="column">
             <h3 class="ui grey dividing header">
@@ -476,6 +476,14 @@
         <!-- end of content -->
   </div> <!-- padded segment -->        
 </div> <!-- pusher -->
+
+<script type="text/javascript">
+  $(document).ready(function(){  
+        <?php if(isset($script)){
+            echo $script;
+        } ?>
+    });
+</script>
 
 <script type="text/javascript">
     $(document).ready(function() {
