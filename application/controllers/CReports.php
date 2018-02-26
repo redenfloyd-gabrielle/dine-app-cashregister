@@ -33,6 +33,11 @@
  				$data["today"] = $var;
  				$data["datad"] = $this->MReports->get_data_daily_withdate($var);
  				$data["receipt_day"] = $this->MReports->getReceiptday_withdate($var);
+ 				$data['script'] = '$("#first").removeClass("active");
+							   	   $("#second").addClass("active");
+							   	   $("#tab1").removeClass("active");
+							   	   $("#tab2").addClass("active");';
+				
  			}else{
  				$data["today"] = date('Y-m-d');
  				$data["datad"] = $this->MReports->get_data_daily();

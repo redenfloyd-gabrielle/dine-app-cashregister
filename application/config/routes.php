@@ -117,6 +117,7 @@ $route['removelist/(.*)/(.*)/(.*)/(.*)'] = 'COrderItem/removeToList/$1/$2/$3/$4'
 $route['addreceiptitem/(.*)/(.*)'] = 'CReceiptItem/addReceiptItem/$1/$2';
 $route['displayorderlistmanual'] = 'CReceiptItem/displayOrderListManual';
 $route['viewproduct/(.*)'] = 'CProduct/viewProduct/$1';
+$route['report/daily'] = 'CReports/getData';
 
 
 $route['404_override'] = '';
