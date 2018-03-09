@@ -254,10 +254,10 @@ echo '
       var sum = 0;
       $(".subtotal").each(function() {
           var value = $(this).text();
-          if(!isNaN(value) && value.length != 0) {
+          if(value.length != 0) {
               sum += parseFloat(value);
           }
-          sum = parseFloat(sum).toFixed(2);
+          sum = parseFloat(sum);
           $("#due").html(sum); 
       });
       $('#amount').on('keyup', function() {
